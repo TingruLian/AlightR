@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 331912c5e833c4a10a84546c00090b66
   - enabled: 1
     path: Assets/Samples/Depth/Scenes/DepthDisplay.unity
-    guid: a7c2694f3359d46a8acf408d66801c84
+    guid: 0316d7286c1fc4aa9b1a49cf74de428e
   - enabled: 1
     path: Assets/Samples/NavigationMesh/Scenes/NavigationMesh.unity
     guid: a06c30b00ed554db68bfe3b791e59681
