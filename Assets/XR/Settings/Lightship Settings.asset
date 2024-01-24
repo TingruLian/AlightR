@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abc3dbfe57c4ad49b19309f187d9e1a, type: 3}
   m_Name: Lightship Settings
   m_EditorClassIdentifier: 
-  _apiKey: 7FW4TrvBBKJSr2LT4ZMUnnQNS2XlEeg8BFnBP1flwsSDSRkCg8lwlRaEAOk4E0i11jm3KV
+  _apiKey: 5I7mAZQ1r4vosYkGTCyaAVbKp5mUWb9svBK40D4GbkKJePeWttgP0RhgJtjVkXvWuYTT9h
   _useLightshipDepth: 1
   _useLightshipMeshing: 1
   _preferLidarIfAvailable: 1
