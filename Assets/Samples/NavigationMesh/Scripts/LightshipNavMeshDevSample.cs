@@ -80,7 +80,6 @@ public class LightshipNavMeshDevSample : MonoBehaviour
                     _creature.transform.position = hit.point;
                     _agent = _creature.GetComponent<LightshipNavMeshAgent>();
                     visualization.SetActive(true);
-
                 }
                 else
                 {
