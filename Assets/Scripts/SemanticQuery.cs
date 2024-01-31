@@ -9,9 +9,13 @@ public class SemanticQuery : MonoBehaviour {
    public ARSemanticSegmentationManager _semanticMan;
    public TMP_Text _text;
    public RawImage _image;
+   public RawImage _imageLava;
    public Material _material;
+   public Material _materialLava;
 
    private string _channel = "ground";
+   private string _groundChannel = "ground";
+
    void OnEnable() {
       _cameraMan.frameReceived += OnCameraFrameUpdate;
    }
@@ -21,7 +25,7 @@ public class SemanticQuery : MonoBehaviour {
    }
 
    private void OnCameraFrameUpdate(ARCameraFrameEventArgs args) {
-      if (!_semanticMan.subsystem.running) {
+      if (_semanticMan.subsystem == null || !_semanticMan.subsystem.running) {
          return;
       }
 
@@ -37,12 +41,30 @@ public class SemanticQuery : MonoBehaviour {
          _image.material.SetTexture("_SemanticTex", texture);
          _image.material.SetMatrix("_SemanticMat", mat);
       }
+
+      InitGroundLayer(args, _groundChannel);
+   }
+
+   private void InitGroundLayer(ARCameraFrameEventArgs args, string channelName) {
+      //get the semantic texture
+      Matrix4x4 mat = Matrix4x4.identity;
+      var texture = _semanticMan.GetSemanticChannelTexture(channelName, out mat);
+
+      if (texture)
+      {
+         //the texture needs to be aligned to the screen so get the display matrix
+         //and use a shader that will rotate/scale things.
+         Matrix4x4 cameraMatrix = args.displayMatrix ?? Matrix4x4.identity;
+         _imageLava.material = _materialLava;
+         _imageLava.material.SetTexture("_SemanticTex", texture);
+         _imageLava.material.SetMatrix("_SemanticMat", mat);
+      }
    }
 
    private float _timer = 0.0f;
 
    void Update() {
-      if (!_semanticMan.subsystem.running) {
+      if (_semanticMan.subsystem == null || !_semanticMan.subsystem.running) {
          return;
       }
 
