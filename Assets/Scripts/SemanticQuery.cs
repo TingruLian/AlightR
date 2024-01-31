@@ -46,12 +46,15 @@ public class SemanticQuery : MonoBehaviour {
    }
 
    private void InitGroundLayer(ARCameraFrameEventArgs args, string channelName) {
+      if (_semanticMan.subsystem == null || !_semanticMan.subsystem.running) {
+         return;
+      }
+
       //get the semantic texture
       Matrix4x4 mat = Matrix4x4.identity;
       var texture = _semanticMan.GetSemanticChannelTexture(channelName, out mat);
 
-      if (texture)
-      {
+      if (texture) {
          //the texture needs to be aligned to the screen so get the display matrix
          //and use a shader that will rotate/scale things.
          Matrix4x4 cameraMatrix = args.displayMatrix ?? Matrix4x4.identity;
