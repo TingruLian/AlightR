@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+   [SerializeField]
+   private GameObject enemy;
+
+   // This is the parent GameObject for all spawned enemies. Should be either XR Origin or a child of it
+   [SerializeField]
+   private GameObject parent;
+
    // This is the target toward which enemies will move, i.e. the bridge. They will also be spawned in a radius around it. 
    [SerializeField]
    private GameObject target;
-
-   [SerializeField]
-   private GameObject enemy;
 
    // This is the max distance from the target that enemies will spawn
    [SerializeField]
@@ -42,7 +46,7 @@ public class EnemySpawner : MonoBehaviour {
 
          Vector3 enemyPos = new Vector3(enemyCenter.x + x, enemyCenter.y, enemyCenter.z + y);
 
-         GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity);
+         GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
 
          enemyInstance.GetComponent<EnemyMovement>().target = new Vector3(targetPos.x, targetPos.y - 4f, targetPos.z - 1f);
          enemyInstance.GetComponent<EnemyMovement>().speed = enemySpeed;
