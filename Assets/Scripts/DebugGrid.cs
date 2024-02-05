@@ -25,8 +25,6 @@ public class DebugGrid : MonoBehaviour
 
    void Start()
    {
-
-
       GenerateGrid();
    }
 

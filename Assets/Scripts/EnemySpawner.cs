@@ -18,17 +18,20 @@ public class EnemySpawner : MonoBehaviour {
    private float maxRadius;
 
    [SerializeField]
+   private float spawnInterval;
+
+   [SerializeField]
    private float enemySpeed;
 
    private float spawnTime;
 
    void Start() {
-      spawnTime = Time.time + 2;
+      spawnTime = Time.time + spawnInterval;
    }
 
    void Update() {
       if (Time.time > spawnTime) {
-         spawnTime = Time.time + 2;
+         spawnTime = Time.time + spawnInterval;
 
          Debug.Log("Checking to see if an enemy should be spawned");
 
