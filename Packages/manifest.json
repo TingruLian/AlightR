@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.niantic.lightship.maps": "https://github.com/niantic-lightship/maps-upm.git",
     "com.nianticlabs.lightship": "https://github.com/niantic-lightship/ardk-upm.git",
     "com.nianticlabs.lightship.sharedar": "https://github.com/niantic-lightship/sharedar-upm.git",
     "com.unity.ai.navigation": "1.1.5",
