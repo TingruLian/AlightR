@@ -244,11 +244,13 @@ MonoBehaviour:
       _longitude: -79.95970892169015
     name: HotMetal1
     sceneID: 6
+    sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
   - position:
       _latitude: 40.42834752101199
       _longitude: -79.9606336695376
     name: HotMetal2
     sceneID: 3
+    sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
 --- !u!1 &377862750
 GameObject:
   m_ObjectHideFlags: 0

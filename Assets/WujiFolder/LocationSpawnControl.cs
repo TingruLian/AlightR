@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [Serializable]
@@ -12,6 +13,7 @@ public struct LocationUnit
     public SerializableLatLng position;
     public string name;
     public int sceneID;
+    public Sprite sprite;
 }
 
 public class LocationSpawnControl : MonoBehaviour
@@ -33,6 +35,7 @@ public class LocationSpawnControl : MonoBehaviour
             GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
             location.GetComponentInChildren<TextMeshProUGUI>().text = unit.name;
             location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
+            location.GetComponentInChildren<Image>().sprite = unit.sprite;
         }
     }
 
