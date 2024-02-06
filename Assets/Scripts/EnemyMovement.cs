@@ -22,6 +22,6 @@ public class EnemyMovement : MonoBehaviour {
 
       Vector3 distTraveled = Vector3.Normalize(target - curPos) * speed * elapsedTime;
 
-      transform.position += distTraveled;
+      //transform.position += distTraveled;
    }
 }
