@@ -2181,8 +2181,8 @@ MonoBehaviour:
   parent: {fileID: 718627951}
   target: {fileID: 1602966415}
   maxRadius: 10
-  spawnInterval: 1
-  enemySpeed: 1
+  spawnInterval: 4
+  enemySpeed: 5
 --- !u!1 &1077903281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,13 +3271,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827561723}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00090500154, y: 0.12289987, z: 0.12589307, w: 0.9844012}
-  m_LocalPosition: {x: 5, y: 1, z: -1.5}
-  m_LocalScale: {x: 0.21202381, y: 1, z: 0.5554308}
+  m_LocalRotation: {x: -0.053025078, y: 0.29636395, z: -0.114189036, w: 0.94674057}
+  m_LocalPosition: {x: -5.5, y: -1.1, z: 2.9}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 718627952}
-  m_LocalEulerAnglesHint: {x: -1.875, y: 13.997, z: 14.346}
+  m_LocalEulerAnglesHint: {x: -1.875, y: 35, z: -14.346}
 --- !u!114 &1827561725
 MonoBehaviour:
   m_ObjectHideFlags: 0

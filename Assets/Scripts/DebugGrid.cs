@@ -23,9 +23,14 @@ public class DebugGrid : MonoBehaviour
 
    private Texture2D gridImage;
 
+   float lastTurretPlaced;
+   float turretCooldown = 10;
+
    void Start()
    {
       GenerateGrid();
+
+      lastTurretPlaced = 0;
    }
 
    void GenerateGrid()
@@ -65,6 +70,15 @@ public class DebugGrid : MonoBehaviour
 #if UNITY_EDITOR
       if (Input.GetMouseButtonDown(0))
       {
+         float curTime = Time.time;
+
+         // Quit if not enough time has elapsed
+         if (curTime < (lastTurretPlaced + turretCooldown)) {
+            return;
+         }
+
+         lastTurretPlaced = curTime;
+
          position = Input.mousePosition;
 #else
       if (Input.touchCount > 0) {
