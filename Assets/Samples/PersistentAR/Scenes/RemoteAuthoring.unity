@@ -1284,6 +1284,8 @@ MonoBehaviour:
   meshFilter: {fileID: 716795297}
   gridCollider: {fileID: 716795295}
   turret: {fileID: 420411482090783106, guid: d49e73d835b994a4ebddfdc46c55a091, type: 3}
+  turretAttackRange: 30
+  enemyContainer: {fileID: 287830302}
 --- !u!64 &716795295
 MeshCollider:
   m_ObjectHideFlags: 0

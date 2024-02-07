@@ -17,6 +17,12 @@ public class DebugGrid : MonoBehaviour {
    [SerializeField]
    private GameObject turret;
 
+   [SerializeField]
+   private float turretAttackRange;
+
+   [SerializeField]
+   private GameObject enemyContainer;
+
    private Texture2D gridImage;
 
    float lastTurretPlaced;
@@ -80,7 +86,10 @@ public class DebugGrid : MonoBehaviour {
 
             Vector3 pos = hit.point + Vector3.up * .6f;
 
-            GameObject.Instantiate(turret, pos, Quaternion.identity);
+            GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity);
+
+            turretInstance.GetComponent<TurretBehavior>().enemyContainer = enemyContainer;
+            turretInstance.GetComponent<TurretBehavior>().SetAttackRange(turretAttackRange);
          } else {
             Debug.LogError($"User did not touch the plane");
          }
