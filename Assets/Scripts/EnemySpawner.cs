@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour {
 
    void Start() {
       Vector3 targetPos = target.transform.position;
-      spawnCenter = new Vector3(targetPos.x - 24f, targetPos.y - 6f, targetPos.z - 6f);
+      spawnCenter = new Vector3(targetPos.x - 24f, targetPos.y - 5.6f, targetPos.z - 6f);
 
       forwardAxis = new Vector3(-6f, 0f, -1.9f).normalized;
       sideAxis = new Vector3(forwardAxis.z, 0, -forwardAxis.x).normalized;

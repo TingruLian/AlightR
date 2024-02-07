@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DebugGrid : MonoBehaviour
-{
+public class DebugGrid : MonoBehaviour {
 
    [SerializeField]
    private MeshRenderer floorRenderer;
@@ -26,31 +22,24 @@ public class DebugGrid : MonoBehaviour
    float lastTurretPlaced;
    float turretCooldown = 10;
 
-   void Start()
-   {
+   void Start() {
       GenerateGrid();
 
       lastTurretPlaced = 0;
    }
 
-   void GenerateGrid()
-   {
-      gridImage = new Texture2D(300, 300, TextureFormat.ARGB32, false);
+   void GenerateGrid() {
+      gridImage = new Texture2D(300, 300, TextureFormat.RGBA32, false);
       int borderSize = 15;
 
-      Color gridColor = Color.cyan;
-      Color borderColor = Color.black;
-      for (int x = 0; x < gridImage.width; x++)
-      {
-         for (int y = 0; y < gridImage.height; y++)
-         {
-            if (x < borderSize || x > gridImage.width - borderSize || y < borderSize || y > gridImage.height - borderSize)
-            {
-               gridImage.SetPixel(x, y, new Color(borderColor.r, borderColor.g, borderColor.b, 50));
-            }
-            else
-            {
-               gridImage.SetPixel(x, y, new Color(gridColor.r, gridColor.g, gridColor.b, 50));
+      Color gridColor = Color.black;
+      Color borderColor = Color.white;
+      for (int x = 0; x < gridImage.width; x++) {
+         for (int y = 0; y < gridImage.height; y++) {
+            if (x < borderSize || x > gridImage.width - borderSize || y < borderSize || y > gridImage.height - borderSize) {
+               gridImage.SetPixel(x, y, new Color(borderColor.r, borderColor.g, borderColor.b, 127));
+            } else {
+               gridImage.SetPixel(x, y, new Color(gridColor.r, gridColor.g, gridColor.b, 0));
             }
          }
 
@@ -63,13 +52,11 @@ public class DebugGrid : MonoBehaviour
       floorRenderer.material.mainTextureOffset = new Vector2(.5f, .5f);
    }
 
-   void Update()
-   {
+   void Update() {
       Vector2 position;
 
 #if UNITY_EDITOR
-      if (Input.GetMouseButtonDown(0))
-      {
+      if (Input.GetMouseButtonDown(0)) {
          float curTime = Time.time;
 
          // Quit if not enough time has elapsed
@@ -91,7 +78,9 @@ public class DebugGrid : MonoBehaviour
          if (gridCollider.Raycast(ray, out hit, 100.0f)) {
             Debug.LogWarning($"Placing death ray at {hit.point}");
 
-            GameObject.Instantiate(turret, hit.point, Quaternion.identity);
+            Vector3 pos = hit.point + Vector3.up * .6f;
+
+            GameObject.Instantiate(turret, pos, Quaternion.identity);
          } else {
             Debug.LogError($"User did not touch the plane");
          }
