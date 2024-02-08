@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
@@ -19,8 +17,11 @@ public class EnemyMovement : MonoBehaviour {
 
    void Update() {
       // the enmy already passed the player, so destroy it
-      if (transform.position.z > 1f) {
+      if (transform.position.z > -2.4f) {
          Destroy(gameObject);
+
+         Debug.Log("Enemy reached the base...");
+
          return;
       }
 
