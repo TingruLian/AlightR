@@ -1684,11 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorRenderer: {fileID: 716795296}
   meshCollider: {fileID: 716795295}
-  meshFilter: {fileID: 716795297}
   gridCollider: {fileID: 716795295}
-  turret: {fileID: 420411482090783106, guid: d49e73d835b994a4ebddfdc46c55a091, type: 3}
-  turretAttackRange: 30
-  enemyContainer: {fileID: 287830302}
 --- !u!64 &716795295
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4046,7 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmpResources: {fileID: 632353746}
   tmpLives: {fileID: 614956459}
-  turret: {fileID: 420411482090783106, guid: d49e73d835b994a4ebddfdc46c55a091, type: 3}
+  turret: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
   turretAttackRange: 30
   enemyContainer: {fileID: 287830302}
 --- !u!4 &1901689893
