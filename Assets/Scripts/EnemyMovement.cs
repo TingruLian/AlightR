@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour {
 
    void Update() {
       // the enmy already passed the player, so destroy it
-      if (transform.position.z > -2.4f) {
+      if (Vector3.Distance(transform.position,target) < 0.5f) {
          Destroy(gameObject);
 
          Debug.Log("Enemy reached the base...");
