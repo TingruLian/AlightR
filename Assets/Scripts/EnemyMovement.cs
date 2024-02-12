@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour {
       life--;
 
       if (life <= 0) {
-         Destroy(gameObject);
+         GameManager.instance.DestroyEnemy(this);
       }
    }
 }

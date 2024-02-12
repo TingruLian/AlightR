@@ -9,22 +9,11 @@ public class DebugGrid : MonoBehaviour {
    private MeshCollider meshCollider;
 
    [SerializeField]
-   private MeshFilter meshFilter;
-
-   [SerializeField]
    private Collider gridCollider;
-
-   [SerializeField]
-   private GameObject turret;
-
-   [SerializeField]
-   private float turretAttackRange;
-
-   [SerializeField]
-   private GameObject enemyContainer;
 
    private Texture2D gridImage;
 
+   // these were used when turret placement was restricted by a timer
    float lastTurretPlaced;
    float turretCooldown = 10;
 
@@ -65,12 +54,15 @@ public class DebugGrid : MonoBehaviour {
       if (Input.GetMouseButtonDown(0)) {
          float curTime = Time.time;
 
+         // Require resources to place turrets instead
+         /*
          // Quit if not enough time has elapsed
          if (curTime < (lastTurretPlaced + turretCooldown)) {
             return;
          }
 
          lastTurretPlaced = curTime;
+         */
 
          position = Input.mousePosition;
 #else
@@ -86,10 +78,7 @@ public class DebugGrid : MonoBehaviour {
 
             Vector3 pos = hit.point + Vector3.up * .6f;
 
-            GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity);
-
-            turretInstance.GetComponent<TurretBehavior>().enemyContainer = enemyContainer;
-            turretInstance.GetComponent<TurretBehavior>().SetAttackRange(turretAttackRange);
+            GameManager.instance.PlaceTurret(pos);
          } else {
             Debug.LogError($"User did not touch the plane");
          }
