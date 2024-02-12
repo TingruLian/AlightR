@@ -631,6 +631,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5460868790211056494, guid: ef0c3f4ef9b224bd3980ae7fe1015a5d, type: 3}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
+      propertyPath: _viewableRadius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapLayers.Array.size
       value: 1
       objectReference: {fileID: 0}
