@@ -31,7 +31,6 @@ public class LocationSpawnControl : MonoBehaviour
     {
         foreach(LocationUnit unit in units)
         {
-            Debug.Log("placed a unit");
             GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
             location.GetComponentInChildren<TextMeshProUGUI>().text = unit.name;
             location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
