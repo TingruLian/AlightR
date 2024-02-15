@@ -15,12 +15,15 @@ public class TurretBehavior : MonoBehaviour {
    private float attackInterval = .5f;
    private float attackTime;
 
+   private float lastRotateTime;
+
    void Start() {
       // maybe find the EnemyContainer object
 
       target = null;
       
       attackTime = Time.time + attackInterval;
+      lastRotateTime = Time.time;
    }
 
    void Update() {
@@ -79,14 +82,25 @@ public class TurretBehavior : MonoBehaviour {
          Debug.Log("Should have returned");
       }
 
-      Debug.Log("About to fire a projectile");
+      RotateToTarget(target);
+      FireBullet();
+   }
 
+   private void RotateToTarget(GameObject target) {
+      Vector3 targetDir = (target.transform.position - transform.position).normalized;
+
+      float curTime = Time.time;
+      float elapsedTime = curTime - lastRotateTime;
+      lastRotateTime = curTime;
+
+      Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, elapsedTime * 60f * Mathf.Deg2Rad, 0f);
+
+      transform.rotation = Quaternion.LookRotation(newDir);
+   }
+
+   private void FireBullet() {
       if (Time.time > attackTime) {
          attackTime = Time.time + attackInterval;
-
-         if (target == null) {
-            Debug.Log("THE TARGET IS NULL");
-         }
 
          GameObject bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
          bullet.GetComponent<BulletBehavior>().setTarget(target);
