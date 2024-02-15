@@ -16,7 +16,15 @@ public class SemanticQuery : MonoBehaviour {
    private string _channel = "ground";
    private string _groundChannel = "ground";
 
-   void OnEnable() {
+    /// <summary>
+    /// code for counting foliage
+    /// </summary>
+    [SerializeField] private int grassCount = 0;
+    [SerializeField] private float interval = 1.5f;    // Interval time in seconds
+    [SerializeField] private TMP_Text grassText;
+
+
+    void OnEnable() {
       _cameraMan.frameReceived += OnCameraFrameUpdate;
    }
 
@@ -65,14 +73,14 @@ public class SemanticQuery : MonoBehaviour {
    }
 
    private float _timer = 0.0f;
-
-   void Update() {
+   private float timerF = 0f;  // Timer to keep track of count foliage elapsed time
+    void Update() {
       if (_semanticMan.subsystem == null || !_semanticMan.subsystem.running) {
          return;
       }
-
-      //Unity Editor vs On Device
-      if (Input.GetMouseButtonDown(0) || (Input.touches.Length > 0)) {
+      //timerF += Time.deltaTime;
+        //Unity Editor vs On Device
+        if (Input.GetMouseButtonDown(0) || (Input.touches.Length > 0)) {
          var pos = Input.mousePosition;
 
          if (pos.x > 0 && pos.x < Screen.width) {
@@ -83,8 +91,22 @@ public class SemanticQuery : MonoBehaviour {
 
                   if (list.Count > 0) {
                      _channel = list[0];
-                     _text.text = _channel;
-                  } else {
+                     //_channel = list[0];
+                     //_text.text = _channel;
+                            for (int i = 0; i< list.Count; i++)
+                            {
+                                _channel = list[i];
+                                _text.text = _channel;
+                                if (list[i] == "grass" && grassCount < 10)
+                                {
+                                    grassCount++;
+                                    grassText.text = "Grass Count\n" + grassCount + "/10";
+                                    //timerF = 0f;
+                                }
+                            }
+                            
+                   } 
+                  else {
                      _text.text = "?";
                   }
 
@@ -93,5 +115,6 @@ public class SemanticQuery : MonoBehaviour {
             }
          }
       }
-   }
+
+    }
 }
