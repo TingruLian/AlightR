@@ -3436,6 +3436,7 @@ MonoBehaviour:
   tmpResources: {fileID: 632353746}
   tmpLives: {fileID: 614956459}
   turret: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
+  turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
   enemyContainer: {fileID: 287830302}
 --- !u!4 &1901689893

@@ -36,7 +36,6 @@ public class TurretBehavior : MonoBehaviour {
       if (target == null) {
          target = null;
       } else {
-         Debug.Log("Apparently a target was set");
          AttackTarget(target);
       }
    }

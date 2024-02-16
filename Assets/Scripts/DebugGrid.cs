@@ -73,14 +73,17 @@ public class DebugGrid : MonoBehaviour {
          Ray ray = Camera.main.ScreenPointToRay(position);
          RaycastHit hit;
 
-         if (gridCollider.Raycast(ray, out hit, 100.0f)) {
-            Debug.LogWarning($"Placing death ray at {hit.point}");
+         GameObject turretPlaceholder = GameManager.instance.GetPlaceholderInstance();
 
+         if (turretPlaceholder != null && turretPlaceholder.transform.GetChild(0).gameObject.GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f)) {
+            GameManager.instance.PlaceTurretConfirm();
+         } else if (gridCollider.Raycast(ray, out hit, 100.0f)) {
             Vector3 pos = hit.point + Vector3.up * .6f;
 
-            GameManager.instance.PlaceTurret(pos);
+            GameManager.instance.ClearPlaceholderInstance();
+            GameManager.instance.PlaceTurretInitial(pos);
          } else {
-            Debug.LogError($"User did not touch the plane");
+            GameManager.instance.ClearPlaceholderInstance();
          }
       }
    }

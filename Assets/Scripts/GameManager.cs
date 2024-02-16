@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
    private GameObject turret;
 
    [SerializeField]
+   private GameObject turretPlaceholder;
+
+   [SerializeField]
    private float turretAttackRange;
 
    [SerializeField]
@@ -25,6 +28,11 @@ public class GameManager : MonoBehaviour {
 
    private int resources;
    private int lives;
+
+   // There should only be one turrent placeholder in the scene at a time
+   private GameObject placeholderInstance;
+
+   private const int TURRET_COST = 20;
 
    private void Awake() {
       if (instance != null && instance != this)
@@ -43,12 +51,12 @@ public class GameManager : MonoBehaviour {
       uiLives = new UIField("Lives", tmpLives, lives.ToString());
    }
 
-   public void modifyResources(int mod) {
+   public void ModifyResources(int mod) {
       resources += mod;
       uiResources.updateValue(resources.ToString());
    }
 
-   public void modifyLives(int mod) {
+   public void ModifyLives(int mod) {
       lives += mod;
       uiLives.updateValue(lives.ToString());
    }
@@ -56,19 +64,47 @@ public class GameManager : MonoBehaviour {
    public void DestroyEnemy(EnemyMovement enemy) {
       Destroy(enemy.gameObject);
 
-      modifyResources(10);
+      ModifyResources(10);
    }
 
-   public void PlaceTurret(Vector3 pos) {
-      int turretCost = 20;
+   public GameObject GetPlaceholderInstance() {
+      return placeholderInstance;
+   }
 
-      if (resources < turretCost) {
+   public void ClearPlaceholderInstance() {
+      Destroy(placeholderInstance);
+      placeholderInstance = null;
+   }
+
+   public void PlaceTurretInitial(Vector3 pos) {
+      // check that the player has enough resources, but don't remove them until the player confirms placement
+      if (resources < TURRET_COST) {
          return;
       }
 
-      modifyResources(-turretCost);
+      if (placeholderInstance != null) {
+         Debug.LogError("There should not currently be any instances of the turret placeholder");
+      }
 
-      GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity);
+      placeholderInstance = GameObject.Instantiate(turretPlaceholder, pos, Quaternion.identity);
+   }
+
+   public void PlaceTurretConfirm() {
+      if (placeholderInstance == null) {
+         Debug.LogError("There should be an instance of the turret placeholder in the scene");
+      }
+
+      if (resources < TURRET_COST) {
+         return;
+      }
+
+      ModifyResources(-TURRET_COST);
+
+      Vector3 pos = placeholderInstance.transform.position;
+
+      ClearPlaceholderInstance();
+
+      GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity).transform.GetChild(0).gameObject;
       turretInstance.GetComponent<TurretBehavior>().enemyContainer = enemyContainer;
       turretInstance.GetComponent<TurretBehavior>().SetAttackRange(turretAttackRange);
    }
