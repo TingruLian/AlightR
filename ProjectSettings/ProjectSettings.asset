@@ -897,7 +897,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Android: NIANTIC_LIGHTSHIP_AR_LOADER_ENABLED;UNITY_PIPELINE_URP
-    Standalone: NIANTIC_LIGHTSHIP_AR_LOADER_ENABLED
+    Standalone: NIANTIC_LIGHTSHIP_AR_LOADER_ENABLED;UNITY_PIPELINE_URP
     iPhone: NIANTIC_LIGHTSHIP_AR_LOADER_ENABLED;UNITY_XR_ARKIT_LOADER_ENABLED
   additionalCompilerArguments: {}
   platformArchitecture: {}

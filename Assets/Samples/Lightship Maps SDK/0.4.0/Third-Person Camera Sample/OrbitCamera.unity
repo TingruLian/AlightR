@@ -252,6 +252,12 @@ MonoBehaviour:
     name: HotMetal2
     sceneID: 3
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
+  - position:
+      _latitude: 40.44085693359375
+      _longitude: -79.94412994384766
+    name: HuntLibaray
+    sceneID: 15
+    sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
 --- !u!114 &364664875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,11 +1011,11 @@ PrefabInstance:
       objectReference: {fileID: 1855486140}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _defaultLocation._latitude
-      value: 40.432715107672365
+      value: 40.44085693359375
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _defaultLocation._longitude
-      value: -79.9648529019272
+      value: -79.94412994384766
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714347, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: m_RootOrder
