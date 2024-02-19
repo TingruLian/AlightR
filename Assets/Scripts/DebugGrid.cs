@@ -52,18 +52,6 @@ public class DebugGrid : MonoBehaviour {
 
 #if UNITY_EDITOR
       if (Input.GetMouseButtonDown(0) && canPlaceTower) {
-         float curTime = Time.time;
-
-         // Require resources to place turrets instead
-         /*
-         // Quit if not enough time has elapsed
-         if (curTime < (lastTurretPlaced + turretCooldown)) {
-            return;
-         }
-
-         lastTurretPlaced = curTime;
-         */
-
          position = Input.mousePosition;
 #else
       if (Input.touchCount > 0) {
