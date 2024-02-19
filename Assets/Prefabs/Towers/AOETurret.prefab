@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f6f224df96c602b4181a38db17f1fae3, type: 2}
     - target: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: AOETurret
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
@@ -170,11 +170,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: a98be3963d022534ca25cd74d6d0ee7d, type: 2}
+      objectReference: {fileID: 2100000, guid: 079e2e8de2c91a94fadf803d017e5e24, type: 2}
     - target: {fileID: -7511558181221131132, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: f6f224df96c602b4181a38db17f1fae3, type: 2}
+      objectReference: {fileID: 2100000, guid: 079e2e8de2c91a94fadf803d017e5e24, type: 2}
     - target: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       propertyPath: m_Name
       value: Turret
