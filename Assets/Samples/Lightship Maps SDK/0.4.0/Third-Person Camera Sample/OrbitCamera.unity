@@ -1002,6 +1002,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
+      propertyPath: _startAtDefaultLocation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapLayers.Array.data[0]
       value: 
       objectReference: {fileID: 948008997}
