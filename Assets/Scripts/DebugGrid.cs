@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class DebugGrid : MonoBehaviour {
-
+   public bool canPlaceTower = false;
    [SerializeField]
    private MeshRenderer floorRenderer;
 
@@ -51,7 +51,7 @@ public class DebugGrid : MonoBehaviour {
       Vector2 position;
 
 #if UNITY_EDITOR
-      if (Input.GetMouseButtonDown(0)) {
+      if (Input.GetMouseButtonDown(0) && canPlaceTower) {
          float curTime = Time.time;
 
          // Require resources to place turrets instead
@@ -87,4 +87,9 @@ public class DebugGrid : MonoBehaviour {
          }
       }
    }
+
+    public void SetCanPlaceTower(bool value)
+    {
+        canPlaceTower=value;
+    }
 }

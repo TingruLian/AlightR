@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using TMPro;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour {
 
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour {
    private int resources;
    private int lives;
 
+    public UnityEvent onResourceEnough;
+    public UnityEvent onResourceNotEnough;
+   public UnityEvent onInitialPlace;
+   public UnityEvent onCompletePlace;
+
    // There should only be one turrent placeholder in the scene at a time
    private GameObject placeholderInstance;
 
@@ -49,12 +55,18 @@ public class GameManager : MonoBehaviour {
 
       uiResources = new UIField("Resources", tmpResources, resources.ToString());
       uiLives = new UIField("Lives", tmpLives, lives.ToString());
+
+      if(resources >= TURRET_COST) { onResourceEnough.Invoke(); }
+      else { onResourceNotEnough.Invoke(); }
    }
 
    public void ModifyResources(int mod) {
       resources += mod;
       uiResources.updateValue(resources.ToString());
-   }
+
+      if (resources >= TURRET_COST) { onResourceEnough.Invoke(); }
+      else { onResourceNotEnough.Invoke(); }
+    }
 
    public void ModifyLives(int mod) {
       lives += mod;
@@ -87,6 +99,7 @@ public class GameManager : MonoBehaviour {
       }
 
       placeholderInstance = GameObject.Instantiate(turretPlaceholder, pos, Quaternion.identity);
+      onInitialPlace.Invoke();
    }
 
    public void PlaceTurretConfirm() {
@@ -107,5 +120,7 @@ public class GameManager : MonoBehaviour {
       GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity).transform.GetChild(0).gameObject;
       turretInstance.GetComponent<TurretBehavior>().enemyContainer = enemyContainer;
       turretInstance.GetComponent<TurretBehavior>().SetAttackRange(turretAttackRange);
+
+      onCompletePlace.Invoke();
    }
 }
