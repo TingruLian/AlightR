@@ -21,16 +21,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: body
-  m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 78e1f82578e0f0f42867861f6a90697a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _EMISSIVE_SIMPLE
   - _IS_ANGELRING_OFF
   - _IS_CLIPPING_OFF
   - _IS_OUTLINE_CLIPPING_NO
   - _OUTLINE_NML
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -248,10 +248,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _1st2nd_Shades_Feather: 0.0001
-    - _1st_ShadeColor_Feather: 0.0001
+    - _1st2nd_Shades_Feather: 0.082
+    - _1st_ShadeColor_Feather: 0.105
     - _1st_ShadeColor_Step: 0.513
-    - _2nd_ShadeColor_Feather: 0.0001
+    - _2nd_ShadeColor_Feather: 0.082
     - _2nd_ShadeColor_Step: 0.25
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -283,7 +283,7 @@ Material:
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
     - _BaseColor_Step: 0.513
-    - _BaseShade_Feather: 0.0001
+    - _BaseShade_Feather: 0.105
     - _Base_Speed: 0
     - _Blend: 0
     - _BlendMode: 0
@@ -301,6 +301,8 @@ Material:
     - _Clipping_Level: 0
     - _CoatMask: 0
     - _ColorShift_Speed: 0
+    - _ColorStep1: 0.376
+    - _ColorStep2: 0.017
     - _ComposerMaskMode: 0
     - _Cull: 2
     - _CullMode: 2
@@ -350,7 +352,7 @@ Material:
     - _FirstShadeVisible: 1
     - _GI_Intensity: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0.323
     - _GlossyReflections: 1
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
@@ -448,6 +450,7 @@ Material:
     - _SecondShadeVisible: 1
     - _Set_SystemShadowsToBase: 1
     - _ShadeColor_Step: 0.25
+    - _Shades: 3
     - _Smoothness: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -544,7 +547,10 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9622642, g: 0.8399174, b: 0.5598077, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0.8238993, g: 0.5039258, b: 0.1839523, a: 1}
+    - _Color3: {r: 0.64779866, g: 0.34586266, b: 0.30760244, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
