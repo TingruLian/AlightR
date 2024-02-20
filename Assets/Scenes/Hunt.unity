@@ -3739,6 +3739,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1187756106}
+    - target: {fileID: 5161897050160868506, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6297871754265139022, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_Name
       value: GUI

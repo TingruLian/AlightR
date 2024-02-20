@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DebugGrid : MonoBehaviour {
@@ -54,7 +55,7 @@ public class DebugGrid : MonoBehaviour {
       if (Input.GetMouseButtonDown(0) && canPlaceTower) {
          position = Input.mousePosition;
 #else
-      if (Input.touchCount > 0) {
+      if (Input.touchCount > 0 && canPlaceTower) {
          position = Input.touches[0].position;
 #endif
 
@@ -78,6 +79,12 @@ public class DebugGrid : MonoBehaviour {
 
     public void SetCanPlaceTower(bool value)
     {
-        canPlaceTower=value;
+        StartCoroutine(Co_SetCanPlaceTower(value));
+    }
+
+    IEnumerator Co_SetCanPlaceTower(bool value)
+    {
+        yield return new WaitForSeconds(0.25f);
+        canPlaceTower = value;
     }
 }

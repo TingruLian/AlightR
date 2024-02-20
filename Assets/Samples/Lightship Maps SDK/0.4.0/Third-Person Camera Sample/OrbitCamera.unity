@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc40d4623bb4422419a61e39c8980762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneId: 6
+  SceneId: 15
 --- !u!1 &1295042568
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,12 +998,16 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
+      propertyPath: _maximumMapOffset
+      value: 1e+22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapLayers.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _startAtDefaultLocation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapLayers.Array.data[0]
