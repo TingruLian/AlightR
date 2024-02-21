@@ -92,8 +92,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorStep1: 0.614
-    - _ColorStep2: 0.541
+    - _ColorStep1: 0.193
+    - _ColorStep2: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -104,7 +104,7 @@ Material:
     - _GlossMapScale: 0.526
     - _Glossiness: 0.292
     - _GlossyReflections: 1
-    - _Metallic: 0.811
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 0
     - _Parallax: 0.022

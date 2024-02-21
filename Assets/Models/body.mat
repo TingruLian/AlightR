@@ -301,8 +301,8 @@ Material:
     - _Clipping_Level: 0
     - _CoatMask: 0
     - _ColorShift_Speed: 0
-    - _ColorStep1: 0.376
-    - _ColorStep2: 0.017
+    - _ColorStep1: 0.289
+    - _ColorStep2: 0
     - _ComposerMaskMode: 0
     - _Cull: 2
     - _CullMode: 2

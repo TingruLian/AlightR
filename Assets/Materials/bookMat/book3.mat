@@ -62,8 +62,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _ColorStep1: 0.549
-    - _ColorStep2: 0.26
+    - _ColorStep1: 0.391
+    - _ColorStep2: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0

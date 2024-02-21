@@ -108,8 +108,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorStep1: 0.546
-    - _ColorStep2: 0.289
+    - _ColorStep1: 0.159
+    - _ColorStep2: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
