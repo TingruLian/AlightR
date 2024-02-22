@@ -594,6 +594,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 703761378}
+  - {fileID: 1840200859}
+  - {fileID: 1136583298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612996936
@@ -1991,11 +1993,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 495386939}
     m_Modifications:
     - target: {fileID: 2877928905683562212, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
       propertyPath: m_Name
-      value: BeforeGameCanvs
+      value: PostGameUI
       objectReference: {fileID: 0}
     - target: {fileID: 8566668707576021164, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
       propertyPath: m_Pivot.x
@@ -2085,6 +2087,11 @@ PrefabInstance:
 --- !u!1 &1136583294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2877928905683562212, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
+  m_PrefabInstance: {fileID: 1136583293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1136583298 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8566668707576021164, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
   m_PrefabInstance: {fileID: 1136583293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1187756098
@@ -2686,7 +2693,6 @@ Transform:
   - {fileID: 1328581537}
   - {fileID: 718627952}
   - {fileID: 8919335935125529533}
-  - {fileID: 1840200859}
   m_Father: {fileID: 958724723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1445129943
@@ -2737,6 +2743,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1840200858}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onDisable:
     m_PersistentCalls:
       m_Calls:
@@ -2751,6 +2769,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1840200858}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1479750634
 GameObject:
@@ -3081,6 +3111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetFrameRate: 20
+--- !u!1 &1840200858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6297871754265139022, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1840200859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
@@ -3311,7 +3346,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1445129942}
+    m_TransformParent: {fileID: 495386939}
     m_Modifications:
     - target: {fileID: 3517462976744743664, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3343,7 +3378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6297871754265139022, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_Name
-      value: GUI
+      value: InGameUI
       objectReference: {fileID: 0}
     - target: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6659,7 +6694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8919335935125529533}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5950526011696864408
 Transform:
@@ -8092,7 +8127,6 @@ Transform:
   - {fileID: 633771905209501667}
   - {fileID: 8017226827438753477}
   - {fileID: 3599614460278165206}
-  - {fileID: 5770650797389623993}
   m_Father: {fileID: 1445129942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9006892620039399722
@@ -8199,4 +8233,4 @@ SceneRoots:
   - {fileID: 309273627}
   - {fileID: 1479750635}
   - {fileID: 495386939}
-  - {fileID: 1136583293}
+  - {fileID: 5770650797389623993}
