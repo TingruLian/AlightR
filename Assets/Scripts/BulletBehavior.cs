@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour {
 
+   [SerializeField]
+   protected float speed;
+
    private GameObject target;
 
-   private float speed;
    private Vector3 targetPos;
 
    private float lastUpdateTime;
@@ -24,10 +26,6 @@ public class BulletBehavior : MonoBehaviour {
       }
 
       targetPos = target.transform.position;
-
-      float curTime = Time.time;
-      float elapsedTime = curTime - lastUpdateTime;
-      lastUpdateTime = curTime;
 
       Vector3 curPos = gameObject.transform.position;
 
@@ -51,7 +49,7 @@ public class BulletBehavior : MonoBehaviour {
          return;
       }
 
-      Vector3 distTraveled = Vector3.Normalize(targetPos - curPos) * speed * elapsedTime;
+      Vector3 distTraveled = Vector3.Normalize(targetPos - curPos) * speed * Time.deltaTime;
 
       transform.position += distTraveled;
    }

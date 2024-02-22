@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBullets : BulletBehavior
 {
-    public float speed = 5;
     public float life = 2;
 
 

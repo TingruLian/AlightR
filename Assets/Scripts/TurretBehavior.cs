@@ -12,6 +12,9 @@ public class TurretBehavior : MonoBehaviour {
 
    private GameObject target;
 
+   private Vector3 attackDir;
+   private Vector3 currentDir;
+
    private float attackInterval = .5f;
    private float attackTime;
 
@@ -24,6 +27,9 @@ public class TurretBehavior : MonoBehaviour {
       
       attackTime = Time.time + attackInterval;
       lastRotateTime = Time.time;
+
+      attackDir = transform.forward;
+      currentDir = attackDir;
    }
 
    void Update() {
@@ -38,6 +44,17 @@ public class TurretBehavior : MonoBehaviour {
       } else {
          AttackTarget(target);
       }
+
+      // let the user rotate the turret by clicking on it
+      Utils.OnPress((Vector2 position, Ray ray) => {
+         RaycastHit hit;
+
+         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f)) {
+            // rotate the turret 90 degrees to the right
+            transform.rotation = Quaternion.LookRotation(transform.right);
+            attackDir = transform.forward;
+         }
+      });
    }
 
    public void SetAttackRange(float attackRange) {
@@ -57,16 +74,15 @@ public class TurretBehavior : MonoBehaviour {
 
       foreach (EnemyMovement enemyController in enemies) {
          GameObject enemy = enemyController.gameObject;
+         Vector3 enemyDir = enemy.transform.position - turretPos;
 
-         float sqrDist = (enemy.transform.position - turretPos).sqrMagnitude;
-
-         if (sqrDist > sqrRange) {
+         if (enemyDir.sqrMagnitude > sqrRange || Vector3.Angle(attackDir, enemyDir) > 50.0f) {
             continue;
          }
 
-         if (closest == null || sqrDist < sqrClosestDist) {
+         if (closest == null || enemyDir.sqrMagnitude < sqrClosestDist) {
             closest = enemy;
-            sqrClosestDist = sqrDist;
+            sqrClosestDist = enemyDir.sqrMagnitude;
          }
       }
 
@@ -78,21 +94,16 @@ public class TurretBehavior : MonoBehaviour {
       if (target == null) {
          target = null;
          return;
-         Debug.Log("Should have returned");
       }
 
-      RotateToTarget(target);
+      Vector3 targetDir = (target.transform.position - transform.position).normalized;
+
+      Rotate(targetDir, 60.0f);
       FireBullet();
    }
 
-   private void RotateToTarget(GameObject target) {
-      Vector3 targetDir = (target.transform.position - transform.position).normalized;
-
-      float curTime = Time.time;
-      float elapsedTime = curTime - lastRotateTime;
-      lastRotateTime = curTime;
-
-      Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, elapsedTime * 60f * Mathf.Deg2Rad, 0f);
+   private void Rotate(Vector3 dir, float speed) {
+      Vector3 newDir = Vector3.RotateTowards(transform.forward, dir, Time.deltaTime * speed * Mathf.Deg2Rad, 0f);
 
       transform.rotation = Quaternion.LookRotation(newDir);
    }

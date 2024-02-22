@@ -49,17 +49,7 @@ public class DebugGrid : MonoBehaviour {
    }
 
    void Update() {
-      Vector2 position;
-
-#if UNITY_EDITOR
-      if (Input.GetMouseButtonDown(0) && canPlaceTower) {
-         position = Input.mousePosition;
-#else
-      if (Input.touchCount > 0 && canPlaceTower) {
-         position = Input.touches[0].position;
-#endif
-
-         Ray ray = Camera.main.ScreenPointToRay(position);
+      Utils.OnPress((Vector2 position, Ray ray) => {
          RaycastHit hit;
 
          GameObject turretPlaceholder = GameManager.instance.GetPlaceholderInstance();
@@ -74,16 +64,14 @@ public class DebugGrid : MonoBehaviour {
          } else {
             GameManager.instance.ClearPlaceholderInstance();
          }
-      }
+      });
    }
 
-    public void SetCanPlaceTower(bool value)
-    {
+    public void SetCanPlaceTower(bool value) {
         StartCoroutine(Co_SetCanPlaceTower(value));
     }
 
-    IEnumerator Co_SetCanPlaceTower(bool value)
-    {
+    IEnumerator Co_SetCanPlaceTower(bool value) {
         yield return new WaitForSeconds(0.25f);
         canPlaceTower = value;
     }
