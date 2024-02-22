@@ -105,8 +105,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorStep1: 0.414
-    - _ColorStep2: 0.272
+    - _ColorStep1: 1
+    - _ColorStep2: 0.727
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -114,10 +114,11 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Feather: 0.291
     - _GlossMapScale: 0.454
-    - _Glossiness: 0.292
+    - _Glossiness: 1
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0.575
     - _Mode: 0
     - _OcclusionStrength: 0
     - _Parallax: 0.022

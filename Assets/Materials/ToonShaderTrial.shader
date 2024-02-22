@@ -8,10 +8,11 @@ Shader "Custom/ToonShaderTrial"
         _Color2 ("Color2", Color) = (1,1,1,1)
         _Color3 ("Color3", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
+        _Glossiness ("Gloss", Range(0.1,8)) = 3
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _ColorStep1("ColorStep1", Range(0,1)) = 0.6
         _ColorStep2("ColorStep2", Range(0,1)) = 0.3
+        _Feather("Feather", Range(0.0001, 1)) = 0.0
     }
     SubShader
     {
@@ -42,6 +43,7 @@ Shader "Custom/ToonShaderTrial"
             fixed4 _Color3;
             float _ColorStep1;
             float _ColorStep2;
+            float _Feather;
 
             struct a2v
             {
@@ -77,36 +79,41 @@ Shader "Custom/ToonShaderTrial"
 
                 fixed3 albedo;
                 fixed3 specular = 0;
-                float cosine = saturate(dot(worldLightDir, worldNormal));
-                // if(cosine > 2.0 / 3.0){
-                //     albedo = tex2D(_MainTex, u.uv).rgb * _Color1.rgb * (cosine - 2.0 / 3.0) * 3.0 + (1 - cosine) * tex2D(_MainTex, u.uv).rgb * _Color2.rgb * 3.0;
+
+                float f1 = _ColorStep1 + _Feather * _ColorStep2 - _Feather * _ColorStep1;
+                float f2 = (1 - _Feather) * _ColorStep2;
+              
+                float cosine = dot(worldLightDir, worldNormal) * 0.5 + 0.5;
+                if(cosine > _ColorStep1){
+                    albedo = tex2D(_MainTex, u.uv).rgb * _Color1.rgb;
+                }
+                else if(cosine > _ColorStep2){
+                    albedo = (tex2D(_MainTex, u.uv).rgb * _Color2.rgb * min(( _ColorStep1 - cosine ), (_ColorStep1 - f1)) + max(0, (cosine - f1)) * tex2D(_MainTex, u.uv).rgb * _Color1.rgb) / (_ColorStep1 - f1);
+                }
+                else{
+                    albedo = (tex2D(_MainTex, u.uv).rgb * _Color3.rgb * min(( _ColorStep2 - cosine ), (_ColorStep2 - f2)) + max(0, (cosine - f2)) * tex2D(_MainTex, u.uv).rgb * _Color2.rgb) / (_ColorStep2 - f2);
+                }
+
+                // if(cosine > _ColorStep1){
+                //     albedo = tex2D(_MainTex, u.uv).rgb * _Color1.rgb;
                 // }
-                // else if(cosine > 1.0 / 3.0){
-                //     albedo = tex2D(_MainTex, u.uv).rgb * _Color2.rgb * ( cosine - 1.0/3.0 )* 3.0  + (2.0/3.0 - cosine)* 3.0 * tex2D(_MainTex, u.uv).rgb * _Color3.rgb;
+                // else if(cosine > _ColorStep2){
+                //     albedo = tex2D(_MainTex, u.uv).rgb * _Color2.rgb;
                 // }
                 // else{
                 //     albedo = tex2D(_MainTex, u.uv).rgb * _Color3.rgb;
                 // }
 
-                if(cosine > _ColorStep1){
-                    albedo = tex2D(_MainTex, u.uv).rgb * _Color1.rgb;
-                }
-                else if(cosine > _ColorStep2){
-                    albedo = tex2D(_MainTex, u.uv).rgb * _Color2.rgb;
-                }
-                else{
-                    albedo = tex2D(_MainTex, u.uv).rgb * _Color3.rgb;
-                }
-
                 fixed3 diffuse = _LightColor0.rgb * albedo;
 
                 fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
                 fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - u.worldPos.xyz);
-                if(pow(saturate(dot(reflectDir, viewDir)), _Glossiness) > 0.9){
-                    specular = _LightColor0.rgb * _Metallic * 0.3;
-                }
+                // if(pow(saturate(dot(reflectDir, viewDir)), _Glossiness) > 0.9){
+                //     specular = _LightColor0.rgb * _Metallic * 0.3;
+                // }
 
-                
+                specular = _LightColor0.rgb * _Metallic * pow(saturate(dot(reflectDir, viewDir)), _Glossiness);
+
                 return fixed4(specular + diffuse, 1.0);
             }
 

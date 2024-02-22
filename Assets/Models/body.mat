@@ -139,7 +139,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bbc989868b6309f4e8a5647edff1255c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4b29fe4d81cd25b438b2b0fa6a569dfa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -301,8 +301,8 @@ Material:
     - _Clipping_Level: 0
     - _CoatMask: 0
     - _ColorShift_Speed: 0
-    - _ColorStep1: 0.289
-    - _ColorStep2: 0
+    - _ColorStep1: 0.442
+    - _ColorStep2: 0.222
     - _ComposerMaskMode: 0
     - _Cull: 2
     - _CullMode: 2
@@ -348,6 +348,7 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _EnvironmentReflections: 1
     - _Farthest_Distance: 100
+    - _Feather: 0.763
     - _FirstShadeOverridden: 0
     - _FirstShadeVisible: 1
     - _GI_Intensity: 0
@@ -548,9 +549,9 @@ Material:
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.9622642, g: 0.8399174, b: 0.5598077, a: 1}
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2: {r: 0.8238993, g: 0.5039258, b: 0.1839523, a: 1}
-    - _Color3: {r: 0.64779866, g: 0.34586266, b: 0.30760244, a: 1}
+    - _Color1: {r: 0.8509804, g: 0.8012788, b: 0.7294118, a: 1}
+    - _Color2: {r: 0.63047343, g: 0.763467, b: 0.7924528, a: 1}
+    - _Color3: {r: 0.5146604, g: 0.49394795, b: 0.6981132, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

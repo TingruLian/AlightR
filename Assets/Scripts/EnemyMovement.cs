@@ -7,12 +7,11 @@ public class EnemyMovement : MonoBehaviour {
 
    private float lastUpdateTime;
 
-   private int life;
+   public  int life = 3;
 
    void Start() {
       lastUpdateTime = Time.time;
 
-      life = 3;
    }
 
    void Update() {
@@ -34,6 +33,7 @@ public class EnemyMovement : MonoBehaviour {
       Vector3 distTraveled = Vector3.Normalize(target - curPos) * speed * elapsedTime;
 
       transform.position += distTraveled;
+        transform.LookAt(target);
    }
 
    public void TakeDamage() {

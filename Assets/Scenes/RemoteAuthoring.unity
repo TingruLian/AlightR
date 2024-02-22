@@ -2686,6 +2686,7 @@ Transform:
   - {fileID: 1328581537}
   - {fileID: 718627952}
   - {fileID: 8919335935125529533}
+  - {fileID: 1840200859}
   m_Father: {fileID: 958724723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1445129943
@@ -3080,6 +3081,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetFrameRate: 20
+--- !u!4 &1840200859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1901689891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,7 +3311,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1445129942}
     m_Modifications:
     - target: {fileID: 3517462976744743664, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4144,7 +4150,7 @@ Transform:
   m_GameObject: {fileID: 4297029158441339240}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.10139682, z: -0, w: 0.99484605}
-  m_LocalPosition: {x: -1.49, y: -0.12, z: -0.19}
+  m_LocalPosition: {x: 0.04, y: -0.075, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6653,7 +6659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8919335935125529533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5950526011696864408
 Transform:
@@ -6703,9 +6709,9 @@ MonoBehaviour:
   enemy3: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
   parent: {fileID: 7696678704919823546}
   target: {fileID: 4297029158441339240}
-  maxRadius: 10
-  spawnInterval: 3
-  enemySpeed: 5
+  maxRadius: 4
+  spawnInterval: 2
+  enemySpeed: 1.5
 --- !u!222 &6006223267842019581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8086,6 +8092,7 @@ Transform:
   - {fileID: 633771905209501667}
   - {fileID: 8017226827438753477}
   - {fileID: 3599614460278165206}
+  - {fileID: 5770650797389623993}
   m_Father: {fileID: 1445129942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9006892620039399722
@@ -8193,5 +8200,3 @@ SceneRoots:
   - {fileID: 1479750635}
   - {fileID: 495386939}
   - {fileID: 1136583293}
-  - {fileID: 2075024798}
-  - {fileID: 5770650797389623993}

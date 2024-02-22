@@ -6,6 +6,7 @@ public class TurretBehavior : MonoBehaviour {
    private GameObject bulletPrefab;
 
    public GameObject enemyContainer;
+    public Transform shootAnchor;
 
    private float attackRange;
    private float sqrRange;
@@ -15,8 +16,9 @@ public class TurretBehavior : MonoBehaviour {
    private Vector3 attackDir;
    private Vector3 currentDir;
 
-   private float attackInterval = .5f;
+   public float attackInterval = .5f;
    private float attackTime;
+    public float bulletSpeed;
 
    private float lastRotateTime;
 
@@ -112,9 +114,9 @@ public class TurretBehavior : MonoBehaviour {
       if (Time.time > attackTime) {
          attackTime = Time.time + attackInterval;
 
-         GameObject bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+         GameObject bullet = GameObject.Instantiate(bulletPrefab, shootAnchor.position, Quaternion.identity);
          bullet.GetComponent<BulletBehavior>().setTarget(target);
-         bullet.GetComponent<BulletBehavior>().setSpeed(10);
+         bullet.GetComponent<BulletBehavior>().setSpeed(bulletSpeed);
       }
    }
 }

@@ -108,8 +108,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorStep1: 0.159
-    - _ColorStep2: 0
+    - _ColorStep1: 0.583
+    - _ColorStep2: 0.113
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -117,10 +117,11 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _Feather: 0.594
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 1
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0.443
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -138,9 +139,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.38679248, g: 0.11920018, b: 0.12990385, a: 1}
     - _Color: {r: 0.38679248, g: 0.11920018, b: 0.12990385, a: 1}
-    - _Color1: {r: 0.5849056, g: 0.36234716, b: 0.36234716, a: 1}
-    - _Color2: {r: 0.28930807, g: 0.13009763, b: 0.13009763, a: 1}
-    - _Color3: {r: 0.106918216, g: 0.025216544, b: 0.025216544, a: 1}
+    - _Color1: {r: 0.61006284, g: 0.41246384, b: 0.41246384, a: 1}
+    - _Color2: {r: 0.4392157, g: 0.09019607, b: 0.346523, a: 1}
+    - _Color3: {r: 0.22012573, g: 0.04499424, b: 0.14018504, a: 1}
     - _EmissionColor: {r: 0.122641504, g: 0.109528884, b: 0.109528884, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
