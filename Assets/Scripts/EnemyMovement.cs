@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyMovement : MonoBehaviour {
 
@@ -39,6 +40,7 @@ public class EnemyMovement : MonoBehaviour {
    public void TakeDamage() {
       life--;
 
+      transform.DOShakeScale(0.5f, 0.25f, 200, 90, true, ShakeRandomnessMode.Harmonic);
       if (life <= 0) {
          GameManager.instance.DestroyEnemy(this);
       }

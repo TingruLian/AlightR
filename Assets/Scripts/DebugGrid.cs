@@ -50,6 +50,8 @@ public class DebugGrid : MonoBehaviour {
 
    void Update() {
       Utils.OnPress((Vector2 position, Ray ray) => {
+         if(!canPlaceTower) return;
+         
          RaycastHit hit;
 
          GameObject turretPlaceholder = GameManager.instance.GetPlaceholderInstance();
