@@ -1,7 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour {
+    public static List<EnemyMovement> enemies;
 
    public Vector3 target;
    public float speed;
@@ -10,7 +12,28 @@ public class EnemyMovement : MonoBehaviour {
 
    public  int life = 3;
 
-   void Start() {
+    private void Awake()
+    {
+        if(enemies == null) { enemies = new List<EnemyMovement>(); }
+        enemies.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        enemies.Remove(this);
+    }
+
+    private void OnDestroy()
+    {
+        enemies.Remove(this);
+    }
+
+    private void OnEnable()
+    {
+        enemies.Add(this);
+    }
+
+    void Start() {
       lastUpdateTime = Time.time;
 
    }

@@ -6,11 +6,15 @@ public class TurretBehavior : MonoBehaviour {
    private GameObject bulletPrefab;
 
    public GameObject enemyContainer;
-    public Transform shootAnchor;
 
-   private float attackRange;
+    [SerializeField]
+    private Transform shootAnchor;
+    
+    [SerializeField]
+    private float attackRange;
    private float sqrRange;
 
+    [SerializeField]
    private GameObject target;
 
    private Vector3 attackDir;
@@ -32,6 +36,8 @@ public class TurretBehavior : MonoBehaviour {
 
       attackDir = transform.forward;
       currentDir = attackDir;
+
+
    }
 
    void Update() {
@@ -72,7 +78,8 @@ public class TurretBehavior : MonoBehaviour {
 
       Vector3 turretPos = gameObject.transform.position;
 
-      EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
+        //EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
+        EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
 
       foreach (EnemyMovement enemyController in enemies) {
          GameObject enemy = enemyController.gameObject;
