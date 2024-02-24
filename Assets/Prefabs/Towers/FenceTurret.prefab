@@ -4413,7 +4413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5123191111321388413, guid: d86549a2177029f4ab7fffb33d816b1e, type: 3}
   enemyContainer: {fileID: 0}
-  shootAnchor: {fileID: 9026332684190572222}
+  shootAnchor:
+  - {fileID: 9026332684190572222}
   attackRange: 30
   target: {fileID: 0}
   attackInterval: 1

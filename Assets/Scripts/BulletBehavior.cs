@@ -1,68 +1,113 @@
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class BulletBehavior : MonoBehaviour {
+public struct bulletForce
+{
+    public Vector3 forceDirection;
+    public float forceMag;
+    public float forceDec;
+    public float forceLife;
+}
 
-   [SerializeField]
-   protected float speed;
+public class BulletBehavior : MonoBehaviour
+{
 
-   private GameObject target;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float fadeTime = 0.5f;
 
-   private Vector3 targetPos;
+    protected GameObject target;
 
-   private float lastUpdateTime;
+    protected Vector3 targetPos;
 
-   void Start() {
-      lastUpdateTime = Time.time;
-   }
+    private float lastUpdateTime;
+    private Tween selfDestruct;
+    private List<bulletForce> bulletForceList = new List<bulletForce>();
 
-   void Update() {
-      
-      // the target was destroyed
-      if (target == null) {
-         target = null;
-         Destroy(gameObject);
-         
-         return;
-      }
+    public UnityEvent onFadeOut;
 
-      targetPos = target.transform.position;
+    void Start()
+    {
+        lastUpdateTime = Time.time;
+    }
 
-      Vector3 curPos = gameObject.transform.position;
+    void Update()
+    {
 
-      float dist = (targetPos - curPos).sqrMagnitude;
+        if (target != null)
+        {
+            targetPos = target.transform.position;
+            Vector3 curPos = gameObject.transform.position;
+            float dist = (targetPos - curPos).sqrMagnitude;
 
-      if (dist < .1f) {
+            if (dist < .1f)
+            {
+                target.GetComponent<EnemyMovement>().TakeDamage();
+                target = null;
+                Destroy(gameObject);
+                return;
+            }
 
-         // the target was destroyed
-         if (target == null) {
-            target = null;
-            Destroy(gameObject);
+            transform.LookAt(targetPos);
+            Vector3 distTraveled = Vector3.Normalize(targetPos - curPos) * speed * Time.deltaTime;
+            transform.position += distTraveled;
+        }
+        else
+        {
+            //Keep the bullet flying on the old direction
+            transform.position += transform.forward * speed * Time.deltaTime;
 
-            return;
-         }
+            //This will only be called on the first frame of fade out
+            if (selfDestruct == null)
+            {
+                onFadeOut.Invoke();
+                transform.DOScale(0, fadeTime);
+                //A delayed selfdestruction
+                selfDestruct = DOTween.Sequence().AppendInterval(fadeTime).AppendCallback(
+                    () =>
+                    {
+                        Destroy(gameObject);
+                        return;
+                    });
+            }
+        }
 
-         target.GetComponent<EnemyMovement>().TakeDamage();
-         target = null;
+        ProcessForce();
+    }
 
-         Destroy(gameObject);
 
-         return;
-      }
+    void ProcessForce()
+    {
+        for(int i = bulletForceList.Count - 1; i >= 0; i--)
+        {
+            bulletForce f = bulletForceList[i];
+            transform.position += f.forceDirection * f.forceMag * Time.deltaTime;
 
-      Vector3 distTraveled = Vector3.Normalize(targetPos - curPos) * speed * Time.deltaTime;
+            f.forceMag -= f.forceDec*Time.deltaTime;
+            f.forceLife -= Time.deltaTime;
 
-      transform.position += distTraveled;
-   }
+            if(f.forceLife <= 0) { bulletForceList.RemoveAt(i); }
+        }
+    }
 
-   public void setTarget(GameObject target) {
-      if (target == null) {
-         Debug.Log("The target was destroyed...");
-      }
+    public void AddForce(bulletForce newForce)
+    {
+        bulletForceList.Add(newForce);
+    }
 
-      this.target = target;
-   }
+    public virtual void setTarget(GameObject target)
+    {
+        if (target == null)
+        {
+            Debug.Log("The target was destroyed...");
+        }
 
-   public void setSpeed(float speed) {
-      this.speed = speed;
-   }
+        this.target = target;
+    }
+
+    public virtual void setSpeed(float speed)
+    {
+        this.speed = speed;
+    }
 }

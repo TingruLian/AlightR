@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 5
-  turretPrefab: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
+  turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
   currentTurret: {fileID: 0}
   button: {fileID: 1331896070}
 --- !u!1 &207832644
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 5
-  turretPrefab: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
+  turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
   currentTurret: {fileID: 0}
   button: {fileID: 1581744157}
 --- !u!1 &372272112
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 5
-  turretPrefab: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
+  turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
   currentTurret: {fileID: 0}
   button: {fileID: 858899006}
 --- !u!1 &427002218
