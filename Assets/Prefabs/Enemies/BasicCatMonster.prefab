@@ -71,6 +71,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   speed: 0
   life: 4
+  Gamedata: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0

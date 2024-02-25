@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using UnityEngine.Playables;
 
 public class EnemyMovement : MonoBehaviour {
     public static List<EnemyMovement> enemies;
@@ -11,6 +12,9 @@ public class EnemyMovement : MonoBehaviour {
    private float lastUpdateTime;
 
    public  int life = 3;
+
+    [SerializeField]
+    private GameScriptableObject Gamedata;
 
     private void Awake()
     {
@@ -42,10 +46,15 @@ public class EnemyMovement : MonoBehaviour {
       // the enmy already passed the player, so destroy it
       if (Vector3.Distance(transform.position,target) < 0.5f) {
          Destroy(gameObject);
+            if (Gamedata.bookHP > 0)
+            {
+                Gamedata.bookHP--;
+            }
+         
+         Debug.Log(Gamedata.bookHP);
+            //Debug.Log("Enemy reached the base...");
 
-         Debug.Log("Enemy reached the base...");
-
-         return;
+            return;
       }
 
       float curTime = Time.time;
