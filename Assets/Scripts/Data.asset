@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be33c417631663f4db38e53b22a4c447, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  prefabName: 
-  numberOfPrefabsToCreate: 0
-  spawnPoints: []
+  grassCount: 0
+  bookHP: 8
