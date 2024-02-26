@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour {
    public static List<EnemyMovement> enemies;
 
-   public Vector3 target;
+   public GameObject target;
    public float speed;
    public int life = 3;
 
@@ -32,11 +32,14 @@ public class EnemyMovement : MonoBehaviour {
 
    private void OnDestroy() {
       enemies.Remove(this);
+      GameManager.instance.RemovePlayerLoseListener(Win);
+      
    }
 
    private void OnEnable() {
       enemies.Add(this);
-   }
+      GameManager.instance.AddPlayerLoseListener(Win);
+  }
 
    void Start() {
       lastUpdateTime = Time.time;
@@ -46,7 +49,7 @@ public class EnemyMovement : MonoBehaviour {
 
 
       // the enmy already passed the player, so destroy it
-      if (Vector3.Distance(transform.position, target) < 0.9f && _attackSequence == null) {
+      if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null) {
          /*
          Destroy(gameObject);
          GameManager.instance.ModifyLives(-1);
@@ -59,7 +62,7 @@ public class EnemyMovement : MonoBehaviour {
          //the delay in this loop is based on animation
          _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(() =>
          {
-             GameManager.instance.ModifyLives(-1);
+             target.GetComponent<Health>().TakeDamage(1);
          }).AppendInterval(1.25f - 7f/12f).SetLoops(-1);
 
       }
@@ -70,10 +73,10 @@ public class EnemyMovement : MonoBehaviour {
 
       Vector3 curPos = gameObject.transform.position;
 
-      Vector3 distTraveled = Vector3.Normalize(target - curPos) * speed * elapsedTime;
+      Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed * elapsedTime;
 
       transform.position += distTraveled;
-      transform.LookAt(target);
+      transform.LookAt(target.transform.position);
    }
 
    public void TakeDamage() {
@@ -85,5 +88,13 @@ public class EnemyMovement : MonoBehaviour {
          if(_attackSequence != null) { _attackSequence.Kill(); }
       }
    }
+
+    public void Win()
+    {
+        GetComponentInChildren<Animator>().Play("idle");
+        target = transform.parent.gameObject;
+        _attackSequence.Kill();
+        speed = 1;
+    }
 
 }
