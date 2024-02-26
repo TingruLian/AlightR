@@ -7111,6 +7111,7 @@ MonoBehaviour:
   turret: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
+  playerBook: {fileID: 0}
   enemyContainer: {fileID: 287830302}
   onResourceEnough:
     m_PersistentCalls:
@@ -9481,7 +9482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3242349420718228696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10588,6 +10589,7 @@ MonoBehaviour:
   turret: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
+  playerBook: {fileID: 4297029158441339240}
   enemyContainer: {fileID: 7696678704919823546}
   onResourceEnough:
     m_PersistentCalls:
@@ -10741,6 +10743,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6291500508781689865}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4297029158441339240}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

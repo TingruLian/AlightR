@@ -27,5 +27,10 @@ public class LocationTurretPlacment : MonoBehaviour
         button.SetActive(false);
         currentTurret = Instantiate(turretPrefab, transform.position,transform.rotation, transform);
         currentTurret.GetComponentInChildren<TurretBehavior>().SetAttackRange(attackRange);
+        currentTurret.GetComponentInChildren<TurretBehavior>().AddOnDestroyLisnterner(() =>
+        {
+            currentTurret = null;
+            button.SetActive(true);
+        });
     }
 }

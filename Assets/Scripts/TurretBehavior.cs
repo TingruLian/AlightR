@@ -1,7 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class TurretBehavior : MonoBehaviour {
+public class TurretBehavior : MonoBehaviour, Health {
+    public static List<TurretBehavior> turretList;
+
+    [SerializeField]
+    protected int health = 5;
 
    [SerializeField]
    private GameObject bulletPrefab;
@@ -18,6 +23,11 @@ public class TurretBehavior : MonoBehaviour {
    [SerializeField]
    private GameObject target;
 
+    [SerializeField]
+    protected UnityEvent onHurt;
+    [SerializeField]
+    protected UnityEvent onDestroy;
+
    private Vector3 attackDir;
    private Vector3 currentDir;
 
@@ -25,7 +35,25 @@ public class TurretBehavior : MonoBehaviour {
    private float attackTime;
    public float bulletSpeed = 5.0f;
 
-   void Start() {
+
+    private void Awake()
+    {
+        if(turretList == null) { turretList = new List<TurretBehavior>(); }
+        turretList.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        if(turretList != null) { turretList.Remove(this); }
+        onDestroy.Invoke();
+    }
+
+    public void AddOnDestroyLisnterner(UnityAction action)
+    {
+        onDestroy.AddListener(action);
+    }
+
+    void Start() {
       // maybe find the EnemyContainer object
 
       target = null;
@@ -75,6 +103,7 @@ public class TurretBehavior : MonoBehaviour {
       Vector3 turretPos = gameObject.transform.position;
 
         //EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
+        if(EnemyMovement.enemies ==null) { return; }
         EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
 
       foreach (EnemyMovement enemyController in enemies) {
@@ -129,4 +158,11 @@ public class TurretBehavior : MonoBehaviour {
       iniForce.forceLife = 1;
       bullet.GetComponent<BulletBehavior>().AddForce(iniForce);
    }
+
+   public void TakeDamage(int damage)
+    {
+        health -= damage;
+        onHurt.Invoke();
+        if(health <= 0) { Destroy(transform.parent.gameObject); }
+    }
 }

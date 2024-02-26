@@ -4410,6 +4410,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1801246968126522877}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6046426606332754101}
   m_SourcePrefab: {fileID: 100100000, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
 --- !u!1 &233774273655562936 stripped
 GameObject:
@@ -4512,6 +4515,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6046426606332754101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233774273655562936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46db57310a8e7e4db002033aa0827d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeStrength: 0.25
 --- !u!4 &609491017911842818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
@@ -4657,6 +4673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   bulletPrefab: {fileID: 5123191111321388413, guid: d86549a2177029f4ab7fffb33d816b1e, type: 3}
   enemyContainer: {fileID: 0}
   shootAnchor:
@@ -4665,6 +4682,24 @@ MonoBehaviour:
   - {fileID: 3092311313291544091}
   attackRange: 30
   target: {fileID: 0}
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6046426606332754101}
+        m_TargetAssemblyTypeName: DoTweenFeedback, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   attackInterval: 0.4
   bulletSpeed: 8
 --- !u!4 &5260759870769588704 stripped

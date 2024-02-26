@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 
     protected Sequence _attackSequence;
     protected Tween _shakeTween;
+    bool win=false;
 
    private void Awake() {
       if (enemies == null) {
@@ -46,7 +47,7 @@ public class EnemyMovement : MonoBehaviour {
    }
 
    void Update() {
-
+      FindTarget();
 
       // the enmy already passed the player, so destroy it
       if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null) {
@@ -91,10 +92,44 @@ public class EnemyMovement : MonoBehaviour {
 
     public void Win()
     {
+        win = true;
         GetComponentInChildren<Animator>().Play("idle");
         target = transform.parent.gameObject;
         _attackSequence.Kill();
         speed = 1;
     }
 
+
+    public void FindTarget()
+    {
+        if (win) return;
+
+        if(target == null) { 
+            _attackSequence.Kill(); _attackSequence = null;
+            GetComponentInChildren<Animator>().Play("idle"); 
+            target = GameManager.instance.playerBook;
+            speed = 1;
+        }
+
+        float dis = Vector3.Distance(transform.position, target.transform.position);
+
+
+        if (Vector3.Distance(transform.position, GameManager.instance.playerBook.transform.position) < dis)
+        {
+            target = GameManager.instance.playerBook;
+            dis = Vector3.Distance(transform.position, GameManager.instance.playerBook.transform.position);
+        }
+
+        if(TurretBehavior.turretList == null) { return; }
+        foreach (TurretBehavior t in TurretBehavior.turretList)
+        {
+            if(Vector3.Distance(transform.position, t.transform.position) < dis)
+            {
+                target = t.gameObject;
+                dis = Vector3.Distance(transform.position, t.transform.position);
+            }
+        }
+
+
+    }
 }
