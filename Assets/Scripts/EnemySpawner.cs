@@ -73,7 +73,7 @@ public class EnemySpawner : MonoBehaviour {
          GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
 
             //enemyInstance.GetComponent<EnemyMovement>().target = new Vector3(targetPos.x, targetPos.y - 4f, targetPos.z - 1f);
-         enemyInstance.GetComponent<EnemyMovement>().target = target.transform.position;
+         enemyInstance.GetComponent<EnemyMovement>().target = target;
          enemyInstance.GetComponent<EnemyMovement>().speed = enemySpeed;
       }
       if (gameData.bookHP <= 0)
