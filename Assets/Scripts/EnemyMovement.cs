@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour {
    public static List<EnemyMovement> enemies;
 
-   public GameObject target;
+   public Vector3 target;
    public float speed;
    public int life = 3;
 
@@ -32,12 +32,10 @@ public class EnemyMovement : MonoBehaviour {
 
    private void OnDestroy() {
       enemies.Remove(this);
-        GameManager.instance.RemovePlayerLoseListener(Win);
    }
 
    private void OnEnable() {
       enemies.Add(this);
-        GameManager.instance.AddPlayerLoseListener(Win);
    }
 
    void Start() {
@@ -48,24 +46,23 @@ public class EnemyMovement : MonoBehaviour {
 
 
       // the enmy already passed the player, so destroy it
-      if (Vector3.Distance(transform.position,target.transform.position) < 0.9f && _attackSequence == null) {
-            /*Destroy(gameObject);
-            GameManager.instance.ModifyLives(-1);
-         
-            Debug.Log(Gamedata.bookHP);
-            //Debug.Log("Enemy reached the base...");
+      if (Vector3.Distance(transform.position, target) < 0.9f && _attackSequence == null) {
+         /*
+         Destroy(gameObject);
+         GameManager.instance.ModifyLives(-1);
 
-            return;*/
+         Debug.Log(Gamedata.bookHP);
+         */
 
-            speed = 0;
-            GetComponentInChildren<Animator>().Play("attack");
-            //the delay in this loop is based on animation
-            _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(() =>
-            {
-                GameManager.instance.ModifyLives(-1);
-            }).AppendInterval(1.25f - 7f/12f).SetLoops(-1);
+         speed = 0;
+         GetComponentInChildren<Animator>().Play("attack");
+         //the delay in this loop is based on animation
+         _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(() =>
+         {
+             GameManager.instance.ModifyLives(-1);
+         }).AppendInterval(1.25f - 7f/12f).SetLoops(-1);
 
-        }
+      }
 
       float curTime = Time.time;
       float elapsedTime = curTime - lastUpdateTime;
@@ -73,10 +70,10 @@ public class EnemyMovement : MonoBehaviour {
 
       Vector3 curPos = gameObject.transform.position;
 
-      Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed * elapsedTime;
+      Vector3 distTraveled = Vector3.Normalize(target - curPos) * speed * elapsedTime;
 
       transform.position += distTraveled;
-      transform.LookAt(target.transform);
+      transform.LookAt(target);
    }
 
    public void TakeDamage() {
@@ -88,13 +85,5 @@ public class EnemyMovement : MonoBehaviour {
          if(_attackSequence != null) { _attackSequence.Kill(); }
       }
    }
-
-    public void Win()
-    {
-        _attackSequence.Pause();
-        GetComponentInChildren<Animator>().Play("idle");
-        speed = 1;
-        target = transform.parent.gameObject;
-    }
 
 }

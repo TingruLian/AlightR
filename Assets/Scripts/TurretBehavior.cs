@@ -8,14 +8,14 @@ public class TurretBehavior : MonoBehaviour {
 
    public GameObject enemyContainer;
 
-    [SerializeField]
-    private List<Transform> shootAnchor;
+   [SerializeField]
+   private List<Transform> shootAnchor;
     
-    [SerializeField]
-    private float attackRange;
+   [SerializeField]
+   private float attackRange;
    private float sqrRange;
 
-    [SerializeField]
+   [SerializeField]
    private GameObject target;
 
    private Vector3 attackDir;
@@ -23,9 +23,7 @@ public class TurretBehavior : MonoBehaviour {
 
    public float attackInterval = .5f;
    private float attackTime;
-    public float bulletSpeed;
-
-   private float lastRotateTime;
+   public float bulletSpeed = 5.0f;
 
    void Start() {
       // maybe find the EnemyContainer object
@@ -33,12 +31,9 @@ public class TurretBehavior : MonoBehaviour {
       target = null;
       
       attackTime = Time.time + attackInterval;
-      lastRotateTime = Time.time;
 
       attackDir = transform.forward;
       currentDir = attackDir;
-
-
    }
 
    void Update() {

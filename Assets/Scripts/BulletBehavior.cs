@@ -12,43 +12,49 @@ public struct bulletForce {
 
 public class BulletBehavior : MonoBehaviour {
 
-   [SerializeField] protected float speed;
-   [SerializeField] protected float fadeTime = 0.5f;
+   public UnityEvent onFadeOut;
 
+   protected float speed;
+   protected float fadeTime = 0.5f;
    protected GameObject target;
-
    protected Vector3 targetPos;
 
    private float lastUpdateTime;
    private Tween selfDestruct;
    private List<bulletForce> bulletForceList = new List<bulletForce>();
 
-   public UnityEvent onFadeOut;
-
    void Start() {
       lastUpdateTime = Time.time;
    }
 
    void Update() {
+      Vector3 nextPos = transform.position + transform.forward * speed * Time.deltaTime;
+
       if (target != null) {
-         targetPos = target.transform.position;
-         Vector3 curPos = gameObject.transform.position;
-         float dist = (targetPos - curPos).sqrMagnitude;
+         Vector3 curPos = transform.position;
 
-         if (dist < .1f) {
+         Vector3 closestPos = GetClosestPointAlongPathToTarget(transform.position, transform.forward, target.transform.position);
+
+         float nextDist = (nextPos - curPos).magnitude;
+         float closestDist = (closestPos - curPos).magnitude;
+
+         if (nextDist > closestDist) {
+            // we went pass the enemy
+
+            //float enemyDist = (targetPos - curPos).magnitude;
+
+            if (closestDist < .5f) {
+               //Debug.Log("DAMAGED THE OPPONENT: " + closestDist);
                target.GetComponent<EnemyMovement>().TakeDamage();
-               target = null;
                Destroy(gameObject);
-               return;
+            } else {
+               //Debug.Log("TOO FAR AWAY: " + closestDist);
+            }
+
+            target = null;
+            return;
          }
-
-         transform.LookAt(targetPos);
-         Vector3 distTraveled = Vector3.Normalize(targetPos - curPos) * speed * Time.deltaTime;
-         transform.position += distTraveled;
       } else {
-         //Keep the bullet flying on the old direction
-         transform.position += transform.forward * speed * Time.deltaTime;
-
          //This will only be called on the first frame of fade out
          if (selfDestruct == null) {
                onFadeOut.Invoke();
@@ -57,12 +63,25 @@ public class BulletBehavior : MonoBehaviour {
                selfDestruct = DOTween.Sequence().AppendInterval(fadeTime).AppendCallback(
                   () => {
                      Destroy(gameObject);
-                     return;
                   });
          }
       }
 
-      ProcessForce();
+      transform.position += transform.forward * speed * Time.deltaTime;
+
+      //ProcessForce();
+   }
+
+   // find the point on the line in direction dir going through src that is closest to target
+   Vector3 GetClosestPointAlongPathToTarget(Vector3 src, Vector3 dir, Vector3 target) {
+      Vector3 p1 = src;
+      Vector3 p2 = src + dir;
+      Vector3 p3 = target;
+
+      float a = Vector3.Dot(p2 - p3, p2 - p1);
+      float b = -Vector3.Dot(p1 - p3, p2 - p1);
+
+      return (a * p1) + (b * p2);
    }
 
    void ProcessForce() {
@@ -70,10 +89,12 @@ public class BulletBehavior : MonoBehaviour {
          bulletForce f = bulletForceList[i];
          transform.position += f.forceDirection * f.forceMag * Time.deltaTime;
 
-         f.forceMag -= f.forceDec*Time.deltaTime;
+         f.forceMag -= f.forceDec * Time.deltaTime;
          f.forceLife -= Time.deltaTime;
 
-         if(f.forceLife <= 0) { bulletForceList.RemoveAt(i); }
+         if (f.forceLife <= 0) {
+            bulletForceList.RemoveAt(i);
+         }
       }
    }
 
@@ -84,12 +105,16 @@ public class BulletBehavior : MonoBehaviour {
    public virtual void SetTarget(GameObject target) {
       if (target == null) {
          Debug.Log("The target was destroyed...");
+         return;
       }
 
       this.target = target;
+
+      targetPos = target.transform.position;
+      transform.LookAt(targetPos);
    }
 
    public virtual void SetSpeed(float speed) {
-   this.speed = speed;
+      this.speed = speed;
    }
 }
