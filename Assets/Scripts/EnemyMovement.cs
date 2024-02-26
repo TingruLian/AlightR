@@ -8,38 +8,34 @@ public class EnemyMovement : MonoBehaviour {
 
    public Vector3 target;
    public float speed;
+   public int life = 3;
 
    private float lastUpdateTime;
 
-   public  int life = 3;
+   [SerializeField]
+   private GameScriptableObject Gamedata;
 
-    [SerializeField]
-    private GameScriptableObject Gamedata;
+   private void Awake() {
+      if (enemies == null) {
+         enemies = new List<EnemyMovement>();
+      }
+      enemies.Add(this);
+   }
 
-    private void Awake()
-    {
-        if(enemies == null) { enemies = new List<EnemyMovement>(); }
-        enemies.Add(this);
-    }
+   private void OnDisable() {
+      enemies.Remove(this);
+   }
 
-    private void OnDisable()
-    {
-        enemies.Remove(this);
-    }
+   private void OnDestroy() {
+      enemies.Remove(this);
+   }
 
-    private void OnDestroy()
-    {
-        enemies.Remove(this);
-    }
+   private void OnEnable() {
+      enemies.Add(this);
+   }
 
-    private void OnEnable()
-    {
-        enemies.Add(this);
-    }
-
-    void Start() {
+   void Start() {
       lastUpdateTime = Time.time;
-
    }
 
    void Update() {
@@ -66,7 +62,7 @@ public class EnemyMovement : MonoBehaviour {
       Vector3 distTraveled = Vector3.Normalize(target - curPos) * speed * elapsedTime;
 
       transform.position += distTraveled;
-        transform.LookAt(target);
+      transform.LookAt(target);
    }
 
    public void TakeDamage() {

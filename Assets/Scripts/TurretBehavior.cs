@@ -100,21 +100,19 @@ public class TurretBehavior : MonoBehaviour {
    }
 
    private void AttackTarget(GameObject target) {
-        // if the target GameObject is destroyed, "target == null" will be true, but the target variable won't actually be null
-        if (target == null)
-        {
-            target = null;
-            return;
-        }
+      // if the target GameObject is destroyed, "target == null" will be true, but the target variable won't actually be null
+      if (target == null) {
+         target = null;
+         return;
+      }
 
-        Vector3 targetDir = (target.transform.position - transform.position).normalized;
+      Vector3 targetDir = (target.transform.position - transform.position).normalized;
 
-        Rotate(targetDir, 60.0f);
-        if (Time.time > attackTime)
-        {
-            attackTime = Time.time + attackInterval;
-            for (int i = 0; i < shootAnchor.Count; i++) { FireBullet(i); }
-        }
+      Rotate(targetDir, 60.0f);
+      if (Time.time > attackTime) {
+         attackTime = Time.time + attackInterval;
+         for (int i = 0; i < shootAnchor.Count; i++) { FireBullet(i); }
+      }
     }
 
    private void Rotate(Vector3 dir, float speed) {
@@ -124,18 +122,16 @@ public class TurretBehavior : MonoBehaviour {
    }
 
    private void FireBullet(int anchorID) {
+      GameObject bullet = GameObject.Instantiate(bulletPrefab, shootAnchor[anchorID].position, Quaternion.identity);
+      bullet.GetComponent<BulletBehavior>().SetTarget(target);
+      bullet.GetComponent<BulletBehavior>().SetSpeed(bulletSpeed);
 
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, shootAnchor[anchorID].position, Quaternion.identity);
-        bullet.GetComponent<BulletBehavior>().setTarget(target);
-        bullet.GetComponent<BulletBehavior>().setSpeed(bulletSpeed);
-
-        //This will make the bullet suits the turret angle more at the beginning, supposingly
-        bulletForce iniForce = new bulletForce();
-        iniForce.forceMag = 5;
-        iniForce.forceDec = -5;
-        iniForce.forceDirection = transform.forward;
-        iniForce.forceLife = 1;
-        bullet.GetComponent<BulletBehavior>().AddForce(iniForce);
-
-    }
+      //This will make the bullet match the turret angle more at the beginning, supposedly
+      bulletForce iniForce = new bulletForce();
+      iniForce.forceMag = 5;
+      iniForce.forceDec = -5;
+      iniForce.forceDirection = transform.forward;
+      iniForce.forceLife = 1;
+      bullet.GetComponent<BulletBehavior>().AddForce(iniForce);
+   }
 }

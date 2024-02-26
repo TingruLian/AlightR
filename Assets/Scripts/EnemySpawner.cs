@@ -42,12 +42,11 @@ public class EnemySpawner : MonoBehaviour {
 
    void Start() {
       Vector3 targetPos = target.transform.position;
-      //spawnCenter = new Vector3(targetPos.x - 24f, targetPos.y - 5.6f, targetPos.z - 6f);
 
       forwardAxis = new Vector3(-6f, 0f, -1.9f).normalized;
       sideAxis = new Vector3(forwardAxis.z, 0, -forwardAxis.x).normalized;
 
-      //spawnDirectionIndicators();
+      //SpawnDirectionIndicators();
 
       spawnTime = Time.time + spawnInterval;
       
@@ -67,11 +66,9 @@ public class EnemySpawner : MonoBehaviour {
          float z = Mathf.Cos(angle) * radius;
 
          spawnCenter = enemySpawn.transform.position;
-            //Vector3 enemyCenter = spawnCenter + forwardAxis * 20;
-         Vector3 enemyCenter = spawnCenter;
-         Vector3 enemyPos = new Vector3(enemyCenter.x + x, enemyCenter.y, enemyCenter.z + z);
+         Vector3 enemyPos = new Vector3(spawnCenter.x + x, spawnCenter.y, spawnCenter.z + z);
 
-         Vector3 targetPos = spawnCenter - forwardAxis * 20 + new Vector3(0f, 4f, 0f); ; // target.transform.position;
+         Vector3 targetPos = spawnCenter - forwardAxis * 20 + new Vector3(0f, 4f, 0f);
 
          GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
 
@@ -86,8 +83,9 @@ public class EnemySpawner : MonoBehaviour {
    }
 
    // This method spawns different colored enemies to help visualize the axes
-   void spawnDirectionIndicators() {
+   void SpawnDirectionIndicators() {
       spawnCenter = enemySpawn.transform.position;
+
       Vector3 enemyPos = spawnCenter;
       GameObject.Instantiate(enemy3, enemyPos, Quaternion.identity, parent.transform);
 
