@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Niantic.Lightship.AR.Semantics;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class SemanticQuery : MonoBehaviour {
 
       //get the semantic texture
       Matrix4x4 mat = Matrix4x4.identity;
-      var texture = _semanticMan.GetSemanticChannelTexture(_channel, out mat);
+      Texture2D texture = _semanticMan.GetSemanticChannelTexture(_channel, out mat);
 
       if (texture) {
          //the texture needs to be aligned to the screen so get the display matrix
@@ -52,7 +53,7 @@ public class SemanticQuery : MonoBehaviour {
 
       //get the semantic texture
       Matrix4x4 mat = Matrix4x4.identity;
-      var texture = _semanticMan.GetSemanticChannelTexture(channelName, out mat);
+      Texture2D texture = _semanticMan.GetSemanticChannelTexture(channelName, out mat);
 
       if (texture) {
          //the texture needs to be aligned to the screen so get the display matrix
@@ -72,14 +73,18 @@ public class SemanticQuery : MonoBehaviour {
       }
 
       //Unity Editor vs On Device
-      if (Input.GetMouseButtonDown(0) || (Input.touches.Length > 0)) {
-         var pos = Input.mousePosition;
+#if UNITY_EDITOR
+      if (Input.GetMouseButtonDown(0)) {
+#else
+      if (Input.touchCount > 0) {
+#endif
+         Vector3 pos = Input.mousePosition;
 
          if (pos.x > 0 && pos.x < Screen.width) {
             if (pos.y > 0 && pos.y < Screen.height) {
                _timer += Time.deltaTime;
                if (_timer > 0.05f) {
-                  var list = _semanticMan.GetChannelNamesAt((int)pos.x, (int)pos.y);
+                  List<string> list = _semanticMan.GetChannelNamesAt((int)pos.x, (int)pos.y);
 
                   if (list.Count > 0) {
                      _channel = list[0];

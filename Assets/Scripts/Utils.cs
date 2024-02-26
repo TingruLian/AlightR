@@ -5,10 +5,8 @@ using UnityEngine;
 
 public delegate void ClickCallback(Vector2 position, Ray ray);
 
-public static class Utils
-{
-   public static IEnumerator Do(Action action)
-   {
+public static class Utils {
+   public static IEnumerator Do(Action action) {
       action();
       yield return 0;
    }
