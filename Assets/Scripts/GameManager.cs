@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour {
 
@@ -29,8 +30,7 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    private GameObject enemyContainer;
-
-   private int resources;
+    private int resources;
    private int lives;
 
     public UnityEvent onResourceEnough;
@@ -38,13 +38,15 @@ public class GameManager : MonoBehaviour {
    public UnityEvent onInitialPlace;
    public UnityEvent onCompletePlace;
     [SerializeField] private GameScriptableObject GameData;
+    [SerializeField] protected UnityEvent onPlayerHurt;
 
    // There should only be one turrent placeholder in the scene at a time
    private GameObject placeholderInstance;
 
    private const int TURRET_COST = 20;
+    protected Tween _shakeTween;
 
-   private void Awake() {
+    private void Awake() {
       if (instance != null && instance != this)
       {
          Destroy(this);
@@ -76,7 +78,9 @@ public class GameManager : MonoBehaviour {
       GameData.bookHP += mod;
       uiLives.updateValue(GameData.bookHP.ToString());
         imgLives.fillAmount = ((float)GameData.bookHP) / 10f;
-   }
+
+        if (mod< 0) { onPlayerHurt.Invoke(); }
+    }
 
    public void DestroyEnemy(EnemyMovement enemy) {
       Destroy(enemy.gameObject);

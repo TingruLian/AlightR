@@ -3,10 +3,10 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine.Playables;
 using System.Collections;
-using DG.Tweening;
+using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour {
-    public static List<EnemyMovement> enemies;
+   public static List<EnemyMovement> enemies;
 
    public Vector3 target;
    public float speed;
@@ -14,10 +14,10 @@ public class EnemyMovement : MonoBehaviour {
 
    private float lastUpdateTime;
 
-   [SerializeField]
-   private GameScriptableObject Gamedata;
+    [SerializeField] protected UnityEvent onHurt;
 
-    protected bool _attacked = false;
+    protected Sequence _attackSequence;
+    protected Tween _shakeTween;
 
    private void Awake() {
       if (enemies == null) {
@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour {
 
 
       // the enmy already passed the player, so destroy it
-      if (Vector3.Distance(transform.position,target) < 0.9f && !_attacked) {
+      if (Vector3.Distance(transform.position,target) < 0.9f && _attackSequence == null) {
             /*Destroy(gameObject);
             GameManager.instance.ModifyLives(-1);
          
@@ -55,12 +55,13 @@ public class EnemyMovement : MonoBehaviour {
 
             return;*/
 
-            _attacked = true; speed = 0;
-            GetComponentInChildren<Animator>().Play("attack");        
-            DOTween.Sequence().AppendInterval(0.4f).AppendCallback(() =>
+            speed = 0;
+            GetComponentInChildren<Animator>().Play("attack");
+            //the delay in this loop is based on animation
+            _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(() =>
             {
                 GameManager.instance.ModifyLives(-1);
-            }).AppendInterval(0.85f).SetLoops(-1);
+            }).AppendInterval(1.25f - 7f/12f).SetLoops(-1);
 
         }
 
@@ -78,10 +79,12 @@ public class EnemyMovement : MonoBehaviour {
 
    public void TakeDamage() {
       life--;
+        onHurt.Invoke();
 
-      transform.DOShakeScale(0.5f, 0.25f, 200, 90, true, ShakeRandomnessMode.Harmonic);
       if (life <= 0) {
          GameManager.instance.DestroyEnemy(this);
+         if(_attackSequence != null) { _attackSequence.Kill(); }
       }
    }
+
 }
