@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
 
    void Start() {
       resources = 20;
-      lives = 3;
+      lives = 10;
 
       uiResources = new UIField("Resources", tmpResources, resources.ToString());
       uiLives = new UIField("Lives", tmpLives, GameData.bookHP.ToString());
@@ -70,8 +70,8 @@ public class GameManager : MonoBehaviour {
     }
 
    public void ModifyLives(int mod) {
-      lives += mod;
-      uiLives.updateValue(lives.ToString());
+      GameData.bookHP += mod;
+      uiLives.updateValue(GameData.bookHP.ToString());
    }
 
    public void DestroyEnemy(EnemyMovement enemy) {
