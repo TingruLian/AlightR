@@ -4421,7 +4421,6 @@ MonoBehaviour:
   maxRadius: 10
   spawnInterval: 3
   enemySpeed: 5
-  gameData: {fileID: 0}
 --- !u!1 &1068446267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10451,6 +10450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494060894997597126}
+  - component: {fileID: 4297029158441339241}
   m_Layer: 0
   m_Name: EnemyTrack
   m_TagString: Untagged
@@ -10458,6 +10458,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4297029158441339241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4297029158441339240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cf5a05870ef25449f807a4264e635e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4305285797708074150
 Transform:
   m_ObjectHideFlags: 0
@@ -11250,7 +11262,6 @@ MonoBehaviour:
   maxRadius: 4
   spawnInterval: 2
   enemySpeed: 1.5
-  gameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
 --- !u!222 &6006223267842019581
 CanvasRenderer:
   m_ObjectHideFlags: 0

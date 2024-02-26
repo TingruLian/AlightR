@@ -37,8 +37,6 @@ public class EnemySpawner : MonoBehaviour {
    private Vector3 forwardAxis;
    private Vector3 sideAxis;
 
-   [SerializeField]
-    private GameScriptableObject gameData;
 
    void Start() {
       Vector3 targetPos = target.transform.position;
@@ -76,10 +74,7 @@ public class EnemySpawner : MonoBehaviour {
          enemyInstance.GetComponent<EnemyMovement>().target = target;
          enemyInstance.GetComponent<EnemyMovement>().speed = enemySpeed;
       }
-      if (gameData.bookHP <= 0)
-        {
-            target.SetActive(false);
-        }
+
    }
 
    // This method spawns different colored enemies to help visualize the axes

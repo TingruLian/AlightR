@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
-public class GameManager : MonoBehaviour, Health {
+public class GameManager : MonoBehaviour {
 
    public static GameManager instance { get; private set; }
 
@@ -145,10 +145,5 @@ public class GameManager : MonoBehaviour, Health {
     public void RemovePlayerLoseListener( UnityAction act)
     {
         onPlayerLose.RemoveListener(act);
-    }
-
-    public void TakeDamage(int amount)
-    {
-        ModifyLives(-amount);
     }
 }
