@@ -2,6 +2,7 @@ using UnityEngine;
 
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    TMP_Text tmpLives;
+    [SerializeField]
+    Image imgLives;
    UIField uiLives;
 
    [SerializeField]
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour {
    public void ModifyLives(int mod) {
       GameData.bookHP += mod;
       uiLives.updateValue(GameData.bookHP.ToString());
+        imgLives.fillAmount = ((float)GameData.bookHP) / 10f;
    }
 
    public void DestroyEnemy(EnemyMovement enemy) {
