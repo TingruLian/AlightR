@@ -42,15 +42,13 @@ public class EnemyMovement : MonoBehaviour {
       // the enmy already passed the player, so destroy it
       if (Vector3.Distance(transform.position,target) < 0.5f) {
          Destroy(gameObject);
-            if (Gamedata.bookHP > 0)
-            {
-                Gamedata.bookHP--;
-            }
+         if (Gamedata.bookHP > 0) {
+               Gamedata.bookHP--;
+         }
          
-         Debug.Log(Gamedata.bookHP);
-            //Debug.Log("Enemy reached the base...");
+         //Debug.Log(Gamedata.bookHP);
 
-            return;
+         return;
       }
 
       float curTime = Time.time;
