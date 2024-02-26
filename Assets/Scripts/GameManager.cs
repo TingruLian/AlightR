@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
     public UnityEvent onResourceNotEnough;
    public UnityEvent onInitialPlace;
    public UnityEvent onCompletePlace;
+    [SerializeField] private GameScriptableObject GameData;
 
    // There should only be one turrent placeholder in the scene at a time
    private GameObject placeholderInstance;
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour {
       lives = 3;
 
       uiResources = new UIField("Resources", tmpResources, resources.ToString());
-      uiLives = new UIField("Lives", tmpLives, lives.ToString());
+      uiLives = new UIField("Lives", tmpLives, GameData.bookHP.ToString());
 
       if(resources >= TURRET_COST) { onResourceEnough.Invoke(); }
       else { onResourceNotEnough.Invoke(); }
