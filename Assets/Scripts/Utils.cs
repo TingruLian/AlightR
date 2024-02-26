@@ -18,7 +18,7 @@ public static class Utils {
       if (Input.GetMouseButtonDown(0)) {
          position = Input.mousePosition;
 #else
-      if (Input.touchCount > 0) {
+      if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
          position = Input.touches[0].position;
 #endif
          Ray ray = Camera.main.ScreenPointToRay(position);
