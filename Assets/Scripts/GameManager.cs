@@ -4,8 +4,9 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour, Health {
 
    public static GameManager instance { get; private set; }
 
@@ -39,9 +40,11 @@ public class GameManager : MonoBehaviour {
    public UnityEvent onCompletePlace;
     [SerializeField] private GameScriptableObject GameData;
     [SerializeField] protected UnityEvent onPlayerHurt;
+    [SerializeField] protected UnityEvent onPlayerLose;
+    protected bool lost = false;
 
-   // There should only be one turrent placeholder in the scene at a time
-   private GameObject placeholderInstance;
+    // There should only be one turrent placeholder in the scene at a time
+    private GameObject placeholderInstance;
 
    private const int TURRET_COST = 20;
     protected Tween _shakeTween;
@@ -77,15 +80,16 @@ public class GameManager : MonoBehaviour {
    public void ModifyLives(int mod) {
       GameData.bookHP += mod;
       uiLives.updateValue(GameData.bookHP.ToString());
-        imgLives.fillAmount = ((float)GameData.bookHP) / 10f;
+      imgLives.fillAmount = ((float)GameData.bookHP) / 10f;
 
-        if (mod< 0) { onPlayerHurt.Invoke(); }
+      if (mod< 0) { onPlayerHurt.Invoke(); }
+      if (GameData.bookHP < 0 && !lost) { lost = true; onPlayerLose.Invoke();  }
     }
 
    public void DestroyEnemy(EnemyMovement enemy) {
       Destroy(enemy.gameObject);
 
-      ModifyResources(10);
+      //ModifyResources(10);
    }
 
    public GameObject GetPlaceholderInstance() {
@@ -132,4 +136,19 @@ public class GameManager : MonoBehaviour {
 
       onCompletePlace.Invoke();
    }
+
+    public void AddPlayerLoseListener(UnityAction act)
+    {
+        onPlayerLose.AddListener(act);
+    }
+
+    public void RemovePlayerLoseListener( UnityAction act)
+    {
+        onPlayerLose.RemoveListener(act);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        ModifyLives(-amount);
+    }
 }

@@ -7129,6 +7129,9 @@ MonoBehaviour:
   onPlayerHurt:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerLose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1901689893
 Transform:
   m_ObjectHideFlags: 0
@@ -7436,18 +7439,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955543143}
-  m_LocalRotation: {x: -0, y: 0.04034135, z: -0, w: 0.999186}
-  m_LocalPosition: {x: 0, y: 0, z: 0.515}
+  m_LocalRotation: {x: -0, y: -0.006985098, z: -0, w: 0.9999756}
+  m_LocalPosition: {x: 0, y: 0, z: 0.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1644126060}
   - {fileID: 147897863}
   m_Father: {fileID: 302135688}
-  m_LocalEulerAnglesHint: {x: 0, y: 4.624, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.8, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.02, y: -0.738}
+  m_AnchoredPosition: {x: 0.04, y: -0.718}
   m_SizeDelta: {x: 0.85, y: 0.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955543145
@@ -7851,6 +7854,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762078310695872316, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213201263591724633, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8308,7 +8319,7 @@ Transform:
   m_GameObject: {fileID: 7696678704919823546}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 31.13, y: 8.6, z: -7.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10714,6 +10725,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlayerLose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6291500508781689865}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4592076207717626544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12099,7 +12125,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemyContainer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
