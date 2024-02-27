@@ -10,14 +10,22 @@ public class GameManager : MonoBehaviour {
 
    public static GameManager instance { get; private set; }
 
+   public GameObject playerBook;
+
+   public UnityEvent onResourceEnough;
+   public UnityEvent onResourceNotEnough;
+   public UnityEvent onInitialPlace;
+   public UnityEvent onCompletePlace;
+
    [SerializeField]
    TMP_Text tmpResources;
    UIField uiResources;
 
    [SerializeField]
    TMP_Text tmpLives;
-    [SerializeField]
-    Image imgLives;
+
+   [SerializeField]
+   Image imgLives;
    UIField uiLives;
 
    [SerializeField]
@@ -28,21 +36,23 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    private float turretAttackRange;
-   public GameObject playerBook;
 
    [SerializeField]
    private GameObject enemyContainer;
-    private int resources;
+
+   [SerializeField]
+   private GameScriptableObject GameData;
+
+   [SerializeField]
+   private UnityEvent onPlayerHurt;
+
+   [SerializeField]
+   private UnityEvent onPlayerLose;
+
+   private int resources;
    private int lives;
 
-    public UnityEvent onResourceEnough;
-    public UnityEvent onResourceNotEnough;
-   public UnityEvent onInitialPlace;
-   public UnityEvent onCompletePlace;
-    [SerializeField] private GameScriptableObject GameData;
-    [SerializeField] protected UnityEvent onPlayerHurt;
-    [SerializeField] protected UnityEvent onPlayerLose;
-    protected bool lost = false;
+   private bool lost = false;
 
     // There should only be one turrent placeholder in the scene at a time
     private GameObject placeholderInstance;
@@ -138,13 +148,11 @@ public class GameManager : MonoBehaviour {
       onCompletePlace.Invoke();
    }
 
-    public void AddPlayerLoseListener(UnityAction act)
-    {
-        onPlayerLose.AddListener(act);
-    }
+   public void AddPlayerLoseListener(UnityAction act) {
+      onPlayerLose.AddListener(act);
+   }
 
-    public void RemovePlayerLoseListener( UnityAction act)
-    {
-        onPlayerLose.RemoveListener(act);
-    }
+   public void RemovePlayerLoseListener( UnityAction act) {
+      onPlayerLose.RemoveListener(act);
+   }
 }
