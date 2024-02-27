@@ -3,57 +3,62 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class TurretBehavior : MonoBehaviour, Health {
-    public static List<TurretBehavior> turretList;
+   // TODO: Keep track of turretList in GameManager
+   public static List<TurretBehavior> turretList;
 
-    [SerializeField]
-    protected int health = 5;
+   public GameObject enemyContainer;
+   public float attackInterval = .5f;
+   public float bulletSpeed = 5.0f;
+
+   [SerializeField]
+   protected int health = 5;
+
+   [SerializeField]
+   protected UnityEvent onHurt;
+
+   [SerializeField]
+   protected UnityEvent onDestroy;
 
    [SerializeField]
    private GameObject bulletPrefab;
-
-   public GameObject enemyContainer;
 
    [SerializeField]
    private List<Transform> shootAnchor;
     
    [SerializeField]
    private float attackRange;
-   private float sqrRange;
+
 
    [SerializeField]
    private GameObject target;
 
-    [SerializeField]
-    protected UnityEvent onHurt;
-    [SerializeField]
-    protected UnityEvent onDestroy;
-
+   private float sqrRange;
    private Vector3 attackDir;
    private Vector3 currentDir;
-
-   public float attackInterval = .5f;
    private float attackTime;
-   public float bulletSpeed = 5.0f;
+   private float lastRotateTime;
 
+   private void Awake() {
+      if (turretList == null) {
+         turretList = new List<TurretBehavior>();
+      }
+      turretList.Add(this);
 
-    private void Awake()
-    {
-        if(turretList == null) { turretList = new List<TurretBehavior>(); }
-        turretList.Add(this);
-    }
+      lastRotateTime = Time.time;
+   }
 
-    private void OnDestroy()
-    {
-        if(turretList != null) { turretList.Remove(this); }
-        onDestroy.Invoke();
-    }
+   private void OnDestroy() {
+      if (turretList != null) {
+         turretList.Remove(this);
+      }
+      onDestroy.Invoke();
+   }
 
-    public void AddOnDestroyLisnterner(UnityAction action)
-    {
-        onDestroy.AddListener(action);
-    }
+   public void AddOnDestroyLisnterner(UnityAction action) {
+      onDestroy.AddListener(action);
+   }
 
-    void Start() {
+   void Start() {
       // maybe find the EnemyContainer object
 
       target = null;
@@ -81,10 +86,12 @@ public class TurretBehavior : MonoBehaviour, Health {
       Utils.OnPress((Vector2 position, Ray ray) => {
          RaycastHit hit;
 
-         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f)) {
+         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime  < (Time.time - .5f)) {
             // rotate the turret 90 degrees to the right
             transform.rotation = Quaternion.LookRotation(transform.right);
             attackDir = transform.forward;
+
+            lastRotateTime = Time.time;
          }
       });
    }

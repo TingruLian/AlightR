@@ -12,13 +12,14 @@ public class EnemyMovement : MonoBehaviour {
    public float speed;
    public int life = 3;
 
+   [SerializeField]
+   protected UnityEvent onHurt;
+
+   protected Sequence _attackSequence;
+   protected Tween _shakeTween;
+
+   private bool win=false;
    private float lastUpdateTime;
-
-    [SerializeField] protected UnityEvent onHurt;
-
-    protected Sequence _attackSequence;
-    protected Tween _shakeTween;
-    bool win=false;
 
    private void Awake() {
       if (enemies == null) {

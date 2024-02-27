@@ -1,8 +1,11 @@
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-    [SerializeField]
-    private GameObject enemySpawn;
+   private const float MAX_ENEMIES = 20;
+   private static float numEnemies = 0;
+
+   [SerializeField]
+   private GameObject enemySpawn;
 
    [SerializeField]
    private GameObject enemy;
@@ -51,7 +54,7 @@ public class EnemySpawner : MonoBehaviour {
    }
 
    void Update() {
-      if (Time.time > spawnTime) {
+      if (Time.time > spawnTime && numEnemies < MAX_ENEMIES) {
          spawnTime = Time.time + spawnInterval;
 
          float radius = Random.Range(0f, maxRadius);
@@ -70,9 +73,10 @@ public class EnemySpawner : MonoBehaviour {
 
          GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
 
-            //enemyInstance.GetComponent<EnemyMovement>().target = new Vector3(targetPos.x, targetPos.y - 4f, targetPos.z - 1f);
          enemyInstance.GetComponent<EnemyMovement>().target = target;
          enemyInstance.GetComponent<EnemyMovement>().speed = enemySpeed;
+
+         numEnemies++;
       }
 
    }
