@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    private float turretAttackRange;
+   public GameObject playerBook;
 
    [SerializeField]
    private GameObject enemyContainer;
