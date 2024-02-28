@@ -29,7 +29,8 @@ public class BulletBehavior : MonoBehaviour {
       this.damageType = damageType;
       this.speed = speed;
       this.target = target;
-   }
+      SetTarget(this.target);
+    }
 
    void Start() {
       lastUpdateTime = Time.time;
