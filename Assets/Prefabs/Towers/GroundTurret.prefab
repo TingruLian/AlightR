@@ -4429,7 +4429,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 505dee80fddf20f4d9a095b556201d04, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 22168d97cd92e7d4099c2186f5d4452c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4673,15 +4673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  bulletPrefab: {fileID: 5123191111321388413, guid: d86549a2177029f4ab7fffb33d816b1e, type: 3}
   enemyContainer: {fileID: 0}
-  shootAnchor:
-  - {fileID: 9026332684190572222}
-  - {fileID: 1618939565350238537}
-  - {fileID: 3092311313291544091}
-  attackRange: 30
-  target: {fileID: 0}
+  attackInterval: 0.4
+  bulletSpeed: 8
+  health: 5
   onHurt:
     m_PersistentCalls:
       m_Calls: []
@@ -4700,8 +4695,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  attackInterval: 0.4
-  bulletSpeed: 8
+  bulletPrefab: {fileID: 5123191111321388413, guid: d86549a2177029f4ab7fffb33d816b1e, type: 3}
+  shootAnchor:
+  - {fileID: 9026332684190572222}
+  - {fileID: 1618939565350238537}
+  - {fileID: 3092311313291544091}
+  target: {fileID: 0}
 --- !u!4 &5260759870769588704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
