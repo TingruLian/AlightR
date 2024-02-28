@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour {
    [SerializeField]
    private float spawnInterval;
 
-   [SerializeField]
+    [SerializeField]
    private float enemySpeed;
 
    private float spawnTime;
