@@ -1,18 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DoOnEnable : MonoBehaviour
-{
-    public UnityEvent onEnable;
-    public UnityEvent onDisable;
+public class DoOnEnable : MonoBehaviour {
 
-    private void OnEnable()
-    {
-        onEnable.Invoke();
-    }
+   public UnityEvent onEnable;
+   public UnityEvent onDisable;
 
-    private void OnDisable()
-    {
-        onDisable.Invoke();
-    }
+   private void OnEnable() {
+      onEnable.Invoke();
+   }
+
+   private void OnDisable() {
+      onDisable.Invoke();
+   }
 }

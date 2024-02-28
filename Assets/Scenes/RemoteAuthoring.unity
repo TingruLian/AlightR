@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 1
   button: {fileID: 193971069}
 --- !u!1 &114228738
 GameObject:
@@ -1007,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 5
   turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
+  turretType: 0
   button: {fileID: 1331896070}
 --- !u!1 &207832644
 GameObject:
@@ -1501,6 +1503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 5
   turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
+  turretType: 0
   button: {fileID: 1581744157}
 --- !u!1 &372272112
 GameObject:
@@ -1549,6 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 1
   button: {fileID: 1549600581}
 --- !u!1 &423906351
 GameObject:
@@ -1597,6 +1601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 5
   turretPrefab: {fileID: 233774273655562936, guid: 729330bea332ee54aa8860fe5ca2e50c, type: 3}
+  turretType: 0
   button: {fileID: 858899006}
 --- !u!1 &427002218
 GameObject:
@@ -3651,6 +3656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 1
   button: {fileID: 179238859}
 --- !u!1 &958724720
 GameObject:
@@ -4168,6 +4174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 2
   button: {fileID: 972974508}
 --- !u!1 &1077903281
 GameObject:
@@ -5250,6 +5257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 2
   button: {fileID: 1652580765}
 --- !u!1 &1402664227
 GameObject:
@@ -7330,6 +7338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
+  turretType: 2
   button: {fileID: 1796765978}
 --- !u!1001 &2075024798
 PrefabInstance:
