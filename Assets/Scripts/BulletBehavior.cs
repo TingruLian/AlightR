@@ -28,9 +28,9 @@ public class BulletBehavior : MonoBehaviour {
    public void Init(TurretBehavior.Type damageType, float speed, GameObject target) {
       this.damageType = damageType;
       this.speed = speed;
-      this.target = target;
-      SetTarget(this.target);
-    }
+
+      SetTarget(target);
+   }
 
    void Start() {
       lastUpdateTime = Time.time;
@@ -51,12 +51,19 @@ public class BulletBehavior : MonoBehaviour {
             // we went pass the enemy
 
             if (closestDist < .5f) {
-               //Debug.Log("DAMAGED THE OPPONENT: " + closestDist);
-               target.GetComponent<EnemyMovement>().TakeDamage();
+               EnemyMovement enemy = target.GetComponent<EnemyMovement>();
+               enemy.TakeDamage();
+
+               switch (damageType) {
+                  case TurretBehavior.Type.FLYING_TURRET:
+                     enemy.AddEffect(new SlowEffect(5.0f));
+                     break;
+                  default:
+                     // turret type with no special effects
+                     break;
+               }
+
                Destroy(gameObject);
-               Debug.Log("Appling effect based on " + damageType + "...");
-            } else {
-               //Debug.Log("TOO FAR AWAY: " + closestDist);
             }
 
             target = null;
