@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour {
    private UnityEvent onPlayerLose;
 
     [SerializeField]
+    private UnityEvent onPlayerWin;
+
+    [SerializeField]
     private int enemyKilled = 0,totalEnemy = 20;
 
     private int resources;
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour {
         if (enemyKilled == totalEnemy && lives > 0)
         {
             Debug.Log("win");
+            onPlayerWin.Invoke();
         }
       //ModifyResources(10);
    }

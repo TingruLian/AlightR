@@ -828,6 +828,11 @@ Transform:
   - {fileID: 1136583298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &574762389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1411290203784678826, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &612996936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1872,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2877928905683562212, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
       propertyPath: m_Name
-      value: PostGameUI
+      value: PreGameUI
       objectReference: {fileID: 0}
     - target: {fileID: 8566668707576021164, guid: ceab36d2650cd8e4ca851e64bb582065, type: 3}
       propertyPath: m_Pivot.x
@@ -3349,6 +3354,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+--- !u!1 &2075024799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8850879620415993156, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075024800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4960687038464462944, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
@@ -6348,6 +6358,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 574762389}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onPlayerWin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2075024799}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   enemyKilled: 0
   totalEnemy: 20
 --- !u!114 &4592076207717626544
@@ -6642,6 +6679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46db57310a8e7e4db002033aa0827d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotating: 0
+  rotationSpeed: 60
   shakeStrength: 1
 --- !u!4 &5522937652564854904
 Transform:
