@@ -3,6 +3,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class TurretBehavior : MonoBehaviour, Health {
+   public enum Type {
+      GROUND_TURRET,
+      FENCE_TURRET,
+      FLYING_TURRET
+   }
+
    // TODO: Keep track of turretList in GameManager
    public static List<TurretBehavior> turretList;
 
@@ -11,6 +17,7 @@ public class TurretBehavior : MonoBehaviour, Health {
    public GameObject enemyContainer;
    public float attackInterval = .5f;
    public float bulletSpeed = 5.0f;
+   public Type type { get; private set; }
 
    [SerializeField]
    protected int health = 5;
@@ -35,24 +42,22 @@ public class TurretBehavior : MonoBehaviour, Health {
    private float attackTime;
    private float lastRotateTime;
 
-   private void Awake() {
+   public void Init(Type type, float attackRange) {
+      this.type = type;
+      sqrRange = Mathf.Pow(attackRange, 2f);
+   }
+
+   public void AddOnDestroyLisnterner(UnityAction action) {
+      onDestroy.AddListener(action);
+   }
+
+   void Awake() {
       if (turretList == null) {
          turretList = new List<TurretBehavior>();
       }
       turretList.Add(this);
 
       lastRotateTime = Time.time;
-   }
-
-   private void OnDestroy() {
-      if (turretList != null) {
-         turretList.Remove(this);
-      }
-      onDestroy.Invoke();
-   }
-
-   public void AddOnDestroyLisnterner(UnityAction action) {
-      onDestroy.AddListener(action);
    }
 
    void Start() {
@@ -103,8 +108,18 @@ public class TurretBehavior : MonoBehaviour, Health {
       }
    }
 
+   private void OnDestroy() {
+      if (turretList != null) {
+         turretList.Remove(this);
+      }
+      onDestroy.Invoke();
+   }
+
    private bool IsValidTarget(Vector3 targetDir) {
-      return targetDir.sqrMagnitude <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
+      float sqrDist = targetDir.sqrMagnitude;
+      targetDir.y = attackDir.y; // only consider the angle along the xz plane when considering whether the turret can turn towards the enemy
+
+      return sqrDist <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
    }
 
    private void SelectNewTarget() {
@@ -173,8 +188,7 @@ public class TurretBehavior : MonoBehaviour, Health {
 
    private void FireBullet(int anchorID) {
       GameObject bullet = GameObject.Instantiate(bulletPrefab, shootAnchor[anchorID].position, Quaternion.identity);
-      bullet.GetComponent<BulletBehavior>().SetTarget(target);
-      bullet.GetComponent<BulletBehavior>().SetSpeed(bulletSpeed);
+      bullet.GetComponent<BulletBehavior>().Init(type, bulletSpeed, target);
 
       //This will make the bullet match the turret angle more at the beginning, supposedly
       bulletForce iniForce = new bulletForce();

@@ -1,7 +1,8 @@
-using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+using DG.Tweening;
 
 public struct bulletForce {
    public Vector3 forceDirection;
@@ -14,6 +15,7 @@ public class BulletBehavior : MonoBehaviour {
 
    public UnityEvent onFadeOut;
 
+   protected TurretBehavior.Type damageType;
    protected float speed;
    protected float fadeTime = 0.5f;
    protected GameObject target;
@@ -22,6 +24,12 @@ public class BulletBehavior : MonoBehaviour {
    private float lastUpdateTime;
    private Tween selfDestruct;
    private List<bulletForce> bulletForceList = new List<bulletForce>();
+
+   public void Init(TurretBehavior.Type damageType, float speed, GameObject target) {
+      this.damageType = damageType;
+      this.speed = speed;
+      this.target = target;
+   }
 
    void Start() {
       lastUpdateTime = Time.time;
@@ -41,12 +49,11 @@ public class BulletBehavior : MonoBehaviour {
          if (nextDist > closestDist) {
             // we went pass the enemy
 
-            //float enemyDist = (targetPos - curPos).magnitude;
-
             if (closestDist < .5f) {
                //Debug.Log("DAMAGED THE OPPONENT: " + closestDist);
                target.GetComponent<EnemyMovement>().TakeDamage();
                Destroy(gameObject);
+               Debug.Log("Appling effect based on " + damageType + "...");
             } else {
                //Debug.Log("TOO FAR AWAY: " + closestDist);
             }

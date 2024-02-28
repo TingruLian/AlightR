@@ -49,7 +49,10 @@ public class GameManager : MonoBehaviour {
    [SerializeField]
    private UnityEvent onPlayerLose;
 
-   private int resources;
+    [SerializeField]
+    private int enemyKilled = 0,totalEnemy = 20;
+
+    private int resources;
    private int lives;
 
    private bool lost = false;
@@ -99,7 +102,11 @@ public class GameManager : MonoBehaviour {
 
    public void DestroyEnemy(EnemyMovement enemy) {
       Destroy(enemy.gameObject);
-
+        enemyKilled++;
+        if (enemyKilled == totalEnemy && lives > 0)
+        {
+            Debug.Log("win");
+        }
       //ModifyResources(10);
    }
 
