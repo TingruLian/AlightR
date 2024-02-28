@@ -6,6 +6,8 @@ public class TurretBehavior : MonoBehaviour, Health {
    // TODO: Keep track of turretList in GameManager
    public static List<TurretBehavior> turretList;
 
+   private static float ANGULAR_RANGE = 50.0f;
+
    public GameObject enemyContainer;
    public float attackInterval = .5f;
    public float bulletSpeed = 5.0f;
@@ -24,17 +26,12 @@ public class TurretBehavior : MonoBehaviour, Health {
 
    [SerializeField]
    private List<Transform> shootAnchor;
-    
-   [SerializeField]
-   private float attackRange;
-
 
    [SerializeField]
    private GameObject target;
 
    private float sqrRange;
    private Vector3 attackDir;
-   private Vector3 currentDir;
    private float attackTime;
    private float lastRotateTime;
 
@@ -66,13 +63,10 @@ public class TurretBehavior : MonoBehaviour, Health {
       attackTime = Time.time + attackInterval;
 
       attackDir = transform.forward;
-      currentDir = attackDir;
    }
 
    void Update() {
-      Vector3 turretPos = gameObject.transform.position;
-
-      if (target == null || (target.transform.position - turretPos).sqrMagnitude > sqrRange) {
+      if (target == null || !IsValidTarget(target.transform.position - gameObject.transform.position)) {
          SelectNewTarget();
       }
 
@@ -97,8 +91,20 @@ public class TurretBehavior : MonoBehaviour, Health {
    }
 
    public void SetAttackRange(float attackRange) {
-      this.attackRange = attackRange;
       sqrRange = Mathf.Pow(attackRange, 2f);
+   }
+
+   public void TakeDamage(int damage) {
+      health -= damage;
+      onHurt.Invoke();
+
+      if (health <= 0) {
+         Destroy(transform.parent.gameObject);
+      }
+   }
+
+   private bool IsValidTarget(Vector3 targetDir) {
+      return targetDir.sqrMagnitude <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
    }
 
    private void SelectNewTarget() {
@@ -109,15 +115,17 @@ public class TurretBehavior : MonoBehaviour, Health {
 
       Vector3 turretPos = gameObject.transform.position;
 
-        //EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
-        if(EnemyMovement.enemies ==null) { return; }
-        EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
+      //EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
+      if (EnemyMovement.enemies == null) {
+         return;
+      }
+      EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
 
       foreach (EnemyMovement enemyController in enemies) {
          GameObject enemy = enemyController.gameObject;
          Vector3 enemyDir = enemy.transform.position - turretPos;
 
-         if (enemyDir.sqrMagnitude > sqrRange || Vector3.Angle(attackDir, enemyDir) > 50.0f) {
+         if (!IsValidTarget(enemyDir)) {
             continue;
          }
 
@@ -139,10 +147,21 @@ public class TurretBehavior : MonoBehaviour, Health {
 
       Vector3 targetDir = (target.transform.position - transform.position).normalized;
 
+      if (!IsValidTarget(targetDir)) {
+         target = null;
+         return;
+      }
+
+      // continue rotating to face the target
       Rotate(targetDir, 60.0f);
-      if (Time.time > attackTime) {
+
+      // possibly check that the turret is almost directly facing the enemy before firing
+      if (Time.time > attackTime) { // && Vector3.Angle(attackDir, targetDir) <= 5.0f) {
          attackTime = Time.time + attackInterval;
-         for (int i = 0; i < shootAnchor.Count; i++) { FireBullet(i); }
+
+         for (int i = 0; i < shootAnchor.Count; i++) {
+            FireBullet(i);
+         }
       }
     }
 
@@ -165,11 +184,4 @@ public class TurretBehavior : MonoBehaviour, Health {
       iniForce.forceLife = 1;
       bullet.GetComponent<BulletBehavior>().AddForce(iniForce);
    }
-
-   public void TakeDamage(int damage)
-    {
-        health -= damage;
-        onHurt.Invoke();
-        if(health <= 0) { Destroy(transform.parent.gameObject); }
-    }
 }
