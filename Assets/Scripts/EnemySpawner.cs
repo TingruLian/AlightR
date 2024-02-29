@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour {
    [SerializeField]
    private float spawnInterval;
 
-    [SerializeField]
+   [SerializeField]
    private float enemySpeed;
 
    private float spawnTime;
@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour {
          GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
 
          enemyInstance.GetComponent<EnemyMovement>().target = target;
-         enemyInstance.GetComponent<EnemyMovement>().speed = enemySpeed;
+         enemyInstance.GetComponent<EnemyMovement>().speed.SetBaseValue(enemySpeed);
 
          numEnemies++;
       }

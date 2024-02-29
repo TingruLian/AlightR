@@ -1,16 +1,17 @@
-using UnityEngine;
-using DG.Tweening;
 using System.Collections.Generic;
-using UnityEngine.Playables;
-using System.Collections;
+
+using UnityEngine;
 using UnityEngine.Events;
+
+using DG.Tweening;
 
 public class EnemyMovement : MonoBehaviour {
    public static List<EnemyMovement> enemies;
 
    public GameObject target;
-   public float speed;
    public int life = 3;
+
+   public Attribute<float> speed = new Attribute<float>();
 
    [SerializeField]
    protected UnityEvent onHurt;
@@ -18,7 +19,11 @@ public class EnemyMovement : MonoBehaviour {
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
 
-   private bool win=false;
+   protected List<BaseEffect> effects = new List<BaseEffect>();
+
+   private bool win = false;
+   private bool moving = true;
+
    private float lastUpdateTime;
 
    private void Awake() {
@@ -35,7 +40,6 @@ public class EnemyMovement : MonoBehaviour {
    private void OnDestroy() {
       enemies.Remove(this);
       GameManager.instance.RemovePlayerLoseListener(Win);
-      
    }
 
    private void OnEnable() {
@@ -52,22 +56,18 @@ public class EnemyMovement : MonoBehaviour {
          FindTarget();
       }
 
-      // the enmy already passed the player, so destroy it
+      ApplyEffects();
+
+      // the enmy reached the player, so play an attack animation and deal damage
       if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null) {
-         /*
-         Destroy(gameObject);
-         GameManager.instance.ModifyLives(-1);
-
-         Debug.Log(Gamedata.bookHP);
-         */
-
-         speed = 0;
+         moving = false;
          GetComponentInChildren<Animator>().Play("attack");
          //the delay in this loop is based on animation
-         _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(() =>
-         {
-             target.GetComponent<Health>().TakeDamage(1);
-         }).AppendInterval(1.25f - 7f/12f).SetLoops(-1);
+         _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(
+            () => {
+                target.GetComponent<Health>().TakeDamage(1);
+            })
+            .AppendInterval(1.25f - 7f/12f).SetLoops(-1);
 
       }
 
@@ -75,12 +75,14 @@ public class EnemyMovement : MonoBehaviour {
       float elapsedTime = curTime - lastUpdateTime;
       lastUpdateTime = curTime;
 
-      Vector3 curPos = gameObject.transform.position;
+      if (moving) {
+         Vector3 curPos = gameObject.transform.position;
 
-      Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed * elapsedTime;
+         Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
 
-      transform.position += distTraveled;
-      transform.LookAt(target.transform.position);
+         transform.position += distTraveled;
+         transform.LookAt(target.transform.position);
+      }
    }
 
    public void TakeDamage() {
@@ -98,7 +100,7 @@ public class EnemyMovement : MonoBehaviour {
       GetComponentInChildren<Animator>().Play("idle");
       target = transform.parent.gameObject;
       _attackSequence.Kill();
-      speed = 1;
+      moving = true;
    }
 
 
@@ -107,7 +109,7 @@ public class EnemyMovement : MonoBehaviour {
          _attackSequence.Kill(); _attackSequence = null;
          GetComponentInChildren<Animator>().Play("idle"); 
          target = GameManager.instance.playerBook;
-         speed = 1;
+         moving = true;
       }
 
       float dis = Vector3.Distance(transform.position, target.transform.position);
@@ -125,6 +127,23 @@ public class EnemyMovement : MonoBehaviour {
          if (Vector3.Distance(transform.position, t.transform.position) < dis) {
             target = t.gameObject;
             dis = Vector3.Distance(transform.position, t.transform.position);
+         }
+      }
+   }
+
+   public void AddEffect(BaseEffect effect) {
+      effects.Add(effect);
+   }
+
+   private void ApplyEffects() {
+      for (int i = effects.Count - 1; i >= 0; i--) {
+         BaseEffect effect = effects[i];
+
+         if (effect.IsExpired()) {
+            effect.ResetEffect(this);
+            effects.RemoveAt(i);
+         } else {
+            effect.ApplyEffect(this);
          }
       }
    }

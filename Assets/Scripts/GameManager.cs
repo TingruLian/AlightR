@@ -49,32 +49,31 @@ public class GameManager : MonoBehaviour {
    [SerializeField]
    private UnityEvent onPlayerLose;
 
-    [SerializeField]
-    private UnityEvent onPlayerWin;
+   [SerializeField]
+   private UnityEvent onPlayerWin;
 
-    [SerializeField]
-    private int enemyKilled = 0,totalEnemy = 20;
+   [SerializeField]
+   private int enemyKilled = 0,totalEnemy = 20;
 
-    private int resources;
+
+   private int resources;
    private int lives;
 
    private bool lost = false;
 
-    // There should only be one turrent placeholder in the scene at a time
-    private GameObject placeholderInstance;
+   // There should only be one turrent placeholder in the scene at a time
+   private GameObject placeholderInstance;
 
    private const int TURRET_COST = 20;
-    protected Tween _shakeTween;
+   protected Tween _shakeTween;
 
-    private void Awake() {
-      if (instance != null && instance != this)
-      {
-         Destroy(this);
-      } else {
-         instance = this;
-      }
-    }
-    
+   private void Awake() {
+     if (instance != null && instance != this) {
+        Destroy(this);
+     } else {
+        instance = this;
+     }
+   }
 
    void Start() {
       resources = 20;
