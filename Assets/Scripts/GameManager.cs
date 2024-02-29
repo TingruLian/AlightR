@@ -73,7 +73,8 @@ public class GameManager : MonoBehaviour {
       } else {
          instance = this;
       }
-   }
+    }
+    
 
    void Start() {
       resources = 20;
