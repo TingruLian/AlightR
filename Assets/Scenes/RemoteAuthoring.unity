@@ -2405,6 +2405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
+      propertyPath: turretType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8064189823202409869, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.655
@@ -8293,6 +8297,10 @@ PrefabInstance:
     - target: {fileID: 3264794228556793912, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
+      propertyPath: turretType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8064189823202409869, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: m_LocalPosition.x
