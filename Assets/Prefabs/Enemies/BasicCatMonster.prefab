@@ -69,8 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c20df2b57badf04b8bba04ed232a9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  speed: 0
+  target: {fileID: 0}
   life: 4
   onHurt:
     m_PersistentCalls:
@@ -87,6 +86,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -277,6 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46db57310a8e7e4db002033aa0827d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotating: 0
+  rotationSpeed: 60
   shakeStrength: 0.05
 --- !u!1001 &7627795127901590543
 PrefabInstance:

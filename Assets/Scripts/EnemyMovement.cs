@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 using DG.Tweening;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour
+{
    public static List<EnemyMovement> enemies;
 
    public GameObject target;
@@ -15,6 +16,8 @@ public class EnemyMovement : MonoBehaviour {
 
    [SerializeField]
    protected UnityEvent onHurt;
+   [SerializeField]
+   protected UnityEvent onDeath;
 
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
@@ -26,48 +29,61 @@ public class EnemyMovement : MonoBehaviour {
 
    private float lastUpdateTime;
 
-   private void Awake() {
-      if (enemies == null) {
+
+   private void Awake()
+   {
+      if (enemies == null)
+      {
          enemies = new List<EnemyMovement>();
       }
       enemies.Add(this);
    }
 
-   private void OnDisable() {
+   private void OnDisable()
+   {
       enemies.Remove(this);
    }
 
-   private void OnDestroy() {
+   private void OnDestroy()
+   {
       enemies.Remove(this);
+      onDeath.Invoke();
+
       GameManager.instance.RemovePlayerLoseListener(Win);
    }
 
-   private void OnEnable() {
+   private void OnEnable()
+   {
       enemies.Add(this);
-      GameManager.instance.AddPlayerLoseListener(Win);
-  }
 
-   void Start() {
+      GameManager.instance.AddPlayerLoseListener(Win);
+   }
+
+   void Start()
+   {
       lastUpdateTime = Time.time;
    }
 
-   void Update() {
-      if (!win) {
+   void Update()
+   {
+      if (!win)
+      {
          FindTarget();
       }
 
       ApplyEffects();
 
       // the enmy reached the player, so play an attack animation and deal damage
-      if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null) {
+      if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null)
+      {
          moving = false;
          GetComponentInChildren<Animator>().Play("attack");
          //the delay in this loop is based on animation
-         _attackSequence = DOTween.Sequence().AppendInterval(7f/12f).AppendCallback(
+         _attackSequence = DOTween.Sequence().AppendInterval(7f / 12f).AppendCallback(
             () => {
-                target.GetComponent<Health>().TakeDamage(1);
+               target.GetComponent<Health>().TakeDamage(1);
             })
-            .AppendInterval(1.25f - 7f/12f).SetLoops(-1);
+            .AppendInterval(1.25f - 7f / 12f).SetLoops(-1);
 
       }
 
@@ -75,7 +91,8 @@ public class EnemyMovement : MonoBehaviour {
       float elapsedTime = curTime - lastUpdateTime;
       lastUpdateTime = curTime;
 
-      if (moving) {
+      if (moving)
+      {
          Vector3 curPos = gameObject.transform.position;
 
          Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
@@ -85,17 +102,20 @@ public class EnemyMovement : MonoBehaviour {
       }
    }
 
-   public void TakeDamage() {
+   public void TakeDamage()
+   {
       life--;
       onHurt.Invoke();
 
-      if (life <= 0) {
+      if (life <= 0)
+      {
          GameManager.instance.DestroyEnemy(this);
-         if(_attackSequence != null) { _attackSequence.Kill(); }
+         if (_attackSequence != null) { _attackSequence.Kill(); }
       }
    }
 
-   public void Win() {
+   public void Win()
+   {
       win = true;
       GetComponentInChildren<Animator>().Play("idle");
       target = transform.parent.gameObject;
@@ -104,47 +124,62 @@ public class EnemyMovement : MonoBehaviour {
    }
 
 
-   public void FindTarget() {
-      if (target == null) {
+   public void FindTarget()
+   {
+      if (target == null)
+      {
          _attackSequence.Kill(); _attackSequence = null;
-         GetComponentInChildren<Animator>().Play("idle"); 
+         GetComponentInChildren<Animator>().Play("idle");
          target = GameManager.instance.playerBook;
          moving = true;
       }
 
       float dis = Vector3.Distance(transform.position, target.transform.position);
 
-      if (Vector3.Distance(transform.position, GameManager.instance.playerBook.transform.position) < dis) {
+      if (Vector3.Distance(transform.position, GameManager.instance.playerBook.transform.position) < dis)
+      {
          target = GameManager.instance.playerBook;
          dis = Vector3.Distance(transform.position, GameManager.instance.playerBook.transform.position);
       }
 
-      if(TurretBehavior.turretList == null) {
+      if (TurretBehavior.turretList == null)
+      {
          return;
       }
 
-      foreach (TurretBehavior t in TurretBehavior.turretList) {
-         if (Vector3.Distance(transform.position, t.transform.position) < dis) {
+      foreach (TurretBehavior t in TurretBehavior.turretList)
+      {
+         if (Vector3.Distance(transform.position, t.transform.position) < dis)
+         {
             target = t.gameObject;
             dis = Vector3.Distance(transform.position, t.transform.position);
          }
       }
    }
 
-   public void AddEffect(BaseEffect effect) {
+   public void AddEffect(BaseEffect effect)
+   {
       effects.Add(effect);
    }
 
-   private void ApplyEffects() {
-      for (int i = effects.Count - 1; i >= 0; i--) {
+   private void ApplyEffects()
+   {
+      for (int i = effects.Count - 1; i >= 0; i--)
+      {
          BaseEffect effect = effects[i];
 
-         if (effect.IsExpired()) {
+         if (effect.IsExpired())
+         {
             effect.ResetEffect(this);
             effects.RemoveAt(i);
-         } else {
+         }
+         else
+         {
             effect.ApplyEffect(this);
          }
       }
    }
+
+   public void AddDeathListener(UnityAction action) { onDeath.AddListener(action); }
+   public void RemoveDeathListener(UnityAction action) { onDeath.RemoveListener(action); }
 }
