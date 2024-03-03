@@ -6,39 +6,18 @@ using System;
 using Random = UnityEngine.Random;
 using TMPro;
 
-/// <summary>
-/// We spawn enemies in the unit of waves
-/// so the difficulty could be more fexible
-/// </summary>
-/// 
-[Serializable]
-public struct EnemyWave
+
+public enum EnemySpawnLocation
 {
-   public string name;
-   public string waveInformation;
-   [Tooltip("The delay after last wave, or from start if this is the first wave")]
-   public float delay;
-
-   public List<GameObject> enemyUnits;
-   public GameObject enemySpawn;
-   public GameObject parent;
-   public int enemyCount;
-   public float maxRadius;
-   public float spawnInterval;
-   public float enemySpeed;
-
-   public UnityEvent onWaveBegin;
-   public UnityEvent onWaveCleared;
-   [Tooltip("Child waves will be spawn after the initial of this wave")]
-   public List<EnemyWave> childWaves;
+   air,
+   ground
 }
-
 
 public class EnemySpawner : MonoBehaviour
 {
    [SerializeField]
-   protected List<EnemyWave> mainWaves;
-   protected List<EnemyWave> onGoingWaves;
+   protected List<Wave> mainWaves;
+   protected List<Wave> onGoingWaves;
    protected int waveId;
 
    [SerializeField]
@@ -48,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
    private static float numEnemies = 0;
 
    [SerializeField]
-   private GameObject enemySpawn;
+   private List<GameObject> enemySpawn;
 
    [SerializeField]
    private GameObject enemy;
@@ -98,10 +77,8 @@ public class EnemySpawner : MonoBehaviour
       spawnTime = Time.time + spawnInterval;
 
 
-
-
       //We start the first wave
-      onGoingWaves = new List<EnemyWave>();
+      onGoingWaves = new List<Wave>();
       waveId = 0;
       StartAWave(mainWaves[waveId]);
 
@@ -122,7 +99,25 @@ public class EnemySpawner : MonoBehaviour
          else
          {
             onGoingWaves = null;
-            InvokeWaveInformation("You Win");
+            InvokeWaveInformation("All Waves Cleared");
+            DOTween.Sequence().AppendInterval(2)
+            .AppendCallback(() =>
+            {
+               GameManager.instance.AttemptWin();
+            });
+         }
+      }
+      //if there's still ongonig wave, check it
+      else if (onGoingWaves != null)
+      {
+         //back ward iteration because waves might be removed in progress
+         for(int i = onGoingWaves.Count - 1; i >= 0; i--)
+         {
+            Wave w = onGoingWaves[i];
+            if (w.enemyCount == w.generatedCount && w.currentEnemies.Count == 0) 
+            { 
+               w.onWaveCleared.Invoke(); 
+            }
          }
       }
 
@@ -157,7 +152,7 @@ public class EnemySpawner : MonoBehaviour
    }
 
    //Most code are copied from old spawn code, with modification of getting value from the wave
-   EnemyMovement SpawnAnEnemy(EnemyWave wave)
+   EnemyMovement SpawnAnEnemy(Wave wave)
    {
       float radius = Random.Range(0f, wave.maxRadius);
       float angle = Random.Range(0f, Mathf.PI * 2f);
@@ -165,12 +160,12 @@ public class EnemySpawner : MonoBehaviour
       float x = Mathf.Sin(angle) * radius;
       float z = Mathf.Cos(angle) * radius;
 
-      spawnCenter = wave.enemySpawn.transform.position;
+      spawnCenter = enemySpawn[((int)wave.spawnLocation)].transform.position;
       Vector3 enemyPos = new Vector3(spawnCenter.x + x, spawnCenter.y, spawnCenter.z + z);
       Vector3 targetPos = spawnCenter - forwardAxis * 20 + new Vector3(0f, 4f, 0f);
 
       GameObject selectedPrefab = wave.enemyUnits[Random.Range(0, wave.enemyUnits.Count)];
-      GameObject enemyInstance = GameObject.Instantiate(selectedPrefab, enemyPos, Quaternion.identity, wave.parent.transform);
+      GameObject enemyInstance = GameObject.Instantiate(selectedPrefab, enemyPos, Quaternion.identity, parent.transform);
 
       enemyInstance.GetComponent<EnemyMovement>().target = target;
       enemyInstance.GetComponent<EnemyMovement>().speed.SetBaseValue(wave.enemySpeed);
@@ -179,10 +174,11 @@ public class EnemySpawner : MonoBehaviour
    }
 
 
-   void StartAWave(EnemyWave wave)
+   void StartAWave(Wave wave)
    {
       onGoingWaves.Add(wave);
       wave.onWaveCleared.AddListener(() => { onGoingWaves.Remove(wave); });   
+      wave.generatedCount = 0;
 
       //The Delay
       DOTween.Sequence().AppendInterval(wave.delay).
@@ -199,15 +195,14 @@ public class EnemySpawner : MonoBehaviour
 
             //set the delay accordinglg
             DOTween.Sequence().AppendInterval(wave.spawnInterval * i)
+
             //Actual spawning happens after delay
             .AppendCallback(() => {
-               spawnedEnemy = SpawnAnEnemy(wave);
+               wave.generatedCount++;
 
-               //Last spawned enemy should know if dead
-               //A potential bug is that last enemy might not be last one to be killed
-               if (id >= wave.enemyCount - 1) { 
-                  spawnedEnemy.AddDeathListener(() => { wave.onWaveCleared.Invoke(); }); 
-               }
+               spawnedEnemy = SpawnAnEnemy(wave);
+               wave.currentEnemies.Add(spawnedEnemy);
+               spawnedEnemy.AddDeathListener(() => { wave.currentEnemies.Remove(spawnedEnemy); });
             });
          }
 
@@ -223,7 +218,7 @@ public class EnemySpawner : MonoBehaviour
    // This method spawns different colored enemies to help visualize the axes
    void SpawnDirectionIndicators()
    {
-      spawnCenter = enemySpawn.transform.position;
+      spawnCenter = enemySpawn[0].transform.position;
 
       Vector3 enemyPos = spawnCenter;
       GameObject.Instantiate(enemy3, enemyPos, Quaternion.identity, parent.transform);

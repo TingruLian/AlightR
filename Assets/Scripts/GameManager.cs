@@ -106,11 +106,11 @@ public class GameManager : MonoBehaviour {
    public void DestroyEnemy(EnemyMovement enemy) {
       Destroy(enemy.gameObject);
         enemyKilled++;
-        if (enemyKilled == totalEnemy && lives > 0)
-        {
-            Debug.Log("win");
-            onPlayerWin.Invoke();
-        }
+        //if (enemyKilled == totalEnemy && lives > 0)
+        //{
+        //    Debug.Log("win");
+        //    onPlayerWin.Invoke();
+        //}
       //ModifyResources(10);
    }
 
@@ -165,5 +165,13 @@ public class GameManager : MonoBehaviour {
 
    public void RemovePlayerLoseListener( UnityAction act) {
       onPlayerLose.RemoveListener(act);
+   }
+
+   public void AttemptWin()
+   {
+      if (lives > 0)
+      {
+         onPlayerWin.Invoke();
+      }
    }
 }
