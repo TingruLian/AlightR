@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveInformation: Enemies Appraoching
-  delay: 1
+  delay: 2
   enemyUnits:
   - {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
   spawnLocation: 0
@@ -61,4 +61,4 @@ MonoBehaviour:
       m_Calls: []
   childWaves: []
   currentEnemies: []
-  generatedCount: 0
+  generatedCount: 1

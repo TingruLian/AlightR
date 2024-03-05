@@ -7074,6 +7074,7 @@ MonoBehaviour:
   - {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
   - {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
   - {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+  onGoingWaves: []
   waveInfo: {fileID: 825217483}
   enemySpawnLocation:
   - {fileID: 7791658373098884011}

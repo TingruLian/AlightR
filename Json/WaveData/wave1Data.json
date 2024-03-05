@@ -1,0 +1,20 @@
+{
+  "Transform": {},
+  "Wave": {
+    "waveInformation": "Enemies Appraoching",
+    "delay": 2.0,
+    "enemyUnits": [
+      33858
+    ],
+    "spawnLocation": 0,
+    "enemyCount": 1,
+    "maxRadius": 4.0,
+    "spawnInterval": 2.0,
+    "enemySpeed": 1.5,
+    "onWaveBegin": {},
+    "onWaveCleared": {},
+    "childWaves": [],
+    "currentEnemies": [],
+    "generatedCount": 1
+  }
+}
