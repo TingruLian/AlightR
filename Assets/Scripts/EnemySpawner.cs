@@ -5,7 +5,7 @@ using DG.Tweening;
 using System;
 using Random = UnityEngine.Random;
 using TMPro;
-
+using System.Runtime.CompilerServices;
 
 public enum EnemySpawnLocation
 {
@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 {
    [SerializeField]
    protected List<Wave> mainWaves;
+   [SerializeField]
    protected List<Wave> onGoingWaves;
    protected int waveId;
 
@@ -27,7 +28,16 @@ public class EnemySpawner : MonoBehaviour
    private static float numEnemies = 0;
 
    [SerializeField]
-   private List<GameObject> enemySpawn;
+   private List<GameObject> enemySpawnLocation;
+   
+   [SerializeField]
+   private GameObject parent;
+
+   // This is the target toward which enemies will move, i.e. the bridge. They will also be spawned in a radius around it. 
+   [SerializeField]
+   private GameObject target;
+
+   [Header("The remianing parameter are unused")]
 
    [SerializeField]
    private GameObject enemy;
@@ -39,12 +49,9 @@ public class EnemySpawner : MonoBehaviour
    private GameObject enemy3;
 
    // This is the parent GameObject for all spawned enemies. Should be either XR Origin or a child of it
-   [SerializeField]
-   private GameObject parent;
 
-   // This is the target toward which enemies will move, i.e. the bridge. They will also be spawned in a radius around it. 
-   [SerializeField]
-   private GameObject target;
+
+
 
    // This is the max distance from the target that enemies will spawn
    [SerializeField]
@@ -80,26 +87,36 @@ public class EnemySpawner : MonoBehaviour
       //We start the first wave
       onGoingWaves = new List<Wave>();
       waveId = 0;
-      StartAWave(mainWaves[waveId]);
+      mainWaves[waveId].StartWave(this);
 
    }
 
    void Update()
    {
-      //Try to start a new wave if no wave is going on
-      if(onGoingWaves!=null && onGoingWaves.Count == 0) {
+
+      //Update each ongoing waves
+      //back ward iteration because waves might be removed in progress
+      for (int i = onGoingWaves.Count - 1; i >= 0; i--)
+      {
+         Wave w = onGoingWaves[i];
+         if (!w.Validate()) { w.EndWave(); }
+      }
+
+
+      //If there's no wave, check if we shall start a new one, or end 
+      if (onGoingWaves.Count == 0) {
 
          waveId ++;
          
-         //if we still have remaining waves
          if(waveId < mainWaves.Count) {
-            StartAWave(mainWaves[waveId]);
+            mainWaves[waveId].StartWave(this);
          }
-         //end of the game
+
          else
          {
             onGoingWaves = null;
             InvokeWaveInformation("All Waves Cleared");
+
             DOTween.Sequence().AppendInterval(2)
             .AppendCallback(() =>
             {
@@ -107,19 +124,8 @@ public class EnemySpawner : MonoBehaviour
             });
          }
       }
-      //if there's still ongonig wave, check it
-      else if (onGoingWaves != null)
-      {
-         //back ward iteration because waves might be removed in progress
-         for(int i = onGoingWaves.Count - 1; i >= 0; i--)
-         {
-            Wave w = onGoingWaves[i];
-            if (w.enemyCount == w.generatedCount && w.currentEnemies.Count == 0) 
-            { 
-               w.onWaveCleared.Invoke(); 
-            }
-         }
-      }
+
+
 
       //---------------Legacy Spawn Code------------//
       /*
@@ -151,74 +157,11 @@ public class EnemySpawner : MonoBehaviour
 
    }
 
-   //Most code are copied from old spawn code, with modification of getting value from the wave
-   EnemyMovement SpawnAnEnemy(Wave wave)
-   {
-      float radius = Random.Range(0f, wave.maxRadius);
-      float angle = Random.Range(0f, Mathf.PI * 2f);
-
-      float x = Mathf.Sin(angle) * radius;
-      float z = Mathf.Cos(angle) * radius;
-
-      spawnCenter = enemySpawn[((int)wave.spawnLocation)].transform.position;
-      Vector3 enemyPos = new Vector3(spawnCenter.x + x, spawnCenter.y, spawnCenter.z + z);
-      Vector3 targetPos = spawnCenter - forwardAxis * 20 + new Vector3(0f, 4f, 0f);
-
-      GameObject selectedPrefab = wave.enemyUnits[Random.Range(0, wave.enemyUnits.Count)];
-      GameObject enemyInstance = GameObject.Instantiate(selectedPrefab, enemyPos, Quaternion.identity, parent.transform);
-
-      enemyInstance.GetComponent<EnemyMovement>().target = target;
-      enemyInstance.GetComponent<EnemyMovement>().speed.SetBaseValue(wave.enemySpeed);
-
-      return enemyInstance.GetComponent<EnemyMovement>();
-   }
-
-
-   void StartAWave(Wave wave)
-   {
-      onGoingWaves.Add(wave);
-      wave.onWaveCleared.AddListener(() => { onGoingWaves.Remove(wave); });   
-      wave.generatedCount = 0;
-
-      //The Delay
-      DOTween.Sequence().AppendInterval(wave.delay).
-      //The Content
-      AppendCallback(() =>
-      {
-         InvokeWaveInformation(wave.waveInformation);
-         wave.onWaveBegin.Invoke();
-
-         for (int i = 0; i < wave.enemyCount; i++)
-         {
-            EnemyMovement spawnedEnemy;
-            int id = i;
-
-            //set the delay accordinglg
-            DOTween.Sequence().AppendInterval(wave.spawnInterval * i)
-
-            //Actual spawning happens after delay
-            .AppendCallback(() => {
-               wave.generatedCount++;
-
-               spawnedEnemy = SpawnAnEnemy(wave);
-               wave.currentEnemies.Add(spawnedEnemy);
-               spawnedEnemy.AddDeathListener(() => { wave.currentEnemies.Remove(spawnedEnemy); });
-            });
-         }
-
-         for(int i = 0; i < wave.childWaves.Count; i++)
-         {
-            StartAWave(wave.childWaves[i]);
-         }
-
-      });
-
-   }
 
    // This method spawns different colored enemies to help visualize the axes
    void SpawnDirectionIndicators()
    {
-      spawnCenter = enemySpawn[0].transform.position;
+      spawnCenter = enemySpawnLocation[0].transform.position;
 
       Vector3 enemyPos = spawnCenter;
       GameObject.Instantiate(enemy3, enemyPos, Quaternion.identity, parent.transform);
@@ -236,7 +179,7 @@ public class EnemySpawner : MonoBehaviour
       GameObject.Instantiate(enemy2, enemyPos, Quaternion.identity, parent.transform);
    }
 
-   void InvokeWaveInformation(string data)
+   public void InvokeWaveInformation(string data)
    {
       waveInfo.gameObject.SetActive(true);
 
@@ -248,4 +191,12 @@ public class EnemySpawner : MonoBehaviour
       //fade out and turn off
       waveInfo.DOFade(0, 0.5f).SetDelay(2f).OnComplete(() => { waveInfo.gameObject.SetActive(false); });
    }
+
+   public GameObject GetParent() { return parent; }
+
+   public GameObject GetTarget() { return target; }
+
+   public GameObject GetSpwanLocation(EnemySpawnLocation point) { return enemySpawnLocation[(int)point]; }
+
+   public List<Wave> GetOnGoingWaves() { return onGoingWaves; }
 }

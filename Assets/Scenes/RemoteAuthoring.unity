@@ -7071,18 +7071,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainWaves:
-  - {fileID: 11400000, guid: d90a1d150b9918242a95b7b76bbd4801, type: 2}
-  - {fileID: 11400000, guid: 601a43571f9f3404f94169166bee0fd5, type: 2}
-  - {fileID: 11400000, guid: 3cdc16a690347f241a1e355021226b68, type: 2}
+  - {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+  - {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+  - {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
   waveInfo: {fileID: 825217483}
-  enemySpawn:
+  enemySpawnLocation:
   - {fileID: 7791658373098884011}
   - {fileID: 370543068}
+  parent: {fileID: 7696678704919823546}
+  target: {fileID: 4297029158441339240}
   enemy: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
   enemy2: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
   enemy3: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
-  parent: {fileID: 7696678704919823546}
-  target: {fileID: 4297029158441339240}
   maxRadius: 4
   spawnInterval: 2
   enemySpeed: 1.5
