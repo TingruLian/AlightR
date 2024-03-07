@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using Mono.Collections.Generic;
+using System.Collections;
 
 public class JsonSaver : MonoBehaviour
 {
@@ -34,8 +36,10 @@ public class JsonSaver : MonoBehaviour
             // Check if the field is marked with the SerializeField attribute
             if (Attribute.IsDefined(field, typeof(SerializeField)))
             {
-               // Check if the field type is GameObject
-               if (field.FieldType == typeof(GameObject))
+               if(field.GetValue(component) is UnityEngine.Object) Debug.Log(AssetDatabase.Contains((UnityEngine.Object)field.GetValue(component)));
+               if(field.GetValue(component) is ICollection) { Debug.Log("is collection"); }
+                  // Check if the field type is GameObject
+                  if (field.FieldType == typeof(GameObject))
                {
                   GameObject referencedObject = (GameObject)field.GetValue(component);
 
@@ -47,8 +51,8 @@ public class JsonSaver : MonoBehaviour
                      {
                         gameObjectReferences[gameObjectID] = AssetDatabase.GetAssetPath(referencedObject);
                      }
-
-                     attributeData[field.Name] = gameObjectID;
+                     Debug.Log("find gameobject reference at: " + gameObjectReferences[gameObjectID]);
+                     attributeData[field.Name] = gameObjectReferences[gameObjectID];
                   }
                   else
                   {

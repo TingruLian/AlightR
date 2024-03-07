@@ -12,6 +12,8 @@ using System.Transactions;
 /// 
 public class Wave : MonoBehaviour
 {
+   [SerializeField]
+   public GameObject testGameObject;
    [SerializeField]protected string waveInformation;
    [Tooltip("The delay after last wave, or from start if this is the first wave")]
    [SerializeField] protected float delay;

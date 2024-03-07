@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a20d6c2e201c44eaa97ef871c4f275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testGameObject: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
   waveInformation: Enemies Appraoching
   delay: 2
   enemyUnits:
