@@ -2585,6 +2585,10 @@ PrefabInstance:
       propertyPath: turretType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
+      propertyPath: turretPrefab
+      value: 
+      objectReference: {fileID: 233774273655562936, guid: 6fbaa7d4c96beba4fb27d88048f88158, type: 3}
     - target: {fileID: 8064189823202409869, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.655
@@ -8487,6 +8491,10 @@ PrefabInstance:
       propertyPath: turretType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
+      propertyPath: turretPrefab
+      value: 
+      objectReference: {fileID: 233774273655562936, guid: 6fbaa7d4c96beba4fb27d88048f88158, type: 3}
     - target: {fileID: 8064189823202409869, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.537
