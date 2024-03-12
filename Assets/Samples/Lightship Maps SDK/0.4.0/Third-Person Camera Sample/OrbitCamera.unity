@@ -244,20 +244,23 @@ MonoBehaviour:
       _latitude: 40.428861278611734
       _longitude: -79.95970892169015
     name: HotMetal1
-    sceneID: 6
+    sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
+    child: {fileID: 9125935236090591011, guid: b06b3040512eb441f9b5ed10958be214, type: 3}
   - position:
       _latitude: 40.42834752101199
       _longitude: -79.9606336695376
     name: HotMetal2
-    sceneID: 3
+    sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
+    child: {fileID: 0}
   - position:
       _latitude: 40.44085693359375
       _longitude: -79.94412994384766
     name: HuntLibaray
     sceneID: 15
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
+    child: {fileID: 0}
 --- !u!114 &364664875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc40d4623bb4422419a61e39c8980762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneId: 15
+  SceneId: 1
 --- !u!1 &1295042568
 GameObject:
   m_ObjectHideFlags: 0
