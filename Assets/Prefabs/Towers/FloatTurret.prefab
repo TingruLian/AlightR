@@ -4418,7 +4418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyContainer: {fileID: 0}
-  attackInterval: 1
+  attackInterval: 1.5
   bulletSpeed: 6
   health: 5
   onHurt:

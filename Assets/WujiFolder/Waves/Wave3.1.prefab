@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testGameObject: {fileID: 0}
   waveInformation: Watch Out The Ground
-  delay: 0
+  delay: 3
   enemyUnits:
   - {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
   spawnLocation: 1
