@@ -246,14 +246,14 @@ MonoBehaviour:
     name: HotMetal1
     sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
-    child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
+    child: {fileID: 9125935236090591011, guid: b06b3040512eb441f9b5ed10958be214, type: 3}
   - position:
       _latitude: 40.42834752101199
       _longitude: -79.9606336695376
     name: HotMetal2
     sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
-    child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
+    child: {fileID: 0}
   - position:
       _latitude: 40.44085693359375
       _longitude: -79.94412994384766
@@ -995,7 +995,7 @@ PrefabInstance:
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapTheme
       value: 
-      objectReference: {fileID: 5460868790211056494, guid: 6c8d5a69b1aecf6469a22a9f43eee6ce, type: 3}
+      objectReference: {fileID: 5460868790211056494, guid: a1a1cf4cccd8f1c4ea1019d9190ccafc, type: 3}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _viewableRadius
       value: 1000
