@@ -246,14 +246,14 @@ MonoBehaviour:
     name: HotMetal1
     sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
-    child: {fileID: 9125935236090591011, guid: b06b3040512eb441f9b5ed10958be214, type: 3}
+    child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
   - position:
       _latitude: 40.42834752101199
       _longitude: -79.9606336695376
     name: HotMetal2
     sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
-    child: {fileID: 0}
+    child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
   - position:
       _latitude: 40.44085693359375
       _longitude: -79.94412994384766
