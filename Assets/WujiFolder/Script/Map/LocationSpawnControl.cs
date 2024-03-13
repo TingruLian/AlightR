@@ -15,6 +15,8 @@ public struct LocationUnit
    public int sceneID;
    public Sprite sprite;
    public GameObject child;
+   public int levelId;
+   public int preRequisiteLevelId;
 }
 
 public class LocationSpawnControl : MonoBehaviour
@@ -37,20 +39,15 @@ public class LocationSpawnControl : MonoBehaviour
          location.GetComponentInChildren<TextMeshProUGUI>().text = unit.name;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
          location.GetComponentInChildren<Image>().sprite = unit.sprite;
+         if (location.GetComponent<CompletionCheck>() != null) { location.GetComponent<CompletionCheck>().levelId = unit.preRequisiteLevelId; }
 
-         if(unit.child != null)
+         if (unit.child != null)
          {
-            Instantiate(unit.child,location.transform.position, Quaternion.identity);
+            GameObject c = Instantiate(unit.child,location.transform.position, Quaternion.identity);
+            if (c.GetComponent<CompletionCheck>() != null) { c.GetComponent<CompletionCheck>().levelId = unit.levelId; }
          }
       }
-      if (GameData.winFirst)
-        {
-            Destroy(units[0].child);
-        }
-      if (GameData.winSecond) 
-        {
-            Destroy(units[1].child);
-        }
+      
    }
     
 

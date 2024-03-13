@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa850fbd5b8aded44846f96e35f1a9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &469255079
+--- !u!1 &456992243
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,39 +784,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 469255080}
-  - component: {fileID: 469255083}
-  - component: {fileID: 469255082}
-  - component: {fileID: 469255081}
+  - component: {fileID: 456992244}
+  - component: {fileID: 456992247}
+  - component: {fileID: 456992246}
+  - component: {fileID: 456992245}
   m_Layer: 0
-  m_Name: Private Mesh - 581887D1D3574E1DB41CE826FA382706(LocationMesh)
+  m_Name: Private Mesh - 69FBE2B2843E4203B57D3AF7C5083FEB(LocationMesh)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &469255080
+--- !u!4 &456992244
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469255079}
+  m_GameObject: {fileID: 456992243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 721891557}
+  m_Father: {fileID: 805710335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &469255081
+--- !u!114 &456992245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469255079}
+  m_GameObject: {fileID: 456992243}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5b5d95f90efd4bf0894371fc8e869be, type: 3}
@@ -828,13 +828,13 @@ MonoBehaviour:
   FixScale: 1
   FixPosition: 1
   FixRotation: 1
---- !u!23 &469255082
+--- !u!23 &456992246
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469255079}
+  m_GameObject: {fileID: 456992243}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -848,7 +848,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8069114755598884504, guid: 99e52f99dd0dc054989f58ee496762b0, type: 2}
+  - {fileID: 3844115500939301748, guid: 6079aa7b9ae76b14b9ee0107e5437e46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -870,14 +870,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &469255083
+--- !u!33 &456992247
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469255079}
-  m_Mesh: {fileID: -4265272276279338030, guid: 99e52f99dd0dc054989f58ee496762b0, type: 2}
+  m_GameObject: {fileID: 456992243}
+  m_Mesh: {fileID: 7182456882882729427, guid: 6079aa7b9ae76b14b9ee0107e5437e46, type: 2}
 --- !u!1 &495386938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1567,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &721891556
+--- !u!1 &805710334
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1575,8 +1575,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 721891557}
-  - component: {fileID: 721891558}
+  - component: {fileID: 805710335}
+  - component: {fileID: 805710336}
   m_Layer: 0
   m_Name: MeshContainer
   m_TagString: EditorOnly
@@ -1584,29 +1584,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &721891557
+--- !u!4 &805710335
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721891556}
+  m_GameObject: {fileID: 805710334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 469255080}
+  - {fileID: 456992244}
   m_Father: {fileID: 1445129942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &721891558
+--- !u!114 &805710336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721891556}
+  m_GameObject: {fileID: 805710334}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5b5d95f90efd4bf0894371fc8e869be, type: 3}
@@ -2843,7 +2843,7 @@ GameObject:
   - component: {fileID: 1445129943}
   - component: {fileID: 1445129944}
   m_Layer: 0
-  m_Name: NewHotMetal1
+  m_Name: HotMetal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2863,7 +2863,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8919335935125529533}
-  - {fileID: 721891557}
+  - {fileID: 805710335}
   m_Father: {fileID: 958724723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1445129943
@@ -2879,14 +2879,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Payload:
-    Data: 0a1608efe2c2e9e9c2c3a5fc0110a0f98b9699f9918fa00118abaccbaafbce84032a260a1408d8b09c8cbdfa95a71d10b4b9a0b7a29fce930612090a001205250000803f1d0000803f32190a05250000803f1100000000e536444019000000806ffd53c0
-  MeshContainer: {fileID: 721891556}
+    Data: 0a1608ebead184a2e697a787011087f58be9e1f0aecc8101189de9dbe6c5f184032a270a1508e9f68b97cbd08fa10310b5fbe9b9df98c29feb0112090a001205250000803f1d0000803f32190a05250000803f1100000020d636444019000000407cfd53c0
+  MeshContainer: {fileID: 805710334}
   IncludeMeshInBuild: 0
   GpsLocation:
     lat_degrees: 0
     lng_degrees: 0
   ARLocationManifest: {fileID: 0}
-  AssetGuid: 99e52f99dd0dc054989f58ee496762b0
+  AssetGuid: 6079aa7b9ae76b14b9ee0107e5437e46
 --- !u!114 &1445129944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6360,6 +6360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBook: {fileID: 4297029158441339240}
+  LevelId: 1
   onResourceEnough:
     m_PersistentCalls:
       m_Calls:

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   grassCount: 0
-  bookHP: 8
+  bookHP: 10
+  completionState: 0101

@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
       if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null)
       {
          moving = false;
-         GetComponentInChildren<Animator>().Play("attack");
+         if(GetComponentInChildren<Animator>()!=null) GetComponentInChildren<Animator>().Play("attack");
          //the delay in this loop is based on animation
          _attackSequence = DOTween.Sequence().AppendInterval(7f / 12f).AppendCallback(
             () => {
@@ -117,7 +117,7 @@ public class EnemyMovement : MonoBehaviour
    public void Win()
    {
       win = true;
-      GetComponentInChildren<Animator>().Play("idle");
+      if (GetComponentInChildren<Animator>() != null) GetComponentInChildren<Animator>().Play("idle");
       target = transform.parent.gameObject;
       _attackSequence.Kill();
       moving = true;
@@ -129,7 +129,7 @@ public class EnemyMovement : MonoBehaviour
       if (target == null)
       {
          _attackSequence.Kill(); _attackSequence = null;
-         GetComponentInChildren<Animator>().Play("idle");
+         if (GetComponentInChildren<Animator>() != null) GetComponentInChildren<Animator>().Play("idle");
          target = GameManager.instance.playerBook;
          moving = true;
       }

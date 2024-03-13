@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
 
    public GameObject playerBook;
 
+   [SerializeField]
+   protected int LevelId;
+
    public UnityEvent onResourceEnough;
    public UnityEvent onResourceNotEnough;
    public UnityEvent onInitialPlace;
@@ -174,15 +177,7 @@ public class GameManager : MonoBehaviour {
       if (lives > 0)
       {
          onPlayerWin.Invoke();
-         if (!GameData.winFirst)
-         {
-             GameData.winFirst = true;
-         }
-         else if (GameData.winFirst && !GameData.winSecond)
-          {
-             GameData.winSecond = true;
-          }
-         
+         GameData.completionState[LevelId] = true;
       }
    }
 }

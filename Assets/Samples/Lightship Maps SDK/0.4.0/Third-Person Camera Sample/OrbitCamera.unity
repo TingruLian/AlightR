@@ -247,13 +247,17 @@ MonoBehaviour:
     sceneID: 1
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
     child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
+    levelId: 0
+    preRequisiteLevelId: -1
   - position:
-      _latitude: 40.42834752101199
-      _longitude: -79.9606336695376
+      _latitude: 40.428335442151365
+      _longitude: -79.96088389429707
     name: HotMetal2
-    sceneID: 1
+    sceneID: 2
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
     child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
+    levelId: 1
+    preRequisiteLevelId: 0
   - position:
       _latitude: 40.44085693359375
       _longitude: -79.94412994384766
@@ -261,6 +265,9 @@ MonoBehaviour:
     sceneID: 15
     sprite: {fileID: 21300000, guid: dbb79a276340e0f4698a3e6d22c80caf, type: 3}
     child: {fileID: 0}
+    levelId: 0
+    preRequisiteLevelId: 0
+  GameData: {fileID: 0}
 --- !u!114 &364664875
 MonoBehaviour:
   m_ObjectHideFlags: 0
