@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour {
 
    private bool lost = false;
 
+    //private int gameNum = 1;
+
    // There should only be one turrent placeholder in the scene at a time
    private GameObject placeholderInstance;
 
@@ -172,6 +174,15 @@ public class GameManager : MonoBehaviour {
       if (lives > 0)
       {
          onPlayerWin.Invoke();
+         if (!GameData.winFirst)
+         {
+             GameData.winFirst = true;
+         }
+         else if (GameData.winFirst && !GameData.winSecond)
+          {
+             GameData.winSecond = true;
+          }
+         
       }
    }
 }

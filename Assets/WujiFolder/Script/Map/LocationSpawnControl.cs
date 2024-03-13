@@ -21,6 +21,7 @@ public class LocationSpawnControl : MonoBehaviour
 {
    [SerializeField] private LayerGameObjectPlacement _layerObject;
    public List<LocationUnit> units;
+    [SerializeField] private GameScriptableObject GameData;
 
    private void Awake()
    {
@@ -42,7 +43,15 @@ public class LocationSpawnControl : MonoBehaviour
             Instantiate(unit.child,location.transform.position, Quaternion.identity);
          }
       }
+      if (GameData.winFirst)
+        {
+            Destroy(units[0].child);
+        }
+      if (GameData.winSecond) 
+        {
+            Destroy(units[1].child);
+        }
    }
-
+    
 
 }
