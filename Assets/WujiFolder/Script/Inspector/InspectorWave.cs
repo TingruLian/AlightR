@@ -15,13 +15,13 @@ public class InspectorWave : Editor
       // Add a button to the inspector
       if (GUILayout.Button("Save Data"))
       {
-         JsonSaver.ExportAttributes(script.gameObject);
+         //JsonSaver.ExportAttributes(script.gameObject);
       }
 
       // Add a button to the inspector
       if (GUILayout.Button("Load Data"))
       {
-         JsonSaver.ReadAttributes(script.gameObject);
+         //JsonSaver.ReadAttributes(script.gameObject);
       }
 
       // Draw the default inspector
