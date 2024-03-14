@@ -62,6 +62,7 @@ public class EnemyMovement : MonoBehaviour
    void Start()
    {
       lastUpdateTime = Time.time;
+      if (GetComponentInChildren<Animator>() != null) GetComponentInChildren<Animator>().Play("idle");
    }
 
    void Update()
