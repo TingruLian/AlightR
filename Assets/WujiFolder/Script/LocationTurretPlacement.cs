@@ -18,7 +18,12 @@ public class LocationTurretPlacement : MonoBehaviour {
 
    private GameObject currentTurret;
 
+
    public void SpawnTurret() {
+
+      bool canSpawn = GameManager.instance.RequestTurret(this);
+      if (!canSpawn) return;
+
       if (currentTurret != null) {
          return;
       }
@@ -27,10 +32,17 @@ public class LocationTurretPlacement : MonoBehaviour {
       currentTurret = Instantiate(turretPrefab, transform.position,transform.rotation, transform);
       currentTurret.GetComponentInChildren<TurretBehavior>().Init(turretType, attackRange);
 
-      currentTurret.GetComponentInChildren<TurretBehavior>().AddOnDestroyLisnterner(
-         () => {
-            currentTurret = null;
-            button.SetActive(true);
-         });
+      currentTurret.GetComponentInChildren<TurretBehavior>().AddOnDestroyLisnterner
+         (() => { RemoveTurret(false); });
+   }
+
+   public void RemoveTurret(bool byPlayer)
+   {
+      if(currentTurret == null) { return; }
+      
+      GameManager.instance.FreeTurret(this);
+      Destroy(currentTurret);
+      currentTurret = null; 
+      button.SetActive(true);
    }
 }

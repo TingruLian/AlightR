@@ -6524,6 +6524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825d18c38acc874d9700380ff88a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resource2: 2
   playerBook: {fileID: 4297029158441339240}
   LevelId: 0
   onResourceEnough:

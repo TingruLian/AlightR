@@ -5,10 +5,13 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-
    public static GameManager instance { get; private set; }
+   [SerializeField]
+   protected int resource2;
+   protected List<LocationTurretPlacement> lpList = new List<LocationTurretPlacement>();
 
    public GameObject playerBook;
 
@@ -179,5 +182,34 @@ public class GameManager : MonoBehaviour {
          onPlayerWin.Invoke();
          GameData.completionState[LevelId] = true;
       }
+   }
+
+   public bool RequestTurret(LocationTurretPlacement lp)
+   {
+      if(resource2 > 0)
+      { 
+         lpList.Add(lp);
+         resource2--; 
+         return true;
+      }
+      
+      if(resource2 <= 0)
+      {
+         if(lpList.Count > 0)
+         {
+            lpList[0].RemoveTurret(true);
+            return RequestTurret(lp);
+         }
+
+         return false;
+      }
+
+      return true;
+   }
+
+   public void FreeTurret(LocationTurretPlacement lp)
+   {
+      lpList.Remove(lp);
+      resource2++;
    }
 }
