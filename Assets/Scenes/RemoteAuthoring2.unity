@@ -742,6 +742,38 @@ PrefabInstance:
       propertyPath: generatedCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4549282895211651774}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddResource2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7605552630093376973, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: m_Name
       value: Wave2
@@ -2477,7 +2509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: attackRange
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: turretPrefab
@@ -3497,6 +3529,38 @@ PrefabInstance:
       propertyPath: generatedCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4549282895211651774}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddResource2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7605552630093376973, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: m_Name
       value: Wave1
@@ -3778,6 +3842,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955543143}
   m_CullTransparentMesh: 1
+--- !u!1 &1974646635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1977284042507287168, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984016021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,7 +3991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: attackRange
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5751220559099969322, guid: 61ec5764e57bc6c41a9a317005eb4236, type: 3}
       propertyPath: turretPrefab
@@ -6802,7 +6871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825d18c38acc874d9700380ff88a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resource2: 0
+  resource2: 2
   playerBook: {fileID: 4297029158441339240}
   LevelId: 1
   onResourceEnough:
@@ -6945,6 +7014,7 @@ MonoBehaviour:
   turretAttackRange: 30
   enemyContainer: {fileID: 7696678704919823546}
   GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
+  resource2Holder: {fileID: 1974646635}
   onPlayerHurt:
     m_PersistentCalls:
       m_Calls:

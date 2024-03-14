@@ -6,11 +6,12 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
    public static GameManager instance { get; private set; }
    [SerializeField]
-   protected int resource2;
+   protected int resource2 = 2;
    protected List<LocationTurretPlacement> lpList = new List<LocationTurretPlacement>();
 
    public GameObject playerBook;
@@ -50,6 +51,10 @@ public class GameManager : MonoBehaviour {
    private GameScriptableObject GameData;
 
    [SerializeField]
+   protected GameObject resource2Holder;
+   protected List<Image> resource2Units;
+
+   [SerializeField]
    private UnityEvent onPlayerHurt;
 
    [SerializeField]
@@ -81,9 +86,13 @@ public class GameManager : MonoBehaviour {
      } else {
         instance = this;
      }
+
+     if(resource2Holder !=null) { resource2Units = resource2Holder.transform.GetComponentsInChildren<Image>().ToList(); }
    }
 
    void Start() {
+      UpdateResourceUI();
+
       resources = 20;
       lives = 10;
 
@@ -189,7 +198,9 @@ public class GameManager : MonoBehaviour {
       if(resource2 > 0)
       { 
          lpList.Add(lp);
-         resource2--; 
+         resource2--;
+         UpdateResourceUI();
+
          return true;
       }
       
@@ -211,5 +222,23 @@ public class GameManager : MonoBehaviour {
    {
       lpList.Remove(lp);
       resource2++;
+      UpdateResourceUI();
+   }
+
+
+   void UpdateResourceUI()
+   {
+      if (resource2Holder == null) return;
+
+      for (int i = 0; i < resource2Units.Count; i++)
+      {
+         resource2Units[i].gameObject.SetActive(i <= resource2 - 1);
+      }
+   }
+
+   public void AddResource2(int count)
+   {
+      resource2 += count;
+      UpdateResourceUI();
    }
 }
