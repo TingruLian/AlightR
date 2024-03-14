@@ -13,7 +13,6 @@ public struct LocationUnit
    public SerializableLatLng position;
    public string name;
    public int sceneID;
-   public Sprite sprite;
    public GameObject child;
    public int levelId;
    public int preRequisiteLevelId;
@@ -36,9 +35,7 @@ public class LocationSpawnControl : MonoBehaviour
       foreach (LocationUnit unit in units)
       {
          GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
-         location.GetComponentInChildren<TextMeshProUGUI>().text = unit.name;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
-         location.GetComponentInChildren<Image>().sprite = unit.sprite;
          if (location.GetComponent<CompletionCheck>() != null) { location.GetComponent<CompletionCheck>().levelId = unit.preRequisiteLevelId; }
 
          if (unit.child != null)
