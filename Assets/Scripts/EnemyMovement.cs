@@ -1,42 +1,63 @@
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.Events;
-
 using DG.Tweening;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
+using Sequence = DG.Tweening.Sequence;
+
+public enum EnemyState
+{
+   nul,
+   spawn,
+   engage,
+   attack,
+   leave
+}
 
 public class EnemyMovement : MonoBehaviour
 {
    public static List<EnemyMovement> enemies;
 
+   [SerializeField]
+   protected EnemyState currentState;
+   protected EnemyState lastState;
+
    public GameObject target;
    public int life = 3;
+   [SerializeField]
+   protected int damage;
 
    public Attribute<float> speed = new Attribute<float>();
 
    [SerializeField]
+   protected UnityEvent onAttack;
+   [SerializeField]
    protected UnityEvent onHurt;
    [SerializeField]
    protected UnityEvent onDeath;
+
+   [SerializeField]
+   protected Animator animator;
 
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
 
    protected List<BaseEffect> effects = new List<BaseEffect>();
 
-   private bool win = false;
-   private bool moving = true;
 
+   private bool moving = true;
    private float lastUpdateTime;
 
 
    private void Awake()
    {
-      if (enemies == null)
-      {
-         enemies = new List<EnemyMovement>();
-      }
+      if (enemies == null){ enemies = new List<EnemyMovement>();}
       enemies.Add(this);
+
+      if(animator == null) { animator = GetComponent<Animator>(); }
+
+      ChangeState(EnemyState.spawn);
    }
 
    private void OnDisable()
@@ -67,39 +88,116 @@ public class EnemyMovement : MonoBehaviour
 
    void Update()
    {
-      if (!win)
-      {
-         FindTarget();
-      }
 
       ApplyEffects();
-
-      // the enmy reached the player, so play an attack animation and deal damage
-      if (Vector3.Distance(transform.position, target.transform.position) < 0.9f && _attackSequence == null)
-      {
-         moving = false;
-         if(GetComponentInChildren<Animator>()!=null) GetComponentInChildren<Animator>().Play("attack");
-         //the delay in this loop is based on animation
-         _attackSequence = DOTween.Sequence().AppendInterval(7f / 12f).AppendCallback(
-            () => {
-               target.GetComponent<Health>().TakeDamage(1);
-            })
-            .AppendInterval(1.25f - 7f / 12f).SetLoops(-1);
-
-      }
 
       float curTime = Time.time;
       float elapsedTime = curTime - lastUpdateTime;
       lastUpdateTime = curTime;
 
+      switch (currentState)
+      {
+         case EnemyState.spawn: ProcessSpawn(); break;
+         case EnemyState.engage: ProcessEngage(); break;
+         case EnemyState.attack: ProcessAttack(); break;
+         case EnemyState.leave: ProcessWin(); break;
+      }
+
       if (moving)
       {
          Vector3 curPos = gameObject.transform.position;
-
          Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
 
          transform.position += distTraveled;
          transform.LookAt(target.transform.position);
+      }
+
+
+   }
+
+   void ChangeState(EnemyState newState)
+   {
+      lastState = currentState;
+      currentState = newState;
+   }
+
+   void ProcessSpawn()
+   {
+      //On Enter
+      if(lastState != currentState)
+      {
+         lastState = currentState;
+         if (animator != null) animator.Play("spawn");
+      }
+
+      if(animator != null && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >=1)
+      {
+         ChangeState(EnemyState.engage);
+      }
+
+   }
+
+   void ProcessEngage()
+   {
+      moving = true;
+      //On Enter
+      if (lastState != currentState)
+      {
+         lastState = currentState;
+         if (animator != null) animator.Play("idle");
+      }
+
+      FindTarget();
+
+      // the enmy reached the player, so play an attack animation and deal damage
+      if (Vector3.Distance(transform.position, target.transform.position) < 0.9f)
+      {
+         ChangeState(EnemyState.attack); 
+      }
+   }
+
+   void ProcessAttack()
+   {
+      moving = false;
+
+      //On Enter
+      if (lastState != currentState)
+      {
+         lastState = currentState;
+
+         if (animator != null) animator.Play("attack");
+
+         //the delay in this loop is based on animation
+         _attackSequence = DOTween.Sequence().AppendInterval(7f / 12f)
+            .AppendCallback(() => {
+
+               target.GetComponent<Health>().TakeDamage(damage);
+               onAttack.Invoke();
+
+            })
+            .AppendInterval(1.25f - 7f / 12f).
+            AppendCallback(() => {
+
+               ChangeState(EnemyState.engage);
+               if (Vector3.Distance(transform.position, target.transform.position) < 0.9f) { ChangeState(EnemyState.attack); }
+
+            });
+      }
+   }
+
+   void ProcessWin()
+   {
+      moving = true;
+
+      //On Enter
+      if (lastState != currentState)
+      {
+         lastState = currentState;
+         if (animator != null) animator.Play("idle");
+
+         target = transform.parent.gameObject;
+         _attackSequence.Kill();
+
       }
    }
 
@@ -117,11 +215,7 @@ public class EnemyMovement : MonoBehaviour
 
    public void Win()
    {
-      win = true;
-      if (GetComponentInChildren<Animator>() != null) GetComponentInChildren<Animator>().Play("idle");
-      target = transform.parent.gameObject;
-      _attackSequence.Kill();
-      moving = true;
+      ChangeState(EnemyState.leave);
    }
 
 

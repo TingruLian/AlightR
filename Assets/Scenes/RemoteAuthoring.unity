@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: waveInformation
       value: Click the box to place turret
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: enemyUnits.Array.data[0]
+      value: 
+      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
     - target: {fileID: 7605552630093376973, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: m_Name
       value: Wave1
