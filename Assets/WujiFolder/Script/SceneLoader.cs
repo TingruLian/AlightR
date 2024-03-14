@@ -9,6 +9,12 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
+        //SceneManager.LoadScene(SceneId);
+        StartCoroutine(waitLoad());
+    }
+    IEnumerator waitLoad()
+    {
+        yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(SceneId);
     }
 }
