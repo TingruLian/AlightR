@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Cube
   - enemy
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Semantic
   - Water
   - UI
   - 
