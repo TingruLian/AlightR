@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
      if(resource2Holder !=null) { resource2Units = resource2Holder.transform.GetComponentsInChildren<Image>().ToList(); }
    }
 
-   void Start() {
+   private void Start() {
       UpdateResourceUI();
 
       resources = 20;
@@ -105,6 +105,19 @@ public class GameManager : MonoBehaviour {
 
       if(resources >= TURRET_COST) { onResourceEnough.Invoke(); }
       else { onResourceNotEnough.Invoke(); }
+   }
+
+   private void Update() {
+      if (EnemyMovement.enemies == null) {
+         return;
+      }
+
+      //Debug.Log("Forward vector");
+      //Debug.Log(Camera.main.transform.forward);
+
+      EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
+      foreach (EnemyMovement enemyController in enemies) {
+      }
    }
 
    public void ModifyResources(int mod) {
