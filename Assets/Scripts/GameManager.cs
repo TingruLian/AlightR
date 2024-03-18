@@ -10,19 +10,28 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour {
    public static GameManager instance { get; private set; }
-   [SerializeField]
-   protected int resource2 = 2;
-   protected List<LocationTurretPlacement> lpList = new List<LocationTurretPlacement>();
 
    public GameObject playerBook;
 
    [SerializeField]
+   protected int resource2 = 2;
+
+   [SerializeField]
    protected int LevelId;
 
-   public UnityEvent onResourceEnough;
-   public UnityEvent onResourceNotEnough;
-   public UnityEvent onInitialPlace;
-   public UnityEvent onCompletePlace;
+   protected List<LocationTurretPlacement> lpList = new List<LocationTurretPlacement>();
+
+   [SerializeField]
+   protected UnityEvent onResourceEnough;
+
+   [SerializeField]
+   protected UnityEvent onResourceNotEnough;
+
+   [SerializeField]
+   protected UnityEvent onInitialPlace;
+
+   [SerializeField]
+   protected UnityEvent onCompletePlace;
 
    [SerializeField]
    TMP_Text tmpResources;
@@ -43,9 +52,6 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    private float turretAttackRange;
-
-   [SerializeField]
-   private GameObject enemyContainer;
 
    [SerializeField]
    private GameScriptableObject GameData;
@@ -72,9 +78,7 @@ public class GameManager : MonoBehaviour {
 
    private bool lost = false;
 
-    //private int gameNum = 1;
-
-   // There should only be one turrent placeholder in the scene at a time
+   // There should only be one turret placeholder in the scene at a time
    private GameObject placeholderInstance;
 
    private const int TURRET_COST = 20;
@@ -170,7 +174,6 @@ public class GameManager : MonoBehaviour {
       ClearPlaceholderInstance();
 
       GameObject turretInstance = GameObject.Instantiate(turret, pos, Quaternion.identity).transform.GetChild(0).gameObject;
-      turretInstance.GetComponent<TurretBehavior>().enemyContainer = enemyContainer;
       turretInstance.GetComponent<TurretBehavior>().SetAttackRange(turretAttackRange);
 
       onCompletePlace.Invoke();
@@ -184,19 +187,15 @@ public class GameManager : MonoBehaviour {
       onPlayerLose.RemoveListener(act);
    }
 
-   public void AttemptWin()
-   {
-      if (lives > 0)
-      {
+   public void AttemptWin() {
+      if (lives > 0) {
          onPlayerWin.Invoke();
          GameData.completionState[LevelId] = true;
       }
    }
 
-   public bool RequestTurret(LocationTurretPlacement lp)
-   {
-      if(resource2 > 0)
-      { 
+   public bool RequestTurret(LocationTurretPlacement lp) {
+      if (resource2 > 0) { 
          lpList.Add(lp);
          resource2--;
          UpdateResourceUI();
@@ -204,10 +203,8 @@ public class GameManager : MonoBehaviour {
          return true;
       }
       
-      if(resource2 <= 0)
-      {
-         if(lpList.Count > 0)
-         {
+      if (resource2 <= 0) {
+         if (lpList.Count > 0) {
             lpList[0].RemoveTurret(true);
             return RequestTurret(lp);
          }
@@ -218,26 +215,24 @@ public class GameManager : MonoBehaviour {
       return true;
    }
 
-   public void FreeTurret(LocationTurretPlacement lp)
-   {
+   public void FreeTurret(LocationTurretPlacement lp) {
       lpList.Remove(lp);
       resource2++;
       UpdateResourceUI();
    }
 
 
-   void UpdateResourceUI()
-   {
-      if (resource2Holder == null) return;
+   void UpdateResourceUI() {
+      if (resource2Holder == null) {
+         return;
+      }
 
-      for (int i = 0; i < resource2Units.Count; i++)
-      {
+      for (int i = 0; i < resource2Units.Count; i++) {
          resource2Units[i].gameObject.SetActive(i <= resource2 - 1);
       }
    }
 
-   public void AddResource2(int count)
-   {
+   public void AddResource2(int count) {
       resource2 += count;
       UpdateResourceUI();
    }

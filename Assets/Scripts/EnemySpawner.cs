@@ -48,11 +48,6 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField]
    private GameObject enemy3;
 
-   // This is the parent GameObject for all spawned enemies. Should be either XR Origin or a child of it
-
-
-
-
    // This is the max distance from the target that enemies will spawn
    [SerializeField]
    private float maxRadius;
@@ -63,7 +58,6 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField]
    private float enemySpeed;
 
-
    private float spawnTime;
 
    private Vector3 spawnCenter;
@@ -71,9 +65,7 @@ public class EnemySpawner : MonoBehaviour
    private Vector3 sideAxis;
 
 
-   void Start()
-   {
-
+   void Start() {
       Vector3 targetPos = target.transform.position;
 
       forwardAxis = new Vector3(-6f, 0f, -1.9f).normalized;
@@ -91,76 +83,41 @@ public class EnemySpawner : MonoBehaviour
 
    }
 
-   void Update()
-   {
+   void Update() {
 
       //Update each ongoing waves
       //back ward iteration because waves might be removed in progress
-      for (int i = onGoingWaves.Count - 1; i >= 0; i--)
-      {
+      for (int i = onGoingWaves.Count - 1; i >= 0; i--) {
          Wave w = onGoingWaves[i];
-         if (!w.Validate()) { w.EndWave(); }
+
+         if (!w.Validate()) {
+            w.EndWave(); 
+         }
       }
 
 
       //If there's no wave, check if we shall start a new one, or end 
       if (onGoingWaves.Count == 0) {
 
-         waveId ++;
+         waveId++;
          
-         if(waveId < mainWaves.Count) {
+         if (waveId < mainWaves.Count) {
             mainWaves[waveId].StartWave(this);
-         }
-
-         else
-         {
+         } else {
             onGoingWaves = null;
             InvokeWaveInformation("All Waves Cleared");
 
             DOTween.Sequence().AppendInterval(2)
-            .AppendCallback(() =>
-            {
+            .AppendCallback(() => {
                GameManager.instance.AttemptWin();
             });
          }
       }
-
-
-
-      //---------------Legacy Spawn Code------------//
-      /*
-      if (Time.time > spawnTime && numEnemies < MAX_ENEMIES)
-      {
-          spawnTime = Time.time + spawnInterval;
-
-          float radius = Random.Range(0f, maxRadius);
-          float angle = Random.Range(0f, Mathf.PI * 2f);
-
-          //Debug.Log($"Selected radius: {radius}");
-          //Debug.Log($"Selected angle: {angle}");
-
-          float x = Mathf.Sin(angle) * radius;
-          float z = Mathf.Cos(angle) * radius;
-
-          spawnCenter = enemySpawn.transform.position;
-          Vector3 enemyPos = new Vector3(spawnCenter.x + x, spawnCenter.y, spawnCenter.z + z);
-
-          Vector3 targetPos = spawnCenter - forwardAxis * 20 + new Vector3(0f, 4f, 0f);
-
-          GameObject enemyInstance = GameObject.Instantiate(enemy, enemyPos, Quaternion.identity, parent.transform);
-
-          enemyInstance.GetComponent<EnemyMovement>().target = target;
-          enemyInstance.GetComponent<EnemyMovement>().speed.SetBaseValue(enemySpeed);
-
-          numEnemies++;
-      }*/
-
    }
 
 
    // This method spawns different colored enemies to help visualize the axes
-   void SpawnDirectionIndicators()
-   {
+   void SpawnDirectionIndicators() {
       spawnCenter = enemySpawnLocation[0].transform.position;
 
       Vector3 enemyPos = spawnCenter;
@@ -179,8 +136,7 @@ public class EnemySpawner : MonoBehaviour
       GameObject.Instantiate(enemy2, enemyPos, Quaternion.identity, parent.transform);
    }
 
-   public void InvokeWaveInformation(string data)
-   {
+   public void InvokeWaveInformation(string data) {
       waveInfo.gameObject.SetActive(true);
 
       //make visiable
@@ -192,11 +148,19 @@ public class EnemySpawner : MonoBehaviour
       waveInfo.DOFade(0, 0.5f).SetDelay(2f).OnComplete(() => { waveInfo.gameObject.SetActive(false); });
    }
 
-   public GameObject GetParent() { return parent; }
+   public GameObject GetParent() {
+      return parent;
+   }
 
-   public GameObject GetTarget() { return target; }
+   public GameObject GetTarget() {
+      return target;
+   }
 
-   public GameObject GetSpwanLocation(EnemySpawnLocation point) { return enemySpawnLocation[(int)point]; }
+   public GameObject GetSpwanLocation(EnemySpawnLocation point) {
+      return enemySpawnLocation[(int)point];
+   }
 
-   public List<Wave> GetOnGoingWaves() { return onGoingWaves; }
+   public List<Wave> GetOnGoingWaves() {
+      return onGoingWaves;
+   }
 }
