@@ -7,16 +7,19 @@ using System.Transactions;
 
 /// <summary>
 /// We spawn enemies in the unit of waves
-/// so the difficulty could be more fexible
+/// so the difficulty could be more flexible
 /// </summary>
 /// 
-public class Wave : MonoBehaviour
-{
+public class Wave : MonoBehaviour {
    [SerializeField]
    public GameObject testGameObject;
-   [SerializeField]protected string waveInformation;
+
+   [SerializeField]
+   protected string waveInformation;
+
    [Tooltip("The delay after last wave, or from start if this is the first wave")]
-   [SerializeField] protected float delay;
+   [SerializeField]
+   protected float delay;
 
    [SerializeField] protected List<GameObject> enemyUnits;
    [SerializeField] protected EnemySpawnLocation spawnLocation;
@@ -35,8 +38,7 @@ public class Wave : MonoBehaviour
 
    protected bool started = false;
 
-   public void StartWave(EnemySpawner spawner)
-   {
+   public void StartWave(EnemySpawner spawner) {
       spawner.GetOnGoingWaves().Add(this);
       onWaveCleared.AddListener(() => { spawner.GetOnGoingWaves().Remove(this); });
 
@@ -46,13 +48,11 @@ public class Wave : MonoBehaviour
       //The Delay
       DOTween.Sequence().AppendInterval(delay).
       //The Content
-      AppendCallback(() =>
-      {
+      AppendCallback(() => {
          spawner.InvokeWaveInformation(waveInformation);
          onWaveBegin.Invoke();
 
-         for (int i = 0; i < enemyCount; i++)
-         {
+         for (int i = 0; i < enemyCount; i++) {
             EnemyMovement spawnedEnemy;
             int id = i;
 
@@ -69,8 +69,7 @@ public class Wave : MonoBehaviour
             });
          }
 
-         for (int i = 0; i < childWaves.Count; i++)
-         {
+         for (int i = 0; i < childWaves.Count; i++) {
             childWaves[i].StartWave(spawner);
          }
 
@@ -84,8 +83,7 @@ public class Wave : MonoBehaviour
    /// </summary>
    /// <returns></returns>
 
-   public EnemyMovement SpawnAnEnemy(EnemySpawner spawner)
-   {
+   public EnemyMovement SpawnAnEnemy(EnemySpawner spawner) {
       float radius = Random.Range(0f, maxRadius);
       float angle = Random.Range(0f, Mathf.PI * 2f);
 
@@ -108,8 +106,7 @@ public class Wave : MonoBehaviour
    /// Stop the wave
    /// </summary>
    /// <returns></returns>
-   public void EndWave()
-   {
+   public void EndWave() {
       onWaveCleared.Invoke();
       started = false;
    }
@@ -119,15 +116,15 @@ public class Wave : MonoBehaviour
    /// Return false if this wave is ended
    /// </summary>
    /// <returns></returns>
-   public bool Validate()
-   {
-      if (!started) return false;
+   public bool Validate() {
+      if (!started) {
+         return false;
+      }
 
       //if started, check if finished spawning plus all enemy killed
       bool result = !(generatedCount == enemyCount && currentEnemies.Count == 0);
 
       return result;
-
    }
 
 }

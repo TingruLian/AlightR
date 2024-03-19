@@ -15,7 +15,6 @@ public class TurretBehavior : MonoBehaviour, Health {
 
    private static float ANGULAR_RANGE = 50.0f;
 
-   public GameObject enemyContainer;
    public float attackInterval = .5f;
    public float bulletSpeed = 5.0f;
    public Type type { get; private set; }
@@ -132,7 +131,6 @@ public class TurretBehavior : MonoBehaviour, Health {
 
       Vector3 turretPos = gameObject.transform.position;
 
-      //EnemyMovement[] enemies = enemyContainer.GetComponentsInChildren<EnemyMovement>();
       if (EnemyMovement.enemies == null) {
          return;
       }
