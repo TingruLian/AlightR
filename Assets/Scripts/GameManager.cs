@@ -8,9 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Playables;
+using UnityEditor.ShaderGraph;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour {
    public static GameManager instance { get; private set; }
+
+   [SerializeField]
+   SemanticColorControl colorControl;
 
    public GameObject playerBook;
 
@@ -84,11 +89,13 @@ public class GameManager : MonoBehaviour {
 
    private const int TURRET_COST = 20;
    protected Tween _shakeTween;
-
    private void Awake() {
-     if (instance != null && instance != this) {
-        Destroy(this);
-     } else {
+      if (colorControl == null) { colorControl = SemanticColorControl.GetInstance(); }
+      if (colorControl !=null) { colorControl.Initialize(); colorControl.SetToStartColor(); }
+
+      if (instance != null && instance != this) {
+         Destroy(this);
+      } else {
         instance = this;
      }
 
@@ -111,6 +118,9 @@ public class GameManager : MonoBehaviour {
    }
 
    private void Update() {
+
+      if (colorControl != null) { colorControl.UpdateLoop(); }
+
       if (EnemyMovement.enemies == null) {
          return;
       }

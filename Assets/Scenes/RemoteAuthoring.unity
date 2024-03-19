@@ -7497,6 +7497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825d18c38acc874d9700380ff88a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorControl: {fileID: 0}
   playerBook: {fileID: 4297029158441339240}
   resource2: 2
   LevelId: 0
@@ -7997,6 +7998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474a2bf9fcfa88048a6ee1a34d6c2e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorControl: {fileID: 0}
   mainWaves:
   - {fileID: 1420872325}
   - {fileID: 111644402}
@@ -8014,12 +8016,6 @@ MonoBehaviour:
   maxRadius: 4
   spawnInterval: 2
   enemySpeed: 1.5
-  colorOfWaves:
-  - {r: 1, g: 0.42452818, b: 0.42452818, a: 0.79607844}
-  - {r: 0.8553459, g: 0.15331663, b: 0.15331663, a: 0.85490197}
-  - {r: 0.6603774, g: 0.07268297, b: 0.07268297, a: 0.96862745}
-  vicColor: {r: 0, g: 0, b: 0, a: 0}
-  semanticMat: {fileID: 2100000, guid: c7d73ea9886434c23b45bd97eadc9525, type: 2}
 --- !u!222 &6006223267842019581
 CanvasRenderer:
   m_ObjectHideFlags: 0

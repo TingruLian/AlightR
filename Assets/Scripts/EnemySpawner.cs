@@ -6,6 +6,7 @@ using System;
 using Random = UnityEngine.Random;
 using TMPro;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 
 public enum EnemySpawnLocation
 {
@@ -15,6 +16,9 @@ public enum EnemySpawnLocation
 
 public class EnemySpawner : MonoBehaviour
 {
+   [SerializeField]
+   SemanticColorControl colorControl;
+
    [SerializeField]
    protected List<Wave> mainWaves;
    [SerializeField]
@@ -58,23 +62,17 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField]
    private float enemySpeed;
 
-   [SerializeField]
-   protected List<Color> colorOfWaves;
-
-   [SerializeField]
-   protected Color vicColor;
-
-   protected Color currentColor;
-
-   [SerializeField]
-   protected Material semanticMat;
-
    private float spawnTime;
 
    private Vector3 spawnCenter;
    private Vector3 forwardAxis;
    private Vector3 sideAxis;
 
+
+   private void Awake()
+   {
+      if (colorControl == null) { colorControl = SemanticColorControl.GetInstance(); }
+   }
 
    void Start() {
       Vector3 targetPos = target.transform.position;
@@ -91,12 +89,10 @@ public class EnemySpawner : MonoBehaviour
       onGoingWaves = new List<Wave>();
       waveId = 0;
       mainWaves[waveId].StartWave(this);
-      TweenColor(colorOfWaves[waveId]);
+      if (colorControl != null) { colorControl.SetToWaveColor(waveId);}
    }
 
    void Update() {
-
-      semanticMat.SetColor("_Color", currentColor);
 
       //Update each ongoing waves
       //back ward iteration because waves might be removed in progress
@@ -116,11 +112,12 @@ public class EnemySpawner : MonoBehaviour
          
          if (waveId < mainWaves.Count) {
             mainWaves[waveId].StartWave(this);
-            TweenColor(colorOfWaves[waveId]);
+            if (colorControl != null) { colorControl.SetToWaveColor(waveId); }
+
          } else {
             onGoingWaves = null;
             InvokeWaveInformation("All Waves Cleared");
-            TweenColor(vicColor);
+            if (colorControl != null) { colorControl.SetToVicColor(); }
 
             DOTween.Sequence().AppendInterval(2)
             .AppendCallback(() => {
@@ -130,10 +127,6 @@ public class EnemySpawner : MonoBehaviour
       }
    }
 
-   public void TweenColor(Color c)
-   {
-      DOTween.To(()=>currentColor, x=> currentColor=x,c,1f);
-   }
 
    // This method spawns different colored enemies to help visualize the axes
    void SpawnDirectionIndicators() {
