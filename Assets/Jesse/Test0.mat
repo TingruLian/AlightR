@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _OutlineArea: 0.0408
+    - _OutlineArea: 0.0629
     - _OutlineStrength: 0
     m_Colors:
     - _MainColor: {r: 0.325, g: 0.325, b: 0.325, a: 0}
