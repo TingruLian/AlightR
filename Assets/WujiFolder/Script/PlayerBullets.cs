@@ -21,7 +21,7 @@ public class PlayerBullets : BulletBehavior {
 
     private void OnTriggerEnter(Collider other) {
         if(other.GetComponent<EnemyMovement>() != null) {
-            other.GetComponent<EnemyMovement>().TakeDamage();
+            other.GetComponent<EnemyMovement>().TakeDamage(1);
             Destroy(gameObject);
         }
     }

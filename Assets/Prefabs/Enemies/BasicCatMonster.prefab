@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   target: {fileID: 0}
-  life: 4
+  life: 7
   damage: 1
   onAttack:
     m_PersistentCalls:
@@ -156,6 +156,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   animator: {fileID: 3787408004499111592}
+  slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0

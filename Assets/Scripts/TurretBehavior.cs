@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -87,8 +88,9 @@ public class TurretBehavior : MonoBehaviour, Health {
 
          if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime  < (Time.time - .5f)) {
             // rotate the turret 90 degrees to the right
-            transform.rotation = Quaternion.LookRotation(transform.right);
-            attackDir = transform.forward;
+            transform.DORotateQuaternion(Quaternion.LookRotation(transform.right), 0.5f)
+            .OnComplete(() => { attackDir = transform.forward; }); 
+
 
             lastRotateTime = Time.time;
          }
@@ -185,6 +187,7 @@ public class TurretBehavior : MonoBehaviour, Health {
 
       transform.rotation = Quaternion.LookRotation(newDir);
    }
+
 
    private void FireBullet(int anchorID) {
       GameObject bullet = GameObject.Instantiate(bulletPrefab, shootAnchor[anchorID].position, Quaternion.identity);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseEffect {
+public abstract class BaseEffect:MonoBehaviour {
 
    protected float startTime;
    protected float duration;

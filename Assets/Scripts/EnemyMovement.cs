@@ -37,8 +37,12 @@ public class EnemyMovement : MonoBehaviour
    [SerializeField]
    protected UnityEvent onDeath;
 
+
    [SerializeField]
    protected Animator animator;
+
+   [SerializeField]
+   public GameObject slownDecoration;
 
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
@@ -201,9 +205,9 @@ public class EnemyMovement : MonoBehaviour
       }
    }
 
-   public void TakeDamage()
+   public void TakeDamage(int dmg)
    {
-      life--;
+      life -= dmg;
       onHurt.Invoke();
 
       if (life <= 0)

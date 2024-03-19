@@ -11,10 +11,17 @@ public struct bulletForce {
    public float forceLife;
 }
 
+public enum BulletType
+{
+   straight,
+   tracking
+}
+
 public class BulletBehavior : MonoBehaviour {
 
    public UnityEvent onFadeOut;
-
+   [SerializeField] protected int dmg = 1;
+   [SerializeField] protected BulletType bulletType;
    protected TurretBehavior.Type damageType;
    protected float speed;
    protected float fadeTime = 0.5f;
@@ -52,7 +59,7 @@ public class BulletBehavior : MonoBehaviour {
 
             if (closestDist < .5f) {
                EnemyMovement enemy = target.GetComponent<EnemyMovement>();
-               enemy.TakeDamage();
+               enemy.TakeDamage(dmg);
 
                switch (damageType) {
                   case TurretBehavior.Type.FLYING_TURRET:
@@ -64,12 +71,14 @@ public class BulletBehavior : MonoBehaviour {
                }
 
                Destroy(gameObject);
+               target = null;
+               return;
             }
 
-            target = null;
-            return;
          }
-      } else {
+      } 
+      else 
+      {
          //This will only be called on the first frame of fade out
          if (selfDestruct == null) {
                onFadeOut.Invoke();
@@ -82,9 +91,26 @@ public class BulletBehavior : MonoBehaviour {
          }
       }
 
-      transform.position += transform.forward * speed * Time.deltaTime;
+      ProcessMovement();
 
       //ProcessForce();
+   }
+
+   void ProcessMovement()
+   {
+      switch (bulletType)
+      {
+         case BulletType.straight:
+            transform.position += transform.forward * speed * Time.deltaTime;
+         break;
+
+         case BulletType.tracking:
+            transform.LookAt(target.transform.position);
+            transform.position += transform.forward * speed * Time.deltaTime;
+         break;
+
+      }
+      
    }
 
    // find the point on the line in direction dir going through src that is closest to target

@@ -4527,6 +4527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46db57310a8e7e4db002033aa0827d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotating: 0
+  rotationSpeed: 60
   shakeStrength: 0.25
 --- !u!4 &609491017911842818 stripped
 Transform:
@@ -4674,9 +4676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyContainer: {fileID: 0}
-  attackInterval: 0.4
+  attackInterval: 1
   bulletSpeed: 8
-  health: 5
+  health: 10
   onHurt:
     m_PersistentCalls:
       m_Calls: []

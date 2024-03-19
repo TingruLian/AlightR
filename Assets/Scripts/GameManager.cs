@@ -7,6 +7,7 @@ using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour {
    public static GameManager instance { get; private set; }
@@ -95,6 +96,8 @@ public class GameManager : MonoBehaviour {
 
       resources = 20;
       lives = 10;
+
+      GameData.bookHP = lives;
 
       uiResources = new UIField("Resources", tmpResources, resources.ToString());
       uiLives = new UIField("Lives", tmpLives, GameData.bookHP.ToString());
@@ -232,7 +235,23 @@ public class GameManager : MonoBehaviour {
 
       for (int i = 0; i < resource2Units.Count; i++)
       {
-         resource2Units[i].gameObject.SetActive(i <= resource2 - 1);
+         bool condition = i <= resource2 - 1;
+         GameObject obj = resource2Units[i].gameObject;
+
+         //Case activate
+         if(condition && !obj.activeSelf)
+         {
+            obj.transform.localScale = Vector3.one;
+            obj.SetActive(true);
+            obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic);
+         }
+
+         //Case deactivate
+         if (!condition && obj.activeSelf)
+         {
+            obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic)
+               .OnComplete(() => { obj.SetActive(false); obj.transform.localScale = Vector3.one; });
+         }
       }
    }
 
