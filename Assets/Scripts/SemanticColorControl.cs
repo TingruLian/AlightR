@@ -30,6 +30,7 @@ public class SemanticColorControl : ScriptableObject
    [SerializeField]
    protected List<ColorGroup> colorOfWaves;
 
+   [SerializeField]
    protected ColorGroup currentColor;
 
 

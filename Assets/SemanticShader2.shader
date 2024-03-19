@@ -6,11 +6,13 @@ Shader "Unlit/SemanticShader2"
         _SemanticTex("_SemanticTex", 2D) = "red" {}
         _Color("_Color", Color) = (1,1,1,1)
         _Color2("_Color2", Color) = (1,1,1,1) 
+        _BlendRate("_BlendRate", Range(0.0, 1.0)) = 0.1
     }
     SubShader
     {
         Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
-        Blend SrcAlpha OneMinusSrcAlpha
+        BlendOp RevSub, Add
+        Blend OneMinusDstColor OneMinusSrcColor, SrcAlpha Zero
         // No culling or depth
         Cull Off ZWrite Off ZTest Always
         Pass
@@ -53,16 +55,27 @@ Shader "Unlit/SemanticShader2"
             sampler2D _SemanticTex;
             fixed4 _Color;
             fixed4 _Color2;
+            float _BlendRate;
 
             fixed4 frag(v2f i) : SV_Target
             {
                 //convert coordinate space
                 float2 semanticUV = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y / i.texcoord.z);
+                float2 semanticUVleft = float2(i.texcoord.x + _BlendRate / i.texcoord.z, i.texcoord.y / i.texcoord.z);
+                float2 semanticUVright = float2(i.texcoord.x - _BlendRate / i.texcoord.z, i.texcoord.y / i.texcoord.z);
+                float2 semanticUVtop = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y + _BlendRate / i.texcoord.z);
+                float2 semanticUVbottom = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y - _BlendRate / i.texcoord.z);
 
                 float4 semanticCol = tex2D(_SemanticTex, semanticUV);
+                float4 semanticColleft = tex2D(_SemanticTex, semanticUVleft);
+                float4 semanticColright = tex2D(_SemanticTex, semanticUVright);
+                float4 semanticColtop = tex2D(_SemanticTex, semanticUVtop);
+                float4 semanticColbottom = tex2D(_SemanticTex, semanticUVbottom);
+
+                float4 finalColor = (semanticColleft + semanticCol + semanticColright + semanticColtop + semanticColbottom) / 5.0;
    
-                float scaler = semanticCol.r;
-                return float4(_Color.r * scaler + _Color2.r * (1.0 - scaler)
+                fixed scaler = finalColor.r;
+                return fixed4(_Color.r * scaler + _Color2.r * (1.0 - scaler)
                            , _Color.g * scaler + _Color2.g * (1.0 - scaler)
                            ,_Color.b * scaler + _Color2.b * (1.0 - scaler)
                            ,_Color.a * scaler + _Color2.a * (1.0 - scaler));
