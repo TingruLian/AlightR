@@ -53,7 +53,7 @@ public class SemanticQuerying : MonoBehaviour
             Matrix4x4 cameraMatrix = args.displayMatrix ?? Matrix4x4.identity;
             _image.material = _material;
             _image.material.SetTexture("_SemanticTex", texture);
-            _image.material.SetMatrix("_DisplayMatrix", mat);
+            _image.material.SetMatrix("_SemanticMat", mat);
         }
     }
 
