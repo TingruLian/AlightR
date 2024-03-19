@@ -3879,6 +3879,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: enemyCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: waveInformation
       value: Click turrets again to rotate them
       objectReference: {fileID: 0}
@@ -8010,6 +8014,12 @@ MonoBehaviour:
   maxRadius: 4
   spawnInterval: 2
   enemySpeed: 1.5
+  colorOfWaves:
+  - {r: 1, g: 0.42452818, b: 0.42452818, a: 0.79607844}
+  - {r: 0.8553459, g: 0.15331663, b: 0.15331663, a: 0.85490197}
+  - {r: 0.6603774, g: 0.07268297, b: 0.07268297, a: 0.96862745}
+  vicColor: {r: 0, g: 0, b: 0, a: 0}
+  semanticMat: {fileID: 2100000, guid: c7d73ea9886434c23b45bd97eadc9525, type: 2}
 --- !u!222 &6006223267842019581
 CanvasRenderer:
   m_ObjectHideFlags: 0
