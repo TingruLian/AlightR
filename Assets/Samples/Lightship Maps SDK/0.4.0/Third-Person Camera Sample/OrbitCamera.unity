@@ -259,6 +259,14 @@ MonoBehaviour:
     child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
     levelId: 1
     preRequisiteLevelId: 0
+  - position:
+      _latitude: 40.42777102040694
+      _longitude: -79.96183004075002
+    name: HotMetal2
+    sceneID: 3
+    child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
+    levelId: 3
+    preRequisiteLevelId: 0
   GameData: {fileID: 0}
 --- !u!114 &364664875
 MonoBehaviour:

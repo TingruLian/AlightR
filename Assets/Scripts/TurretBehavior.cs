@@ -85,7 +85,7 @@ public class TurretBehavior : MonoBehaviour, Health {
       Utils.OnPress((Vector2 position, Ray ray) => {
          RaycastHit hit;
 
-         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime  < (Time.time - .5f)) {
+         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime  < (Time.time - .25f)) {
             // rotate the turret 90 degrees to the right
             transform.DORotateQuaternion(Quaternion.LookRotation(transform.right), 0.5f)
             .OnComplete(() => { attackDir = transform.forward; }); 

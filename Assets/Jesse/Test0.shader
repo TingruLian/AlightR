@@ -100,7 +100,7 @@ Shader "Custom/Test0"
  
                 fixed3 diffuse = _LightColor0.rgb * _MainColor.rgb *
                     (dot(worldLight, worldNormal) * 0.5 + 0.5);
-                return fixed4(ambient + diffuse, 1);
+                return fixed4(_MainColor.rgb, 1);
             }
             ENDCG
         }
