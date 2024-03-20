@@ -4898,11 +4898,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatTurret_Icon
       objectReference: {fileID: 0}
+    - target: {fileID: 3978484998450651781, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 3978484998450651781, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 3978484998450651781, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 3978484998450651781, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3185900322735293264, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3980048323800567510}
   m_SourcePrefab: {fileID: 100100000, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+--- !u!1 &6205188916858720511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3185900322735293264, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}
+  m_PrefabInstance: {fileID: 8803364123808011183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3980048323800567510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205188916858720511}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &6725724571866909253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2845509542685497834, guid: 2d7b79cf341e713489e2d15b1514fa70, type: 3}

@@ -1794,15 +1794,15 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9137045964338452386, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 3755006957491736109, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: -3056515057758256027, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 5561349426305759274, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 2100000, guid: 5fd034a66f3e0d44f9556ae3a7123b67, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
-  - {fileID: -7739755765750798344, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4017,15 +4017,15 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -9137045964338452386, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 3755006957491736109, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: -3056515057758256027, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 5561349426305759274, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
-  - {fileID: 2100000, guid: 5fd034a66f3e0d44f9556ae3a7123b67, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
-  - {fileID: -7739755765750798344, guid: dd46184f029f96440aed79936e3dc1bd, type: 3}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+  - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   - {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4944,6 +4944,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9219984405844020873}
     m_Modifications:
+    - target: {fileID: 1329989640627056194, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 7001633066236659291, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      propertyPath: m_Materials.Array.data[8]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
     - target: {fileID: 7080701679204925252, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
       propertyPath: m_Name
       value: DeckTurret_Icon
@@ -5013,8 +5041,34 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7568409150312752638, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
       insertIndex: 4
       addedObject: {fileID: 3464834593580120816}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7080701679204925252, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7276329525241826648}
   m_SourcePrefab: {fileID: 100100000, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+--- !u!1 &6088957566675001509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7080701679204925252, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
+  m_PrefabInstance: {fileID: 3946250638049042401}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7276329525241826648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088957566675001509}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.32704395, g: 0.32704395, b: 0.32704395, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &6902753833146350111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7568409150312752638, guid: a68c4c0c07e09ba4eab5dd08c667d31e, type: 3}
