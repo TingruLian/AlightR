@@ -3267,7 +3267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 98241d07739c834418ce1f3adb73c65a, type: 3}
       propertyPath: enemyCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 98241d07739c834418ce1f3adb73c65a, type: 3}
       propertyPath: spawnInterval
