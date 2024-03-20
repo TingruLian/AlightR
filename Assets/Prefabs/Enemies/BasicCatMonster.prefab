@@ -157,6 +157,7 @@ MonoBehaviour:
         m_CallState: 2
   animator: {fileID: 3787408004499111592}
   slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  offscreenIndicator: {fileID: 8765456675505582657}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -817,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0bed29282ad5947a06066a310ded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7576303598723563112}
+  enemy: {fileID: 7861293195921842435}
 --- !u!4 &7093098322589525202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6111166383604038590, guid: 4376259732021814cbdfe30192759f4e, type: 3}

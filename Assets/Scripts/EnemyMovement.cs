@@ -14,8 +14,7 @@ public enum EnemyState {
    leave
 }
 
-public class EnemyMovement : MonoBehaviour
-{
+public class EnemyMovement : MonoBehaviour {
    public static List<EnemyMovement> enemies;
 
    [SerializeField]
@@ -42,6 +41,13 @@ public class EnemyMovement : MonoBehaviour
 
    [SerializeField]
    public GameObject slownDecoration;
+
+   [SerializeField]
+   protected OffscreenPositionIndicator offscreenIndicator;
+
+   protected GameObject uiCanvas;
+   protected GameObject indicatorUIPrefab;
+   protected GameObject indicatorUI = null;
 
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
@@ -70,6 +76,8 @@ public class EnemyMovement : MonoBehaviour
    }
 
    private void OnDestroy() {
+      Destroy(indicatorUI);
+
       enemies.Remove(this);
       onDeath.Invoke();
 
@@ -83,6 +91,8 @@ public class EnemyMovement : MonoBehaviour
    }
 
    void Start() {
+      InitOffscreenIndicator();
+
       lastUpdateTime = Time.time;
       if (GetComponentInChildren<Animator>() != null) {
          GetComponentInChildren<Animator>().Play("idle");
@@ -117,7 +127,62 @@ public class EnemyMovement : MonoBehaviour
 
          transform.position += distTraveled;
          transform.LookAt(target.transform.position);
+
+         UpdateOffscreenIndicator();
       }
+
+      // the offscreen indicator should be visible when the enemy itself is not visible
+      indicatorUI.SetActive(!offscreenIndicator.IsVisible());
+   }
+
+   void InitOffscreenIndicator() {
+      Debug.LogError("GUESS WHAT? IT'S GETTING INITIIALIZED!!!");
+      if (indicatorUI == null) {
+         GameManager gm = GameManager.instance;
+
+         indicatorUIPrefab = gm.enemyIndicator;
+         uiCanvas = gm.uiCanvas;
+
+         indicatorUI = Instantiate(indicatorUIPrefab, uiCanvas.transform);
+         indicatorUI.transform.localScale = new Vector3(.5f, .5f, 1f);
+      }
+   }
+
+   void UpdateOffscreenIndicator() {
+      Vector2 screenPos = GetRelativeScreenPos();
+
+      // TODO: Do a better job of mapping 3d game units to onscreen pixels
+      indicatorUI.transform.position = new Vector2(540, 960) + (screenPos * 125);
+   }
+
+   Vector2 GetRelativeScreenPos() {
+      Transform cam = GameManager.instance.arCamera.transform;
+
+      Vector3 objPosition = transform.position - cam.transform.position;
+
+      Vector3 projectedPoint = Vector3.ProjectOnPlane(objPosition, cam.forward);
+
+      Vector3 upVec = Vector3.Project(projectedPoint, cam.up);
+      Vector3 rightVec = Vector3.Project(projectedPoint, cam.right);
+
+      float upCoord = upVec.x / cam.up.x;
+      float rightCoord = rightVec.x / cam.right.x;
+
+      upCoord = CapNumber(upCoord, -960f / 125f, 960f / 125f);
+      rightCoord = CapNumber(rightCoord, -540f / 125f, 540f / 125f);
+
+      return new Vector2(rightCoord, upCoord);
+   }
+
+   float CapNumber(float val, float min, float max) {
+      if (val < min) {
+         return min;
+      }
+      if (val > max) {
+         return max;
+      }
+
+      return val;
    }
 
    void ChangeState(EnemyState newState) {
