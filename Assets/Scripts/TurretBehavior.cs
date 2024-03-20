@@ -42,6 +42,11 @@ public class TurretBehavior : MonoBehaviour, Health {
    private float attackTime;
    private float lastRotateTime;
 
+   //user rotation parameters
+   protected float rotationMutiplier = 5f;
+   protected bool userHodling = false;
+   protected Vector2 lastHoldPosition;
+
    public void Init(Type type, float attackRange) {
       this.type = type;
       sqrRange = Mathf.Pow(attackRange, 2f);
@@ -81,20 +86,51 @@ public class TurretBehavior : MonoBehaviour, Health {
          AttackTarget(target);
       }
 
+      ProcessUserRotation();
+
+   }
+
+   void ProcessUserRotation()
+   {
       // let the user rotate the turret by clicking on it
       Utils.OnPress((Vector2 position, Ray ray) => {
          RaycastHit hit;
 
-         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime  < (Time.time - .25f)) {
-            // rotate the turret 90 degrees to the right
-            transform.DORotateQuaternion(Quaternion.LookRotation(transform.right), 0.5f)
-            .OnComplete(() => { attackDir = transform.forward; }); 
+         //if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f) && lastRotateTime < (Time.time - .25f))
+         //{
+         //   // rotate the turret 90 degrees to the right
+         //   transform.DORotateQuaternion(Quaternion.LookRotation(transform.right), 0.5f)
+         //   .OnComplete(() => { attackDir = transform.forward; });
 
 
-            lastRotateTime = Time.time;
+         //   lastRotateTime = Time.time;
+         //}
+         if (GetComponent<SphereCollider>().Raycast(ray, out hit, 100.0f))
+         {
+            userHodling = true;
+            lastHoldPosition = position;
          }
+
+      });
+
+      if(!userHodling) return; 
+
+
+      Utils.OnHold((Vector2 position, Ray ray) =>
+      {
+         transform.Rotate(new Vector3(0, (lastHoldPosition.x-position.x) * rotationMutiplier * Time.deltaTime, 0));
+         attackDir = transform.forward;
+         lastHoldPosition = position;
+
+      });
+
+
+      Utils.OnRelease((Vector2 position, Ray ray) =>
+      {
+         userHodling = false;
       });
    }
+
 
    public void SetAttackRange(float attackRange) {
       sqrRange = Mathf.Pow(attackRange, 2f);
