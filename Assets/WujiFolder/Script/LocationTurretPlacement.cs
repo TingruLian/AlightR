@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LocationTurretPlacement : MonoBehaviour {
 
@@ -18,6 +20,20 @@ public class LocationTurretPlacement : MonoBehaviour {
 
    private GameObject currentTurret;
 
+   [SerializeField]
+   private Image CDBar;
+   [SerializeField]
+   private GameObject CDBarContainer;
+
+   [SerializeField]
+   private float manualCD = 3f;
+   [SerializeField]
+   private float destroyedCD = 6f;
+
+   private void Awake()
+   {
+      CDBarContainer.SetActive(false);
+   }
 
    public void SpawnTurret() {
 
@@ -42,7 +58,21 @@ public class LocationTurretPlacement : MonoBehaviour {
       
       GameManager.instance.FreeTurret(this);
       Destroy(currentTurret);
-      currentTurret = null; 
-      button.SetActive(true);
+      currentTurret = null;
+
+
+      CDBarContainer.SetActive(true);
+
+      float cd = 0;
+      if(byPlayer ) { cd = manualCD; }
+      else { cd = destroyedCD; }
+
+      CDBar.DOFillAmount(0, cd).From(1).OnComplete(() =>
+      {
+         CDBarContainer.SetActive(false);
+         button.SetActive(true);
+      });
+
+
    }
 }
