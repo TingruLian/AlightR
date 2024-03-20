@@ -1811,6 +1811,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4549282895211651774}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -2544,6 +2548,10 @@ PrefabInstance:
       propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4549282895211651774}
     - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
