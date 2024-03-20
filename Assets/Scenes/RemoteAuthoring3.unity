@@ -1559,6 +1559,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8575050641027031436, guid: 33a4497195b3c704a99389f083d7fd53, type: 3}
   m_PrefabInstance: {fileID: 828551416}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &837342360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7103764982930216294, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878319923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,7 +5091,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825d18c38acc874d9700380ff88a1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorControl: {fileID: 0}
   playerBook: {fileID: 4297029158441339240}
+  enemyIndicator: {fileID: 6297871754265139022, guid: c6ee731a17d181940a217be108050b22, type: 3}
+  uiCanvas: {fileID: 837342360}
+  arCamera: {fileID: 639467369}
   resource2: 2
   LevelId: 1
   onResourceEnough:
