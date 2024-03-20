@@ -8,29 +8,49 @@ public class VisibilityChecker : MonoBehaviour {
    protected GameObject enemyIndicator;
    protected GameObject uiCanvas;
 
-   void Start() {
-      Debug.LogError("STARTED VISIBILITY CHECKER");
+   GameObject indicator = null;
 
+   void Start() {
       GameManager gm = GameManager.instance;
 
       enemyIndicator = gm.enemyIndicator;
       uiCanvas = gm.uiCanvas;
+
+      indicator = Instantiate(enemyIndicator, uiCanvas.transform);
+      indicator.transform.localScale = new Vector3(.5f, .5f, 1f);
    }
 
    void Update() {
+      Vector2 screenPos = GetRelativeScreenPos();
 
+      // TODO: Do a better job of mapping 3d game units to onscreen pixels
+      GetIndicator().transform.position = new Vector2(540, 960) + (screenPos * 125);
    }
 
    void OnBecameVisible() {
-      Debug.LogError("VISIBLE");
+      indicator.SetActive(false);
+   }
 
+   void OnBecameInvisible() {
+      indicator.SetActive(true);
+      indicator.transform.position = new Vector2(540, 960) + (GetRelativeScreenPos() * 125);
+   }
+
+   GameObject GetIndicator() {
+      if (indicator == null) {
+         indicator = Instantiate(enemyIndicator, uiCanvas.transform);
+         indicator.transform.localScale = new Vector3(.5f, .5f, 1f);
+      }
+
+      return indicator;
+   }
+
+   Vector2 GetRelativeScreenPos() {
       Transform cam = GameManager.instance.arCamera.transform;
 
-      Debug.Log($"Posiiton: {transform.position}");
-      Debug.Log($"Camera normal: {cam.forward}");
+      Vector3 objPosition = prefab.transform.position - cam.transform.position;
 
-      Vector3 projectedPoint = Vector3.ProjectOnPlane(prefab.transform.position, cam.forward);
-      Debug.Log($"Projected point of spawned enemy: {projectedPoint}");
+      Vector3 projectedPoint = Vector3.ProjectOnPlane(objPosition, cam.forward);
 
       Vector3 upVec = Vector3.Project(projectedPoint, cam.up);
       Vector3 rightVec = Vector3.Project(projectedPoint, cam.right);
@@ -38,24 +58,20 @@ public class VisibilityChecker : MonoBehaviour {
       float upCoord = upVec.x / cam.up.x;
       float rightCoord = rightVec.x / cam.right.x;
 
-      Debug.Log($"Up unit: {cam.up}");
-      Debug.Log($"Up vec: {upVec}");
-      Debug.Log($"Up coord: {upCoord}");
+      upCoord = CapNumber(upCoord, -960f / 125f, 960f / 125f);
+      rightCoord = CapNumber(rightCoord, -540f / 125f, 540f / 125f);
 
-      Debug.Log($"Right unit: {cam.right}");
-      Debug.Log($"Right vec: {rightVec}");
-      Debug.Log($"Right coord: {rightCoord}");
-
-      rightCoord = -6;
-      upCoord = -10;
-
-      GameObject indicator = Instantiate(enemyIndicator, uiCanvas.transform);
-
-      indicator.transform.position = new Vector3(540 + (rightCoord * 50), 960 + (upCoord * 50), 0);
-      indicator.transform.localScale = new Vector3(.4f, .4f, 1f);
+      return new Vector2(rightCoord, upCoord);
    }
 
-   void OnBecameInvisible() {
-      Debug.LogError("INVISIBLE");
+   float CapNumber(float val, float min, float max) {
+      if (val < min) {
+         return min;
+      }
+      if (val > max) {
+         return max;
+      }
+
+      return val;
    }
 }
