@@ -2034,7 +2034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1125209997663832254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2194,6 +2194,7 @@ GameObject:
   - component: {fileID: 4293413910505245129}
   - component: {fileID: 5569323737889453472}
   - component: {fileID: 731861936384765875}
+  - component: {fileID: 4282944455027835448}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2286,7 +2287,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0.00000035762804, y: 0, z: 0.00000071525596}
 --- !u!114 &731861936384765875
 MonoBehaviour:
@@ -2303,6 +2304,33 @@ MonoBehaviour:
   rotating: 1
   rotationSpeed: 120
   shakeStrength: 1
+--- !u!114 &4282944455027835448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859356795708260564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ab49013f9ff85438cf5c893f5a3b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5751220559099969322}
+        m_TargetAssemblyTypeName: LocationTurretPlacement, Assembly-CSharp
+        m_MethodName: SpawnTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3928302092621872158
 GameObject:
   m_ObjectHideFlags: 0
