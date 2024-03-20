@@ -84,7 +84,9 @@ public class EnemyMovement : MonoBehaviour
 
    void Start() {
       lastUpdateTime = Time.time;
-      if (GetComponentInChildren<Animator>() != null) GetComponentInChildren<Animator>().Play("idle");
+      if (GetComponentInChildren<Animator>() != null) {
+         GetComponentInChildren<Animator>().Play("idle");
+      }
    }
 
    void Update() {
@@ -143,7 +145,9 @@ public class EnemyMovement : MonoBehaviour
       //On Enter
       if (lastState != currentState) {
          lastState = currentState;
-         if (animator != null) animator.Play("idle");
+         if (animator != null) {
+            animator.Play("idle");
+         }
       }
 
       FindTarget();
