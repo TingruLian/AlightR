@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 30
   turretPrefab: {fileID: 233774273655562936, guid: 361354b3def98ce4f99d1c703ae91114, type: 3}
-  turretType: 0
+  turretType: 1
   button: {fileID: 3105338025822767368}
 --- !u!1 &3356318926231351987
 GameObject:
@@ -4659,43 +4659,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalScale.z
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.06999791
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2825001
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.44499576
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.07612156
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 2.9103827e-11
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: -0.99709857
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -1.1641532e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4703,7 +4703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -188.731
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4711,7 +4711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579655872737070823, guid: dde093aad0286bb4e8a9ea0608d1e863, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
