@@ -62,8 +62,6 @@ public class EnemySpawner : MonoBehaviour
    [SerializeField]
    private float enemySpeed;
 
-   private float spawnTime;
-
    private Vector3 spawnCenter;
    private Vector3 forwardAxis;
    private Vector3 sideAxis;
@@ -82,14 +80,14 @@ public class EnemySpawner : MonoBehaviour
 
       //SpawnDirectionIndicators();
 
-      spawnTime = Time.time + spawnInterval;
-
 
       //We start the first wave
       onGoingWaves = new List<Wave>();
       waveId = 0;
       mainWaves[waveId].StartWave(this);
-      if (colorControl != null) { colorControl.SetToWaveColor(waveId);}
+      if (colorControl != null) {
+         colorControl.SetToWaveColor(waveId);
+      }
    }
 
    void Update() {

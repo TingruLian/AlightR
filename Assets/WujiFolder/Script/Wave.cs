@@ -21,20 +21,39 @@ public class Wave : MonoBehaviour {
    [SerializeField]
    protected float delay;
 
-   [SerializeField] protected List<GameObject> enemyUnits;
-   [SerializeField] protected EnemySpawnLocation spawnLocation;
-   [SerializeField] protected int enemyCount;
-   [SerializeField] protected float maxRadius = 4;
-   [SerializeField] protected float spawnInterval = 2;
-   [SerializeField] protected float enemySpeed = 1.5f;
+   [SerializeField]
+   protected List<GameObject> enemyUnits;
 
-   [SerializeField] protected UnityEvent onWaveBegin;
-   [SerializeField] protected UnityEvent onWaveCleared;
+   [SerializeField]
+   protected EnemySpawnLocation spawnLocation;
+
+   [SerializeField]
+   protected int enemyCount;
+
+   [SerializeField]
+   protected float maxRadius = 4;
+
+   [SerializeField]
+   protected float spawnInterval = 2;
+
+   [SerializeField]
+   protected float enemySpeed = 1.5f;
+
+   [SerializeField]
+   protected UnityEvent onWaveBegin;
+
+   [SerializeField]
+   protected UnityEvent onWaveCleared;
+
    [Tooltip("Child waves will be spawn after the initial of this wave")]
-   [SerializeField] protected List<Wave> childWaves;
+   [SerializeField]
+   protected List<Wave> childWaves;
 
-   [SerializeField] protected List<EnemyMovement> currentEnemies;
-   [SerializeField] protected int generatedCount = 0;
+   [SerializeField]
+   protected List<EnemyMovement> currentEnemies;
+
+   [SerializeField]
+   protected int generatedCount = 0;
 
    protected bool started = false;
 

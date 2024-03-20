@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour {
    public GameObject playerBook;
 
    [SerializeField]
+   public GameObject enemyIndicator;
+
+   [SerializeField]
+   public GameObject uiCanvas;
+
+   [SerializeField]
+   public Camera arCamera;
+
+   [SerializeField]
    protected int resource2 = 2;
 
    [SerializeField]
@@ -77,7 +86,6 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    private int enemyKilled = 0,totalEnemy = 20;
-
 
    private int resources;
    private int lives;

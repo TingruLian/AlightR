@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1046,6 +1046,11 @@ Transform:
   - {fileID: 1125420235}
   m_Father: {fileID: 639069291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &376120197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7103764982930216294, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &382959874
 GameObject:
   m_ObjectHideFlags: 0
@@ -7499,6 +7504,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorControl: {fileID: 0}
   playerBook: {fileID: 4297029158441339240}
+  enemyIndicator: {fileID: 6297871754265139022, guid: c6ee731a17d181940a217be108050b22, type: 3}
+  uiCanvas: {fileID: 376120197}
+  arCamera: {fileID: 1187756104}
   resource2: 2
   LevelId: 0
   onResourceEnough:
