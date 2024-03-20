@@ -14,16 +14,13 @@ Shader "Custom/Test0"
     {
         Tags{"Queue"="Overlay"}
 
-
         Pass
         {
             ZWrite off
             CGPROGRAM
-
             #pragma vertex vert
             #pragma fragment frag
             #include "UnityCG.cginc"
-
             float4 _MainColor;
             fixed4 _OutlineColor;
             fixed _OutlineArea;
@@ -68,7 +65,6 @@ Shader "Custom/Test0"
             #pragma fragment frag
             #include "UnityCG.cginc"
             #include "UnityLightingCommon.cginc"
-            
             fixed4 _MainColor;
  
             struct a2v
@@ -111,3 +107,5 @@ Shader "Custom/Test0"
  
     }
 }
+
+
