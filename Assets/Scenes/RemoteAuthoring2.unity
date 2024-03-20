@@ -1266,6 +1266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Offset (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8262459276212734048, guid: 18ee38fc33a8f1146ad616cadd08b5ff, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1495,11 +1499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8575050641027031436, guid: 33a4497195b3c704a99389f083d7fd53, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1080
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 8575050641027031436, guid: 33a4497195b3c704a99389f083d7fd53, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1920
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 8575050641027031436, guid: 33a4497195b3c704a99389f083d7fd53, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3388,6 +3392,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220055816525430958, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762078310695872316, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
