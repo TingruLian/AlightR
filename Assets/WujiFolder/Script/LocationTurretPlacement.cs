@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LocationTurretPlacement : MonoBehaviour {
@@ -30,6 +31,8 @@ public class LocationTurretPlacement : MonoBehaviour {
    [SerializeField]
    private float destroyedCD = 6f;
 
+   public UnityEvent onSpawn;
+
    private void Awake()
    {
       CDBarContainer.SetActive(false);
@@ -50,6 +53,8 @@ public class LocationTurretPlacement : MonoBehaviour {
 
       currentTurret.GetComponentInChildren<TurretBehavior>().AddOnDestroyLisnterner
          (() => { RemoveTurret(false); });
+
+      onSpawn.Invoke();
    }
 
    public void RemoveTurret(bool byPlayer)

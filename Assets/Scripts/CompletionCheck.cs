@@ -12,6 +12,10 @@ public class CompletionCheck : MonoBehaviour
 
    public UnityEvent NotCompleteInitilization;
 
+   private void Awake()
+   {
+      if(GameData == null) { GameData = Resources.Load<GameScriptableObject>("Data"); }
+   }
    private void Start()
    {
       if (GameData == null) { Debug.Log("Completion Check don't have GameData"); return; }

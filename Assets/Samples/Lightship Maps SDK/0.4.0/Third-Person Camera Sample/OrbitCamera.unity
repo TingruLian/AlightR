@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6614101381701084595, guid: 88c6861d76b4c49e18329bfbc54d44b5, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614101381701084595, guid: 88c6861d76b4c49e18329bfbc54d44b5, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6614101382141779484, guid: 88c6861d76b4c49e18329bfbc54d44b5, type: 3}
       propertyPath: m_Name
       value: OrbitCamera

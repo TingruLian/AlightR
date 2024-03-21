@@ -28,6 +28,8 @@ public class TurretBehavior : MonoBehaviour, Health {
    [SerializeField]
    protected UnityEvent onDestroy;
 
+   public UnityEvent onManualRotationEnd;
+
    [SerializeField]
    private GameObject bulletPrefab;
 
@@ -128,6 +130,7 @@ public class TurretBehavior : MonoBehaviour, Health {
       Utils.OnRelease((Vector2 position, Ray ray) =>
       {
          userHodling = false;
+         onManualRotationEnd.Invoke();
       });
    }
 

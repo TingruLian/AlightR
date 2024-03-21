@@ -57,6 +57,7 @@ public class Wave : MonoBehaviour {
 
    protected bool started = false;
 
+   protected List<Sequence> allSequence = new List<Sequence>();
    public void StartWave(EnemySpawner spawner) {
       spawner.GetOnGoingWaves().Add(this);
       onWaveCleared.AddListener(() => { spawner.GetOnGoingWaves().Remove(this); });
@@ -65,7 +66,7 @@ public class Wave : MonoBehaviour {
       generatedCount = 0;
 
       //The Delay
-      DOTween.Sequence().AppendInterval(delay).
+      Sequence delaySeq = DOTween.Sequence().AppendInterval(delay).
       //The Content
       AppendCallback(() => {
          spawner.InvokeWaveInformation(waveInformation);
@@ -76,7 +77,7 @@ public class Wave : MonoBehaviour {
             int id = i;
 
             //set the delay accordinglg
-            DOTween.Sequence().AppendInterval(spawnInterval * i)
+            Sequence spawnSeq = DOTween.Sequence().AppendInterval(spawnInterval * i)
 
             //Actual spawning happens after delay
             .AppendCallback(() => {
@@ -86,6 +87,8 @@ public class Wave : MonoBehaviour {
                currentEnemies.Add(spawnedEnemy);
                spawnedEnemy.AddDeathListener(() => { currentEnemies.Remove(spawnedEnemy); });
             });
+
+            allSequence.Add(spawnSeq);
          }
 
          for (int i = 0; i < childWaves.Count; i++) {
@@ -93,6 +96,8 @@ public class Wave : MonoBehaviour {
          }
 
       });
+
+      allSequence.Add(delaySeq);
    }
 
 
@@ -146,5 +151,20 @@ public class Wave : MonoBehaviour {
       return result;
    }
 
+   public void PauseWave()
+   {
+      foreach (Sequence s in allSequence)
+      {
+         if(s.active) { s.Pause(); }
+      }
+   }
+
+   public void UnPauseWave()
+   {
+      foreach (Sequence s in allSequence)
+      {
+         if (s.active) { s.Play(); }
+      }
+   }
 }
 

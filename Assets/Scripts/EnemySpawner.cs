@@ -173,4 +173,14 @@ public class EnemySpawner : MonoBehaviour
    public List<Wave> GetOnGoingWaves() {
       return onGoingWaves;
    }
+
+   private void OnDisable()
+   {
+      mainWaves[waveId].PauseWave();
+   }
+
+   private void OnEnable()
+   {
+      mainWaves[waveId].UnPauseWave();
+   }
 }
