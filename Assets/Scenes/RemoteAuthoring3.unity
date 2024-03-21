@@ -29243,7 +29243,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 837342360}
   arCamera: {fileID: 639467369}
   resource2: 2
-  LevelId: 1
+  LevelId: 2
   onResourceEnough:
     m_PersistentCalls:
       m_Calls:
