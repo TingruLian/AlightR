@@ -12,10 +12,21 @@ Shader "Custom/Test0"
     }
     SubShader
     {
-        Tags{"Queue"="Overlay"}
+        Tags
+        {
+            //"Queue" = "Overlay"
+            "Queue" = "Transparent"
+            "IgnoreProjector" = "False"
+            "RenderType" = "Transparent" 
+        }
+
 
         Pass
         {
+            Blend SrcAlpha OneMinusSrcAlpha //SrcAlpha instead of One, else cannot completely transparent
+            //Blend One OneMinusSrcAlpha
+            //Cull Back
+
             ZWrite off
             CGPROGRAM
             #pragma vertex vert
@@ -42,13 +53,16 @@ Shader "Custom/Test0"
             {
                 v2f o;
                 v.vertex.xyz+=v.vertex.xyz*_OutlineArea;
-                o.pos = UnityObjectToClipPos(v.vertex);                
+                o.pos = UnityObjectToClipPos(v.vertex);
+
                 return o;
             }
             
             fixed4 frag():SV_Target
-            {                                
-                return _OutlineColor*_OutlineStrength;
+            {
+                //return _OutlineColor*_OutlineStrength;
+
+                return fixed4(_OutlineColor.rgb, _OutlineColor.a);
             }
             ENDCG
         }
@@ -57,9 +71,16 @@ Shader "Custom/Test0"
         {
             Tags
             {
+                "Queue" = "Transparent"
+                "IgnoreProjector" = "False"
+                "RenderType" = "Transparent" 
                 "LightMode"="UniversalForward"
             }
-            
+            //Blend One OneMinusSrcAlpha
+            Blend SrcAlpha OneMinusSrcAlpha
+            //Cull Front
+            //Cull Back
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -100,7 +121,8 @@ Shader "Custom/Test0"
  
                 fixed3 diffuse = _LightColor0.rgb * _MainColor.rgb *
                     (dot(worldLight, worldNormal) * 0.5 + 0.5);
-                return fixed4(_MainColor.rgb, 1);
+
+                return fixed4(_MainColor.rgb, _MainColor.a);
             }
             ENDCG
         }
