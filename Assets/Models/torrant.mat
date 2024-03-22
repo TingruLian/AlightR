@@ -518,7 +518,7 @@ Material:
     - _utsTechnique: 0
     - _utsVersionX: 0
     - _utsVersionY: 9
-    - _utsVersionZ: 5
+    - _utsVersionZ: 6
     m_Colors:
     - _1st_ShadeColor: {r: 0.30980393, g: 0.21960784, b: 0.22043572, a: 1}
     - _2nd_ShadeColor: {r: 0.105882354, g: 0.04313726, b: 0.07642709, a: 1}
@@ -528,7 +528,7 @@ Material:
     - _BaseColor: {r: 0.654902, g: 0.526725, b: 0.49411765, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.654902, g: 0.526725, b: 0.49411765, a: 1}
+    - _Color: {r: 0.654902, g: 0.52672493, b: 0.49411762, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
