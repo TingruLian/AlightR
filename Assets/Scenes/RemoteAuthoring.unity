@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: waveInformation
-      value: Placing At Differnt Place generate different turret
+      value: Wave2
       objectReference: {fileID: 0}
     - target: {fileID: 7605552630093376973, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: m_Name
@@ -455,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: waveInformation
-      value: Click the box to place turret
+      value: Wave1
       objectReference: {fileID: 0}
     - target: {fileID: 7605552630093376973, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: m_Name
@@ -1343,6 +1343,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469255079}
   m_Mesh: {fileID: -4265272276279338030, guid: 99e52f99dd0dc054989f58ee496762b0, type: 2}
+--- !u!114 &487177380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5285444451684576398, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487193654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,6 +3535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315522474}
   - component: {fileID: 1315522475}
+  - component: {fileID: 1315522476}
   m_Layer: 0
   m_Name: TutorialObject
   m_TagString: Untagged
@@ -3577,7 +3589,107 @@ MonoBehaviour:
         m_CallState: 2
   NotCompleteInitilization:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1315522476}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
+        m_MethodName: SendMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NextOne
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1315522476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315522473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b346eafe9e3fc4d9d6c0eece406637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 487177380}
+  t1:
+    mainText: Undeads are coming to destroy the spirit of the bridge
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6291500508781689865}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onExit:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6291500508781689865}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    trigger: {fileID: 1445129944}
+    duration: 5
+    colorControl: {fileID: 11400000, guid: be2dc716730be594aa6368109ac49986, type: 2}
+  t2:
+    mainText: Consume resources(Green dots) to build turrets
+    onEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    onExit:
+      m_PersistentCalls:
+        m_Calls: []
+  t3:
+    mainText: Hold and Swipe to rotate your turrets
+    onEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6291500508781689865}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onExit:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6291500508781689865}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1331207169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,7 +4123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: waveInformation
-      value: Click turrets again to rotate them
+      value: Wave3
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: childWaves.Array.size

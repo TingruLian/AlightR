@@ -11,8 +11,6 @@ using System.Transactions;
 /// </summary>
 /// 
 public class Wave : MonoBehaviour {
-   [SerializeField]
-   public GameObject testGameObject;
 
    [SerializeField]
    protected string waveInformation;
@@ -166,5 +164,9 @@ public class Wave : MonoBehaviour {
          if (s.active) { s.Play(); }
       }
    }
+
+   public void AddListenerToWaveEnd(UnityAction action){onWaveCleared.AddListener(action);}
+
+   public void RemoveListenerToWaveEnd(UnityAction action){onWaveCleared.RemoveListener(action);}
 }
 
