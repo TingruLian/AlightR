@@ -128,7 +128,9 @@ public class EnemyMovement : MonoBehaviour {
          Vector3 curPos = gameObject.transform.position;
          Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
 
-         transform.position += distTraveled;
+         if (Vector3.Magnitude(curPos - target.transform.position) <= distTraveled.magnitude) { transform.position = target.transform.position; }
+         else { transform.position += distTraveled; }
+
          transform.LookAt(target.transform.position);
 
          UpdateOffscreenIndicator();
@@ -264,7 +266,7 @@ public class EnemyMovement : MonoBehaviour {
             animator.Play("idle");
          }
 
-         target = transform.parent.gameObject;
+         target = this.gameObject;
          _attackSequence.Kill();
       }
    }
