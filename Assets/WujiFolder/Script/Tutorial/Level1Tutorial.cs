@@ -35,6 +35,10 @@ public class Level1Tutorial : MonoBehaviour
       id++;
    }
 
+   private void Update()
+   {
+      if(contents[id-1].entered) contents[id-1].Update();
+   }
 
    [Serializable]
    public class TutorialContent
@@ -43,10 +47,10 @@ public class Level1Tutorial : MonoBehaviour
       public string mainText;
       public UnityEvent onEnter;
       public UnityEvent onExit;
-
+      public bool entered;
       public virtual void Init(Level1Tutorial t) { tut = t; }
       public virtual void AssignTrigger() { }
-      public virtual void Entry() { Debug.Log(this.GetType().ToString() + " entried"); onEnter.Invoke(); FadeText(mainText); }
+      public virtual void Entry() { Debug.Log(this.GetType().ToString() + " entried"); onEnter.Invoke(); FadeText(mainText); entered = true; }
       public virtual void Update() { }
       public virtual void Exit() { onExit.Invoke(); FadeOutText(); }
 
@@ -124,6 +128,11 @@ public class Level1Tutorial : MonoBehaviour
 
       }
 
+      public override void Update()
+      {
+         base.Update();
+      }
+
       public override void Exit()
       {
          base.Exit();
@@ -166,6 +175,17 @@ public class Level1Tutorial : MonoBehaviour
             t.onManualRotationEnd.AddListener(Exit);
          }
 
+      }
+
+      public override void Update()
+      {
+         base.Update();
+
+         foreach (TurretBehavior t in FindObjectsOfType<TurretBehavior>())
+         {
+            t.onManualRotationEnd.RemoveListener(Exit);
+            t.onManualRotationEnd.AddListener(Exit);
+         }
       }
 
       public override void Exit()
