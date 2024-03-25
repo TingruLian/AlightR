@@ -43,6 +43,9 @@ public class EnemyMovement : MonoBehaviour {
    public GameObject slownDecoration;
 
    [SerializeField]
+   public GameObject moveGroundDecoration;
+
+   [SerializeField]
    protected OffscreenPositionIndicator offscreenIndicator;
 
    protected GameObject uiCanvas;
