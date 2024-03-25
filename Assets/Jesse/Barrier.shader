@@ -1,4 +1,4 @@
-Shader "Shader201/WinstonBarrier"
+Shader "Custom/Barrier"
 {
 	Properties
 	{
