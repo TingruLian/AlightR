@@ -523,7 +523,7 @@ Material:
     - _utsTechnique: 0
     - _utsVersionX: 0
     - _utsVersionY: 9
-    - _utsVersionZ: 5
+    - _utsVersionZ: 6
     m_Colors:
     - _1st_ShadeColor: {r: 0.7834143, g: 0.80449736, b: 0.899371, a: 1}
     - _2nd_ShadeColor: {r: 0.42525938, g: 0.38269848, b: 0.5660378, a: 1}

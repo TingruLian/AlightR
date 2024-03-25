@@ -133,12 +133,12 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 0
     m_Colors:
+    - <noninit>: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _BaseColor: {r: 0.62699586, g: 1, b: 0, a: 0}
     - _Color: {r: 0.62699586, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 0.77254903}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0.34117648}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-
     - _WireframeColour: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

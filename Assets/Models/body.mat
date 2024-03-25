@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: body
-  m_Shader: {fileID: 4800000, guid: 78e1f82578e0f0f42867861f6a90697a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 72736c27378d45b4484efa7601f3771a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -301,8 +301,8 @@ Material:
     - _Clipping_Level: 0
     - _CoatMask: 0
     - _ColorShift_Speed: 0
-    - _ColorStep1: 0.442
-    - _ColorStep2: 0.222
+    - _ColorStep1: 0.495
+    - _ColorStep2: 0.207
     - _ComposerMaskMode: 0
     - _Cull: 2
     - _CullMode: 2
