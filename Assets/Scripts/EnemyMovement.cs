@@ -216,6 +216,8 @@ public class EnemyMovement : MonoBehaviour {
          if (animator != null) {
             animator.Play("idle");
          }
+
+         if (moveGroundDecoration) { moveGroundDecoration.SetActive(true); }
       }
 
       FindTarget();
@@ -247,6 +249,8 @@ public class EnemyMovement : MonoBehaviour {
                   ChangeState(EnemyState.attack);
                }
             });
+
+         if(moveGroundDecoration) { moveGroundDecoration.SetActive(false); }
       }
    }
 

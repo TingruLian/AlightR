@@ -159,6 +159,7 @@ MonoBehaviour:
         m_CallState: 2
   animator: {fileID: 0}
   slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  moveGroundDecoration: {fileID: 2024348748180957302}
   offscreenIndicator: {fileID: 0}
 --- !u!82 &7856193472928548436
 AudioSource:
@@ -426,6 +427,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7867129812892879242}
   m_SourcePrefab: {fileID: 100100000, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
+--- !u!1 &2024348748180957302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4277440125437067670, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
+  m_PrefabInstance: {fileID: 2831474814763985376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4371872487534966610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2010691802799791794, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
