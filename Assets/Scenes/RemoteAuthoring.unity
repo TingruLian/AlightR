@@ -5355,6 +5355,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6372109997315188823, guid: 70e10e599ceeea9428681c10c76c6dbb, type: 3}
   m_PrefabInstance: {fileID: 1759705354}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1759705356 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6005991257305785942, guid: 70e10e599ceeea9428681c10c76c6dbb, type: 3}
+  m_PrefabInstance: {fileID: 1759705354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836231122
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,6 +8138,7 @@ MonoBehaviour:
   tmpResources: {fileID: 2075024804}
   tmpLives: {fileID: 2075024805}
   imgLives: {fileID: 1968508486}
+  shieldRenderer: {fileID: 1759705356}
   turret: {fileID: 233774273655562936, guid: 6516fdc874b402643b6750583e355d95, type: 3}
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
