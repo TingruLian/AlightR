@@ -4279,6 +4279,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5260759870769588704}
     m_Modifications:
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 853d16d991c60284b9c1173696e68490, type: 2}
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 370d7bd08b6dc7e42a733878b32ba572, type: 2}
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 853d16d991c60284b9c1173696e68490, type: 2}
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3e7d83d6383bd44d9b1dc16def1fa7b, type: 2}
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e096aa6b74cbab4c8ed4ca1a05ad137, type: 2}
+    - target: {fileID: 5477601814445237972, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 284f7709474b20243abca9b15a063c20, type: 2}
     - target: {fileID: 6270318705362896641, guid: 56760a7d37100e743b82c9fb1962b06a, type: 3}
       propertyPath: m_Name
       value: FloatTurret_M1
@@ -4505,7 +4529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyContainer: {fileID: 0}
   attackInterval: 1.5
   bulletSpeed: 4
   health: 5
@@ -4525,6 +4548,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  onManualRotationEnd:
     m_PersistentCalls:
       m_Calls: []
   bulletPrefab: {fileID: 5123191111321388413, guid: 712209d6e7599e041a44e3f899eca7ee, type: 3}

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: test0_1
-  m_Shader: {fileID: 4800000, guid: fe58f0ac1f30a43479cd64199d0a517c, type: 3}
+  m_Name: TransparentShadow
+  m_Shader: {fileID: 4800000, guid: 739075f01daaed049989026d89a60639, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,10 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _OutlineArea: 0.06
-    - _OutlineStrength: 1
+    m_Floats: []
     m_Colors:
-    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 0.8}
   m_BuildTextureStacks: []
