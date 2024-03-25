@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - FxTemporaire
   - Fader
+  - Ground
   layers:
   - Default
   - TransparentFX
