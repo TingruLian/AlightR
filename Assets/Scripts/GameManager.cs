@@ -154,9 +154,11 @@ public class GameManager : MonoBehaviour {
       GameData.bookHP += mod;
       uiLives.updateValue(GameData.bookHP.ToString());
       imgLives.fillAmount = ((float)GameData.bookHP) / 10f;
-      shieldRenderer.material.SetFloat("_CrackAlpha", 1f -((float)GameData.bookHP) / 10f);
+      if(shieldRenderer) shieldRenderer.material.SetFloat("_CrackAlpha", 1f -((float)GameData.bookHP) / 10f);
+
 
       if (mod< 0) { onPlayerHurt.Invoke(); }
+      if (GameData.bookHP == 0) { Destroy(shieldRenderer.gameObject); }
       if (GameData.bookHP < 0 && !lost) { lost = true; onPlayerLose.Invoke();  }
     }
 
