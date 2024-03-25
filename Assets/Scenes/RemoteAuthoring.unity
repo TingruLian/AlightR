@@ -2590,7 +2590,7 @@ MonoBehaviour:
     duration: 5
     colorControl: {fileID: 11400000, guid: be2dc716730be594aa6368109ac49986, type: 2}
   t2:
-    mainText: Consume resources(Green dots) to build turrets
+    mainText: Consume resources(turrent icon) to build turrets
     onEnter:
       m_PersistentCalls:
         m_Calls:
