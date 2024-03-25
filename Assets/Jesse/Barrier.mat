@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: test0_1
-  m_Shader: {fileID: 4800000, guid: fe58f0ac1f30a43479cd64199d0a517c, type: 3}
+  m_Name: Barrier
+  m_Shader: {fileID: 4800000, guid: 3fbfe7053598c0441a73a584d5f1339d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,12 +22,19 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _FractureTex:
+        m_Texture: {fileID: 2800000, guid: de6ec308beb719d47bc40b2972ce4a39, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 8d01a3e1bfc9c6f48b03825a8b78e9f2, type: 3}
+        m_Scale: {x: 4, y: 8}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineArea: 0.06
-    - _OutlineStrength: 1
+    - _CrackAlpha: 0
+    - _RimAlpha: 1
     m_Colors:
-    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.43081748, g: 0.4506725, b: 1, a: 0.08627451}
   m_BuildTextureStacks: []
