@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
 
    [SerializeField]
    protected GameObject resource2Holder;
-   protected List<Image> resource2Units;
+   protected List<Transform> resource2Units;
 
    [SerializeField]
    private UnityEvent onPlayerHurt;
@@ -108,7 +108,8 @@ public class GameManager : MonoBehaviour {
         instance = this;
      }
 
-     if(resource2Holder !=null) { resource2Units = resource2Holder.transform.GetComponentsInChildren<Image>().ToList(); }
+      resource2Units = new List<Transform>();
+      if (resource2Holder != null) { foreach (Transform child in resource2Holder.transform) { resource2Units.Add(child); } }
    }
 
    private void Start() {
