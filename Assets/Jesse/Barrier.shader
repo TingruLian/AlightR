@@ -111,7 +111,7 @@ Shader "Custom/Barrier"
 
 				mainTex.g *= (sin(_Time.z + mainTex.b * 5) + 1)/2;
 
-				fixed4 hexes= mainTex.g * _Color * 10;
+				fixed4 hexes= mainTex.g * _Color * 2.5;
 
 				fixed4 col = _Color * _Color.a + glowColor * glow * _RimAlpha + hexes ;
 
