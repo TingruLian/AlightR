@@ -216,7 +216,7 @@ public class EnemyMovement : MonoBehaviour {
       if (lastState != currentState) {
          lastState = currentState;
          if (animator != null) {
-            animator.Play("idle");
+            animator.CrossFadeInFixedTime("idle", 0.25f);
          }
 
          if (moveGroundDecoration) { moveGroundDecoration.SetActive(true); }
@@ -237,7 +237,7 @@ public class EnemyMovement : MonoBehaviour {
       if (lastState != currentState) {
          lastState = currentState;
 
-         if (animator != null) animator.Play("attack");
+         if (animator != null) animator.CrossFadeInFixedTime("attack", 0.25f);
 
          //the delay in this loop is based on animation
          _attackSequence = DOTween.Sequence()
@@ -293,7 +293,7 @@ public class EnemyMovement : MonoBehaviour {
          _attackSequence.Kill(); _attackSequence = null;
 
          if (GetComponentInChildren<Animator>() != null) {
-            GetComponentInChildren<Animator>().Play("idle");
+            GetComponentInChildren<Animator>().CrossFadeInFixedTime("idle", 0.25f);
          }
 
          target = GameManager.instance.playerBook;

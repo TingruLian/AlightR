@@ -301,6 +301,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: enemyCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: waveInformation
       value: Wave2
       objectReference: {fileID: 0}

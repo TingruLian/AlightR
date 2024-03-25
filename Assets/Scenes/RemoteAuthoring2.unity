@@ -3221,6 +3221,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984016021}
   m_CullTransparentMesh: 1
+--- !u!1 &2000765754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7103764982930216294, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2012814494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5012,9 +5017,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorControl: {fileID: 0}
   playerBook: {fileID: 4297029158441339240}
-  enemyIndicator: {fileID: 0}
-  uiCanvas: {fileID: 0}
-  arCamera: {fileID: 0}
+  enemyIndicator: {fileID: 6297871754265139022, guid: c6ee731a17d181940a217be108050b22, type: 3}
+  uiCanvas: {fileID: 2000765754}
+  arCamera: {fileID: 639467369}
   resource2: 2
   LevelId: 1
   onResourceEnough:
