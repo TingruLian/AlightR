@@ -159,7 +159,8 @@ MonoBehaviour:
         m_CallState: 2
   animator: {fileID: 0}
   slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
-  offscreenIndicator: {fileID: 0}
+  moveGroundDecoration: {fileID: 0}
+  offscreenIndicator: {fileID: 7867129812892879242}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
