@@ -30,3 +30,10 @@ MonoBehaviour:
   currentColor:
     color1: {r: 0.49803922, g: 0.9764706, b: 1, a: 0.8980392}
     color2: {r: 0.08235294, g: 0.25490198, b: 0.21960784, a: 0.8901961}
+  startLightColor: {r: 1, g: 1, b: 1, a: 1}
+  vicLightColor: {r: 1, g: 1, b: 1, a: 1}
+  colorLightOfWaves:
+  - {r: 1, g: 0, b: 0, a: 0.41960785}
+  - {r: 1, g: 0, b: 0, a: 0.7490196}
+  - {r: 1, g: 0, b: 0, a: 1}
+  currentLightColor: {r: 0, g: 0, b: 0, a: 0}
