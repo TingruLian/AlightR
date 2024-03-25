@@ -1737,6 +1737,9 @@ MonoBehaviour:
   CDBarContainer: {fileID: 6735617469494109714}
   manualCD: 3
   destroyedCD: 6
+  onSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3356318926231351987
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,7 +4950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089665900329870493, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: 5089665900329870493, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

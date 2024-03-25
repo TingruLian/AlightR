@@ -128,7 +128,9 @@ public class EnemyMovement : MonoBehaviour {
          Vector3 curPos = gameObject.transform.position;
          Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
 
-         transform.position += distTraveled;
+         if (Vector3.Magnitude(curPos - target.transform.position) <= distTraveled.magnitude) { transform.position = target.transform.position; }
+         else { transform.position += distTraveled; }
+
          transform.LookAt(target.transform.position);
 
          UpdateOffscreenIndicator();
@@ -214,8 +216,10 @@ public class EnemyMovement : MonoBehaviour {
       if (lastState != currentState) {
          lastState = currentState;
          if (animator != null) {
-            animator.Play("idle");
+            animator.CrossFadeInFixedTime("idle", 0.25f);
          }
+
+         if (moveGroundDecoration) { moveGroundDecoration.SetActive(true); }
       }
 
       FindTarget();
@@ -233,7 +237,7 @@ public class EnemyMovement : MonoBehaviour {
       if (lastState != currentState) {
          lastState = currentState;
 
-         if (animator != null) animator.Play("attack");
+         if (animator != null) animator.CrossFadeInFixedTime("attack", 0.25f);
 
          //the delay in this loop is based on animation
          _attackSequence = DOTween.Sequence()
@@ -247,6 +251,8 @@ public class EnemyMovement : MonoBehaviour {
                   ChangeState(EnemyState.attack);
                }
             });
+
+         if(moveGroundDecoration) { moveGroundDecoration.SetActive(false); }
       }
    }
 
@@ -260,7 +266,7 @@ public class EnemyMovement : MonoBehaviour {
             animator.Play("idle");
          }
 
-         target = transform.parent.gameObject;
+         target = this.gameObject;
          _attackSequence.Kill();
       }
    }
@@ -287,7 +293,7 @@ public class EnemyMovement : MonoBehaviour {
          _attackSequence.Kill(); _attackSequence = null;
 
          if (GetComponentInChildren<Animator>() != null) {
-            GetComponentInChildren<Animator>().Play("idle");
+            GetComponentInChildren<Animator>().CrossFadeInFixedTime("idle", 0.25f);
          }
 
          target = GameManager.instance.playerBook;

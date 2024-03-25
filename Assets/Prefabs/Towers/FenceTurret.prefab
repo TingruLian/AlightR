@@ -4327,6 +4327,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: FenceTurret_M3
       objectReference: {fileID: 0}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4121b3a935f97d7449254d38228c08fc, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b814138bbf7687744ae289b1d380081e, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4121b3a935f97d7449254d38228c08fc, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c68c6b464904ec4c8d8aa37bdb69a47, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: f58adf7ba04ecfc489ab144abb669f66, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: b814138bbf7687744ae289b1d380081e, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: b814138bbf7687744ae289b1d380081e, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f9b9849eb3818e47b74ed9f09d9cba8, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[8]
+      value: 
+      objectReference: {fileID: 2100000, guid: f58adf7ba04ecfc489ab144abb669f66, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: b814138bbf7687744ae289b1d380081e, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[10]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4121b3a935f97d7449254d38228c08fc, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[14]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f9b9849eb3818e47b74ed9f09d9cba8, type: 2}
+    - target: {fileID: 6201465356593499790, guid: dc21dedfea58bba44af581db2b4e9120, type: 3}
+      propertyPath: m_Materials.Array.data[15]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4121b3a935f97d7449254d38228c08fc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4486,7 +4538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyContainer: {fileID: 0}
   attackInterval: 1.2
   bulletSpeed: 20
   health: 4
@@ -4506,6 +4557,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  onManualRotationEnd:
     m_PersistentCalls:
       m_Calls: []
   bulletPrefab: {fileID: 5123191111321388413, guid: 1d2d72e3ec76377408c2e6a0e481fd43, type: 3}

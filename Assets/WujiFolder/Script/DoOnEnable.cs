@@ -5,6 +5,7 @@ public class DoOnEnable : MonoBehaviour {
 
    public UnityEvent onEnable;
    public UnityEvent onDisable;
+   public UnityEvent onDestroy;
 
    private void OnEnable() {
       onEnable.Invoke();
@@ -12,5 +13,10 @@ public class DoOnEnable : MonoBehaviour {
 
    private void OnDisable() {
       onDisable.Invoke();
+   }
+
+   private void OnDestroy()
+   {
+      onDestroy.Invoke();
    }
 }

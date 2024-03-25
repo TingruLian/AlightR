@@ -1738,6 +1738,9 @@ MonoBehaviour:
   CDBarContainer: {fileID: 4184720402902735841}
   manualCD: 3
   destroyedCD: 6
+  onSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3356318926231351987
 GameObject:
   m_ObjectHideFlags: 0
@@ -4835,7 +4838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5089665900329870493, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.118
       objectReference: {fileID: 0}
     - target: {fileID: 5089665900329870493, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4848,6 +4851,10 @@ PrefabInstance:
     - target: {fileID: 5089665900329870493, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263257621959655133, guid: 4fb08924c840f904e99808b4608a1c39, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

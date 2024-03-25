@@ -111,7 +111,7 @@ public class Level1Tutorial : MonoBehaviour
       public override void AssignTrigger()
       {
          base.AssignTrigger();
-            DOTween.Sequence().AppendInterval(3f)
+            DOTween.Sequence().AppendInterval(3.5f)
             .AppendCallback(Entry);
 
       }

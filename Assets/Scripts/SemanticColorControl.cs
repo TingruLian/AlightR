@@ -33,6 +33,19 @@ public class SemanticColorControl : ScriptableObject
    [SerializeField]
    protected ColorGroup currentColor;
 
+   [Header("Light Attributes")]
+
+   [SerializeField]
+   protected Color startLightColor;
+
+   [SerializeField]
+   protected Color vicLightColor;
+
+   [SerializeField]
+   protected List<Color> colorLightOfWaves;
+
+   [SerializeField]
+   protected Color currentLightColor;
 
    public void Initialize()
    {
@@ -45,19 +58,27 @@ public class SemanticColorControl : ScriptableObject
       DOTween.To(() => currentColor.color2, x => currentColor.color2 = x, c.color2, TweenTime);
    }
 
+   public void TweenLight(Color c)
+   {
+      DOTween.To(() => currentLightColor, x => currentLightColor = x, c, TweenTime);
+   }
+
    public void SetToWaveColor(int id)
    {
       TweenColor(colorOfWaves[id]);
+      TweenLight(colorLightOfWaves[id]);
    }
 
    public void SetToStartColor()
    {
       TweenColor(startColor);
+      TweenLight(startLightColor);
    }
 
    public void SetToVicColor()
    {
       TweenColor(vicColor);
+      TweenLight(vicLightColor);
    }
 
    public void UpdateLoop()
@@ -65,6 +86,8 @@ public class SemanticColorControl : ScriptableObject
       semanticMat.SetColor("_Color", currentColor.color1);
       semanticMat.SetColor("_Color2", currentColor.color2);
    }
+
+   public Color getCurrentLight() { return currentLightColor; }
 
    public static SemanticColorControl GetInstance()
    {
