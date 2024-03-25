@@ -2921,6 +2921,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: FenceSpawnPoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[8]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
     - target: {fileID: 8064189823202409869, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.93
@@ -3057,6 +3089,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: FenceSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
+    - target: {fileID: 6399703785830143056, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
+      propertyPath: m_Materials.Array.data[8]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d6fc617c30c9b74392f8a960e849821, type: 2}
     - target: {fileID: 8064189823202409869, guid: 9bfb4d09cb7b5c543b5636a5200b9e32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.73
