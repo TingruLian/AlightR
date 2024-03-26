@@ -9,10 +9,14 @@ public class Fader : MonoBehaviour
    public static Fader instance;
    public const float fadeTime = 1f;
    public Image img;
+   public Image progress;
+   public CanvasGroup loadGroup;
+
    private void Awake()
    {
       instance = this;
       img = GetComponent<Image>();
+      loadGroup.gameObject.SetActive(false);
    }
 
    private void OnEnable()
