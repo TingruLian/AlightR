@@ -3866,7 +3866,7 @@ MonoBehaviour:
   _semanticMan: {fileID: 3095086507643924757}
   _image: {fileID: 6763339566265497568}
   _material: {fileID: 2100000, guid: c7d73ea9886434c23b45bd97eadc9525, type: 2}
-  _semanticChannelName: sky
+  _semanticChannelName: ground
   _channelDropdown: {fileID: 0}
 --- !u!1 &8165105273431072288
 GameObject:
