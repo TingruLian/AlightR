@@ -27,9 +27,6 @@ public class CartMovement : MonoBehaviour {
                if (progress < 1f) {
                   progress += .1f;
 
-                  //Vector3 cartPos = start + ((end - start) * progress);
-                  //transform.position = cartPos;
-
                   targetPos = start + ((end - start) * progress);
                   startTime = Time.time;
                   startPos = transform.position;
