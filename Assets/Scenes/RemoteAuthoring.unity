@@ -2213,6 +2213,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 825217483}
     - target: {fileID: 1412824247463495187, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: mainWaves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412824247463495187, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: mainWaves.Array.data[0]
       value: 
       objectReference: {fileID: 1827887597}
@@ -2274,11 +2278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6870797870804427368, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.143
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: 6870797870804427368, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.793
+      value: -1.39
       objectReference: {fileID: 0}
     - target: {fileID: 7000270279725972041, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_IsActive
@@ -2590,7 +2594,7 @@ MonoBehaviour:
     duration: 5
     colorControl: {fileID: 11400000, guid: be2dc716730be594aa6368109ac49986, type: 2}
   t2:
-    mainText: Consume resources(turrent icon) to build turrets
+    mainText: Click to Activate
     onEnter:
       m_PersistentCalls:
         m_Calls:
@@ -2623,7 +2627,7 @@ MonoBehaviour:
           m_CallState: 2
     entered: 0
   t3:
-    mainText: Hold and Swipe to rotate your turrets
+    mainText: Swipe to Rotate
     onEnter:
       m_PersistentCalls:
         m_Calls:

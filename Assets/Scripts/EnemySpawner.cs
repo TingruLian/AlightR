@@ -147,15 +147,15 @@ public class EnemySpawner : MonoBehaviour
    }
 
    public void InvokeWaveInformation(string data) {
-      waveInfo.gameObject.SetActive(true);
+      //waveInfo.gameObject.SetActive(true);
 
-      //make visiable
-      waveInfo.DOFade(1, 0);
-      waveInfo.text = data;
-      waveInfo.transform.DOPunchScale(new Vector3(1.2f,1.2f,1.2f), 0.25f, 10, 1);
+      ////make visiable
+      //waveInfo.DOFade(1, 0);
+      //waveInfo.text = data;
+      //waveInfo.transform.DOPunchScale(new Vector3(1.2f,1.2f,1.2f), 0.25f, 10, 1);
 
-      //fade out and turn off
-      waveInfo.DOFade(0, 0.5f).SetDelay(2f).OnComplete(() => { waveInfo.gameObject.SetActive(false); });
+      ////fade out and turn off
+      //waveInfo.DOFade(0, 0.5f).SetDelay(2f).OnComplete(() => { waveInfo.gameObject.SetActive(false); });
    }
 
    public GameObject GetParent() {
