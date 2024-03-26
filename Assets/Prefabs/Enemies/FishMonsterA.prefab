@@ -76,6 +76,7 @@ MonoBehaviour:
   target: {fileID: 0}
   life: 10
   damage: 1
+  lockY: 1
   onAttack:
     m_PersistentCalls:
       m_Calls:

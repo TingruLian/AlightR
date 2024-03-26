@@ -28,6 +28,9 @@ public class EnemyMovement : MonoBehaviour {
    [SerializeField]
    protected int damage;
 
+   [SerializeField]
+   protected bool lockY = false;
+
    public Attribute<float> speed = new Attribute<float>();
 
    [SerializeField]
@@ -62,6 +65,8 @@ public class EnemyMovement : MonoBehaviour {
 
    private bool moving = true;
    private float lastUpdateTime;
+
+   const float rotationSpeed = 180;
 
    private void Awake() {
       if (enemies == null) {
@@ -127,13 +132,23 @@ public class EnemyMovement : MonoBehaviour {
       }
 
       if (moving) {
+         
+         //--------------Process Movement--------------//
          Vector3 curPos = gameObject.transform.position;
          Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
+
+         if (lockY) { distTraveled.y = 0; }
 
          if (Vector3.Magnitude(curPos - target.transform.position) <= distTraveled.magnitude) { transform.position = target.transform.position; }
          else { transform.position += distTraveled; }
 
-         transform.LookAt(target.transform.position);         
+         //--------------Process Rotation-------------//
+         Vector3 targetDirection = target.transform.position - transform.position;
+         if(lockY) targetDirection.y = 0; 
+         targetDirection.Normalize();
+
+         Quaternion newRotation = Quaternion.LookRotation(targetDirection);
+         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, rotationSpeed * elapsedTime);
       }
 
       UpdateOffscreenIndicator();
