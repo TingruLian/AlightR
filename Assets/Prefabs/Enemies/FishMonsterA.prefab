@@ -74,8 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   target: {fileID: 0}
-  life: 10
+  life: 15
   damage: 1
+  rotationSpeed: 60
   lockY: 1
   onAttack:
     m_PersistentCalls:

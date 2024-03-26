@@ -14,7 +14,6 @@ public class DoOnClick : MonoBehaviour
 
          RaycastHit hit;
 
-         /*
          foreach(Collider c in transform.GetComponentsInChildren<Collider>())
          {
             if(c.Raycast(ray, out hit, math.INFINITY))
@@ -23,7 +22,6 @@ public class DoOnClick : MonoBehaviour
                return;
             }
          }
-         */
 
       });
    }
