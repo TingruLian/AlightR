@@ -185,8 +185,8 @@ public class EnemyMovement : MonoBehaviour {
       RectTransform canvas = uiCanvas.GetComponent<RectTransform>();
 
       //if on screen
-      if(indicatorPos.z >= 0f && indicatorPos.x >=0f &&indicatorPos.x <= canvas.rect.width * canvas.localScale.x
-         && indicatorPos.y >= 0f && indicatorPos.y <= canvas.rect.height * canvas.localScale.y)
+      if(indicatorPos.z >= 0f && indicatorPos.x >= -20f &&indicatorPos.x <= canvas.rect.width * canvas.localScale.x +20f
+         && indicatorPos.y >= -20f && indicatorPos.y <= canvas.rect.height * canvas.localScale.y + 20f)
       {
          indicatorUI.SetActive(false);
       }
