@@ -29,6 +29,9 @@ public class EnemyMovement : MonoBehaviour {
    protected int damage;
 
    [SerializeField]
+   protected float rotationSpeed = 180;
+
+   [SerializeField]
    protected bool lockY = false;
 
    public Attribute<float> speed = new Attribute<float>();
@@ -66,7 +69,7 @@ public class EnemyMovement : MonoBehaviour {
    private bool moving = true;
    private float lastUpdateTime;
 
-   const float rotationSpeed = 180;
+
 
    private void Awake() {
       if (enemies == null) {
@@ -104,9 +107,6 @@ public class EnemyMovement : MonoBehaviour {
       InitOffscreenIndicator();
 
       lastUpdateTime = Time.time;
-      if (GetComponentInChildren<Animator>() != null) {
-         GetComponentInChildren<Animator>().Play("idle");
-      }
    }
 
    void Update() {
@@ -132,23 +132,24 @@ public class EnemyMovement : MonoBehaviour {
       }
 
       if (moving) {
-         
+
+         //--------------Process Rotation-------------//
+         Vector3 targetDirection = target.transform.position - transform.position;
+         if (lockY) targetDirection.y = 0;
+         targetDirection.Normalize();
+
+         Quaternion newRotation = Quaternion.LookRotation(targetDirection);
+         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, rotationSpeed * elapsedTime);
+
+
          //--------------Process Movement--------------//
          Vector3 curPos = gameObject.transform.position;
-         Vector3 distTraveled = Vector3.Normalize(target.transform.position - curPos) * speed.GetCurValue() * elapsedTime;
+         Vector3 distTraveled = transform.forward * speed.GetCurValue() * elapsedTime;
 
          if (lockY) { distTraveled.y = 0; }
 
          if (Vector3.Magnitude(curPos - target.transform.position) <= distTraveled.magnitude) { transform.position = target.transform.position; }
          else { transform.position += distTraveled; }
-
-         //--------------Process Rotation-------------//
-         Vector3 targetDirection = target.transform.position - transform.position;
-         if(lockY) targetDirection.y = 0; 
-         targetDirection.Normalize();
-
-         Quaternion newRotation = Quaternion.LookRotation(targetDirection);
-         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, rotationSpeed * elapsedTime);
       }
 
       UpdateOffscreenIndicator();
@@ -335,6 +336,9 @@ public class EnemyMovement : MonoBehaviour {
 
 
    public void FindTarget() {
+
+      if (target != null && lockY && Mathf.Abs(target.transform.position.y - transform.position.y) >= 1) { target = null; }
+
       if (target == null) {
          _attackSequence.Kill(); _attackSequence = null;
 
@@ -359,6 +363,8 @@ public class EnemyMovement : MonoBehaviour {
 
       foreach (TurretBehavior t in TurretBehavior.turretList) {
          if (Vector3.Distance(transform.position, t.transform.position) < dis) {
+            if (lockY && Mathf.Abs(t.transform.position.y - transform.position.y) >= 1) { continue; }
+
             target = t.gameObject;
             dis = Vector3.Distance(transform.position, t.transform.position);
          }
