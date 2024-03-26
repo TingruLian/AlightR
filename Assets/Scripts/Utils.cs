@@ -27,13 +27,11 @@ public static class Utils {
       }
    }
 
-   public static void OnRelease(ClickCallback callback)
-   {
+   public static void OnRelease(ClickCallback callback) {
       Vector3 position;
 
 #if UNITY_EDITOR
-      if (Input.GetMouseButtonUp(0))
-      {
+      if (Input.GetMouseButtonUp(0)) {
          position = Input.mousePosition;
 #else
       if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) {
@@ -44,16 +42,14 @@ public static class Utils {
       }
    }
 
-   public static void OnHold(ClickCallback callback)
-   {
+   public static void OnHold(ClickCallback callback) {
       Vector3 position;
 
 #if UNITY_EDITOR
-      if (Input.GetMouseButton(0))
-      {
+      if (Input.GetMouseButton(0)) {
          position = Input.mousePosition;
 #else
-      if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary)||(Input.GetTouch(0).phase == TouchPhase.Moved)) {
+      if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved)) {
          position = Input.touches[0].position;
 #endif
          Ray ray = Camera.main.ScreenPointToRay(position);
