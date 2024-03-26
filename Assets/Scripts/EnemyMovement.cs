@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
+using Unity.Mathematics;
+using System;
 
 public enum EnemyState {
    nul,
@@ -131,13 +133,14 @@ public class EnemyMovement : MonoBehaviour {
          if (Vector3.Magnitude(curPos - target.transform.position) <= distTraveled.magnitude) { transform.position = target.transform.position; }
          else { transform.position += distTraveled; }
 
-         transform.LookAt(target.transform.position);
-
-         UpdateOffscreenIndicator();
+         transform.LookAt(target.transform.position);         
       }
 
+      UpdateOffscreenIndicator();
+
       // the offscreen indicator should be visible when the enemy itself is not visible
-      indicatorUI.SetActive(!offscreenIndicator.IsVisible());
+      //indicatorUI.SetActive(!offscreenIndicator.IsVisible());
+      //Unity's on visible is not reliable as tested (weird)
    }
 
    void InitOffscreenIndicator() {
@@ -150,14 +153,42 @@ public class EnemyMovement : MonoBehaviour {
 
          indicatorUI = Instantiate(indicatorUIPrefab, uiCanvas.transform);
          indicatorUI.transform.localScale = new Vector3(.5f, .5f, 1f);
+         indicatorUI.SetActive(false);
       }
    }
 
    void UpdateOffscreenIndicator() {
-      Vector2 screenPos = GetRelativeScreenPos();
+      //Vector2 screenPos = GetRelativeScreenPos();
 
-      // TODO: Do a better job of mapping 3d game units to onscreen pixels
-      indicatorUI.transform.position = new Vector2(540, 960) + (screenPos * 125);
+      //// TODO: Do a better job of mapping 3d game units to onscreen pixels
+      //indicatorUI.transform.position = new Vector2(540, 960) + (screenPos * 125);
+
+      //Wuji's version
+      
+      Vector3 indicatorPos = Camera.main.WorldToScreenPoint(transform.position);
+      RectTransform canvas = uiCanvas.GetComponent<RectTransform>();
+
+      //if on screen
+      if(indicatorPos.z >= 0f && indicatorPos.x >=0f &&indicatorPos.x <= canvas.rect.width * canvas.localScale.x
+         && indicatorPos.y >= 0f && indicatorPos.y <= canvas.rect.height * canvas.localScale.y)
+      {
+         indicatorUI.SetActive(false);
+      }
+      //if off screen
+      else
+      {
+         indicatorUI.SetActive(true);
+
+         Vector3 oldPos = indicatorPos;
+
+         indicatorPos.x = math.clamp(indicatorPos.x, 20, canvas.rect.width * canvas.localScale.x - 20);
+         indicatorPos.y = math.clamp(indicatorPos.y, 20, canvas.rect.height * canvas.localScale.y - 20);
+
+         Vector3 dif = oldPos - indicatorPos;
+
+         indicatorUI.transform.position = indicatorPos;
+         indicatorUI.transform.eulerAngles = new Vector3(0, 0, - Mathf.Atan2(dif.x,dif.y) * (180.0f / Mathf.PI));
+      }
    }
 
    Vector2 GetRelativeScreenPos() {
