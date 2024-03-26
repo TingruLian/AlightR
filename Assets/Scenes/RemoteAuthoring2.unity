@@ -612,13 +612,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: maxRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: enemyCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: spawnInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: spawnLocation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: generatedCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: childWaves.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: childWaves.Array.data[0]
       value: 
       objectReference: {fileID: 2012814495}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: enemyUnits.Array.data[0]
+      value: 
+      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
     - target: {fileID: 7605552630093376973, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: m_Name
       value: Wave3
@@ -3405,6 +3429,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: 98241d07739c834418ce1f3adb73c65a, type: 3}
+      propertyPath: maxRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 98241d07739c834418ce1f3adb73c65a, type: 3}
       propertyPath: enemyCount
       value: 1
       objectReference: {fileID: 0}
@@ -5735,6 +5763,14 @@ PrefabInstance:
       propertyPath: onWaveCleared.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4549282895211651774}
+    - target: {fileID: 6870797870804427368, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870797870804427368, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.51
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8389466512552714203, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
