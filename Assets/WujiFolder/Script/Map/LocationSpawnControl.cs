@@ -28,16 +28,7 @@ public class LocationSpawnControl : MonoBehaviour
    [SerializeField]
    private LayerGameObjectPlacement cart;
 
-   [SerializeField]
-   private SerializableLatLng cartPosition;
-
-   private Vector2 cartStart;
-   private Vector2 cartEnd;
-
-   private bool moveCart = false;
-
    private GameObject cartObject = null;
-   private float progress = 0f; // 0 - 1, basically a percentage
 
    private void Awake() {
       if (_layerObject == null) _layerObject = GetComponent<LayerGameObjectPlacement>();
@@ -45,9 +36,6 @@ public class LocationSpawnControl : MonoBehaviour
 
 
    private void Start() {
-      cartStart = new Vector2((float)units[0].position.Latitude, (float)units[0].position.Longitude);
-      cartEnd = new Vector2((float)units[units.Count - 1].position.Latitude, (float)units[units.Count - 1].position.Longitude);
-
       foreach (LocationUnit unit in units) {
          GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
@@ -63,31 +51,24 @@ public class LocationSpawnControl : MonoBehaviour
          }
       }
 
-      Vector2 cartPos = cartStart + ((cartEnd - cartStart) * progress);
-
-      SerializableLatLng cartLatLon = new SerializableLatLng(cartPos.x, cartPos.y);
-
-      cartObject = cart.PlaceInstance(cartLatLon, "HotMetalCartPlacementLayer").Value;
+      SpawnCart();
    }
 
-   private void Update() {
-      if (Input.GetKeyDown(KeyCode.Space)) {
-         if (!moveCart && progress < 1f) {// && cartObject != null) {
-            if (cartObject != null) {
-               Destroy(cartObject);
-            }
+   private void SpawnCart() {
+      Vector2 cartStart = new Vector2((float)units[0].position.Latitude, (float)units[0].position.Longitude);
+      Vector2 cartEnd = new Vector2((float)units[units.Count - 1].position.Latitude, (float)units[units.Count - 1].position.Longitude);
 
-            progress += .1f;
+      // these are used as a lazy way to convert from LatLon to Unity 3D world coords
+      GameObject startObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
+      GameObject endObject = cart.PlaceInstance(new SerializableLatLng(cartEnd.x, cartEnd.y), "HotMetalCartPlacementLayer").Value;
 
-            Vector2 cartPos = cartStart + ((cartEnd - cartStart) * progress);
-            SerializableLatLng cartLatLon = new SerializableLatLng(cartPos.x, cartPos.y);
+      cartObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
+      cartObject.SetActive(true);
+      CartMovement cartController = cartObject.transform.GetChild(0).GetComponent<CartMovement>();
 
-            cartObject = cart.PlaceInstance(cartLatLon, "HotMetalCartPlacementLayer").Value;
-         }
+      cartObject.transform.GetChild(0).gameObject.SetActive(true);
 
-         moveCart = true;
-      } else if (Input.GetKeyUp(KeyCode.Space)) {
-         moveCart = false;
-      }
+      cartController.start = startObject.transform.position;
+      cartController.end = endObject.transform.position;
    }
 }

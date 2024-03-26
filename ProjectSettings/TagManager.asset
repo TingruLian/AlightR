@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Fader
   - Ground
+  - MetalCart
   layers:
   - Default
   - TransparentFX
