@@ -157,6 +157,7 @@ MonoBehaviour:
         m_CallState: 2
   animator: {fileID: 3787408004499111592}
   slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  moveGroundDecoration: {fileID: 0}
   offscreenIndicator: {fileID: 8765456675505582657}
 --- !u!82 &7856193472928548436
 AudioSource:
@@ -813,7 +814,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5474864855449240538}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c0bed29282ad5947a06066a310ded5d, type: 3}
   m_Name: 

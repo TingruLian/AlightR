@@ -620,6 +620,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
+      propertyPath: enemySpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: dec3337859af11446b05d723f8e8c151, type: 3}
       propertyPath: spawnInterval
       value: 4
       objectReference: {fileID: 0}
