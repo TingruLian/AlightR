@@ -1,27 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OverlayManager : MonoBehaviour {
 
    [SerializeField]
-   float fadeStart;
+   CanvasGroup lightning;
 
    [SerializeField]
-   float fadeSpeed;
+   CanvasGroup flash;
 
-   bool fade = true;
+   //[SerializeField]
+   float start = 0f;
+
+   //[SerializeField]
+   float lightningEnd = .8f;
+
+   bool started = false;
 
    float elapsedTime = 0;
+
+   float fadeSpeed = 1;
 
    void Start() {
    }
 
    void FixedUpdate() {
-      if (elapsedTime > fadeStart) {
-         fade = true;
+      if ((!started) && (elapsedTime > start)) {
+         Debug.LogError($"Start: {start}");
+         Debug.LogError($"elapsed: {elapsedTime}");
+         started = true;
+         flash.gameObject.SetActive(true);
+         lightning.gameObject.SetActive(true);
       }
 
-      if (fade) {
-         GetComponent<CanvasGroup>().alpha = Mathf.Lerp(1, 0, (elapsedTime - fadeStart) * fadeSpeed);
+      if (started && (elapsedTime > (start + lightningEnd))) {
+         lightning.gameObject.SetActive(false);
+      }
+
+      if (started) {
+         flash.alpha = Mathf.Lerp(.4f, 0, (elapsedTime - start) * .8f);
       }
 
       elapsedTime += Time.deltaTime;
