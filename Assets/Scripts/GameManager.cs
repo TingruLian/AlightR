@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour {
    protected GameObject resource2Holder;
    protected List<Transform> resource2Units;
    protected Tweener[] resource2Tween;
+   protected List<Vector3> resource2Pos;
 
    [SerializeField]
    private UnityEvent onPlayerHurt;
@@ -118,7 +119,6 @@ public class GameManager : MonoBehaviour {
    }
 
    private void Start() {
-      UpdateResourceUI();
 
       resources = 20;
       lives = 10;
@@ -299,6 +299,6 @@ public class GameManager : MonoBehaviour {
 
    public void AddResource2(int count) {
       resource2 += count;
-      UpdateResourceUI();
+      //UpdateResourceUI();
    }
 }
