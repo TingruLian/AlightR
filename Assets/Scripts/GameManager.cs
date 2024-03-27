@@ -319,7 +319,9 @@ public class GameManager : MonoBehaviour {
 
    void ProcessSpirits()
    {
-      for (int i = 0; i < maxSpirit; i++)
+      if(usedUnits.Count <= 0) { return; }
+
+      for (int i = 0; i < usedUnits.Count; i++)
       {
          SpiritUnit spirit = usedUnits[i];
          if (spirit.tween != null && spirit.tween.active && spirit.owner !=null)
