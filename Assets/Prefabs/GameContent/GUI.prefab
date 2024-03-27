@@ -878,8 +878,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2834421077913743017}
   m_Layer: 5
-  m_Name: Resource2
-  m_TagString: Untagged
+  m_Name: Spirit
+  m_TagString: Spirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

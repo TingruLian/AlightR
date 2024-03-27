@@ -37,6 +37,7 @@ Transform:
   - {fileID: 1588632683016886753}
   - {fileID: 6940596011966759141}
   - {fileID: 7618421883424031993}
+  - {fileID: 5749340369223652697}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &-2191704911191037711
@@ -160,7 +161,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   animator: {fileID: 2256880433928473380}
-  slownDecoration: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  slownDecoration: {fileID: 3483462097891584647}
   moveGroundDecoration: {fileID: 0}
   offscreenIndicator: {fileID: 7867129812892879242}
 --- !u!82 &7856193472928548436
@@ -557,6 +558,101 @@ MonoBehaviour:
   rotating: 0
   rotationSpeed: 60
   shakeStrength: 0.05
+--- !u!1001 &5787167745473779641
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5601179817628741568}
+    m_Modifications:
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25400013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774862888123023692, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546096933876004344, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546096933876004346, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_Name
+      value: IceDecoration
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+--- !u!1 &3483462097891584647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  m_PrefabInstance: {fileID: 5787167745473779641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5749340369223652697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+  m_PrefabInstance: {fileID: 5787167745473779641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7402443285154729286
 PrefabInstance:
   m_ObjectHideFlags: 0

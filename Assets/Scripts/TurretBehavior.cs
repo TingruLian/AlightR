@@ -45,7 +45,7 @@ public class TurretBehavior : MonoBehaviour, Health {
    private float lastRotateTime;
 
    //user rotation parameters
-   protected float rotationMutiplier = 5f;
+   protected float rotationMutiplier = 120f;
    protected bool userHodling = false;
    protected Vector2 lastHoldPosition;
 
@@ -78,6 +78,9 @@ public class TurretBehavior : MonoBehaviour, Health {
    }
 
    void Update() {
+      ProcessUserRotation();
+      if (userHodling) return;
+
       if (target == null || !IsValidTarget(target.transform.position - gameObject.transform.position)) {
          SelectNewTarget();
       }
@@ -88,7 +91,7 @@ public class TurretBehavior : MonoBehaviour, Health {
          AttackTarget(target);
       }
 
-      ProcessUserRotation();
+
 
    }
 

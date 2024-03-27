@@ -9,11 +9,13 @@ public class SlowEffect : BaseEffect {
 
    public override void ApplyEffect(EnemyMovement enemy) {
       enemy.speed.SetCurValue(enemy.speed.GetBaseValue() * 0.5f);
-      spawnedDeco = Instantiate(enemy.slownDecoration, enemy.transform);
+      //spawnedDeco = Instantiate(enemy.slownDecoration, enemy.transform);
+      enemy.slownDecoration.SetActive(true);
    }
 
    public override void ResetEffect(EnemyMovement enemy) {
       enemy.speed.ResetCurValue();
-      Destroy(spawnedDeco);
-   }
+      //Destroy(spawnedDeco);
+        enemy.slownDecoration.SetActive(false);
+    }
 }
