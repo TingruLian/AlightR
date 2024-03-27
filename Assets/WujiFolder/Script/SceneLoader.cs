@@ -23,6 +23,7 @@ public class SceneLoader : MonoBehaviour
          Fader.instance.img.DOFade(1, Fader.fadeTime).OnComplete(() => {
             Transition(() => { asyncOperation.allowSceneActivation = true; });
          });
+         
       }
       else
       {
@@ -50,7 +51,10 @@ public class SceneLoader : MonoBehaviour
 
    private void Update()
    {
-      if(asyncOperation !=null)Fader.instance.progress.fillAmount = asyncOperation.progress;
+      if (asyncOperation != null)
+      {
+         Fader.instance.progress.fillAmount = asyncOperation.progress;
+      }
    }
    void Transition(UnityAction action)
    {
@@ -60,3 +64,4 @@ public class SceneLoader : MonoBehaviour
          OnComplete(action.Invoke);
    }
 }
+//90(54)+96.5(14.5)+5+5

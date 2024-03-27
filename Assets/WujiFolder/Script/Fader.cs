@@ -26,4 +26,9 @@ public class Fader : MonoBehaviour
          img.DOFade(0, fadeTime).From(1);
       }
    }
+
+   private void Update()
+   {
+      AudioListener.volume = 1 - img.color.a;
+   }
 }
