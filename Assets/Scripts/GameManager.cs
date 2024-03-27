@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
    [SerializeField]
    protected GameObject resource2Holder;
    protected List<Transform> resource2Units;
+   protected Tweener[] resource2Tween;
 
    [SerializeField]
    private UnityEvent onPlayerHurt;
@@ -109,7 +110,11 @@ public class GameManager : MonoBehaviour {
      }
 
       resource2Units = new List<Transform>();
-      if (resource2Holder != null) { foreach (Transform child in resource2Holder.transform) { resource2Units.Add(child); } }
+      if (resource2Holder != null) 
+      { 
+         foreach (Transform child in resource2Holder.transform) { resource2Units.Add(child); }
+         resource2Tween = new Tweener[resource2Units.Count];
+      }
    }
 
    private void Start() {
@@ -237,7 +242,8 @@ public class GameManager : MonoBehaviour {
       if (resource2 > 0) { 
          lpList.Add(lp);
          resource2--;
-         UpdateResourceUI();
+         
+         //UpdateResourceUI();
 
          return true;
       }
@@ -257,36 +263,38 @@ public class GameManager : MonoBehaviour {
    public void FreeTurret(LocationTurretPlacement lp) {
       lpList.Remove(lp);
       resource2++;
-      UpdateResourceUI();
+      //UpdateResourceUI(resource2, );
    }
 
 
-   void UpdateResourceUI() {
+   void UpdateResourceUI(int id, Vector3 pos) {
       if (resource2Holder == null) {
          return;
       }
 
-      for (int i = 0; i < resource2Units.Count; i++)
-      {
-         bool condition = i <= resource2 - 1;
-         GameObject obj = resource2Units[i].gameObject;
 
-         //Case activate
-         if(condition && !obj.activeSelf)
-         {
-            obj.transform.localScale = Vector3.one;
-            obj.SetActive(true);
-            obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic);
-         }
 
-         //Case deactivate
-         if (!condition && obj.activeSelf)
-         {
-            obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic)
-               .OnComplete(() => { obj.SetActive(false); obj.transform.localScale = Vector3.one; });
-         }
+      //for (int i = 0; i < resource2Units.Count; i++)
+      //{
+      //   bool condition = i <= resource2 - 1;
+      //   GameObject obj = resource2Units[i].gameObject;
 
-      }
+      //   //Case activate
+      //   if(condition && !obj.activeSelf)
+      //   {
+      //      obj.transform.localScale = Vector3.one;
+      //      obj.SetActive(true);
+      //      obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic);
+      //   }
+
+      //   //Case deactivate
+      //   if (!condition && obj.activeSelf)
+      //   {
+      //      obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic)
+      //         .OnComplete(() => { obj.SetActive(false); obj.transform.localScale = Vector3.one; });
+      //   }
+
+      //}
    }
 
    public void AddResource2(int count) {

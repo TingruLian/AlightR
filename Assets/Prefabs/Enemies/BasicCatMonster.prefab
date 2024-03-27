@@ -855,6 +855,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5601179817628741568}
     m_Modifications:
+    - target: {fileID: 1129192160630698899, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2277102865597301472, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -907,9 +911,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3774862888123023692, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5546096933876004344, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
       propertyPath: looping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546096933876004344, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546096933876004344, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6919666707922255166, guid: 6b56460dbcd31714c99d8cc90059c837, type: 3}
       propertyPath: m_Name
