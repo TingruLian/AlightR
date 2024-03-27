@@ -10,6 +10,14 @@ using System.Linq;
 using UnityEngine.Playables;
 using UnityEditor;
 
+
+public class SpiritUnit
+{
+   public Transform art;
+   public Tweener tween;
+   public Transform owner;
+}
+
 public class GameManager : MonoBehaviour {
    public static GameManager instance { get; private set; }
 
@@ -27,8 +35,7 @@ public class GameManager : MonoBehaviour {
    [SerializeField]
    public Camera arCamera;
 
-   [SerializeField]
-   protected int resource2 = 2;
+
 
    [SerializeField]
    protected int LevelId;
@@ -72,11 +79,15 @@ public class GameManager : MonoBehaviour {
    [SerializeField]
    private GameScriptableObject GameData;
 
-   [SerializeField]
-   protected GameObject resource2Holder;
-   protected List<Transform> resource2Units;
-   protected Tweener[] resource2Tween;
-   protected List<Vector3> resource2Pos;
+   [SerializeField]protected GameObject spiritHolder;
+   [SerializeField]protected int maxSpirit = 2;
+   protected int currentSpirit;
+   protected List<SpiritUnit> spiritUnits;
+   protected List<SpiritUnit> pendingUnits;
+   protected List<SpiritUnit> usedUnits;
+   protected List<Vector3> spiritSlotPos;
+
+
 
    [SerializeField]
    private UnityEvent onPlayerHurt;
@@ -108,13 +119,30 @@ public class GameManager : MonoBehaviour {
          Destroy(this);
       } else {
         instance = this;
-     }
+      }
 
-      resource2Units = new List<Transform>();
-      if (resource2Holder != null) 
-      { 
-         foreach (Transform child in resource2Holder.transform) { resource2Units.Add(child); }
-         resource2Tween = new Tweener[resource2Units.Count];
+
+      currentSpirit = maxSpirit;
+
+      if(spiritHolder == null) { spiritHolder = GameObject.FindGameObjectWithTag("Spirit"); }
+
+      if (spiritHolder != null) 
+      {
+         spiritUnits = new List<SpiritUnit>();
+         spiritSlotPos = new List<Vector3>();
+         pendingUnits = new List<SpiritUnit>();
+         usedUnits = new List<SpiritUnit>();
+
+         foreach (Transform child in spiritHolder.transform) 
+         { 
+            SpiritUnit unit = new SpiritUnit();
+            unit.art = child;
+            spiritUnits.Add(unit);
+
+            spiritSlotPos.Add(child.position);
+            if (maxSpirit <= spiritUnits.IndexOf(unit)) { child.gameObject.SetActive(false); }
+            else { pendingUnits.Add(unit); }
+         }
       }
    }
 
@@ -134,6 +162,7 @@ public class GameManager : MonoBehaviour {
 
    private void Update() {
 
+      ProcessSpirits();
       if (colorControl != null) { colorControl.UpdateLoop(); }
 
       if (EnemyMovement.enemies == null) {
@@ -146,6 +175,8 @@ public class GameManager : MonoBehaviour {
       EnemyMovement[] enemies = EnemyMovement.enemies.ToArray();
       foreach (EnemyMovement enemyController in enemies) {
       }
+
+
    }
 
    public void ModifyResources(int mod) {
@@ -239,16 +270,24 @@ public class GameManager : MonoBehaviour {
    }
 
    public bool RequestTurret(LocationTurretPlacement lp) {
-      if (resource2 > 0) { 
+      if (currentSpirit > 0) { 
          lpList.Add(lp);
-         resource2--;
-         
-         //UpdateResourceUI();
+         currentSpirit--;
+
+         SpiritUnit spirit = pendingUnits.Last();
+         pendingUnits.Remove(spirit);
+         usedUnits.Add(spirit);
+         spirit.owner = lp.transform;
+
+         if(spirit.tween!= null) { spirit.tween.Kill(); }
+         Vector3 targetPos = Camera.main.WorldToScreenPoint(lp.transform.position);
+         spirit.tween = spirit.art.DOMove(targetPos, 1)
+            .OnComplete(() => { spirit.art.gameObject.SetActive(false); });
 
          return true;
       }
       
-      if (resource2 <= 0) {
+      if (currentSpirit <= 0) {
          if (lpList.Count > 0) {
             lpList[0].RemoveTurret(true);
             return RequestTurret(lp);
@@ -262,43 +301,49 @@ public class GameManager : MonoBehaviour {
 
    public void FreeTurret(LocationTurretPlacement lp) {
       lpList.Remove(lp);
-      resource2++;
-      //UpdateResourceUI(resource2, );
+
+      SpiritUnit spirit = usedUnits.First();
+      usedUnits.Remove(spirit);
+      pendingUnits.Add(spirit);
+      
+      spirit.owner = null;
+      spirit.art.gameObject.SetActive(true);
+      spirit.art.position = Camera.main.WorldToScreenPoint(lp.transform.position);
+
+      if (spirit.tween != null) { spirit.tween.Kill(); }
+      spirit.tween = spirit.art.DOMove(spiritSlotPos[currentSpirit], 1);
+
+      currentSpirit++;
    }
 
 
-   void UpdateResourceUI(int id, Vector3 pos) {
-      if (resource2Holder == null) {
-         return;
+   void ProcessSpirits()
+   {
+      for (int i = 0; i < maxSpirit; i++)
+      {
+         SpiritUnit spirit = usedUnits[i];
+         if (spirit.tween != null && spirit.tween.active && spirit.owner !=null)
+         {
+            Vector3 targetPos = Camera.main.WorldToScreenPoint(spirit.owner.position);
+            float t = spirit.tween.position;
+            spirit.tween.ChangeEndValue(targetPos);
+            spirit.tween.Goto(t, true);
+            Debug.Log("updating position");
+         }
       }
-
-
-
-      //for (int i = 0; i < resource2Units.Count; i++)
-      //{
-      //   bool condition = i <= resource2 - 1;
-      //   GameObject obj = resource2Units[i].gameObject;
-
-      //   //Case activate
-      //   if(condition && !obj.activeSelf)
-      //   {
-      //      obj.transform.localScale = Vector3.one;
-      //      obj.SetActive(true);
-      //      obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic);
-      //   }
-
-      //   //Case deactivate
-      //   if (!condition && obj.activeSelf)
-      //   {
-      //      obj.transform.DOShakeScale(0.25f, 1, 10, 90, false, ShakeRandomnessMode.Harmonic)
-      //         .OnComplete(() => { obj.SetActive(false); obj.transform.localScale = Vector3.one; });
-      //   }
-
-      //}
    }
-
    public void AddResource2(int count) {
-      resource2 += count;
-      //UpdateResourceUI();
+
+      for(int i = maxSpirit; count > 0; i++)
+      {
+         spiritUnits[i].art.gameObject.SetActive(true);
+         spiritUnits[i].art.position = spiritSlotPos[currentSpirit];
+         currentSpirit ++;
+         maxSpirit ++;
+
+         pendingUnits.Add(spiritUnits[i]);
+
+         count--;
+      }
    }
 }

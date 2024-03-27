@@ -10,6 +10,7 @@ TagManager:
   - Fader
   - Ground
   - MetalCart
+  - Spirit
   layers:
   - Default
   - TransparentFX
