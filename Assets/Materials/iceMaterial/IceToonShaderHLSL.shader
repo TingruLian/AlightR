@@ -21,12 +21,14 @@ Shader "Custom/IcedToonShaderHLSL"
     {
         Tags
         {
-               "RenderType" = "Opaque"
-               "RenderPipeline" = "UniversalPipeline"
-               "UniversalMaterialType" = "Lit"
-               "IgnoreProjector" = "True"
-               "LightMode" = "UniversalForward"
+            "RenderType" = "Opaque"
+            "RenderPipeline" = "UniversalPipeline"
+            "UniversalMaterialType" = "Lit"
+            "IgnoreProjector" = "True"
+            "LightMode" = "UniversalForward"
         }
+
+        LOD 300
 
         Pass
         {            
