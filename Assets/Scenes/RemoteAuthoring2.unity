@@ -884,7 +884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f446ceac60ed41a42bf4e1669eb8beb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 027b566cfa3254241b11b34ae79d8a81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f446ceac60ed41a42bf4e1669eb8beb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 027b566cfa3254241b11b34ae79d8a81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3544,11 +3544,6 @@ GameObject:
 --- !u!4 &1840200859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7785036626028653857, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
-  m_PrefabInstance: {fileID: 2075024798}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1974646635 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1977284042507287168, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
   m_PrefabInstance: {fileID: 2075024798}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984016021
@@ -5483,7 +5478,6 @@ MonoBehaviour:
   enemyIndicator: {fileID: 6297871754265139022, guid: c6ee731a17d181940a217be108050b22, type: 3}
   uiCanvas: {fileID: 2000765754}
   arCamera: {fileID: 639467369}
-  resource2: 2
   LevelId: 1
   onResourceEnough:
     m_PersistentCalls:
@@ -5625,7 +5619,8 @@ MonoBehaviour:
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
   GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
-  resource2Holder: {fileID: 1974646635}
+  spiritHolder: {fileID: 0}
+  maxSpirit: 2
   onPlayerHurt:
     m_PersistentCalls:
       m_Calls:
