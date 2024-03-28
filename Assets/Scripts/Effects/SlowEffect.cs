@@ -24,14 +24,13 @@ public class SlowEffect : BaseEffect {
     public void changeMaterials(EnemyMovement enemy)
     {
         materialObject = enemy.gameObject.transform.GetChild(3).GetChild(0).gameObject;
-        //Debug.Log(materialObject);
+        Debug.Log(materialObject);
         Renderer renderer = materialObject.GetComponent<SkinnedMeshRenderer>();
 
         Material[] materials = renderer.materials;
         for (int i = 0; i < materials.Length; i++)
         {
-
-            materials[i].SetFloat("Ice Scale", 0.65f);
+            materials[i].SetFloat("_IceScale", 0.65f);
             Debug.Log(materials[i] +" " +materials[i].GetFloat("Ice Scale"));
         }
         // Apply the modified materials back to the renderer
