@@ -3148,7 +3148,7 @@ PrefabInstance:
     - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: enemyUnits.Array.data[0]
       value: 
-      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
+      objectReference: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
     - target: {fileID: 7605552630093376973, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: m_Name
       value: Wave1
@@ -3812,7 +3812,7 @@ PrefabInstance:
     - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: enemyUnits.Array.data[0]
       value: 
-      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
+      objectReference: {fileID: 7861293195921842435, guid: 0c9c608b5b52dcf4a9afdd2ed8afd717, type: 3}
     - target: {fileID: 7605552630093376973, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: m_Name
       value: Wave2
