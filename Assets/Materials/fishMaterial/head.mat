@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: head
-  m_Shader: {fileID: 4800000, guid: 78e1f82578e0f0f42867861f6a90697a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 54b6ed76893fc4d41ad066ed15b84dfa, type: 3}
   m_Parent: {fileID: 2100000, guid: 998dc3c4490b28041be4a4a5eb628c03, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -33,6 +33,7 @@ Material:
     - _ColorStep2: 0.3
     - _Feather: 0.676
     - _Glossiness: 0.1
+    - _IceScale: 0
     - _Metallic: 0
     m_Colors:
     - _Color1: {r: 0.5698943, g: 0.6860175, b: 0.7106918, a: 1}
