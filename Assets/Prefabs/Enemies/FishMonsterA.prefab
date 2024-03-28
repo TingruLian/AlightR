@@ -164,6 +164,8 @@ MonoBehaviour:
   slownDecoration: {fileID: 3483462097891584647}
   moveGroundDecoration: {fileID: 0}
   offscreenIndicator: {fileID: 7867129812892879242}
+  Child1Index: 3
+  Child2Index: 0
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0

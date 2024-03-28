@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: tail
-  m_Shader: {fileID: 4800000, guid: 78e1f82578e0f0f42867861f6a90697a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 54b6ed76893fc4d41ad066ed15b84dfa, type: 3}
   m_Parent: {fileID: 2100000, guid: e099baf4d0b1ebb4196eaf02f00b1bcf, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -35,7 +35,11 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _IceTex:
+        m_Texture: {fileID: 2800000, guid: af48b00257a29ea41b567bc48b6ccd33, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _ColorStep1: 0.838
