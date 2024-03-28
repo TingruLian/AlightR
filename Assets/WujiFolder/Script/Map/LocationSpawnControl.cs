@@ -31,11 +31,13 @@ public class LocationSpawnControl : MonoBehaviour
    private GameObject cartObject = null;
 
    private void Awake() {
-      if (_layerObject == null) _layerObject = GetComponent<LayerGameObjectPlacement>();
+      if (_layerObject == null) {
+         _layerObject = GetComponent<LayerGameObjectPlacement>();
+      }
    }
 
 
-   private void Start() {
+   public void SpawnLocations() {
       foreach (LocationUnit unit in units) {
          GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;

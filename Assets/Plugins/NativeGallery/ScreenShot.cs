@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ScreenShot : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Update()
     {
        
@@ -23,7 +24,14 @@ public class ScreenShot : MonoBehaviour
 
     private IEnumerator TakeScreenshotAndSave()
     {
+        this.GetComponent<Image>().enabled = false;
         yield return new WaitForEndOfFrame();
+
+        
+       
+
+
+
 
         Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         ss.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -36,6 +44,8 @@ public class ScreenShot : MonoBehaviour
 
         // To avoid memory leaks
         Destroy(ss);
+        //yield return new WaitForEndOfFrame();
+        this.GetComponent<Image>().enabled = true;
     }
 
 
