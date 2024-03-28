@@ -71,7 +71,7 @@ public class EnemyMovement : MonoBehaviour {
 
    private bool moving = true;
    private float lastUpdateTime;
-   [SerializeField] private int Child1Index, Child2Index;
+   [SerializeField] protected List<SkinnedMeshRenderer> skinnedMeshRenderers;
 
 
     private void Awake() {
@@ -402,15 +402,16 @@ public class EnemyMovement : MonoBehaviour {
 
     public void changeMaterials()
     {
-        materialObject = this.gameObject.transform.GetChild(Child1Index).GetChild(Child2Index).gameObject;//Fish: 3,0, Cat 1,1
-        Renderer renderer = materialObject.GetComponent<SkinnedMeshRenderer>();
-        Material[] materials = renderer.materials;
-        for (int i = 0; i < materials.Length; i++)
-        {
+      foreach (SkinnedMeshRenderer r in skinnedMeshRenderers)
+      {
+         Material[] materials = r.materials;
+         for (int i = 0; i < materials.Length; i++)
+         {
             materials[i].SetFloat("_IceScale", 0.65f);
-        }
-        // Apply the modified materials back to the renderer
-        renderer.materials = materials;
+         }
+         // Apply the modified materials back to the renderer
+         r.materials = materials;
+      }
     }
     public void changeBackMaterials( float duration)
     {
@@ -428,8 +429,7 @@ public class EnemyMovement : MonoBehaviour {
     //private float duration = 2.0f;
     private IEnumerator ChangeBackMaterialsCoroutine(float duration)
     {
-        materialObject = this.gameObject.transform.GetChild(Child1Index).GetChild(Child2Index).gameObject;
-        Renderer renderer = materialObject.GetComponent<SkinnedMeshRenderer>();
+
 
         // Assuming the Ice Scale is initially set to some value and you want to bring it back to 0
         float initialIceScale = 0.65f; // Example initial value, adjust as needed
@@ -440,22 +440,29 @@ public class EnemyMovement : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             float newIceScale = Mathf.Lerp(initialIceScale, 0f, elapsedTime / duration);
 
-            Material[] materials = renderer.materials;
+         foreach (SkinnedMeshRenderer r in skinnedMeshRenderers)
+         {
+            Material[] materials = r.materials;
             for (int i = 0; i < materials.Length; i++)
             {
-                materials[i].SetFloat("_IceScale", newIceScale);
+               materials[i].SetFloat("_IceScale", newIceScale);
             }
-            renderer.materials = materials;
+            r.materials = materials;
+         }
 
             yield return null;
+
         }
 
-        // Ensure the value is set to 0 at the end
-        Material[] finalMaterials = renderer.materials;
-        for (int i = 0; i < finalMaterials.Length; i++)
-        {
+      foreach (SkinnedMeshRenderer r in skinnedMeshRenderers)
+      {
+         // Ensure the value is set to 0 at the end
+         Material[] finalMaterials = r.materials;
+         for (int i = 0; i < finalMaterials.Length; i++)
+         {
             finalMaterials[i].SetFloat("_IceScale", 0f);
-        }
-        renderer.materials = finalMaterials;
+         }
+         r.materials = finalMaterials;
+      }
     }
 }

@@ -162,8 +162,9 @@ MonoBehaviour:
   slownDecoration: {fileID: 6655233895962561215}
   moveGroundDecoration: {fileID: 0}
   offscreenIndicator: {fileID: 8765456675505582657}
-  Child1Index: 1
-  Child2Index: 1
+  skinnedMeshRenderers:
+  - {fileID: 6791594833951391785}
+  - {fileID: 8769194854777441436}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -828,6 +829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0bed29282ad5947a06066a310ded5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &6791594833951391785 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7557059561150340933, guid: 4376259732021814cbdfe30192759f4e, type: 3}
+  m_PrefabInstance: {fileID: 3936293569418551148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7093098322589525202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6111166383604038590, guid: 4376259732021814cbdfe30192759f4e, type: 3}
@@ -853,6 +859,11 @@ MonoBehaviour:
   rotating: 0
   rotationSpeed: 60
   shakeStrength: 0.05
+--- !u!137 &8769194854777441436 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5697887401857881072, guid: 4376259732021814cbdfe30192759f4e, type: 3}
+  m_PrefabInstance: {fileID: 3936293569418551148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4349276310547314561
 PrefabInstance:
   m_ObjectHideFlags: 0

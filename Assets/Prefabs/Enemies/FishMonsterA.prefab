@@ -164,8 +164,8 @@ MonoBehaviour:
   slownDecoration: {fileID: 3483462097891584647}
   moveGroundDecoration: {fileID: 0}
   offscreenIndicator: {fileID: 7867129812892879242}
-  Child1Index: 3
-  Child2Index: 0
+  skinnedMeshRenderers:
+  - {fileID: 2988926468235157316}
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -435,6 +435,11 @@ PrefabInstance:
 --- !u!95 &2256880433928473380 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4042376058252485316, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
+  m_PrefabInstance: {fileID: 2831474814763985376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2988926468235157316 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1022782891506251428, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
   m_PrefabInstance: {fileID: 2831474814763985376}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4371872487534966610 stripped
