@@ -15,7 +15,14 @@ Shader "Custom/ToonShaderHLSL"
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalRenderPipeline" "LightMode" = "UniversalForward" }
+        Tags
+        {
+               "RenderType" = "Opaque"
+               "RenderPipeline" = "UniversalPipeline"
+               "UniversalMaterialType" = "Lit"
+               "IgnoreProjector" = "True"
+               "LightMode" = "UniversalForward"
+        }
 
         Pass
         {            
@@ -24,7 +31,6 @@ Shader "Custom/ToonShaderHLSL"
             #pragma fragment frag
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"            
 
             struct Attributes
             {
