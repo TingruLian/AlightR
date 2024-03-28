@@ -1949,11 +1949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectbutton: {fileID: 1225446110}
   arLocationText: {fileID: 887621719}
---- !u!1 &1079959773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1977284042507287168, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
-  m_PrefabInstance: {fileID: 2075024798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1136583293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3150,6 +3145,10 @@ PrefabInstance:
       propertyPath: waveInformation
       value: Wave1
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
+      propertyPath: enemyUnits.Array.data[0]
+      value: 
+      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
     - target: {fileID: 7605552630093376973, guid: 53c2a9d7e13db004ba8fdc9e6f6e83d2, type: 3}
       propertyPath: m_Name
       value: Wave1
@@ -3810,6 +3809,10 @@ PrefabInstance:
       propertyPath: waveInformation
       value: Wave2
       objectReference: {fileID: 0}
+    - target: {fileID: 7271798891114543429, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
+      propertyPath: enemyUnits.Array.data[0]
+      value: 
+      objectReference: {fileID: 7861293195921842435, guid: ca324037ac0f75043a8a0582a40f277b, type: 3}
     - target: {fileID: 7605552630093376973, guid: 9e0f4b84f06128748a0b74782751b349, type: 3}
       propertyPath: m_Name
       value: Wave2
@@ -5602,7 +5605,6 @@ MonoBehaviour:
   enemyIndicator: {fileID: 6297871754265139022, guid: c6ee731a17d181940a217be108050b22, type: 3}
   uiCanvas: {fileID: 376120197}
   arCamera: {fileID: 1187756104}
-  resource2: 2
   LevelId: 0
   onResourceEnough:
     m_PersistentCalls:
@@ -5744,7 +5746,8 @@ MonoBehaviour:
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
   GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
-  resource2Holder: {fileID: 1079959773}
+  spiritHolder: {fileID: 0}
+  maxSpirit: 2
   onPlayerHurt:
     m_PersistentCalls:
       m_Calls:
