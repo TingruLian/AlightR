@@ -204,8 +204,8 @@ public class EnemyMovement : MonoBehaviour {
 
          Vector3 oldPos = indicatorPos;
 
-         indicatorPos.x = math.clamp(indicatorPos.x, 20, canvas.rect.width * canvas.localScale.x - 20);
-         indicatorPos.y = math.clamp(indicatorPos.y, 20, canvas.rect.height * canvas.localScale.y - 20);
+         indicatorPos.x = math.clamp(indicatorPos.x, 50, canvas.rect.width * canvas.localScale.x - 50);
+         indicatorPos.y = math.clamp(indicatorPos.y, 50, canvas.rect.height * canvas.localScale.y - 50);
 
          Vector3 dif = oldPos - indicatorPos;
 
