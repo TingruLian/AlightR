@@ -26,6 +26,7 @@ Shader "Custom/IcedToonShaderHLSL"
 
         Tags
         {
+            "Queue" = "Transparent"
             "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalPipeline"
             "UniversalMaterialType" = "Lit"
