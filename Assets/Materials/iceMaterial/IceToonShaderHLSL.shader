@@ -19,24 +19,28 @@ Shader "Custom/IcedToonShaderHLSL"
 
     SubShader
     {
+
+        HLSLINCLUDE
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        ENDHLSL
+
         Tags
         {
             "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalPipeline"
             "UniversalMaterialType" = "Lit"
             "IgnoreProjector" = "True"
-            "LightMode" = "UniversalForward"
         }
 
         LOD 300
 
         Pass
-        {            
+        {
+            Tags { "LightMode" = "UniversalForward" }
+
             HLSLPROGRAM            
             #pragma vertex vert            
             #pragma fragment frag
-
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             struct Attributes
             {
@@ -122,6 +126,35 @@ Shader "Custom/IcedToonShaderHLSL"
                 half3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
 
                 return half4(ambient + diffuse + specular + fresnelColor, 1.0);
+            }
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "ShadowCast"
+
+            Tags {"LightMode" = "ShadowCaster"}
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            struct Attributes {
+                float4 vertex : POSITION;
+            };
+
+            struct Varyings {
+                float4 position : SV_POSITION;
+            };
+
+            Varyings vert(Attributes IN) {
+                Varyings OUT;
+                OUT.position = TransformObjectToHClip(IN.vertex);
+                return OUT;
+            }
+
+            half4 frag(Varyings IN) : SV_TARGET {
+                return half4(0.0, 0.0, 0.0, 1.0);
             }
             ENDHLSL
         }
