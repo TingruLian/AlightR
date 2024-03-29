@@ -23,6 +23,9 @@ public class EnemyMovement : MonoBehaviour {
    public static List<EnemyMovement> enemies;
 
    [SerializeField]
+   protected int typeID = 0;
+
+   [SerializeField]
    protected EnemyState currentState;
    protected EnemyState lastState;
 
@@ -61,7 +64,7 @@ public class EnemyMovement : MonoBehaviour {
 
    protected GameObject uiCanvas;
    protected GameObject indicatorUIPrefab;
-   protected GameObject indicatorUI = null;
+   protected IndicatorUnit indicatorUI = null;
 
    protected Sequence _attackSequence;
    protected Tween _shakeTween;
@@ -92,7 +95,7 @@ public class EnemyMovement : MonoBehaviour {
    }
 
    private void OnDestroy() {
-      Destroy(indicatorUI);
+      Destroy(indicatorUI.gameObject);
 
       enemies.Remove(this);
       onDeath.Invoke();
@@ -170,9 +173,10 @@ public class EnemyMovement : MonoBehaviour {
          indicatorUIPrefab = gm.enemyIndicator;
          uiCanvas = gm.uiCanvas;
 
-         indicatorUI = Instantiate(indicatorUIPrefab, uiCanvas.transform);
+         indicatorUI = Instantiate(indicatorUIPrefab, uiCanvas.transform).GetComponent<IndicatorUnit>();
          indicatorUI.transform.localScale = new Vector3(.5f, .5f, 1f);
-         indicatorUI.SetActive(false);
+         indicatorUI.Ini(typeID);
+         indicatorUI.gameObject.SetActive(false);
       }
    }
 
@@ -191,12 +195,12 @@ public class EnemyMovement : MonoBehaviour {
       if(indicatorPos.z >= 0f && indicatorPos.x >= -20f &&indicatorPos.x <= canvas.rect.width * canvas.localScale.x +20f
          && indicatorPos.y >= -20f && indicatorPos.y <= canvas.rect.height * canvas.localScale.y + 20f)
       {
-         indicatorUI.SetActive(false);
+         indicatorUI.gameObject.SetActive(false);
       }
       //if off screen
       else
       {
-         indicatorUI.SetActive(true);
+         indicatorUI.gameObject.SetActive(true);
 
          Vector3 oldPos = indicatorPos;
 
@@ -206,7 +210,7 @@ public class EnemyMovement : MonoBehaviour {
          Vector3 dif = oldPos - indicatorPos;
 
          indicatorUI.transform.position = indicatorPos;
-         indicatorUI.transform.eulerAngles = new Vector3(0, 0, - Mathf.Atan2(dif.x,dif.y) * (180.0f / Mathf.PI));
+         indicatorUI.SetRotate(new Vector3(0, 0, -Mathf.Atan2(dif.x, dif.y) * (180.0f / Mathf.PI)));
       }
    }
 
