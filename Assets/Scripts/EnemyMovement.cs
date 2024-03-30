@@ -61,6 +61,7 @@ public class EnemyMovement : MonoBehaviour {
 
    [SerializeField]
    protected OffscreenPositionIndicator offscreenIndicator;
+    const float indicatorOffset = 120f;
 
    protected GameObject uiCanvas;
    protected GameObject indicatorUIPrefab;
@@ -204,8 +205,8 @@ public class EnemyMovement : MonoBehaviour {
 
          Vector3 oldPos = indicatorPos;
 
-         indicatorPos.x = math.clamp(indicatorPos.x, 50, canvas.rect.width * canvas.localScale.x - 50);
-         indicatorPos.y = math.clamp(indicatorPos.y, 50, canvas.rect.height * canvas.localScale.y - 50);
+         indicatorPos.x = math.clamp(indicatorPos.x, indicatorOffset * canvas.localScale.x, (canvas.rect.width - indicatorOffset) * canvas.localScale.x);
+         indicatorPos.y = math.clamp(indicatorPos.y, indicatorOffset * canvas.localScale.x, (canvas.rect.height - indicatorOffset) * canvas.localScale.y);
 
          Vector3 dif = oldPos - indicatorPos;
 
