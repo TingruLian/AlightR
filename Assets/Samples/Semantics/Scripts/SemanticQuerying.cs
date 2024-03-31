@@ -1,4 +1,5 @@
 // Copyright 2022-2024 Niantic.
+using System.Collections.Generic;
 using System.Linq;
 using Niantic.Lightship.AR.Semantics;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class SemanticQuerying : MonoBehaviour
     public ARSemanticSegmentationManager _semanticMan;
 
     public RawImage _image;
-    public Material _material;
+    public List<Material> _materials;
 
     [SerializeField]
     private string _semanticChannelName = string.Empty;
@@ -51,9 +52,11 @@ public class SemanticQuerying : MonoBehaviour
             //the texture needs to be aligned to the screen so get the display matrix
             //and use a shader that will rotate/scale things.
             Matrix4x4 cameraMatrix = args.displayMatrix ?? Matrix4x4.identity;
-            _image.material = _material;
+            _image.material = _materials[0];
             _image.material.SetTexture("_SemanticTex", texture);
             _image.material.SetMatrix("_SemanticMat", mat);
+            _materials[1].SetTexture("_SemanticTex", texture);
+            _materials[1].SetMatrix("_SemanticMat", mat);
         }
     }
 
