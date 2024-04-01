@@ -93,30 +93,27 @@ public class EnemySpawner : MonoBehaviour
    void Update() {
 
       //Update each ongoing waves
-      //backward iteration because waves might be removed in progress
-      if (onGoingWaves != null) {
-         for (int i = onGoingWaves.Count - 1; i >= 0; i--) {
-            Wave w = onGoingWaves[i];
+      //back ward iteration because waves might be removed in progress
+      for (int i = onGoingWaves.Count - 1; i >= 0; i--) {
+         Wave w = onGoingWaves[i];
 
-            if (!w.Validate()) {
-               w.EndWave();
-            }
+         if (!w.Validate()) {
+            w.EndWave(); 
          }
       }
 
 
       //If there's no wave, check if we shall start a new one, or end 
-      if (onGoingWaves != null && onGoingWaves.Count == 0) {
+      if (onGoingWaves.Count == 0) {
 
          waveId++;
          
          if (waveId < mainWaves.Count) {
             mainWaves[waveId].StartWave(this);
-            if (colorControl != null) {
-               colorControl.SetToWaveColor(waveId);
-            }
+            if (colorControl != null) { colorControl.SetToWaveColor(waveId); }
+
          } else {
-            onGoingWaves.Clear();
+            onGoingWaves = null;
             InvokeWaveInformation("All Waves Cleared");
             if (colorControl != null) { colorControl.SetToVicColor(); }
 

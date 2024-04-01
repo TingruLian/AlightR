@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MaskMaterial
-  m_Shader: {fileID: 4800000, guid: aa532e436ce3a4a45a84d5778dba74e1, type: 3}
+  m_Shader: {fileID: 4800000, guid: ebd7f6e5fd45c7043a64ada1878beaaf, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
