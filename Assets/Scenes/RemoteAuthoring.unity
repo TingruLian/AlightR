@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 487177380}
   t1:
-    mainText: Undeads are coming to destroy the spirit of the bridge
+    mainText: The undead are coming to destroy the spirit of the bridge
     onEnter:
       m_PersistentCalls:
         m_Calls:
