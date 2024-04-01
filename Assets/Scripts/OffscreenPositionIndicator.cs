@@ -14,11 +14,9 @@ public class OffscreenPositionIndicator : MonoBehaviour {
 
    void OnBecameVisible() {
       visible = true;
-      Debug.Log("invisibale");
    }
 
    void OnBecameInvisible() {
       visible = false;
-      Debug.Log("visibale");
    }
 }

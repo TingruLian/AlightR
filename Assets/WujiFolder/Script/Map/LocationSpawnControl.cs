@@ -42,12 +42,14 @@ public class LocationSpawnControl : MonoBehaviour
          GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
          if (location.GetComponent<CompletionCheck>() != null) {
+            Debug.Log("Initing PARENT");
             location.GetComponent<CompletionCheck>().levelId = unit.preRequisiteLevelId;
          }
 
          if (unit.child != null) {
             GameObject c = Instantiate(unit.child,location.transform.position, Quaternion.identity);
             if (c.GetComponent<CompletionCheck>() != null) {
+               Debug.Log("Initing CHILD");
                c.GetComponent<CompletionCheck>().levelId = unit.levelId;
             }
          }
@@ -72,5 +74,15 @@ public class LocationSpawnControl : MonoBehaviour
 
       cartController.start = startObject.transform.position;
       cartController.end = endObject.transform.position;
+
+      Vector3 cartFwd = (cartController.end - cartController.start).normalized;
+      Vector3 cartRight = Quaternion.AngleAxis(90, Vector3.up) * cartFwd;
+
+      Vector3 offset = cartRight * 10.0f;
+
+      cartObject.transform.position = cartObject.transform.position + offset;
+
+      cartController.start += offset;
+      cartController.end += offset;
    }
 }
