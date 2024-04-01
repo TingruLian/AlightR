@@ -58,7 +58,9 @@ public class Wave : MonoBehaviour {
    protected List<Sequence> allSequence = new List<Sequence>();
    public void StartWave(EnemySpawner spawner) {
       spawner.GetOnGoingWaves().Add(this);
-      onWaveCleared.AddListener(() => { spawner.GetOnGoingWaves().Remove(this); });
+      onWaveCleared.AddListener(() => {
+         spawner.GetOnGoingWaves().Remove(this);
+      });
 
       started = true;
       generatedCount = 0;

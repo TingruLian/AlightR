@@ -155,9 +155,12 @@ public class Level1Tutorial : MonoBehaviour
       public override void AssignTrigger()
       {
          base.AssignTrigger();
-         waves =  FindObjectOfType<EnemySpawner>().GetOnGoingWaves();
+         waves = FindObjectOfType<EnemySpawner>().GetOnGoingWaves();
 
-         if(waves.Count <= 0) { Entry(); return; }
+         if(waves.Count <= 0) {
+            Entry();
+            return;
+         }
 
          waves[0].AddListenerToWaveEnd(Entry);
 
