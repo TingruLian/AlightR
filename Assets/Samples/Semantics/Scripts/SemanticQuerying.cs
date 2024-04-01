@@ -1,4 +1,5 @@
 // Copyright 2022-2024 Niantic.
+using System.Collections.Generic;
 using System.Linq;
 using Niantic.Lightship.AR.Semantics;
 using UnityEngine;
@@ -11,8 +12,9 @@ public class SemanticQuerying : MonoBehaviour
     public ARSemanticSegmentationManager _semanticMan;
 
     public RawImage _image;
-    public Material _material;
+    public List<Material> _materials;
 
+    [SerializeField]
     private string _semanticChannelName = string.Empty;
 
     //private string _channel = "ground";
@@ -23,7 +25,7 @@ public class SemanticQuerying : MonoBehaviour
     void OnEnable()
     {
         _cameraMan.frameReceived += OnCameraFrameUpdate;
-        _channelDropdown.onValueChanged.AddListener(ChannelDropdown_OnValueChanged);
+        if(_channelDropdown !=null) _channelDropdown.onValueChanged.AddListener(ChannelDropdown_OnValueChanged);
 
         _semanticMan.MetadataInitialized += SemanticsManager_OnDataInitialized;
 
@@ -50,9 +52,11 @@ public class SemanticQuerying : MonoBehaviour
             //the texture needs to be aligned to the screen so get the display matrix
             //and use a shader that will rotate/scale things.
             Matrix4x4 cameraMatrix = args.displayMatrix ?? Matrix4x4.identity;
-            _image.material = _material;
+            _image.material = _materials[0];
             _image.material.SetTexture("_SemanticTex", texture);
-            _image.material.SetMatrix("_DisplayMatrix", mat);
+            _image.material.SetMatrix("_SemanticMat", mat);
+            _materials[1].SetTexture("_SemanticTex", texture);
+            _materials[1].SetMatrix("_SemanticMat", mat);
         }
     }
 
@@ -60,13 +64,16 @@ public class SemanticQuerying : MonoBehaviour
     {
         // Initialize the channel names in the dropdown menu.
         var channelNames = _semanticMan.ChannelNames;
-        _channelDropdown.AddOptions(channelNames.ToList());
+      if (_channelDropdown != null) _channelDropdown.AddOptions(channelNames.ToList());
 
 
         // Display artificial ground by default.
-        _semanticChannelName = channelNames[3];
-        var dropdownList = _channelDropdown.options.Select(option => option.text).ToList();
-        _channelDropdown.value = dropdownList.IndexOf(_semanticChannelName);
+        //_semanticChannelName = channelNames[3];
+      if (_channelDropdown != null)
+      {
+         var dropdownList = _channelDropdown.options.Select(option => option.text).ToList();
+         _channelDropdown.value = dropdownList.IndexOf(_semanticChannelName);
+      }
     }
     private void ChannelDropdown_OnValueChanged(int val)
     {

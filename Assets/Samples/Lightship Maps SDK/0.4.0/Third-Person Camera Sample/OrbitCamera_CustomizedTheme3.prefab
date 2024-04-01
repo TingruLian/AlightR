@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4252573644317515488
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 516825161354973978, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db2192e5aef24f74bbdb306ad7e37833, type: 2}
+    - target: {fileID: 654193839432586188, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db0fe8bfb7327214ba50780e1d014e32, type: 2}
+    - target: {fileID: 1887936420149690288, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d966085174d8c29429070ee9eec06447, type: 2}
+    - target: {fileID: 2848438885674633233, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3323528350838192711, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403117155545089150, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1805ba793d1abcf408e05f76d07e5c18, type: 2}
+    - target: {fileID: 4095237734220021291, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: m_Name
+      value: OrbitCamera_CustomizedTheme3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484378753650423189, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e03e24958a92cc54c9a7b16836c92b87, type: 2}
+    - target: {fileID: 5653372068572962133, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930492484971020143, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7c51bcc66f08b644b2448d119cbf775, type: 2}
+    - target: {fileID: 6331979142190058675, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 484569ef03292d24dbb2e519c9f4634a, type: 2}
+    - target: {fileID: 6978680171602603300, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c89c1231e853424f8334f575f0dbb47, type: 2}
+    - target: {fileID: 8128093570171653518, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _themeName
+      value: OrbitCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137917482188637570, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37c7b62bbf69ed944a37ed6ba435860c, type: 2}
+    - target: {fileID: 8218503823694753103, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d51d4361faec9e4a8aa2e76f10c8e8a, type: 2}
+    - target: {fileID: 8281944471165750442, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf5002e636cb3db4390f3262d5ab55f8, type: 2}
+    - target: {fileID: 9087226171767778300, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c1973ce5f50eada43a04224fe1fc58ce, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02d037a848d0b47a29da0b0a530378dc, type: 3}

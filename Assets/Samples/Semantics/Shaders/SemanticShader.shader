@@ -57,7 +57,7 @@
                 //convert coordinate space
                 float2 semanticUV = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y / i.texcoord.z);
                 
-                float4 semanticCol = tex2D(_SemanticTex, semanticUV);
+
                 return float4(semanticCol.r,semanticCol.g,semanticCol.b,0.8f);
             }
             ENDCG

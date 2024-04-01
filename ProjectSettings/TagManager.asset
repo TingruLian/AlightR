@@ -3,18 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cube
+  - enemy
+  - FxTemporaire
+  - Fader
+  - Ground
+  - MetalCart
+  - Spirit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Semantic
   - Water
   - UI
   - 
   - 
-  - 
-  - 
+  - SemanticActor
+  - Actor
   - ignorable
   - 
   - 
