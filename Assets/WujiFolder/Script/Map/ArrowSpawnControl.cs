@@ -27,7 +27,6 @@ public class ArrowSpawnControl : MonoBehaviour {
 
    public void DrawArrows() {
       for (int i = 0; i < arrowInformations.Count; i++) {
-         Debug.Log("placed object");
          GameObject arrow = _layerObject.PlaceInstance(arrowInformations[i].position, arrowInformations[i].name).Value;
          arrows.Add(arrow);
 

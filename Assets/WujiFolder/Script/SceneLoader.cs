@@ -6,16 +6,13 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneLoader : MonoBehaviour
-{
+public class SceneLoader : MonoBehaviour {
    public int SceneId;
 
    AsyncOperation asyncOperation;
-   public void LoadScene()
-   {
+   public void LoadScene() {
 
-      if (Fader.instance != null)
-      {
+      if (Fader.instance != null) {
          asyncOperation = SceneManager.LoadSceneAsync(SceneId);
          asyncOperation.allowSceneActivation = false;
 
@@ -23,18 +20,13 @@ public class SceneLoader : MonoBehaviour
          Fader.instance.img.DOFade(1, Fader.fadeTime).OnComplete(() => {
             Transition(() => { asyncOperation.allowSceneActivation = true; });
          });
-         
-      }
-      else
-      {
+      } else {
          DOTween.Sequence().AppendInterval(Fader.fadeTime).OnComplete(() => { SceneManager.LoadScene(SceneId); });
       }
    }
 
-   public void LoadCurrent()
-   {
-      if (Fader.instance != null)
-      {
+   public void LoadCurrent() {
+      if (Fader.instance != null) {
          asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
          asyncOperation.allowSceneActivation = false;
 
@@ -42,22 +34,18 @@ public class SceneLoader : MonoBehaviour
          Fader.instance.img.DOFade(1, Fader.fadeTime).OnComplete(() => {
             Transition(() => { asyncOperation.allowSceneActivation = true; });
          });
-      }
-      else
-      {
+      } else {
          DOTween.Sequence().AppendInterval(Fader.fadeTime).OnComplete(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().name); });
       }
    }
 
-   private void Update()
-   {
-      if (asyncOperation != null)
-      {
+   private void Update() {
+      if (asyncOperation != null) {
          Fader.instance.progress.fillAmount = asyncOperation.progress;
       }
    }
-   void Transition(UnityAction action)
-   {
+
+   void Transition(UnityAction action) {
       Fader.instance.loadGroup.DOFade(1, 0.5f).From(0);
       DOTween.Sequence().AppendInterval(2.5f).
          Append(Fader.instance.loadGroup.DOFade(0, 0.5f).From(1)).AppendInterval(1f).
