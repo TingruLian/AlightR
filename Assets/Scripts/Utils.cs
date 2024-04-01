@@ -22,7 +22,9 @@ public static class Utils {
          position = Input.touches[0].position;
 #endif
          Ray ray = Camera.main.ScreenPointToRay(position);
-
+         RaycastHit hit;
+         Physics.Raycast(ray, out hit);
+         Debug.Log(hit.collider.gameObject.name);
          callback(position, ray);
       }
    }
