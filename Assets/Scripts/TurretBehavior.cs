@@ -45,7 +45,7 @@ public class TurretBehavior : MonoBehaviour, Health {
    private float lastRotateTime;
 
    //user rotation parameters
-   protected float rotationMutiplier = 120f;
+   protected float rotationMutiplier = 20f;
    protected bool userHodling = false;
    protected Vector2 lastHoldPosition;
 
