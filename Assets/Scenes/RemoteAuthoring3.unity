@@ -5738,6 +5738,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 6456063975964248662}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6456063975964248661}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enemyKilled: 0
   totalEnemy: 20
 --- !u!114 &4592076207717626544
@@ -6269,6 +6293,16 @@ AudioSource:
 --- !u!1 &6456063975964248660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8053464177943672291, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+  m_PrefabInstance: {fileID: 6456063975964248656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6456063975964248661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 961644791945465028, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+  m_PrefabInstance: {fileID: 6456063975964248656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6456063975964248662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3088001563150138071, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
   m_PrefabInstance: {fileID: 6456063975964248656}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6512674227646191275
