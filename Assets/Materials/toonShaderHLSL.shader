@@ -11,6 +11,7 @@ Shader "Custom/ToonShaderHLSL"
         _ColorStep1("ColorStep1", Range(0,1)) = 0.6
         _ColorStep2("ColorStep2", Range(0,1)) = 0.3
         _Feather("Feather", Range(0.0001, 1)) = 0.0
+        _RedScale("Red Scale", Range(0.0, 1.0)) = 0.0
     }
 
     SubShader
@@ -65,6 +66,7 @@ Shader "Custom/ToonShaderHLSL"
                 float _ColorStep1;
                 float _ColorStep2;
                 float _Feather;
+                float _RedScale;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -99,7 +101,9 @@ Shader "Custom/ToonShaderHLSL"
                     albedo *= (_Color3.rgb * min(( _ColorStep2 - cosine ), (_ColorStep2 - f2)) + max(0, (cosine - f2)) * _Color2.rgb) / (_ColorStep2 - f2);
                 }
 
-                half3 diffuse = _MainLightColor.rgb * albedo;
+                half3 albedo1 = _MainLightColor.rgb * albedo;
+                half3 albedo2 = half3(0.3, 0, 0);
+                half3 diffuse = _RedScale * (albedo2) + (1.0 - _RedScale) * albedo1;
                 half3 halfDir = normalize(lightDir + viewDir);
 
                 specular = _MainLightColor.rgb * _Metallic * pow(max(0, dot(worldNormal, halfDir)), _Glossiness);

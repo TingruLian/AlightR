@@ -15,6 +15,7 @@ Shader "Custom/IcedToonShaderHLSL"
         _IceScale("Ice Scale", Range(0.0, 1.0)) = 0
         _FresnelColor("Fresnel Color",Color) = (0.6, 0.9, 0.9, 1.0)
         _FresnelWidth("Fresnel Width",Float) = 1.5
+        _RedScale("Red Scale", Range(0.0, 1.0)) = 0.0
     }
 
     SubShader
@@ -78,6 +79,7 @@ Shader "Custom/IcedToonShaderHLSL"
                 float _IceScale;
                 half4 _FresnelColor;
                 float _FresnelWidth;
+                float _RedScale;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -116,15 +118,16 @@ Shader "Custom/IcedToonShaderHLSL"
                 }
 
                 half3 albedo2 = SAMPLE_TEXTURE2D(_IceTex, sampler_IceTex, IN.uv);
-                half3 albedo = _IceScale * albedo2 + (1.0 - _IceScale) * albedo1 * _MainLightColor.rgb;
-                half3 diffuse = albedo;
+                half3 albedo3 = half3(0.6, 0, 0);
+                half3 albedo4 = _RedScale * (albedo3) + (1.0 - _RedScale) * albedo1;
+                half3 diffuse = _IceScale * albedo2 + (1.0 - _IceScale) * albedo4 * _MainLightColor.rgb;
                 half3 halfDir = normalize(lightDir + viewDir);
 
                 specular = _MainLightColor.rgb * _Metallic * pow(max(0, dot(worldNormal, halfDir)), _Glossiness);
 
                 half3 fresnelColor = saturate(pow(1-(dot(worldNormal,viewDir)),_FresnelWidth)) * _FresnelColor.rgb * _IceScale;
 
-                half3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
+                half3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * diffuse;
 
                 return half4(ambient + diffuse + specular + fresnelColor, 1.0);
             }
