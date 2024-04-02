@@ -178,6 +178,9 @@ public class Level1Tutorial : MonoBehaviour
             t.onManualRotationEnd.AddListener(Exit);
          }
 
+         //Auto exit if no swipe
+         DOTween.Sequence().AppendInterval(10f)
+            .OnComplete(Exit);
       }
 
       public override void Update()
