@@ -23,8 +23,9 @@ public static class Utils {
 #endif
          Ray ray = Camera.main.ScreenPointToRay(position);
          RaycastHit hit;
-         Physics.Raycast(ray, out hit);
-         callback(position, ray);
+         if (Physics.Raycast(ray, out hit)) {
+            callback(position, ray);
+         }
       }
    }
 
