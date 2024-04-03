@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class CartMovement : MonoBehaviour {
 
+   // temp
+   Color[] ballColors = {
+      Color.green,
+      Color.yellow,
+      Color.red,
+      Color.blue
+   };
+
    public Vector3 start
    { get; set; }
 
@@ -15,11 +23,32 @@ public class CartMovement : MonoBehaviour {
    private float startTime;
    private float speed = 10f;
 
+   private int lastDefeatedTurretId = 0;
+
+   // This is a simple way to simulate the player beating different levels
+   // Once the ball gets to an unbeaten level, force the player to click it 3 times to "beat" the level
+   // this will be replaced by actually tracking which levels have been beaten
+   private int battleClickProgress = 0;
+
    void Start() {
+      UpdateColor(lastDefeatedTurretId);
    }
 
    void Update() {
       Utils.OnPress((Vector2 position, Ray ray) => {
+         if (IsBlocked()) {
+            battleClickProgress++;
+
+            if (battleClickProgress == 3) {
+               lastDefeatedTurretId++;
+               battleClickProgress = 0;
+
+               UpdateColor(lastDefeatedTurretId);
+            }
+
+            return;
+         }
+
          RaycastHit hit;
 
          if (!moving && Physics.Raycast(ray, out hit)) {
@@ -49,5 +78,35 @@ public class CartMovement : MonoBehaviour {
             transform.position = startPos + (dir.normalized * dist);
          }
       }
+   }
+
+   bool IsBlocked() {
+      if (lastDefeatedTurretId == 0) {
+         return true;
+      }
+
+      Vector3 startPos = GetNextBattlePos(1); // position of the first turret
+      Vector3 nextBattlePos = GetNextBattlePos(lastDefeatedTurretId + 1);
+
+      float distFromStartToNextBattle = (nextBattlePos - startPos).magnitude;
+      float distFromStartToPlayer = (transform.position - startPos).magnitude;
+
+      return distFromStartToPlayer > distFromStartToNextBattle;
+   }
+
+   // battleId in the range 1-3. An id of 0 means no battle was defeated
+   Vector3 GetNextBattlePos(int battleId) {
+      float numBattles = 3;
+      battleId--;
+
+      return start + ((end - start) * (battleId / (numBattles - 1)));
+   }
+
+   void UpdateColor(int colorIndex) {
+      Debug.Log("Updating ball color...");
+
+      Material mat = GetComponent<Renderer>().material;
+
+      mat.SetColor("_Color", ballColors[colorIndex]);
    }
 }

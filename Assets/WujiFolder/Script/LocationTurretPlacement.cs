@@ -57,23 +57,20 @@ public class LocationTurretPlacement : MonoBehaviour {
       onSpawn.Invoke();
    }
 
-   public void RemoveTurret(bool byPlayer)
-   {
-      if(currentTurret == null) { return; }
+   public void RemoveTurret(bool byPlayer) {
+      if (currentTurret == null) {
+         return;
+      }
       
       GameManager.instance.FreeTurret(this);
       Destroy(currentTurret);
       currentTurret = null;
 
-
       CDBarContainer.SetActive(true);
 
-      float cd = 0;
-      if(byPlayer ) { cd = manualCD; }
-      else { cd = destroyedCD; }
+      float cd = byPlayer ? manualCD : destroyedCD;
 
-      CDBar.DOFillAmount(0, cd).From(1).OnComplete(() =>
-      {
+      CDBar.DOFillAmount(0, cd).From(1).OnComplete(() => {
          CDBarContainer.SetActive(false);
          button.SetActive(true);
       });
