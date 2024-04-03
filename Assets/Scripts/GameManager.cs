@@ -310,7 +310,9 @@ public class GameManager : MonoBehaviour {
       spirit.art.gameObject.SetActive(true);
       spirit.art.position = Camera.main.WorldToScreenPoint(lp.transform.position);
 
-      if (spirit.tween != null) { spirit.tween.Kill(); }
+      if (spirit.tween != null) {
+         spirit.tween.Kill();
+      }
       spirit.tween = spirit.art.DOMove(spiritSlotPos[currentSpirit], 1);
 
       currentSpirit++;

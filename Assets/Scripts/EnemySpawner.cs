@@ -107,7 +107,6 @@ public class EnemySpawner : MonoBehaviour
 
       //If there's no wave, check if we shall start a new one, or end 
       if (onGoingWaves != null && onGoingWaves.Count == 0) {
-
          waveId++;
          
          if (waveId < mainWaves.Count) {
@@ -118,7 +117,9 @@ public class EnemySpawner : MonoBehaviour
          } else {
             onGoingWaves.Clear();
             InvokeWaveInformation("All Waves Cleared");
-            if (colorControl != null) { colorControl.SetToVicColor(); }
+            if (colorControl != null) {
+               colorControl.SetToVicColor();
+            }
 
             DOTween.Sequence().AppendInterval(2)
             .AppendCallback(() => {
