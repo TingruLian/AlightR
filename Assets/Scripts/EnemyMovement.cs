@@ -20,6 +20,7 @@ public enum EnemyState {
 }
 
 public class EnemyMovement : MonoBehaviour {
+    public bool virbate;
    public static List<EnemyMovement> enemies;
 
    [SerializeField]

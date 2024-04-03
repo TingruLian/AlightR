@@ -5892,7 +5892,6 @@ MonoBehaviour:
   turretPlaceholder: {fileID: 233774273655562936, guid: 9a54980cbf21a804f82918bfe2ace381, type: 3}
   turretAttackRange: 30
   GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
-  spiritHolder: {fileID: 0}
   maxSpirit: 2
   onPlayerHurt:
     m_PersistentCalls:
