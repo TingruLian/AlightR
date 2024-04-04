@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour {
 
    AsyncOperation asyncOperation;
    public void LoadScene() {
+        if (asyncOperation != null) return;
 
       if (Fader.instance != null) {
          asyncOperation = SceneManager.LoadSceneAsync(SceneId);
@@ -26,7 +27,9 @@ public class SceneLoader : MonoBehaviour {
    }
 
    public void LoadCurrent() {
-      if (Fader.instance != null) {
+        if (asyncOperation != null) return;
+
+        if (Fader.instance != null) {
          asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
          asyncOperation.allowSceneActivation = false;
 
@@ -52,4 +55,3 @@ public class SceneLoader : MonoBehaviour {
          OnComplete(action.Invoke);
    }
 }
-//90(54)+96.5(14.5)+5+5
