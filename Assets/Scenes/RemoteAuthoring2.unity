@@ -2739,6 +2739,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225446108}
   m_CullTransparentMesh: 1
+--- !u!1 &1293814584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8518629834233224651, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+  m_PrefabInstance: {fileID: 2075024798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1346599885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2668210193792210636, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
@@ -3401,11 +3406,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707842883}
   m_CullTransparentMesh: 1
---- !u!1 &1797695218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4956645056274958774, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
-  m_PrefabInstance: {fileID: 2075024798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836231122
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,7 +6126,7 @@ PrefabInstance:
     - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1797695218}
+      objectReference: {fileID: 1293814584}
     - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
