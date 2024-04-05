@@ -19,13 +19,14 @@ public class ArrowSpawnControl : MonoBehaviour {
    [SerializeField]
    private LayerGameObjectPlacement _layerObject;
 
-   private void Awake() {
+   public void DrawArrows() {
       if (_layerObject == null) {
          _layerObject = GetComponent<LayerGameObjectPlacement>();
       }
-   }
+      if (_layerObject == null) {
+         Debug.LogWarning("Still null");
+      }
 
-   public void DrawArrows() {
       for (int i = 0; i < arrowInformations.Count; i++) {
          GameObject arrow = _layerObject.PlaceInstance(arrowInformations[i].position, arrowInformations[i].name).Value;
          arrows.Add(arrow);

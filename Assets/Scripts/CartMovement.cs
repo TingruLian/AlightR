@@ -16,14 +16,14 @@ public class CartMovement : MonoBehaviour {
    public Vector3 end
    { get; set; }
 
-   private float progress = 0f; // 0 - 1, basically a percentage
+   public float progress = 0f; // 0 - 1, basically a percentage
    private bool moving = false;
    private Vector3 targetPos;
    private Vector3 startPos;
    private float startTime;
    private float speed = 10f;
 
-   private int lastDefeatedTurretId = 0;
+   public int lastDefeatedTurretId = 0;
 
    // This is a simple way to simulate the player beating different levels
    // Once the ball gets to an unbeaten level, force the player to click it 3 times to "beat" the level
@@ -43,6 +43,7 @@ public class CartMovement : MonoBehaviour {
                lastDefeatedTurretId++;
                battleClickProgress = 0;
 
+               ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
                UpdateColor(lastDefeatedTurretId);
             }
 
@@ -77,6 +78,10 @@ public class CartMovement : MonoBehaviour {
          } else {
             transform.position = startPos + (dir.normalized * dist);
          }
+
+         ProgressManager.instance.cartPos = transform.position;
+         ProgressManager.instance.cartMoved = true;
+         ProgressManager.instance.cartProgress = progress;
       }
    }
 
@@ -102,7 +107,7 @@ public class CartMovement : MonoBehaviour {
       return start + ((end - start) * (battleId / (numBattles - 1)));
    }
 
-   void UpdateColor(int colorIndex) {
+   public void UpdateColor(int colorIndex) {
       Debug.Log("Updating ball color...");
 
       Material mat = GetComponent<Renderer>().material;

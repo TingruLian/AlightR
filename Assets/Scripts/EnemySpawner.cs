@@ -107,9 +107,10 @@ public class EnemySpawner : MonoBehaviour
 
       //If there's no wave, check if we shall start a new one, or end 
       if (onGoingWaves != null && onGoingWaves.Count == 0) {
-         waveId++;
-         
          if (waveId < mainWaves.Count) {
+            waveId++;
+            Debug.LogError($"Setting wave to {waveId} out of {mainWaves.Count}");
+
             mainWaves[waveId].StartWave(this);
             if (colorControl != null) {
                colorControl.SetToWaveColor(waveId);

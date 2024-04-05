@@ -1,8 +1,10 @@
-using Niantic.Lightship.Maps.MapLayers.Components;
-using Niantic.Lightship.Maps.Coordinates;
 using System;
 using System.Collections.Generic;
+
 using UnityEngine;
+
+using Niantic.Lightship.Maps.Coordinates;
+using Niantic.Lightship.Maps.MapLayers.Components;
 
 [Serializable]
 public struct LocationUnit
@@ -15,29 +17,20 @@ public struct LocationUnit
    public int preRequisiteLevelId;
 }
 
-public class LocationSpawnControl : MonoBehaviour
-{
+public class LocationSpawnControl : MonoBehaviour {
+   public List<LocationUnit> units;
+
    [SerializeField]
    private LayerGameObjectPlacement _layerObject;
-
-   public List<LocationUnit> units;
 
    [SerializeField]
    private GameScriptableObject GameData;
 
-   [SerializeField]
-   private LayerGameObjectPlacement cart;
-
-   private GameObject cartObject = null;
-
-   private void Awake() {
+   public void SpawnLocations() {
       if (_layerObject == null) {
          _layerObject = GetComponent<LayerGameObjectPlacement>();
       }
-   }
 
-
-   public void SpawnLocations() {
       foreach (LocationUnit unit in units) {
          GameObject location = _layerObject.PlaceInstance(unit.position, unit.name).Value;
          location.GetComponent<SceneLoader>().SceneId = unit.sceneID;
@@ -54,35 +47,5 @@ public class LocationSpawnControl : MonoBehaviour
             }
          }
       }
-
-      SpawnCart();
-   }
-
-   private void SpawnCart() {
-      Vector2 cartStart = new Vector2((float)units[0].position.Latitude, (float)units[0].position.Longitude);
-      Vector2 cartEnd = new Vector2((float)units[units.Count - 1].position.Latitude, (float)units[units.Count - 1].position.Longitude);
-
-      // these are used as a lazy way to convert from LatLon to Unity 3D world coords
-      GameObject startObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
-      GameObject endObject = cart.PlaceInstance(new SerializableLatLng(cartEnd.x, cartEnd.y), "HotMetalCartPlacementLayer").Value;
-
-      cartObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
-      cartObject.SetActive(true);
-      CartMovement cartController = cartObject.transform.GetChild(0).GetComponent<CartMovement>();
-
-      cartObject.transform.GetChild(0).gameObject.SetActive(true);
-
-      cartController.start = startObject.transform.position;
-      cartController.end = endObject.transform.position;
-
-      Vector3 cartFwd = (cartController.end - cartController.start).normalized;
-      Vector3 cartRight = Quaternion.AngleAxis(90, Vector3.up) * cartFwd;
-
-      Vector3 offset = cartRight * 10.0f;
-
-      cartObject.transform.position = cartObject.transform.position + offset;
-
-      cartController.start += offset;
-      cartController.end += offset;
    }
 }
