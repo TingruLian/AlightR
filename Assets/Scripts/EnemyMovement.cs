@@ -89,14 +89,15 @@ public class EnemyMovement : MonoBehaviour {
       }
 
       ChangeState(EnemyState.spawn);
-   }
+      InitOffscreenIndicator();
+    }
 
    private void OnDisable() {
       enemies.Remove(this);
    }
 
    private void OnDestroy() {
-      Destroy(indicatorUI.gameObject);
+      if(indicatorUI != null) Destroy(indicatorUI.gameObject);
 
       enemies.Remove(this);
       onDeath.Invoke();
@@ -111,7 +112,7 @@ public class EnemyMovement : MonoBehaviour {
    }
 
    void Start() {
-      InitOffscreenIndicator();
+
 
       lastUpdateTime = Time.time;
    }
