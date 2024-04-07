@@ -7,8 +7,7 @@ using Niantic.Lightship.Maps.Coordinates;
 using Niantic.Lightship.Maps.MapLayers.Components;
 
 [Serializable]
-public struct LocationUnit
-{
+public struct LocationUnit {
    public SerializableLatLng position;
    public string name;
    public int sceneID;
@@ -22,9 +21,6 @@ public class LocationSpawnControl : MonoBehaviour {
 
    [SerializeField]
    private LayerGameObjectPlacement _layerObject;
-
-   [SerializeField]
-   private GameScriptableObject GameData;
 
    public void SpawnLocations() {
       if (_layerObject == null) {

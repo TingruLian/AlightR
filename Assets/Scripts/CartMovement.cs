@@ -35,24 +35,17 @@ public class CartMovement : MonoBehaviour {
    }
 
    void Update() {
+      if (MapManager.instance.GameData.completionState[lastDefeatedTurretId]) {
+         lastDefeatedTurretId++;
+
+         ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
+         UpdateColor(lastDefeatedTurretId);
+      }
+
       Utils.OnPress((Vector2 position, Ray ray) => {
-         if (IsBlocked()) {
-            battleClickProgress++;
-
-            if (battleClickProgress == 3) {
-               lastDefeatedTurretId++;
-               battleClickProgress = 0;
-
-               ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
-               UpdateColor(lastDefeatedTurretId);
-            }
-
-            return;
-         }
-
          RaycastHit hit;
 
-         if (!moving && Physics.Raycast(ray, out hit)) {
+         if (!IsBlocked() && !moving && Physics.Raycast(ray, out hit)) {
             if (hit.transform.tag == "MetalCart") {
                if (progress < 1f) {
                   progress += .1f;

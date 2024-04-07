@@ -90,7 +90,7 @@ public class EnemyMovement : MonoBehaviour {
 
       ChangeState(EnemyState.spawn);
       InitOffscreenIndicator();
-    }
+   }
 
    private void OnDisable() {
       enemies.Remove(this);

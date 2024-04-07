@@ -15,6 +15,9 @@ public class MapManager : MonoBehaviour {
    private LightshipMapManager mapManager;
 
    [SerializeField]
+   public GameScriptableObject GameData;
+
+   [SerializeField]
    private GameObject player;
 
    [SerializeField]
@@ -27,7 +30,6 @@ public class MapManager : MonoBehaviour {
 
    private int initState = 0;
    private float startTime;
-   private float waitIncrement = .5f;
    private float waitTime;
 
    private void Awake() {

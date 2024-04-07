@@ -276,7 +276,6 @@ MonoBehaviour:
     levelId: 2
     preRequisiteLevelId: 1
   _layerObject: {fileID: 948008999}
-  GameData: {fileID: 0}
 --- !u!114 &364664875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,9 +363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1b16b6c59414049b4224550f783294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 1453108702}
-  player: {fileID: 549113512}
   locationSpawner: {fileID: 364664874}
+  mapManager: {fileID: 1453108702}
+  GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
+  player: {fileID: 549113512}
   arrowSpawner: {fileID: 364664875}
   cart: {fileID: 4430904912515600257, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
 --- !u!1 &377862750
@@ -1282,6 +1282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cart: {fileID: 4430904912515600257, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
+  lastDefeatedTurret: 0
+  cartPos: {x: 0, y: 0, z: 0}
+  cartMoved: 0
+  cartProgress: 0
 --- !u!4 &1470589777
 Transform:
   m_ObjectHideFlags: 0
