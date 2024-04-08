@@ -24,28 +24,7 @@ public class ProgressManager : MonoBehaviour {
    public bool cartMoved = false;
    public float cartProgress;
 
-   private void Awake() {
-      if (instance != null) {
-         Destroy(gameObject);
-         return;
-      }
-
-      SceneManager.sceneLoaded += OnSceneLoaded;
-
-      instance = this;
-      DontDestroyOnLoad(gameObject);
-   }
-
-   void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-      if (scene.name == "WorldMap") {
-         Debug.LogWarning("Let's init the metal cart, yay!!!!!!!!!!!!!!!!");
-
-         mapManager = MapManager.instance;
-         SpawnCart();
-      }
-   }
-
-   private void SpawnCart() {
+   public void SpawnCart() {
       Debug.LogWarning("Cart getting spawned");
       List<LocationUnit> units = mapManager.locationSpawner.units;
 
@@ -82,5 +61,25 @@ public class ProgressManager : MonoBehaviour {
 
       cartController.start += offset;
       cartController.end += offset;
+   }
+
+   private void Awake() {
+      if (instance != null) {
+         Destroy(gameObject);
+         return;
+      }
+
+      SceneManager.sceneLoaded += OnSceneLoaded;
+
+      instance = this;
+      DontDestroyOnLoad(gameObject);
+   }
+
+   private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+      if (scene.name == "WorldMap") {
+         Debug.LogWarning("Let's init the metal cart, yay!!!!!!!!!!!!!!!!");
+
+         mapManager = MapManager.instance;
+      }
    }
 }
