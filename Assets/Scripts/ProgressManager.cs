@@ -46,6 +46,7 @@ public class ProgressManager : MonoBehaviour {
    }
 
    private void SpawnCart() {
+      Debug.LogWarning("Cart getting spawned");
       List<LocationUnit> units = mapManager.locationSpawner.units;
 
       Vector2 cartStart = new Vector2((float)units[0].position.Latitude, (float)units[0].position.Longitude);
