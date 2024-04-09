@@ -32,6 +32,8 @@ public class CartMovement : MonoBehaviour {
 
    void Start() {
       UpdateColor(lastDefeatedTurretId);
+
+      GameObject.Find("CartLever").GetComponent<CartController>().cart = this;
    }
 
    void Update() {
@@ -42,22 +44,17 @@ public class CartMovement : MonoBehaviour {
          UpdateColor(lastDefeatedTurretId);
       }
 
+      /*
       Utils.OnPress((Vector2 position, Ray ray) => {
          RaycastHit hit;
 
-         if (!IsBlocked() && !moving && Physics.Raycast(ray, out hit)) {
+         if (Physics.Raycast(ray, out hit)) {
             if (hit.transform.tag == "MetalCart") {
-               if (progress < 1f) {
-                  progress += .1f;
-
-                  targetPos = start + ((end - start) * progress);
-                  startTime = Time.time;
-                  startPos = transform.position;
-                  moving = true;
-               }
+               MoveCart();
             }
          }
       });
+      */
 
       if (moving) {
          float elapsedTime = Time.time - startTime;
@@ -103,8 +100,21 @@ public class CartMovement : MonoBehaviour {
    public void UpdateColor(int colorIndex) {
       Debug.Log("Updating ball color...");
 
-      Material mat = GetComponent<Renderer>().material;
+      Material mat = GetComponent<Renderer>().materials[2];
 
-      mat.SetColor("_Color", ballColors[colorIndex]);
+      mat.SetColor("_BaseColor", ballColors[colorIndex]);
+   }
+
+   public void MoveCart() {
+      if (IsBlocked() || moving || progress >= 1f) {
+         return;
+      }
+
+      progress += .1f;
+
+      targetPos = start + ((end - start) * progress);
+      startTime = Time.time;
+      startPos = transform.position;
+      moving = true;
    }
 }

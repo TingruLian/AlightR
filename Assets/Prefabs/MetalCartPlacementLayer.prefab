@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Prefab
-  _prefab: {fileID: 6228947259144377031, guid: d85a68a2b2243504f860981cfbcf8524, type: 3}
+  _prefab: {fileID: 2361752788803203212, guid: 1aee29d392efa2442ab241fb3aba5cce, type: 3}
   _heightOffset: 1
   _scaleWithMapRadius: 0
   _relativeScale: 1

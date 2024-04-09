@@ -53,6 +53,7 @@ public class MapManager : MonoBehaviour {
          player.SetActive(true);
          arrowSpawner.DrawArrows();
          locationSpawner.SpawnLocations();
+         ProgressManager.instance.SpawnCart();
       }
    }
 }
