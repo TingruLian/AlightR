@@ -57,7 +57,9 @@ public class Wave : MonoBehaviour {
 
    protected List<Sequence> allSequence = new List<Sequence>();
    public void StartWave(EnemySpawner spawner) {
-      if(OverlayManager.instance) OverlayManager.instance.ActivateFlash();
+      if (OverlayManager.instance) {
+         OverlayManager.instance.ActivateFlash();
+      }
 
       spawner.GetOnGoingWaves().Add(this);
       onWaveCleared.AddListener(() => {
