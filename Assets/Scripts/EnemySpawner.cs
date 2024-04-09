@@ -14,15 +14,17 @@ public enum EnemySpawnLocation
    ground
 }
 
-public class EnemySpawner : MonoBehaviour
-{
+public class EnemySpawner : MonoBehaviour {
+
    [SerializeField]
    SemanticColorControl colorControl;
 
    [SerializeField]
    protected List<Wave> mainWaves;
+
    [SerializeField]
    protected List<Wave> onGoingWaves;
+
    protected int waveId;
 
    [SerializeField]
@@ -67,9 +69,10 @@ public class EnemySpawner : MonoBehaviour
    private Vector3 sideAxis;
 
 
-   private void Awake()
-   {
-      if (colorControl == null) { colorControl = SemanticColorControl.GetInstance(); }
+   private void Awake() {
+      if (colorControl == null) {
+         colorControl = SemanticColorControl.GetInstance();
+      }
    }
 
    void Start() {

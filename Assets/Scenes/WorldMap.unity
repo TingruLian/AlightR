@@ -973,11 +973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2666376099753637367, guid: 0959b0b64e111af4b9d264d5a0c78d9e, type: 3}
       propertyPath: m_Name
-      value: IntroScreen
+      value: LightningScreen
       objectReference: {fileID: 0}
     - target: {fileID: 2666376099753637367, guid: 0959b0b64e111af4b9d264d5a0c78d9e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
