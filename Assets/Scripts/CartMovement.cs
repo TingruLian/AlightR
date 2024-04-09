@@ -103,8 +103,8 @@ public class CartMovement : MonoBehaviour {
    public void UpdateColor(int colorIndex) {
       Debug.Log("Updating ball color...");
 
-      Material mat = GetComponent<Renderer>().material;
+      Material mat = GetComponent<Renderer>().materials[2];
 
-      mat.SetColor("_Color", ballColors[colorIndex]);
+      mat.SetColor("_BaseColor", ballColors[colorIndex]);
    }
 }
