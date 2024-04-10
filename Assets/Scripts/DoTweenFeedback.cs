@@ -28,4 +28,12 @@ public class DoTweenFeedback : MonoBehaviour {
         }
     }
 
+    public void Appear(float t)
+    {
+        DOTween.Sequence()
+            .Append(transform.DOScale(Vector3.one, 0.15f))
+            .AppendInterval(t)
+            .Append(transform.DOScale(Vector3.zero, 0.15f));
+    }
+
 }
