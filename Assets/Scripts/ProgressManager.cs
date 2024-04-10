@@ -28,8 +28,11 @@ public class ProgressManager : MonoBehaviour {
       Debug.LogWarning("Cart getting spawned");
       List<LocationUnit> units = mapManager.locationSpawner.units;
 
-      Vector2 cartStart = new Vector2((float)units[0].position.Latitude, (float)units[0].position.Longitude);
-      Vector2 cartEnd = new Vector2((float)units[units.Count - 1].position.Latitude, (float)units[units.Count - 1].position.Longitude);
+      SerializableLatLng startLatLng = units[0].GetPosition();
+      SerializableLatLng endLatLng = units[units.Count - 1].GetPosition();
+
+      Vector2 cartStart = new Vector2((float)startLatLng.Latitude, (float)startLatLng.Longitude);
+      Vector2 cartEnd = new Vector2((float)endLatLng.Latitude, (float)endLatLng.Longitude);
 
       // these are used as a lazy way to convert from LatLon to Unity 3D world coords
       GameObject startObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
