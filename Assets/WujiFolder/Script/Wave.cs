@@ -57,9 +57,7 @@ public class Wave : MonoBehaviour {
 
    protected List<Sequence> allSequence = new List<Sequence>();
    public void StartWave(EnemySpawner spawner) {
-      if (OverlayManager.instance) {
-         OverlayManager.instance.ActivateFlash();
-      }
+
 
       spawner.GetOnGoingWaves().Add(this);
       onWaveCleared.AddListener(() => {
@@ -73,7 +71,12 @@ public class Wave : MonoBehaviour {
       Sequence delaySeq = DOTween.Sequence().AppendInterval(delay).
       //The Content
       AppendCallback(() => {
-         spawner.InvokeWaveInformation(waveInformation);
+          if (OverlayManager.instance)
+          {
+              OverlayManager.instance.ActivateFlash();
+          }
+
+          spawner.InvokeWaveInformation(waveInformation);
          onWaveBegin.Invoke();
 
          for (int i = 0; i < enemyCount; i++) {
