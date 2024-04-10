@@ -35,7 +35,7 @@ public class PieceCollectionSequence : MonoBehaviour
             .Append(transform.DOScale(Vector3.one, 1).From(Vector3.zero))
             .Join(transform.DOMove(newPos, 1))
             .Join(transform.DORotate(new Vector3(0, 0, 360 * 2), 1, RotateMode.FastBeyond360))
-            .AppendInterval(1f)
+            .AppendInterval(2f)
             .OnComplete(() => { sceneLoader.LoadScene(); });
 
 
