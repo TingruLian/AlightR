@@ -4583,10 +4583,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RemainTurrets
       objectReference: {fileID: 0}
-    - target: {fileID: 2770870578197101197, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 288
-      objectReference: {fileID: 0}
     - target: {fileID: 3517462976744743664, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - MetalCart
   - Spirit
+  - SpiritIcon
   layers:
   - Default
   - TransparentFX

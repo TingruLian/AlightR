@@ -300,5 +300,8 @@ public class GameManager : MonoBehaviour
         currentSpirit += count;
         maxSpirit += count;
         spiritControl.ModifySlots(count);
+
+        GameObject.FindGameObjectWithTag("SpiritIcon")
+            .GetComponent<DoTweenFeedback>().Appear(2);
     }
 }
