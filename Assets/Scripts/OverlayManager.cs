@@ -12,7 +12,7 @@ public class OverlayManager : MonoBehaviour {
    CanvasGroup flash;
 
    float start = 0f;
-   float lightningEnd = .8f;
+   float lightningEnd = .4f;
 
    bool started = false;
 
