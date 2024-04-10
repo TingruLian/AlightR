@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    protected int LevelId;
+    public int LevelId;
 
     protected List<LocationTurretPlacement> lpList = new List<LocationTurretPlacement>();
 
