@@ -23,9 +23,6 @@ public class MapManager : MonoBehaviour {
    [SerializeField]
    private ArrowSpawnControl arrowSpawner;
 
-   [SerializeField]
-   private LayerGameObjectPlacement cart;
-
    private GameObject cartObject = null;
 
    private int initState = 0;
@@ -53,6 +50,7 @@ public class MapManager : MonoBehaviour {
          player.SetActive(true);
          arrowSpawner.DrawArrows();
          locationSpawner.SpawnLocations();
+
          ProgressManager.instance.SpawnCart();
       }
    }

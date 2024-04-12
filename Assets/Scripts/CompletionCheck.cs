@@ -26,7 +26,7 @@ public class CompletionCheck : MonoBehaviour {
          return;
       }
 
-      if (GameData.completionState[levelId]) {
+      if (GameData.completionState[levelId] && GameData.cartState[levelId]) {
          CompleteInitilization.Invoke();
       } else {
          NotCompleteInitilization.Invoke();

@@ -270,11 +270,15 @@ MonoBehaviour:
   - position:
       _latitude: 40.432485464441775
       _longitude: -79.96469196024711
-    name: HotMetal2
+    name: HotMetal3
     sceneID: 3
     child: {fileID: 6228947259144377031, guid: 2d3dc663844e52845809e1c1c55af1f3, type: 3}
     levelId: 2
     preRequisiteLevelId: 1
+  completionChecks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _layerObject: {fileID: 948008999}
 --- !u!114 &364664875
 MonoBehaviour:
@@ -368,7 +372,6 @@ MonoBehaviour:
   GameData: {fileID: 11400000, guid: f3d82a9b7ace5db46a85e7d1275a96fd, type: 2}
   player: {fileID: 549113512}
   arrowSpawner: {fileID: 364664875}
-  cart: {fileID: 4430904912515600257, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
 --- !u!1 &377862750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _mapLayers.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _startAtDefaultLocation
@@ -1265,6 +1268,10 @@ PrefabInstance:
       propertyPath: _mapLayers.Array.data[2]
       value: 
       objectReference: {fileID: 357931690975935511, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
+    - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
+      propertyPath: _mapLayers.Array.data[3]
+      value: 
+      objectReference: {fileID: 357931690975935511, guid: 08294503d2f6fc74aa1a436494e2c92b, type: 3}
     - target: {fileID: 4679712108560714345, guid: 652c0f1d2f3184a959f719dbc90057a4, type: 3}
       propertyPath: _defaultLocation._latitude
       value: 40.43296813964844
@@ -1385,6 +1392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cart: {fileID: 4430904912515600257, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
+  rails: {fileID: 4430904912515600257, guid: 08294503d2f6fc74aa1a436494e2c92b, type: 3}
   lastDefeatedTurret: 0
   cartPos: {x: 0, y: 0, z: 0}
   cartMoved: 0
@@ -1398,7 +1406,7 @@ Transform:
   m_GameObject: {fileID: 1470589774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6000624, y: 0.8402303, z: -2.9227958}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

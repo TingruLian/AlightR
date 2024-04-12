@@ -8,6 +8,7 @@ public class GameScriptableObject : ScriptableObject
    public int grassCount;
    public int bookHP;
    public List<bool> completionState;
+   public List<bool> cartState;
    public List<bool> tutorialCompletion;
    public void OnEnable()
    {

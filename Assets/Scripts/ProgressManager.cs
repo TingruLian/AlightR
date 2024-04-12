@@ -14,8 +14,12 @@ public class ProgressManager : MonoBehaviour {
    [SerializeField]
    private LayerGameObjectPlacement cart;
 
+   [SerializeField]
+   private LayerGameObjectPlacement rails;
+
    private GameObject player;
    private GameObject cartObject = null;
+   private GameObject railsObject = null;
 
    private MapManager mapManager;
 
@@ -38,8 +42,16 @@ public class ProgressManager : MonoBehaviour {
       GameObject startObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
       GameObject endObject = cart.PlaceInstance(new SerializableLatLng(cartEnd.x, cartEnd.y), "HotMetalCartPlacementLayer").Value;
 
+      railsObject = rails.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "RailPlacementLayer").Value;
+
+      railsObject.transform.position = new Vector3(10.4f, 1.0f, -64.9f);
+      railsObject.transform.rotation = Quaternion.Euler(new Vector3(railsObject.transform.rotation.x, -62, railsObject.transform.rotation.z));
+
+      railsObject.SetActive(true);
+
       cartObject = cart.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "HotMetalCartPlacementLayer").Value;
       cartObject.SetActive(true);
+
       CartMovement cartController = cartObject.transform.GetChild(0).GetComponent<CartMovement>();
 
       cartController.lastDefeatedTurretId = lastDefeatedTurret;
@@ -72,16 +84,14 @@ public class ProgressManager : MonoBehaviour {
          return;
       }
 
-      SceneManager.sceneLoaded += OnSceneLoaded;
-
       instance = this;
+
+      SceneManager.sceneLoaded += OnSceneLoaded;
       DontDestroyOnLoad(gameObject);
    }
 
    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
       if (scene.name == "WorldMap") {
-         Debug.LogWarning("Let's init the metal cart, yay!!!!!!!!!!!!!!!!");
-
          mapManager = MapManager.instance;
       }
    }

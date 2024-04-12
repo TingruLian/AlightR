@@ -25,11 +25,6 @@ public class CartMovement : MonoBehaviour {
 
    public int lastDefeatedTurretId = 0;
 
-   // This is a simple way to simulate the player beating different levels
-   // Once the ball gets to an unbeaten level, force the player to click it 3 times to "beat" the level
-   // this will be replaced by actually tracking which levels have been beaten
-   private int battleClickProgress = 0;
-
    void Start() {
       UpdateColor(lastDefeatedTurretId);
 
@@ -43,18 +38,6 @@ public class CartMovement : MonoBehaviour {
          ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
          UpdateColor(lastDefeatedTurretId);
       }
-
-      /*
-      Utils.OnPress((Vector2 position, Ray ray) => {
-         RaycastHit hit;
-
-         if (Physics.Raycast(ray, out hit)) {
-            if (hit.transform.tag == "MetalCart") {
-               MoveCart();
-            }
-         }
-      });
-      */
 
       if (moving) {
          float elapsedTime = Time.time - startTime;
@@ -73,6 +56,12 @@ public class CartMovement : MonoBehaviour {
          ProgressManager.instance.cartMoved = true;
          ProgressManager.instance.cartProgress = progress;
       }
+
+      // Update Data.cartState
+      if (IsBlocked() && lastDefeatedTurretId > 0 && !MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1]) {
+         MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1] = true;
+         GameObject.Find("HotMetal" + (lastDefeatedTurretId + 1)).GetComponent<DoOnClick>().enabled = true;
+      }
    }
 
    bool IsBlocked() {
@@ -80,8 +69,8 @@ public class CartMovement : MonoBehaviour {
          return true;
       }
 
-      Vector3 startPos = GetNextBattlePos(1); // position of the first turret
-      Vector3 nextBattlePos = GetNextBattlePos(lastDefeatedTurretId + 1);
+      Vector3 startPos = GetNextBattlePos(0); // position of the first turret
+      Vector3 nextBattlePos = GetNextBattlePos(lastDefeatedTurretId);
 
       float distFromStartToNextBattle = (nextBattlePos - startPos).magnitude;
       float distFromStartToPlayer = (transform.position - startPos).magnitude;
@@ -92,7 +81,6 @@ public class CartMovement : MonoBehaviour {
    // battleId in the range 1-3. An id of 0 means no battle was defeated
    Vector3 GetNextBattlePos(int battleId) {
       float numBattles = 3;
-      battleId--;
 
       return start + ((end - start) * (battleId / (numBattles - 1)));
    }
