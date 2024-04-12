@@ -167,6 +167,24 @@ MonoBehaviour:
   offscreenIndicator: {fileID: 7867129812892879242}
   skinnedMeshRenderers:
   - {fileID: 2988926468235157316}
+  OnLocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6118239308467389225}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnUnLock:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &7856193472928548436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -341,6 +359,11 @@ AudioSource:
 --- !u!82 &4491488419883434675 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3085026934973820836, guid: 7895e7b0f426ed44ebc4a7f7d9908c64, type: 3}
+  m_PrefabInstance: {fileID: 1478534508214922519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6118239308467389225 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4642249628715675198, guid: 7895e7b0f426ed44ebc4a7f7d9908c64, type: 3}
   m_PrefabInstance: {fileID: 1478534508214922519}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7618421883424031993 stripped

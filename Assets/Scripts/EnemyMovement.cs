@@ -79,6 +79,9 @@ public class EnemyMovement : MonoBehaviour
     private float lastUpdateTime;
     [SerializeField] protected List<SkinnedMeshRenderer> skinnedMeshRenderers;
 
+    public UnityEvent OnLocked;
+    public UnityEvent OnUnLock;
+
 
     private void Awake()
     {
@@ -191,6 +194,11 @@ public class EnemyMovement : MonoBehaviour
                 foreach (TurretBehavior t in TurretBehavior.turretList) 
                 {
                     t.ForceLockTarget(gameObject);
+                }
+                this.OnLocked.Invoke();
+                foreach(EnemyMovement e in EnemyMovement.enemies)
+                {
+                    if(e != this) e.OnUnLock.Invoke();
                 }
             }
         });
