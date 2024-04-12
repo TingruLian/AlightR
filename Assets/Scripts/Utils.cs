@@ -29,7 +29,7 @@ public static class Utils {
       }
    }
 
-   public static void OnRelease(ClickCallback callback) {
+    public static void OnRelease(ClickCallback callback) {
       Vector3 position;
 
 #if UNITY_EDITOR

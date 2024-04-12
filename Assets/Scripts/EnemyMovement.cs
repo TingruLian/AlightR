@@ -79,8 +79,10 @@ public class EnemyMovement : MonoBehaviour
     private float lastUpdateTime;
     [SerializeField] protected List<SkinnedMeshRenderer> skinnedMeshRenderers;
 
+    [SerializeField] protected LayerMask lockMask;
     public UnityEvent OnLocked;
     public UnityEvent OnUnLock;
+
 
 
     private void Awake()
@@ -188,7 +190,7 @@ public class EnemyMovement : MonoBehaviour
         Utils.OnPress((Vector2 pos, Ray ray) =>
         {
             RaycastHit hit;
-            Physics.Raycast(ray, out hit);
+            Physics.Raycast(ray, out hit, lockMask);
             if (hit.collider == this.GetComponent<Collider>())
             {
                 foreach (TurretBehavior t in TurretBehavior.turretList) 
