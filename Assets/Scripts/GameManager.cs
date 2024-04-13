@@ -303,5 +303,6 @@ public class GameManager : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("SpiritIcon")
             .GetComponent<DoTweenFeedback>().Appear(2);
+        GetComponent<AudioSource>().Play();
     }
 }

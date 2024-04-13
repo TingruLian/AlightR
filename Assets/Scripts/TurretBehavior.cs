@@ -78,7 +78,7 @@ public class TurretBehavior : MonoBehaviour, Health {
    }
 
    void Update() {
-      ProcessUserRotation();
+      //ProcessUserRotation();
       if (userHodling) return;
 
       if (target == null || !IsValidTarget(target.transform.position - gameObject.transform.position)) {
@@ -90,10 +90,17 @@ public class TurretBehavior : MonoBehaviour, Health {
       } else {
          AttackTarget(target);
       }
-
-
-
    }
+
+   public void ForceLockTarget(GameObject newTarget)
+    {
+        if (!IsValidTarget(transform.position - newTarget.transform.position)) return;
+
+        userHodling = true;
+        transform.DOLookAt(newTarget.transform.position, 0.5f).OnComplete(() => { userHodling = false; });
+        target = newTarget;
+        //Debug.Log("Updated Target To :" + newTarget);
+    }
 
    void ProcessUserRotation()
    {
@@ -159,10 +166,11 @@ public class TurretBehavior : MonoBehaviour, Health {
    }
 
    private bool IsValidTarget(Vector3 targetDir) {
-      float sqrDist = targetDir.sqrMagnitude;
-      targetDir.y = attackDir.y; // only consider the angle along the xz plane when considering whether the turret can turn towards the enemy
+        //float sqrDist = targetDir.sqrMagnitude;
+        //targetDir.y = attackDir.y; // only consider the angle along the xz plane when considering whether the turret can turn towards the enemy
 
-      return sqrDist <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
+        //return sqrDist <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
+        return targetDir.sqrMagnitude < sqrRange;
    }
 
    private void SelectNewTarget() {
