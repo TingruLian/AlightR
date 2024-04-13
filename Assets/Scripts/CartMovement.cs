@@ -32,7 +32,7 @@ public class CartMovement : MonoBehaviour {
    }
 
    void Update() {
-      if (MapManager.instance.GameData.completionState[lastDefeatedTurretId]) {
+      if (lastDefeatedTurretId < 3 && MapManager.instance.GameData.completionState[lastDefeatedTurretId]) {
          lastDefeatedTurretId++;
 
          ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
@@ -60,7 +60,16 @@ public class CartMovement : MonoBehaviour {
       // Update Data.cartState
       if (IsBlocked() && lastDefeatedTurretId > 0 && !MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1]) {
          MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1] = true;
-         GameObject.Find("HotMetal" + (lastDefeatedTurretId + 1)).GetComponent<DoOnClick>().enabled = true;
+      }
+
+      // update checkpoint availabilities by cartState
+      // There are much more efficient ways to do this, but it works
+      for (int i = 1; i <= 2; i++) {
+         GameObject checkpoint = GameObject.Find("HotMetal" + (i+1));
+
+         if (MapManager.instance.GameData.cartState[i - 1] != checkpoint.GetComponent<DoOnClick>().enabled) {
+            checkpoint.GetComponent<DoOnClick>().enabled = MapManager.instance.GameData.cartState[i - 1];
+         }
       }
    }
 
