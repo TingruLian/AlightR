@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 using Niantic.Lightship.Maps;
-using Niantic.Lightship.Maps.Coordinates;
-using Niantic.Lightship.Maps.MapLayers.Components;
 
 public class MapManager : MonoBehaviour {
 
@@ -11,11 +8,10 @@ public class MapManager : MonoBehaviour {
 
    public LocationSpawnControl locationSpawner;
 
-   [SerializeField]
-   private LightshipMapManager mapManager;
+   public GameScriptableObject GameData;
 
    [SerializeField]
-   public GameScriptableObject GameData;
+   private LightshipMapManager mapManager;
 
    [SerializeField]
    private GameObject player;

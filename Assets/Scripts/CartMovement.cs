@@ -107,6 +107,8 @@ public class CartMovement : MonoBehaviour {
          return;
       }
 
+      MapManager.instance.gameObject.GetComponent<AudioSource>().Play();
+
       progress += .1f;
 
       targetPos = start + ((end - start) * progress);
