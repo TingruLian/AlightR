@@ -2393,6 +2393,34 @@ PrefabInstance:
       propertyPath: mainWaves.Array.data[2]
       value: 
       objectReference: {fileID: 1945956585}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 2051374730}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1957172792855773966, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4497,6 +4525,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043963876}
   m_CullTransparentMesh: 1
+--- !u!114 &2051374730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1885620334062855338, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
+  m_PrefabInstance: {fileID: 1142836917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334646367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ab49013f9ff85438cf5c893f5a3b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2075024798
 PrefabInstance:
   m_ObjectHideFlags: 0
