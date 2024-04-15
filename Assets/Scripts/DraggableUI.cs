@@ -32,14 +32,26 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Instantiate3DObjectAt(Vector3 position)
     {
-        // Convert screen position to world position
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-        worldPosition.z = 0; // Adjust this depending on your scene setup
+        //// Convert screen position to world position
+        //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
 
-        // Instantiate the prefab at (0,0,0) with no rotation
-        GameObject instantiatedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        //worldPosition.z = 0; // Adjust this depending on your scene setup
 
-        // After instantiation, move it to the desired world position
-        instantiatedObject.transform.position = worldPosition;
+        //// Instantiate the prefab at (0,0,0) with no rotation
+        //GameObject instantiatedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
+        //// After instantiation, move it to the desired world position
+        //instantiatedObject.transform.position = worldPosition;
+
+        Ray newRay = Camera.main.ScreenPointToRay(position);
+        RaycastHit hit;
+        if(Physics.Raycast(newRay,out hit))
+        {
+            // Instantiate the prefab at (0,0,0) with no rotation
+            GameObject instantiatedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
+            // After instantiation, move it to the desired world position
+            instantiatedObject.transform.position = hit.point;
+        }
     }
 }
