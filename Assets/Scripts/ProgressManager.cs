@@ -11,6 +11,8 @@ public class ProgressManager : MonoBehaviour {
 
    public static ProgressManager instance;
 
+   public GameObject railsObject = null;
+
    [SerializeField]
    private LayerGameObjectPlacement cart;
 
@@ -19,7 +21,6 @@ public class ProgressManager : MonoBehaviour {
 
    private GameObject player;
    private GameObject cartObject = null;
-   private GameObject railsObject = null;
 
    private MapManager mapManager;
 
