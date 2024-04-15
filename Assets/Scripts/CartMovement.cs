@@ -35,8 +35,22 @@ public class CartMovement : MonoBehaviour {
       if (lastDefeatedTurretId < 3 && MapManager.instance.GameData.completionState[lastDefeatedTurretId]) {
          lastDefeatedTurretId++;
 
+         Debug.LogWarning($"lastDefeatedTurretId: {lastDefeatedTurretId}");
+
          ProgressManager.instance.lastDefeatedTurret = lastDefeatedTurretId;
          UpdateColor(lastDefeatedTurretId);
+
+         Transform railTransform = ProgressManager.instance.railsObject.transform;
+
+         // make different rail sections appear
+         if (lastDefeatedTurretId >= 1) {
+            railTransform.GetChild(2).gameObject.SetActive(true);
+            railTransform.GetChild(3).gameObject.SetActive(true);
+         }
+         if (lastDefeatedTurretId >= 2) {
+            railTransform.GetChild(0).gameObject.SetActive(true);
+            railTransform.GetChild(1).gameObject.SetActive(true);
+         }
       }
 
       if (moving) {
@@ -65,7 +79,7 @@ public class CartMovement : MonoBehaviour {
       // update checkpoint availabilities by cartState
       // There are much more efficient ways to do this, but it works
       for (int i = 1; i <= 2; i++) {
-         GameObject checkpoint = GameObject.Find("HotMetal" + (i+1));
+         GameObject checkpoint = GameObject.Find("HotMetal" + (i + 1));
 
          if (MapManager.instance.GameData.cartState[i - 1] != checkpoint.GetComponent<DoOnClick>().enabled) {
             checkpoint.GetComponent<DoOnClick>().enabled = MapManager.instance.GameData.cartState[i - 1];
