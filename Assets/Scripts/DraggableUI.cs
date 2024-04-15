@@ -21,19 +21,30 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         startPosition = transform.position;
         isDragging = true;
+
+        Instantiate3DObjectAt(Input.mousePosition);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-        if (isDragging)
+        if (instantiatedObject == null) return;
+
+        Ray newRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(newRay, out hit))
         {
-            Instantiate3DObjectAt(transform.position);
+            instantiatedObject.transform.position = hit.point;
         }
-        else
-        {
-            instantiatedObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+
+        //if (isDragging)
+        //{
+        //    Instantiate3DObjectAt(transform.position);
+        //}
+        //else
+        //{
+        //    instantiatedObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //}
         
     }
 
@@ -56,18 +67,19 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         //// After instantiation, move it to the desired world position
         //instantiatedObject.transform.position = worldPosition;
 
+        // Instantiate the prefab at (0,0,0) with no rotation
+        instantiatedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
         Ray newRay = Camera.main.ScreenPointToRay(position);
         RaycastHit hit;
         if(Physics.Raycast(newRay,out hit))
         {
-            // Instantiate the prefab at (0,0,0) with no rotation
-            GameObject instantiatedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
-
             // After instantiation, move it to the desired world position
             instantiatedObject.transform.position = hit.point;
             instantiatedObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             instantiatedObject.transform.localScale = new Vector3(1f,1f,1f)* scale;
         }
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
