@@ -69,6 +69,9 @@ EditorBuildSettings:
     path: Assets/Scenes/RemoteAuthoring3.unity
     guid: dd0884cddeb33b84e9101b99f7a0c509
   - enabled: 1
+    path: Assets/Scenes/Bridge3.unity
+    guid: 14cf40199a26f1949998df355edfd145
+  - enabled: 0
     path: Assets/Scenes/RemoteAuthoring3.1.unity
     guid: 7d28300179142ce4a8333812f71ef1dd
   m_configObjects:
