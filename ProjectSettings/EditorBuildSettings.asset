@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Samples/Meshing/Scenes/TexturedMesh.unity
     guid: b2ac3f3f19a3241819ef559a6bb893cd
   - enabled: 1
+    path: Assets/Scenes/Bridge1.unity
+    guid: 380299b2f2669264b9dd4d9cd0b71199
+  - enabled: 0
     path: Assets/Scenes/RemoteAuthoring.unity
     guid: cdd6a99ef030b43f78bb5b19cce5f58b
   - enabled: 0
@@ -57,6 +60,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Hunt.unity
     guid: 70ccaf81610718e43ab815ec3bc630e8
   - enabled: 1
+    path: Assets/Scenes/Bridge2.unity
+    guid: 26dbff332f6c9e943aec94e9390a787c
+  - enabled: 0
     path: Assets/Scenes/RemoteAuthoring2.unity
     guid: 321b67abb5f10b64b85e0908d1ccab35
   - enabled: 0
