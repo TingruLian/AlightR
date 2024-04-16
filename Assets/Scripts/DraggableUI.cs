@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
-
+using UnityEngine.UI;
 public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
     private Transform canvasTransform;
     [SerializeField] private GameObject prefab;
     [SerializeField] private float scale;
+    [SerializeField] protected Image m_image;
+
     private bool isDragging = false;
     private  GameObject instantiatedObject;
     void Start()
     {
+        m_image = GetComponent<Image>();
         canvasTransform = GetComponentInParent<Canvas>().transform;
     }
 
@@ -23,10 +25,13 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         isDragging = true;
 
         Instantiate3DObjectAt(Input.mousePosition);
+
+        if(m_image != null) { m_image.enabled =false; }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+
         transform.position = Input.mousePosition;
         if (instantiatedObject == null) return;
 
@@ -35,6 +40,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (Physics.Raycast(newRay, out hit))
         {
             instantiatedObject.transform.position = hit.point;
+            instantiatedObject.transform.LookAt(Camera.main.transform);
         }
 
         //if (isDragging)
@@ -52,6 +58,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         
         transform.position = startPosition; // Reset UI position or destroy it.
+
+        if (m_image != null) { m_image.enabled = true; }
     }
 
     void Instantiate3DObjectAt(Vector3 position)
