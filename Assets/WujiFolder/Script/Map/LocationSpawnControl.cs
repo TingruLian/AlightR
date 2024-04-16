@@ -28,8 +28,8 @@ public struct LocationUnit {
    };
 
    public SerializableLatLng GetPosition() {
-      //return bridgeLatLngs[sceneID - 1];
-      return rpisLatLngs[sceneID - 1];
+      return bridgeLatLngs[sceneID - 1];
+      //return rpisLatLngs[sceneID - 1];
    }
 }
 

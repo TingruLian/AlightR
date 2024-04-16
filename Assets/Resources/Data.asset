@@ -15,5 +15,5 @@ MonoBehaviour:
   grassCount: 0
   bookHP: 10
   completionState: 000000
-  cartState: 000000
+  cartState: 010000
   tutorialCompletion: 0000
