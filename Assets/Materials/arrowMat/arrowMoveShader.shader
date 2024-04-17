@@ -2,7 +2,7 @@ Shader "Custom/arrowMoveShader"
 {
     Properties
     {
-        _Color ("Color", Color) = (1,1,1,1)
+        [HDR] _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Speed("Speed", Range(0.1, 1)) = 0.3
         _Cutoff ("Alpha Cutoff", Range (0, 0.9)) = 0.5
