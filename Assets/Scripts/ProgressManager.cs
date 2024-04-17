@@ -7,6 +7,11 @@ using Niantic.Lightship.Maps;
 using Niantic.Lightship.Maps.Coordinates;
 using Niantic.Lightship.Maps.MapLayers.Components;
 
+struct RailPlacement {
+   public Vector3 position;
+   public float yRotation;
+}
+
 public class ProgressManager : MonoBehaviour {
 
    public static ProgressManager instance;
@@ -29,6 +34,16 @@ public class ProgressManager : MonoBehaviour {
    public bool cartMoved = false;
    public float cartProgress;
 
+   RailPlacement rpisRailPlacement = new RailPlacement {
+      position = new Vector3(10.4f, 1.0f, -64.9f),
+      yRotation = -62
+   };
+
+   RailPlacement bridgeRailPlacement = new RailPlacement {
+      position = new Vector3(238.3f, 2.0f, -560.7f),
+      yRotation = 55
+   };
+
    public void SpawnCart() {
       Debug.LogWarning("Cart getting spawned");
       List<LocationUnit> units = mapManager.locationSpawner.units;
@@ -45,8 +60,12 @@ public class ProgressManager : MonoBehaviour {
 
       railsObject = rails.PlaceInstance(new SerializableLatLng(cartStart.x, cartStart.y), "RailPlacementLayer").Value;
 
-      railsObject.transform.position = new Vector3(10.4f, 1.0f, -64.9f);
-      railsObject.transform.rotation = Quaternion.Euler(new Vector3(railsObject.transform.rotation.x, -62, railsObject.transform.rotation.z));
+      bool playingOnBridge = true;
+
+      RailPlacement railPlacement = playingOnBridge ? bridgeRailPlacement : rpisRailPlacement;
+
+      railsObject.transform.position = railPlacement.position;
+      railsObject.transform.rotation = Quaternion.Euler(new Vector3(railsObject.transform.rotation.x, railPlacement.yRotation, railsObject.transform.rotation.z));
 
       railsObject.SetActive(true);
 
@@ -67,13 +86,15 @@ public class ProgressManager : MonoBehaviour {
       Vector3 cartFwd = (cartController.end - cartController.start).normalized;
       Vector3 cartRight = Quaternion.AngleAxis(90, Vector3.up) * cartFwd;
 
-      Vector3 offset = cartRight * 10.0f;
+      Vector3 offset = cartRight * (playingOnBridge ? 29.5f : 10.0f);
 
       if (cartMoved) {
          cartObject.transform.position = cartPos;
       } else {
          cartObject.transform.position = cartObject.transform.position + offset;
       }
+
+      cartObject.transform.rotation = Quaternion.Euler(new Vector3(cartObject.transform.rotation.x, playingOnBridge ? 295.0f : 120.0f, cartObject.transform.rotation.z));
 
       cartController.start += offset;
       cartController.end += offset;

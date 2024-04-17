@@ -42,14 +42,38 @@ public class CartMovement : MonoBehaviour {
 
          Transform railTransform = ProgressManager.instance.railsObject.transform;
 
+         bool playingOnBridge = true;
+
          // make different rail sections appear
          if (lastDefeatedTurretId >= 1) {
-            railTransform.GetChild(2).gameObject.SetActive(true);
-            railTransform.GetChild(3).gameObject.SetActive(true);
+            if (playingOnBridge) {
+               railTransform.GetChild(7).gameObject.SetActive(true);
+               railTransform.GetChild(8).gameObject.SetActive(true);
+               railTransform.GetChild(9).gameObject.SetActive(true);
+               railTransform.GetChild(10).gameObject.SetActive(true);
+               railTransform.GetChild(11).gameObject.SetActive(true);
+               railTransform.GetChild(12).gameObject.SetActive(true);
+               railTransform.GetChild(13).gameObject.SetActive(true);
+               railTransform.GetChild(14).gameObject.SetActive(true);
+               railTransform.GetChild(15).gameObject.SetActive(true);
+            } else {
+               railTransform.GetChild(2).gameObject.SetActive(true);
+               railTransform.GetChild(3).gameObject.SetActive(true);
+            }
          }
          if (lastDefeatedTurretId >= 2) {
-            railTransform.GetChild(0).gameObject.SetActive(true);
-            railTransform.GetChild(1).gameObject.SetActive(true);
+            if (playingOnBridge) {
+               railTransform.GetChild(0).gameObject.SetActive(true);
+               railTransform.GetChild(1).gameObject.SetActive(true);
+               railTransform.GetChild(2).gameObject.SetActive(true);
+               railTransform.GetChild(3).gameObject.SetActive(true);
+               railTransform.GetChild(4).gameObject.SetActive(true);
+               railTransform.GetChild(5).gameObject.SetActive(true);
+               railTransform.GetChild(6).gameObject.SetActive(true);
+            } else {
+               railTransform.GetChild(0).gameObject.SetActive(true);
+               railTransform.GetChild(1).gameObject.SetActive(true);
+            }
          }
       }
 

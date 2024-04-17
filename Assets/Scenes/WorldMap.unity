@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae494795c92698418f53b3bcb67a56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railsObject: {fileID: 0}
+  railsObject: {fileID: 1171350451929025884, guid: 44165666f93a7794387480b3b55c52dc, type: 3}
   cart: {fileID: 4430904912515600257, guid: 4569aeb77bf02ba4ab3199fb3842c67f, type: 3}
   rails: {fileID: 4430904912515600257, guid: 08294503d2f6fc74aa1a436494e2c92b, type: 3}
   lastDefeatedTurret: 0
