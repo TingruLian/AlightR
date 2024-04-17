@@ -30,6 +30,7 @@ public class CompletionCheck : MonoBehaviour {
          CompleteInitilization.Invoke();
       } else {
          NotCompleteInitilization.Invoke();
+         //Debug.Log(gameObject.name+" Not Complete");
       }
 
       int numCompleted = 0;
