@@ -6,20 +6,21 @@
         _SemanticTex("_SemanticTex", 2D) = "red" {}
     }
 	SubShader
-  {
-    Tags {"Queue" = "Transparent-1"}	
-
-    
-    Pass
     {
-        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags {"Queue" = "Transparent-1"}	
 
-       CGPROGRAM
+        HLSLINCLUDE
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        ENDHLSL
+
+        Pass
+        {
+            Tags {"IgnoreProjector"="True" "RenderType"="Transparent"}
+            Blend SrcAlpha OneMinusSrcAlpha
+
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
-            #include "UnityCG.cginc"
 
             struct appdata
             {
@@ -35,13 +36,24 @@
 
             };
 
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            TEXTURE2D(_SemanticTex);
+            SAMPLER(sampler_SemanticTex);
+
+            CBUFFER_START(UnityPerMaterial)
+                float4 _MainTex_ST;
+                float4 _SemanticTex_ST;
+            CBUFFER_END
+
             float4x4 _SemanticMat;
 
             v2f vert(appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.vertex = TransformObjectToHClip(v.vertex.xyz);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 
                             //we need to adjust our image to the correct rotation and aspect.
                 o.texcoord = mul(_SemanticMat, float4(v.uv, 1.0f, 1.0f)).xyz;
@@ -49,21 +61,21 @@
                 return o;
             }
 
-            sampler2D _MainTex;
-            sampler2D _SemanticTex;
-            fixed4 _Color;
-            fixed4 _Color2;
+            float4 _Color;
+            float4 _Color2;
 
-            fixed4 frag(v2f i) : SV_Target
+            float4 frag(v2f i) : SV_Target
             {
                 //convert coordinate space
                 float2 semanticUV = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y / i.texcoord.z);
-                float4 semanticCol = tex2D(_SemanticTex, semanticUV);
-                float4 mainCol = tex2D(_MainTex, i.uv);
+                float4 semanticCol = SAMPLE_TEXTURE2D(_SemanticTex, sampler_SemanticTex, semanticUV);
+                float4 mainCol = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
                 
                 return float4(mainCol.r, mainCol.g, mainCol.b, semanticCol.r * mainCol.a);
+                //return float4(1.0, 1.0, 1.0, 0.5);
+
             }
-       ENDCG
-    }
+            ENDHLSL
+        }
   }
 }
