@@ -4,6 +4,7 @@ Shader "Custom/arrowMoveShader"
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        _Speed("Speed", Range(0.1, 1)) = 0.3
         _Cutoff ("Alpha Cutoff", Range (0, 0.9)) = 0.5
         _ShadowColor ("Shadow Color", Color) = (0.2, 0.1, 0.15, 1.0)
     }
@@ -30,6 +31,7 @@ Shader "Custom/arrowMoveShader"
                 half4 _Color;
                 float _Cutoff;
                 half4 _ShadowColor;
+                float _Speed;
             CBUFFER_END
 
         ENDHLSL
@@ -69,7 +71,7 @@ Shader "Custom/arrowMoveShader"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                float2 uvTimed = float2(IN.uv.x, IN.uv.y - _Time.y / 2.0);
+                float2 uvTimed = float2(IN.uv.x, IN.uv.y - _Time.y * _Speed);
                 half4 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvTimed);
 
                 //alpha test
@@ -109,7 +111,7 @@ Shader "Custom/arrowMoveShader"
             }
 
             half4 frag(Varyings IN) : SV_TARGET {
-                float2 uvTimed = float2(IN.uv.x, IN.uv.y - _Time.y / 2.0);
+                float2 uvTimed = float2(IN.uv.x, IN.uv.y - _Time.y * _Speed);
                 half4 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvTimed);
                 
                 //alpha test
