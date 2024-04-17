@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: RailPrefab
-  _prefab: {fileID: 1171350451929025884, guid: 74d9b0ad6d5dfd448b4c41b1e0a88815, type: 3}
+  _prefab: {fileID: 1171350451929025884, guid: 44165666f93a7794387480b3b55c52dc, type: 3}
   _heightOffset: 1
   _scaleWithMapRadius: 0
   _relativeScale: 1
