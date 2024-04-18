@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableUI : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
     private Transform canvasTransform;
@@ -12,7 +13,18 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [SerializeField] protected Image m_image;
 
     private bool isDragging = false;
-    private  GameObject instantiatedObject;
+    private GameObject instantiatedObject;
+
+    public bool idUpdateFlag = false;
+    public ulong currentObjID;
+
+    public Vector3 position;
+    public Vector3 eulerAngle;
+    public Vector3 localScale;
+    public bool pFlag;
+    public bool eFlag;
+    public bool lFlag;
+
     void Start()
     {
         m_image = GetComponent<Image>();
@@ -54,13 +66,65 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         
     }
 
+    public void SpawnCopy(Transform t)
+    {
+        StartCoroutine(SpawnCopyCoroutine(t));
+    }
+
+    IEnumerator SpawnCopyCoroutine(Transform t)
+    {
+        StorePositionServerRpc(t.position);
+        StoreEulerAngleServerRpc(t.eulerAngles);
+        StoreLocalScaleServerRpc(t.localScale);
+
+        yield return new WaitForSeconds(1);
+
+        SpawnCopyServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void SpawnCopyServerRpc()
+    {
+        ulong id;
+
+        GameObject copy = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+
+        id = copy.GetComponent<NetworkObject>().NetworkObjectId;
+        copy.transform.parent = null;
+        copy.transform.position = position;
+        copy.transform.eulerAngles = eulerAngle;
+        copy.transform.localScale = localScale;
+
+        copy.GetComponent<NetworkObject>().Spawn();
+        UpdateObjIDClientRpc(id);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void StorePositionServerRpc(Vector3 p) { position = p; }
+
+    [ServerRpc(RequireOwnership = false)]
+    void StoreEulerAngleServerRpc(Vector3 e) { eulerAngle = e; }
+
+    [ServerRpc(RequireOwnership = false)]
+    void StoreLocalScaleServerRpc(Vector3 s) { localScale = s; }
+
+
+    [ClientRpc]
+    void UpdateObjIDClientRpc(ulong id)
+    {
+        currentObjID = id;
+        idUpdateFlag = true;
+    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         
         transform.position = startPosition; // Reset UI position or destroy it.
 
+        instantiatedObject.GetComponent<SelfRegister>().Spawn(this);
         if (m_image != null) { m_image.enabled = true; }
     }
+
 
     void Instantiate3DObjectAt(Vector3 position)
     {
@@ -87,7 +151,6 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             instantiatedObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
             instantiatedObject.transform.localScale = new Vector3(1f,1f,1f)* scale;
         }
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
