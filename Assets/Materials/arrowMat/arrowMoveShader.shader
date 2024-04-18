@@ -75,6 +75,9 @@ Shader "Custom/arrowMoveShader"
                 half4 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvTimed);
 
                 //alpha test
+                if(IN.uv.x > 0.9 || IN.uv.x < 0.1 || IN.uv.y > 2.9 || IN.uv.y < 0.1){
+                    albedo = half4(1.0, 1.0, 1.0, 1.0);
+                }
                 clip(albedo.a - _Cutoff);
                 half3 diffuse = _Color.rgb * albedo.rgb * _MainLightColor.rgb;
 
