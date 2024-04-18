@@ -94,10 +94,10 @@ public class TurretBehavior : MonoBehaviour, Health {
 
    public void ForceLockTarget(GameObject newTarget)
     {
-        if (!IsValidTarget(transform.position - newTarget.transform.position)) return;
+        //if (!IsValidTarget(transform.position - newTarget.transform.position)) return;
 
         userHodling = true;
-        transform.DOLookAt(newTarget.transform.position, 0.5f).OnComplete(() => { userHodling = false; });
+        transform.DOLookAt(newTarget.transform.position, 0.5f).OnComplete(() => { userHodling = false; attackDir = transform.forward; });
         target = newTarget;
         //Debug.Log("Updated Target To :" + newTarget);
     }
@@ -166,12 +166,12 @@ public class TurretBehavior : MonoBehaviour, Health {
    }
 
    private bool IsValidTarget(Vector3 targetDir) {
-        //float sqrDist = targetDir.sqrMagnitude;
-        //targetDir.y = attackDir.y; // only consider the angle along the xz plane when considering whether the turret can turn towards the enemy
+        float sqrDist = targetDir.sqrMagnitude;
+        targetDir.y = attackDir.y; // only consider the angle along the xz plane when considering whether the turret can turn towards the enemy
 
-        //return sqrDist <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
-        return targetDir.sqrMagnitude < sqrRange;
-   }
+        return sqrDist <= sqrRange && Vector3.Angle(attackDir, targetDir) <= ANGULAR_RANGE;
+        //return targetDir.sqrMagnitude < sqrRange;
+    }
 
    private void SelectNewTarget() {
       target = null;
