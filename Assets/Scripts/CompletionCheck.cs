@@ -11,6 +11,8 @@ public class CompletionCheck : MonoBehaviour {
 
    public UnityEvent NotCompleteInitilization;
 
+   public UnityEvent AllCompleteInitilization;
+
    private void Awake() {
       if (GameData == null) {
          GameData = Resources.Load<GameScriptableObject>("Data");
@@ -42,6 +44,7 @@ public class CompletionCheck : MonoBehaviour {
 
       if (numCompleted == GameData.completionState.Count) {
          Debug.Log("Completed all the levels in the game");
+         AllCompleteInitilization.Invoke();
       }
    }
 }

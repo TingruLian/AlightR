@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grassCount: 0
   bookHP: 10
-  completionState: 000000
+  completionState: 010101
   cartState: 000000
   tutorialCompletion: 0000
