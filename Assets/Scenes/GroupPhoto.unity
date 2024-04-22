@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 233774273655562936, guid: 6fcbc35aa0f548544a22e3c3ff00064d, type: 3}
-  scale: 0.05
+  scale: 10
   m_image: {fileID: 0}
   idUpdateFlag: 0
   currentObjID: 0
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 233774273655562936, guid: 77f555d39f13eea4d86924e9243df0cc, type: 3}
-  scale: 0.05
+  scale: 10
   m_image: {fileID: 0}
   idUpdateFlag: 0
   currentObjID: 0
@@ -1954,8 +1954,8 @@ GameObject:
   - component: {fileID: 832096214}
   - component: {fileID: 832096217}
   - component: {fileID: 832096216}
-  - component: {fileID: 832096215}
   - component: {fileID: 832096218}
+  - component: {fileID: 832096215}
   m_Layer: 5
   m_Name: FishButton
   m_TagString: Untagged
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee81ffeb88fc9b4393d21137b89ffa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4096677535158197577, guid: 9c5d89ec158131b4c93260be58cf6f29, type: 3}
+  prefab: {fileID: 4096677535158197577, guid: 1a1c2bf4c6df91e44b2cf1b616bbbb5d, type: 3}
   scale: 0.5
   m_image: {fileID: 0}
   idUpdateFlag: 0
@@ -3388,7 +3388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 233774273655562936, guid: 11a9418e1414045479e4243ab5697329, type: 3}
-  scale: 0.05
+  scale: 10
   m_image: {fileID: 0}
   idUpdateFlag: 0
   currentObjID: 0

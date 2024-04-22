@@ -4252,7 +4252,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f6f224df96c602b4181a38db17f1fae3, type: 2}
     - target: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       propertyPath: m_Name
-      value: FenceTurret
+      value: NetWork FenceTurret
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
@@ -4322,7 +4322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c28ed28c284b8bbb08e7d5bded1bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _putInSharedOrigin: 1
+  _putInSharedOrigin: 0
 --- !u!114 &7431264808142189785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4666,98 +4666,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9026332684190572222}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3405320462161303018}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8874685305075156595}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8452491547090882563}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
---- !u!1 &4776676080266883930 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
-  m_PrefabInstance: {fileID: 5659688033350618635}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &3405320462161303018
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4776676080266883930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.03
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8874685305075156595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4776676080266883930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackInterval: 1.2
-  bulletSpeed: 20
-  health: 4
-  onHurt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8452491547090882563}
-        m_TargetAssemblyTypeName: DoTweenFeedback, Assembly-CSharp
-        m_MethodName: Shake
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.25
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []
-  onManualRotationEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  bulletPrefab: {fileID: 5123191111321388413, guid: 1d2d72e3ec76377408c2e6a0e481fd43, type: 3}
-  shootAnchor:
-  - {fileID: 9026332684190572222}
-  target: {fileID: 0}
---- !u!114 &8452491547090882563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4776676080266883930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46db57310a8e7e4db002033aa0827d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotating: 0
-  rotationSpeed: 60
-  shakeStrength: 0.25
 --- !u!4 &5260759870769588704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 06533fe3f05e7ff41af19839e06e2041, type: 3}
