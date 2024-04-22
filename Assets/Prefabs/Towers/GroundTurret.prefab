@@ -4675,7 +4675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22636830532dc874d8bfd2f2a572d9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyContainer: {fileID: 0}
   attackInterval: 1
   bulletSpeed: 8
   health: 10
@@ -4697,6 +4696,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onManualRotationEnd:
+    m_PersistentCalls:
+      m_Calls: []
   bulletPrefab: {fileID: 5123191111321388413, guid: d86549a2177029f4ab7fffb33d816b1e, type: 3}
   shootAnchor:
   - {fileID: 9026332684190572222}
