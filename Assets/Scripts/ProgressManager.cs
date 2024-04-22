@@ -40,8 +40,8 @@ public class ProgressManager : MonoBehaviour {
    };
 
    RailPlacement bridgeRailPlacement = new RailPlacement {
-      position = new Vector3(238.3f, 2.0f, -560.7f),
-      yRotation = 55
+      position = new Vector3(260.3f, 2.0f, -592.1f),
+      yRotation = 53
    };
 
    public void SpawnCart() {
@@ -86,7 +86,7 @@ public class ProgressManager : MonoBehaviour {
       Vector3 cartFwd = (cartController.end - cartController.start).normalized;
       Vector3 cartRight = Quaternion.AngleAxis(90, Vector3.up) * cartFwd;
 
-      Vector3 offset = cartRight * (playingOnBridge ? 29.5f : 10.0f);
+      Vector3 offset = cartRight * (playingOnBridge ? -3.0f : 10.0f);
 
       if (cartMoved) {
          cartObject.transform.position = cartPos;
@@ -97,7 +97,7 @@ public class ProgressManager : MonoBehaviour {
       cartObject.transform.rotation = Quaternion.Euler(new Vector3(cartObject.transform.rotation.x, playingOnBridge ? 295.0f : 120.0f, cartObject.transform.rotation.z));
 
       cartController.start += offset;
-      cartController.end += offset;
+      cartController.end += offset * (playingOnBridge ? 4 : 1);
    }
 
    private void Awake() {

@@ -112,7 +112,7 @@ public class CartMovement : MonoBehaviour {
    }
 
    bool IsBlocked() {
-      if (lastDefeatedTurretId == 0) {
+      if (lastDefeatedTurretId == 0 || progress >= 1f) {
          return true;
       }
 
@@ -141,7 +141,7 @@ public class CartMovement : MonoBehaviour {
    }
 
    public void MoveCart() {
-      if (IsBlocked() || moving || progress >= 1f) {
+      if (IsBlocked() || moving) {
          return;
       }
 
