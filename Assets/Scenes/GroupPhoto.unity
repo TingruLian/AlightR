@@ -2410,30 +2410,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_Color.a
-      value: 0.76862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151277225269592585, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2151277225320815642, guid: a741ce8da18654daf98936ad659eadc7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3765,26 +3741,30 @@ PrefabInstance:
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocations.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 7bf62d21b02ed9345ab7f564736ce3bf, type: 2}
+      objectReference: {fileID: 11400000, guid: d1d4843599cc0c2408d8774ed7269173, type: 2}
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocalizationTargets.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocalizationTargets.Array.data[0]._name
-      value: 93ccbe1ebb654706a3b9b438d50737c2.107
+      value: RPIS2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
+      propertyPath: _privateARLocalizationTargets.Array.data[0]._identifier
+      value: FFF42A6E85E14898B577B95195E9CD89
       objectReference: {fileID: 0}
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocalizationTargets.Array.data[0]._defaultAnchor
-      value: ChQIr5DRzvG43qY1EKqH59H658y7dxjk9K369PaDAyomChQIgvn0kOLbtKE3EI3p+8Hdwc+PZRIJCgASBSUAAIA/HQAAgD8yEhEAAADgZzdEQBkAAABgvf1TwA==
+      value: ChQI2c+woanPm6QtEJvLgdX6zJLNFBjIlJvayaGFAyooChYI/+mr8dawuKSYARC17+WN1bL65okBEgkKABIFJQAAgD8dAACAPzIZCgUlAACAPxEAAACAaTdEQBkAAAAgvv1TwA==
       objectReference: {fileID: 0}
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocalizationTargets.Array.data[0]._center.lat_degrees
-      value: 40.43296432495117
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3624323127452898288, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: _privateARLocalizationTargets.Array.data[0]._center.lng_degrees
-      value: -79.96464538574219
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3624323127452898289, guid: 0aba5a004507a455cb9fcc7d34e544c1, type: 3}
       propertyPath: m_Pivot.x
