@@ -77,9 +77,11 @@ public class DraggableUI : NetworkBehaviour, IBeginDragHandler, IDragHandler, IE
         StoreEulerAngleServerRpc(t.eulerAngles);
         StoreLocalScaleServerRpc(t.localScale);
 
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         SpawnCopyServerRpc();
+
+        yield return null;
     }
 
     [ServerRpc(RequireOwnership = false)]
