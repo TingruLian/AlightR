@@ -10,7 +10,7 @@ public class VFXColliderHelper : MonoBehaviour
    {
       GameObject target = GameObject.FindGameObjectWithTag(targetTag);
       ParticleSystem particleSystem = GetComponent<ParticleSystem>();
-      particleSystem.collision.SetPlane(0, target.transform);
+      if(particleSystem != null&& target != null)particleSystem.collision.SetPlane(0, target.transform);
 
    }
 
