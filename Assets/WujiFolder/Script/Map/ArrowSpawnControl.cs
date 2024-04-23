@@ -33,6 +33,7 @@ public class ArrowSpawnControl : MonoBehaviour {
 
          if (i != 0) {
             arrow.transform.LookAt(arrows[i - 1].transform);
+            arrow.transform.position = new Vector3(arrow.transform.position.x, arrow.transform.position.y + 1.0f, arrow.transform.position.z);
          }
 
          if (!arrowInformations[i].draw) {
