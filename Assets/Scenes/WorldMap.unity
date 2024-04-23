@@ -180,13 +180,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Spirit of Pittspurgh is Under Attack
-
-    They need your help
+  m_text: 'Pittspurgh is under attack
 
 
-    Get
-    to the Hotmetal Bridge to Help them'
+    Get to the Hot Metal Bridge to protect
+    the spirit of Pittsburgh'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
   m_sharedMaterial: {fileID: -5864666952820485921, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
@@ -1120,15 +1118,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The viilians are some Undeads
-
-    Stop them by managing Turrets
+  m_text: 'The undead creatures are coming
 
 
-    You
-    can also click on one of the Undeads
+    Stop them by managing turrets
 
-    To concentrate Turrets aimming'
+
+    Tap
+    on an undead to make turrets target it'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
   m_sharedMaterial: {fileID: -5864666952820485921, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
@@ -1644,13 +1641,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There''s Hotmetal Turrets on bridge
+  m_text: 'There are Hot Metal Turrets on the bridge
 
-    But they are decayed
+
+    But they are inactive
 
 
     You
-    need to activate them by Clicking'
+    need to activate them by clicking'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
   m_sharedMaterial: {fileID: -5864666952820485921, guid: 74457d2b226e77748b80fabbe4910ff6, type: 2}
