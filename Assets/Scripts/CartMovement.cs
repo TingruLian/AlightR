@@ -17,22 +17,31 @@ public class CartMovement : MonoBehaviour {
    { get; set; }
 
    public float progress = 0f; // 0 - 1, basically a percentage
+   public int lastDefeatedTurretId = 0;
+
    private bool moving = false;
    private Vector3 targetPos;
    private Vector3 startPos;
    private float startTime;
    private float speed = 10f;
 
-   public int lastDefeatedTurretId = 0;
+   private GameScriptableObject gameData;
 
    void Start() {
+      gameData = MapManager.instance.GameData;
+
       UpdateColor(lastDefeatedTurretId);
 
       GameObject.Find("CartLever").GetComponent<CartController>().cart = this;
+
+      bool showCart = gameData.completionState[lastDefeatedTurretId];
+
+      gameObject.SetActive(showCart);
+      GameObject.Find("CartLever").SetActive(showCart);
    }
 
    void Update() {
-      if (lastDefeatedTurretId < 3 && MapManager.instance.GameData.completionState[lastDefeatedTurretId]) {
+      if (lastDefeatedTurretId < 3 && gameData.completionState[lastDefeatedTurretId]) {
          lastDefeatedTurretId++;
 
          Debug.LogWarning($"lastDefeatedTurretId: {lastDefeatedTurretId}");
@@ -96,8 +105,8 @@ public class CartMovement : MonoBehaviour {
       }
 
       // Update Data.cartState
-      if (IsBlocked() && lastDefeatedTurretId > 0 && !MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1]) {
-         MapManager.instance.GameData.cartState[lastDefeatedTurretId - 1] = true;
+      if (IsBlocked() && lastDefeatedTurretId > 0 && !gameData.cartState[lastDefeatedTurretId - 1]) {
+         gameData.cartState[lastDefeatedTurretId - 1] = true;
       }
 
       // update checkpoint availabilities by cartState
@@ -105,8 +114,8 @@ public class CartMovement : MonoBehaviour {
       for (int i = 1; i <= 2; i++) {
          GameObject checkpoint = GameObject.Find("HotMetal" + (i + 1));
 
-         if (MapManager.instance.GameData.cartState[i - 1] != checkpoint.GetComponent<DoOnClick>().enabled) {
-            checkpoint.GetComponent<DoOnClick>().enabled = MapManager.instance.GameData.cartState[i - 1];
+         if (gameData.cartState[i - 1] != checkpoint.GetComponent<DoOnClick>().enabled) {
+            checkpoint.GetComponent<DoOnClick>().enabled = gameData.cartState[i - 1];
          }
       }
    }
