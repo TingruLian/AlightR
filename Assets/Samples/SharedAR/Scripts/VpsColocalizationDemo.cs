@@ -64,26 +64,33 @@ namespace  Niantic.Lightship.AR.Samples
             _netButtonsPanel.SetActive(false);
             _statsPanel.Hide();
             _localizationStatusPanel.SetActive(false);
-            if (_sharedSpaceManager.GetColocalizationType() ==
-                SharedSpaceManager.ColocalizationType.MockColocalization)
-            {
-                // Hide coverage list panel and show connction button
-                _vpsCoverageTargetListManager.gameObject.SetActive(false);
-                _panelToggle.CloseState(); // hide the panel for location search
-                // Set room to connect
-                var vpsTrackingOptions = ISharedSpaceTrackingOptions.CreateMockTrackingOptions();
-                var roomOptions = ISharedSpaceRoomOptions.CreateLightshipRoomOptions(
-                    _roomNamePrefix + "SkippingVpsRoom",32, "vps colocalization demo");
-                _sharedSpaceManager.StartSharedSpace(vpsTrackingOptions, roomOptions);
-            }
-            else if (Application.isEditor && !string.IsNullOrEmpty(_inEditorPayload))
-            {
-                Debug.LogWarning("Skipping coverage selection in favor of provided payload.");
-                _vpsCoverageTargetListManager.gameObject.SetActive(false);
-                _panelToggle.CloseState(); // hide the panel for location search
-                _panelToggle.gameObject.SetActive(false);
-                OnLocationSelected(_inEditorPayload);
-            }
+
+            Debug.LogWarning("Skipping coverage selection in favor of provided payload.");
+            _vpsCoverageTargetListManager.gameObject.SetActive(false);
+            _panelToggle.CloseState(); // hide the panel for location search
+            _panelToggle.gameObject.SetActive(false);
+            OnLocationSelected(_inEditorPayload);
+
+            //if (_sharedSpaceManager.GetColocalizationType() ==
+            //    SharedSpaceManager.ColocalizationType.MockColocalization)
+            //{
+            //    // Hide coverage list panel and show connction button
+            //    _vpsCoverageTargetListManager.gameObject.SetActive(false);
+            //    _panelToggle.CloseState(); // hide the panel for location search
+            //    // Set room to connect
+            //    var vpsTrackingOptions = ISharedSpaceTrackingOptions.CreateMockTrackingOptions();
+            //    var roomOptions = ISharedSpaceRoomOptions.CreateLightshipRoomOptions(
+            //        _roomNamePrefix + "SkippingVpsRoom",32, "vps colocalization demo");
+            //    _sharedSpaceManager.StartSharedSpace(vpsTrackingOptions, roomOptions);
+            //}
+            //else if (Application.isEditor && !string.IsNullOrEmpty(_inEditorPayload))
+            //{
+            //    Debug.LogWarning("Skipping coverage selection in favor of provided payload.");
+            //    _vpsCoverageTargetListManager.gameObject.SetActive(false);
+            //    _panelToggle.CloseState(); // hide the panel for location search
+            //    _panelToggle.gameObject.SetActive(false);
+            //    OnLocationSelected(_inEditorPayload);
+            //}
         }
 
         private void OnDestroy()
@@ -108,7 +115,7 @@ namespace  Niantic.Lightship.AR.Samples
                 Debug.LogWarning("The selected location does not have a default anchor");
                 return;
             }
-
+            Debug.Log("Location selected");
             // Start tracking and set Room to join based on anchor payload
             var vpsTrackingOptions = ISharedSpaceTrackingOptions.CreateVpsTrackingOptions(defaultPayloadToSet);
             var roomOptions= ISharedSpaceRoomOptions.CreateVpsRoomOptions(
