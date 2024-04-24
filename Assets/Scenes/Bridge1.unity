@@ -3017,7 +3017,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2050376901}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
@@ -3881,6 +3881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &680904806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10605,6 +10606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &2020360731
 MonoBehaviour:
   m_ObjectHideFlags: 0
