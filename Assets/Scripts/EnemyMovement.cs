@@ -169,7 +169,7 @@ public class EnemyMovement : MonoBehaviour
 
             //--------------Process Movement--------------//
             Vector3 curPos = gameObject.transform.position;
-            Vector3 distTraveled = transform.forward * speed.GetCurValue() * elapsedTime;
+            Vector3 distTraveled = transform.forward * speed.GetCurValue() * Time.deltaTime;
 
             if (lockY) { distTraveled.y = 0; }
 
