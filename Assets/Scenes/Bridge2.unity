@@ -1639,6 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &271170971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,6 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &440275801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,6 +3039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &495984418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,7 +3741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490472322637416083, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6600003
+      value: 3.4200003
       objectReference: {fileID: 0}
     - target: {fileID: 4490472322637416083, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3750,7 +3753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4587727916953391896, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.66
+      value: 3.42
       objectReference: {fileID: 0}
     - target: {fileID: 4587727916953391896, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3762,7 +3765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5067140734673181249, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4800003
+      value: 2.1010003
       objectReference: {fileID: 0}
     - target: {fileID: 5067140734673181249, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3786,7 +3789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6403259481604292694, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: 2.101
       objectReference: {fileID: 0}
     - target: {fileID: 6403259481604292694, guid: 452aaef1f37747c4f8d8cb4b655afde8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7253,7 +7256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883418858149463699, guid: 49cd920a2c3bd044284998db96d0d449, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.013
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 8883418858149463699, guid: 49cd920a2c3bd044284998db96d0d449, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8011,7 +8014,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 620928774}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
@@ -8706,6 +8709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a09e1bdd0abe24690dac7a2ee11580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasList: []
 --- !u!114 &1607313838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10120,6 +10124,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8850879620415993156, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9213201263591724633, guid: 52392185b5a370948a2eceae6a6a08fa, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10248,7 +10256,7 @@ Transform:
   m_GameObject: {fileID: 1949131689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.45627302, z: -0, w: 0.8898398}
-  m_LocalPosition: {x: -0.8072908, y: 0.012499999, z: -0.21539998}
+  m_LocalPosition: {x: -0.8072908, y: 0.14, z: -0.21539998}
   m_LocalScale: {x: 1.2499999, y: 1.25, z: 1.2499999}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScreenShot : MonoBehaviour
 {
+    [SerializeField] protected List<Canvas> canvasList;
     // Start is called before the first frame update
 
     void Update()
@@ -24,6 +25,8 @@ public class ScreenShot : MonoBehaviour
 
     private IEnumerator TakeScreenshotAndSave()
     {
+        foreach(Canvas c in canvasList)c.enabled = false;
+
         this.GetComponent<Image>().enabled = false;
         yield return new WaitForEndOfFrame();
 
@@ -46,6 +49,8 @@ public class ScreenShot : MonoBehaviour
         Destroy(ss);
         //yield return new WaitForEndOfFrame();
         this.GetComponent<Image>().enabled = true;
+
+        foreach (Canvas c in canvasList) c.enabled = true;
     }
 
 

@@ -34,7 +34,7 @@ public class CartMovement : MonoBehaviour {
 
       GameObject.Find("CartLever").GetComponent<CartController>().cart = this;
 
-      bool showCart = gameData.completionState[lastDefeatedTurretId];
+      bool showCart = gameData.completionState[0];
 
       gameObject.SetActive(showCart);
       GameObject.Find("CartLever").SetActive(showCart);

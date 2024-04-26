@@ -53,14 +53,15 @@ public class SceneLoader : MonoBehaviour
 
     private void Update()
     {
-        if (asyncOperation != null)
-        {
-            Fader.instance.progress.fillAmount = asyncOperation.progress;
-        }
+        //if (asyncOperation != null)
+        //{
+        //    Fader.instance.progress.fillAmount = asyncOperation.progress;
+        //}
     }
 
     void Transition(UnityAction action)
     {
+        Fader.instance.progress.DOFillAmount(1, 2f).From(0);
         Fader.instance.loadGroup.DOFade(1, 0.5f).From(0);
         DOTween.Sequence().AppendInterval(2.5f).
            Append(Fader.instance.loadGroup.DOFade(0, 0.5f).From(1)).AppendInterval(1f).

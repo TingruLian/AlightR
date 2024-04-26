@@ -11,6 +11,7 @@ public struct ArrowUnit {
    public SerializableLatLng position;
    public string name;
    public bool draw;
+   public GameObject child;
 }
 public class ArrowSpawnControl : MonoBehaviour {
    public List<ArrowUnit> arrowInformations;
@@ -41,6 +42,12 @@ public class ArrowSpawnControl : MonoBehaviour {
                Destroy(g.gameObject);
             }
          }
+
+            if (arrowInformations[i].child != null)
+            {
+                arrowInformations[i].child.transform.parent = arrow.transform;
+                arrowInformations[i].child.transform.localPosition = Vector3.zero;
+            }
       }
    }
 }
