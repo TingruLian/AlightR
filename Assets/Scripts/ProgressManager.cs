@@ -40,7 +40,7 @@ public class ProgressManager : MonoBehaviour {
    };
 
    RailPlacement bridgeRailPlacement = new RailPlacement {
-      position = new Vector3(260.3f, 2.0f, -592.1f),
+      position = new Vector3(260.3f, 2.1f, -592.1f),
       yRotation = 53
    };
 
